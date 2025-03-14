@@ -33,7 +33,7 @@ class StripeResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
         """
         return StripeResourceWithRawResponse(self)
 
@@ -42,7 +42,7 @@ class StripeResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
+        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
         """
         return StripeResourceWithStreamingResponse(self)
 
@@ -152,7 +152,7 @@ class AsyncStripeResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncStripeResourceWithRawResponse(self)
 
@@ -161,7 +161,7 @@ class AsyncStripeResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
+        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
         """
         return AsyncStripeResourceWithStreamingResponse(self)
 
