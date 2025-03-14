@@ -7,9 +7,10 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import (
+from Deasy.types.console import (
+    VdbconnectorCreateResponse,
     VdbconnectorDeleteResponse,
     VdbconnectorGetDeleteStatsResponse,
 )
@@ -22,7 +23,47 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
+        vdbconnector = client.console.vdbconnector.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        )
+        assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_create(self, client: Deasy) -> None:
+        response = client.console.vdbconnector.with_raw_response.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        vdbconnector = response.parse()
+        assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_create(self, client: Deasy) -> None:
+        with client.console.vdbconnector.with_streaming_response.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            vdbconnector = response.parse()
+            assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_delete(self, client: Deasy) -> None:
         vdbconnector = client.console.vdbconnector.delete(
             vector_db_config={},
             x_user="x-user",
@@ -31,7 +72,7 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.console.vdbconnector.with_raw_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -44,7 +85,7 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.console.vdbconnector.with_streaming_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -59,7 +100,7 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_method_get_delete_stats(self, client: Deasy) -> None:
         vdbconnector = client.console.vdbconnector.get_delete_stats(
             vector_db_config={},
             x_user="x-user",
@@ -68,7 +109,7 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.console.vdbconnector.with_raw_response.get_delete_stats(
             vector_db_config={},
             x_user="x-user",
@@ -81,7 +122,7 @@ class TestVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.console.vdbconnector.with_streaming_response.get_delete_stats(
             vector_db_config={},
             x_user="x-user",
@@ -100,7 +141,47 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
+        vdbconnector = await async_client.console.vdbconnector.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        )
+        assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.console.vdbconnector.with_raw_response.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        vdbconnector = await response.parse()
+        assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
+        async with async_client.console.vdbconnector.with_streaming_response.create(
+            secret_name="secret_name",
+            vector_db_config={},
+            x_user="x-user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            vdbconnector = await response.parse()
+            assert_matches_type(VdbconnectorCreateResponse, vdbconnector, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         vdbconnector = await async_client.console.vdbconnector.delete(
             vector_db_config={},
             x_user="x-user",
@@ -109,7 +190,7 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.vdbconnector.with_raw_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -122,7 +203,7 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.vdbconnector.with_streaming_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -137,7 +218,7 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         vdbconnector = await async_client.console.vdbconnector.get_delete_stats(
             vector_db_config={},
             x_user="x-user",
@@ -146,7 +227,7 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.vdbconnector.with_raw_response.get_delete_stats(
             vector_db_config={},
             x_user="x-user",
@@ -159,7 +240,7 @@ class TestAsyncVdbconnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.vdbconnector.with_streaming_response.get_delete_stats(
             vector_db_config={},
             x_user="x-user",

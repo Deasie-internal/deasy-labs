@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import UserUpdateProfileResponse
+from Deasy.types.console import UserUpdateProfileResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestUser:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update_profile(self, client: DeasyLabs) -> None:
+    def test_method_update_profile(self, client: Deasy) -> None:
         user = client.console.user.update_profile(
             company="company",
             first_name="first_name",
@@ -31,7 +31,7 @@ class TestUser:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update_profile(self, client: DeasyLabs) -> None:
+    def test_raw_response_update_profile(self, client: Deasy) -> None:
         response = client.console.user.with_raw_response.update_profile(
             company="company",
             first_name="first_name",
@@ -47,7 +47,7 @@ class TestUser:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update_profile(self, client: DeasyLabs) -> None:
+    def test_streaming_response_update_profile(self, client: Deasy) -> None:
         with client.console.user.with_streaming_response.update_profile(
             company="company",
             first_name="first_name",
@@ -69,7 +69,7 @@ class TestAsyncUser:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update_profile(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update_profile(self, async_client: AsyncDeasy) -> None:
         user = await async_client.console.user.update_profile(
             company="company",
             first_name="first_name",
@@ -81,7 +81,7 @@ class TestAsyncUser:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update_profile(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_update_profile(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.user.with_raw_response.update_profile(
             company="company",
             first_name="first_name",
@@ -97,7 +97,7 @@ class TestAsyncUser:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update_profile(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_update_profile(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.user.with_streaming_response.update_profile(
             company="company",
             first_name="first_name",

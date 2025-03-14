@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -18,50 +18,7 @@ class TestOcr:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_sync_stats(self, client: DeasyLabs) -> None:
-        ocr = client.ocr.get_sync_stats(
-            data_source_manager_configs=[{}],
-        )
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_sync_stats_with_all_params(self, client: DeasyLabs) -> None:
-        ocr = client.ocr.get_sync_stats(
-            data_source_manager_configs=[{}],
-            use_cache=True,
-        )
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_get_sync_stats(self, client: DeasyLabs) -> None:
-        response = client.ocr.with_raw_response.get_sync_stats(
-            data_source_manager_configs=[{}],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ocr = response.parse()
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_get_sync_stats(self, client: DeasyLabs) -> None:
-        with client.ocr.with_streaming_response.get_sync_stats(
-            data_source_manager_configs=[{}],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ocr = response.parse()
-            assert_matches_type(object, ocr, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_ingest(self, client: DeasyLabs) -> None:
+    def test_method_ingest(self, client: Deasy) -> None:
         ocr = client.ocr.ingest(
             data_source_manager_config={},
         )
@@ -69,7 +26,7 @@ class TestOcr:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_ingest_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_ingest_with_all_params(self, client: Deasy) -> None:
         ocr = client.ocr.ingest(
             data_source_manager_config={},
             clean_up_out_of_sync=True,
@@ -83,7 +40,7 @@ class TestOcr:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_ingest(self, client: DeasyLabs) -> None:
+    def test_raw_response_ingest(self, client: Deasy) -> None:
         response = client.ocr.with_raw_response.ingest(
             data_source_manager_config={},
         )
@@ -95,9 +52,52 @@ class TestOcr:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_ingest(self, client: DeasyLabs) -> None:
+    def test_streaming_response_ingest(self, client: Deasy) -> None:
         with client.ocr.with_streaming_response.ingest(
             data_source_manager_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ocr = response.parse()
+            assert_matches_type(object, ocr, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_sync_stats(self, client: Deasy) -> None:
+        ocr = client.ocr.sync_stats(
+            data_source_manager_configs=[{}],
+        )
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_sync_stats_with_all_params(self, client: Deasy) -> None:
+        ocr = client.ocr.sync_stats(
+            data_source_manager_configs=[{}],
+            use_cache=True,
+        )
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_sync_stats(self, client: Deasy) -> None:
+        response = client.ocr.with_raw_response.sync_stats(
+            data_source_manager_configs=[{}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ocr = response.parse()
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_sync_stats(self, client: Deasy) -> None:
+        with client.ocr.with_streaming_response.sync_stats(
+            data_source_manager_configs=[{}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -113,50 +113,7 @@ class TestAsyncOcr:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_sync_stats(self, async_client: AsyncDeasyLabs) -> None:
-        ocr = await async_client.ocr.get_sync_stats(
-            data_source_manager_configs=[{}],
-        )
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_sync_stats_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
-        ocr = await async_client.ocr.get_sync_stats(
-            data_source_manager_configs=[{}],
-            use_cache=True,
-        )
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_get_sync_stats(self, async_client: AsyncDeasyLabs) -> None:
-        response = await async_client.ocr.with_raw_response.get_sync_stats(
-            data_source_manager_configs=[{}],
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ocr = await response.parse()
-        assert_matches_type(object, ocr, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_get_sync_stats(self, async_client: AsyncDeasyLabs) -> None:
-        async with async_client.ocr.with_streaming_response.get_sync_stats(
-            data_source_manager_configs=[{}],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ocr = await response.parse()
-            assert_matches_type(object, ocr, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_ingest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_ingest(self, async_client: AsyncDeasy) -> None:
         ocr = await async_client.ocr.ingest(
             data_source_manager_config={},
         )
@@ -164,7 +121,7 @@ class TestAsyncOcr:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_ingest_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_ingest_with_all_params(self, async_client: AsyncDeasy) -> None:
         ocr = await async_client.ocr.ingest(
             data_source_manager_config={},
             clean_up_out_of_sync=True,
@@ -178,7 +135,7 @@ class TestAsyncOcr:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_ingest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_ingest(self, async_client: AsyncDeasy) -> None:
         response = await async_client.ocr.with_raw_response.ingest(
             data_source_manager_config={},
         )
@@ -190,9 +147,52 @@ class TestAsyncOcr:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_ingest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_ingest(self, async_client: AsyncDeasy) -> None:
         async with async_client.ocr.with_streaming_response.ingest(
             data_source_manager_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ocr = await response.parse()
+            assert_matches_type(object, ocr, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_sync_stats(self, async_client: AsyncDeasy) -> None:
+        ocr = await async_client.ocr.sync_stats(
+            data_source_manager_configs=[{}],
+        )
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_sync_stats_with_all_params(self, async_client: AsyncDeasy) -> None:
+        ocr = await async_client.ocr.sync_stats(
+            data_source_manager_configs=[{}],
+            use_cache=True,
+        )
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_sync_stats(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.ocr.with_raw_response.sync_stats(
+            data_source_manager_configs=[{}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ocr = await response.parse()
+        assert_matches_type(object, ocr, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_sync_stats(self, async_client: AsyncDeasy) -> None:
+        async with async_client.ocr.with_streaming_response.sync_stats(
+            data_source_manager_configs=[{}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

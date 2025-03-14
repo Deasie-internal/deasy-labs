@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from Deasy_Labs._utils import required_args
+from Deasy._utils import required_args
 
 
 def test_too_many_positional_params() -> None:

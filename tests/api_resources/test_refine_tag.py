@@ -7,10 +7,10 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import RefineTagRefineResponse
 from tests.utils import assert_matches_type
-from Deasy_Labs.types import RefineTagRefineResponse
-from Deasy_Labs._utils import parse_datetime
+from Deasy._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_refine(self, client: DeasyLabs) -> None:
+    def test_method_refine(self, client: Deasy) -> None:
         refine_tag = client.refine_tag.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -36,7 +36,7 @@ class TestRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_refine_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_refine_with_all_params(self, client: Deasy) -> None:
         refine_tag = client.refine_tag.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -46,6 +46,7 @@ class TestRefineTag:
                     "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
@@ -63,7 +64,7 @@ class TestRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_refine(self, client: DeasyLabs) -> None:
+    def test_raw_response_refine(self, client: Deasy) -> None:
         response = client.refine_tag.with_raw_response.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -83,7 +84,7 @@ class TestRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_refine(self, client: DeasyLabs) -> None:
+    def test_streaming_response_refine(self, client: Deasy) -> None:
         with client.refine_tag.with_streaming_response.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -109,7 +110,7 @@ class TestAsyncRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_refine(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_refine(self, async_client: AsyncDeasy) -> None:
         refine_tag = await async_client.refine_tag.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -125,7 +126,7 @@ class TestAsyncRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_refine_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_refine_with_all_params(self, async_client: AsyncDeasy) -> None:
         refine_tag = await async_client.refine_tag.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -135,6 +136,7 @@ class TestAsyncRefineTag:
                     "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
@@ -152,7 +154,7 @@ class TestAsyncRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_refine(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_refine(self, async_client: AsyncDeasy) -> None:
         response = await async_client.refine_tag.with_raw_response.refine(
             endpoint_manager_config={},
             tag_to_refine={
@@ -172,7 +174,7 @@ class TestAsyncRefineTag:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_refine(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_refine(self, async_client: AsyncDeasy) -> None:
         async with async_client.refine_tag.with_streaming_response.refine(
             endpoint_manager_config={},
             tag_to_refine={

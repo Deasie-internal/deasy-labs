@@ -7,10 +7,10 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import TagTextClassifyResponse
 from tests.utils import assert_matches_type
-from Deasy_Labs.types import TagTextClassifyResponse
-from Deasy_Labs._utils import parse_datetime
+from Deasy._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestTagText:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify(self, client: DeasyLabs) -> None:
+    def test_method_classify(self, client: Deasy) -> None:
         tag_text = client.tag_text.classify(
             endpoint_manager_config={},
             text="text",
@@ -29,7 +29,7 @@ class TestTagText:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_classify_with_all_params(self, client: Deasy) -> None:
         tag_text = client.tag_text.classify(
             endpoint_manager_config={},
             text="text",
@@ -42,6 +42,7 @@ class TestTagText:
                     "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
@@ -57,7 +58,7 @@ class TestTagText:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_classify(self, client: DeasyLabs) -> None:
+    def test_raw_response_classify(self, client: Deasy) -> None:
         response = client.tag_text.with_raw_response.classify(
             endpoint_manager_config={},
             text="text",
@@ -70,7 +71,7 @@ class TestTagText:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_classify(self, client: DeasyLabs) -> None:
+    def test_streaming_response_classify(self, client: Deasy) -> None:
         with client.tag_text.with_streaming_response.classify(
             endpoint_manager_config={},
             text="text",
@@ -89,7 +90,7 @@ class TestAsyncTagText:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify(self, async_client: AsyncDeasy) -> None:
         tag_text = await async_client.tag_text.classify(
             endpoint_manager_config={},
             text="text",
@@ -98,7 +99,7 @@ class TestAsyncTagText:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify_with_all_params(self, async_client: AsyncDeasy) -> None:
         tag_text = await async_client.tag_text.classify(
             endpoint_manager_config={},
             text="text",
@@ -111,6 +112,7 @@ class TestAsyncTagText:
                     "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
@@ -126,7 +128,7 @@ class TestAsyncTagText:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_classify(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tag_text.with_raw_response.classify(
             endpoint_manager_config={},
             text="text",
@@ -139,7 +141,7 @@ class TestAsyncTagText:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_classify(self, async_client: AsyncDeasy) -> None:
         async with async_client.tag_text.with_streaming_response.classify(
             endpoint_manager_config={},
             text="text",

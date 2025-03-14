@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from Deasy_Labs._types import FileTypes
-from Deasy_Labs._utils import extract_files
+from Deasy._types import FileTypes
+from Deasy._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.admin import TokenListResponse, TokenCreateResponse, TokenDeleteResponse
+from Deasy.types.admin import ListResponse, CreateResponse, DeleteResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,15 +19,15 @@ class TestToken:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         token = client.console.token.create(
             username="username",
         )
-        assert_matches_type(TokenCreateResponse, token, path=["response"])
+        assert_matches_type(CreateResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.console.token.with_raw_response.create(
             username="username",
         )
@@ -35,11 +35,11 @@ class TestToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = response.parse()
-        assert_matches_type(TokenCreateResponse, token, path=["response"])
+        assert_matches_type(CreateResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.console.token.with_streaming_response.create(
             username="username",
         ) as response:
@@ -47,21 +47,21 @@ class TestToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = response.parse()
-            assert_matches_type(TokenCreateResponse, token, path=["response"])
+            assert_matches_type(CreateResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         token = client.console.token.list(
             x_user="x-user",
         )
-        assert_matches_type(TokenListResponse, token, path=["response"])
+        assert_matches_type(ListResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.console.token.with_raw_response.list(
             x_user="x-user",
         )
@@ -69,11 +69,11 @@ class TestToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = response.parse()
-        assert_matches_type(TokenListResponse, token, path=["response"])
+        assert_matches_type(ListResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.console.token.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -81,32 +81,32 @@ class TestToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = response.parse()
-            assert_matches_type(TokenListResponse, token, path=["response"])
+            assert_matches_type(ListResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         token = client.console.token.delete(
             token_id="token_id",
             x_user="x-user",
         )
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_delete_with_all_params(self, client: Deasy) -> None:
         token = client.console.token.delete(
             token_id="token_id",
             x_user="x-user",
             soft_delete=True,
         )
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.console.token.with_raw_response.delete(
             token_id="token_id",
             x_user="x-user",
@@ -115,11 +115,11 @@ class TestToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = response.parse()
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.console.token.with_streaming_response.delete(
             token_id="token_id",
             x_user="x-user",
@@ -128,13 +128,13 @@ class TestToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = response.parse()
-            assert_matches_type(TokenDeleteResponse, token, path=["response"])
+            assert_matches_type(DeleteResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_path_params_delete(self, client: DeasyLabs) -> None:
+    def test_path_params_delete(self, client: Deasy) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token_id` but received ''"):
             client.console.token.with_raw_response.delete(
                 token_id="",
@@ -147,15 +147,15 @@ class TestAsyncToken:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         token = await async_client.console.token.create(
             username="username",
         )
-        assert_matches_type(TokenCreateResponse, token, path=["response"])
+        assert_matches_type(CreateResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.token.with_raw_response.create(
             username="username",
         )
@@ -163,11 +163,11 @@ class TestAsyncToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = await response.parse()
-        assert_matches_type(TokenCreateResponse, token, path=["response"])
+        assert_matches_type(CreateResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.token.with_streaming_response.create(
             username="username",
         ) as response:
@@ -175,21 +175,21 @@ class TestAsyncToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = await response.parse()
-            assert_matches_type(TokenCreateResponse, token, path=["response"])
+            assert_matches_type(CreateResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         token = await async_client.console.token.list(
             x_user="x-user",
         )
-        assert_matches_type(TokenListResponse, token, path=["response"])
+        assert_matches_type(ListResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.token.with_raw_response.list(
             x_user="x-user",
         )
@@ -197,11 +197,11 @@ class TestAsyncToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = await response.parse()
-        assert_matches_type(TokenListResponse, token, path=["response"])
+        assert_matches_type(ListResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.token.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -209,32 +209,32 @@ class TestAsyncToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = await response.parse()
-            assert_matches_type(TokenListResponse, token, path=["response"])
+            assert_matches_type(ListResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         token = await async_client.console.token.delete(
             token_id="token_id",
             x_user="x-user",
         )
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         token = await async_client.console.token.delete(
             token_id="token_id",
             x_user="x-user",
             soft_delete=True,
         )
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.token.with_raw_response.delete(
             token_id="token_id",
             x_user="x-user",
@@ -243,11 +243,11 @@ class TestAsyncToken:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         token = await response.parse()
-        assert_matches_type(TokenDeleteResponse, token, path=["response"])
+        assert_matches_type(DeleteResponse, token, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.token.with_streaming_response.delete(
             token_id="token_id",
             x_user="x-user",
@@ -256,13 +256,13 @@ class TestAsyncToken:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             token = await response.parse()
-            assert_matches_type(TokenDeleteResponse, token, path=["response"])
+            assert_matches_type(DeleteResponse, token, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_path_params_delete(self, async_client: AsyncDeasy) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `token_id` but received ''"):
             await async_client.console.token.with_raw_response.delete(
                 token_id="",

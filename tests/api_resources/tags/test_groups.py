@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.tags import (
+from Deasy.types.tags import (
     GroupListResponse,
     GroupCreateResponse,
     GroupDeleteResponse,
@@ -24,7 +24,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         group = client.tags.groups.create(
             group_name="group_name",
             x_user="x-user",
@@ -33,7 +33,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_create_with_all_params(self, client: Deasy) -> None:
         group = client.tags.groups.create(
             group_name="group_name",
             x_user="x-user",
@@ -44,7 +44,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.tags.groups.with_raw_response.create(
             group_name="group_name",
             x_user="x-user",
@@ -57,7 +57,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.tags.groups.with_streaming_response.create(
             group_name="group_name",
             x_user="x-user",
@@ -72,7 +72,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update(self, client: DeasyLabs) -> None:
+    def test_method_update(self, client: Deasy) -> None:
         group = client.tags.groups.update(
             group_id="group_id",
             x_user="x-user",
@@ -81,7 +81,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_update_with_all_params(self, client: Deasy) -> None:
         group = client.tags.groups.update(
             group_id="group_id",
             x_user="x-user",
@@ -93,7 +93,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update(self, client: DeasyLabs) -> None:
+    def test_raw_response_update(self, client: Deasy) -> None:
         response = client.tags.groups.with_raw_response.update(
             group_id="group_id",
             x_user="x-user",
@@ -106,7 +106,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update(self, client: DeasyLabs) -> None:
+    def test_streaming_response_update(self, client: Deasy) -> None:
         with client.tags.groups.with_streaming_response.update(
             group_id="group_id",
             x_user="x-user",
@@ -121,7 +121,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         group = client.tags.groups.list(
             x_user="x-user",
         )
@@ -129,7 +129,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.tags.groups.with_raw_response.list(
             x_user="x-user",
         )
@@ -141,7 +141,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.tags.groups.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -155,7 +155,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         group = client.tags.groups.delete(
             group_id="group_id",
             x_user="x-user",
@@ -164,7 +164,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_delete_with_all_params(self, client: Deasy) -> None:
         group = client.tags.groups.delete(
             group_id="group_id",
             x_user="x-user",
@@ -174,7 +174,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.tags.groups.with_raw_response.delete(
             group_id="group_id",
             x_user="x-user",
@@ -187,7 +187,7 @@ class TestGroups:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.tags.groups.with_streaming_response.delete(
             group_id="group_id",
             x_user="x-user",
@@ -206,7 +206,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.create(
             group_name="group_name",
             x_user="x-user",
@@ -215,7 +215,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.create(
             group_name="group_name",
             x_user="x-user",
@@ -226,7 +226,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.groups.with_raw_response.create(
             group_name="group_name",
             x_user="x-user",
@@ -239,7 +239,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.groups.with_streaming_response.create(
             group_name="group_name",
             x_user="x-user",
@@ -254,7 +254,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.update(
             group_id="group_id",
             x_user="x-user",
@@ -263,7 +263,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.update(
             group_id="group_id",
             x_user="x-user",
@@ -275,7 +275,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.groups.with_raw_response.update(
             group_id="group_id",
             x_user="x-user",
@@ -288,7 +288,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.groups.with_streaming_response.update(
             group_id="group_id",
             x_user="x-user",
@@ -303,7 +303,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.list(
             x_user="x-user",
         )
@@ -311,7 +311,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.groups.with_raw_response.list(
             x_user="x-user",
         )
@@ -323,7 +323,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.groups.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -337,7 +337,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.delete(
             group_id="group_id",
             x_user="x-user",
@@ -346,7 +346,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         group = await async_client.tags.groups.delete(
             group_id="group_id",
             x_user="x-user",
@@ -356,7 +356,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.groups.with_raw_response.delete(
             group_id="group_id",
             x_user="x-user",
@@ -369,7 +369,7 @@ class TestAsyncGroups:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.groups.with_streaming_response.delete(
             group_id="group_id",
             x_user="x-user",

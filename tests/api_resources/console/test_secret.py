@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import SecretGetResponse, SecretStoreResponse
+from Deasy.types.console import SecretGetResponse, SecretStoreResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get(self, client: DeasyLabs) -> None:
+    def test_method_get(self, client: Deasy) -> None:
         secret = client.console.secret.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -28,7 +28,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get(self, client: DeasyLabs) -> None:
+    def test_raw_response_get(self, client: Deasy) -> None:
         response = client.console.secret.with_raw_response.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -41,7 +41,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get(self, client: Deasy) -> None:
         with client.console.secret.with_streaming_response.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -56,7 +56,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_store(self, client: DeasyLabs) -> None:
+    def test_method_store(self, client: Deasy) -> None:
         secret = client.console.secret.store(
             secret_name="secret_name",
             secret_value="secret_value",
@@ -66,7 +66,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_store(self, client: DeasyLabs) -> None:
+    def test_raw_response_store(self, client: Deasy) -> None:
         response = client.console.secret.with_raw_response.store(
             secret_name="secret_name",
             secret_value="secret_value",
@@ -80,7 +80,7 @@ class TestSecret:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_store(self, client: DeasyLabs) -> None:
+    def test_streaming_response_store(self, client: Deasy) -> None:
         with client.console.secret.with_streaming_response.store(
             secret_name="secret_name",
             secret_value="secret_value",
@@ -100,7 +100,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get(self, async_client: AsyncDeasy) -> None:
         secret = await async_client.console.secret.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -109,7 +109,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.secret.with_raw_response.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -122,7 +122,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.secret.with_streaming_response.get(
             secret_name="secret_name",
             x_user="x-user",
@@ -137,7 +137,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_store(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_store(self, async_client: AsyncDeasy) -> None:
         secret = await async_client.console.secret.store(
             secret_name="secret_name",
             secret_value="secret_value",
@@ -147,7 +147,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_store(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_store(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.secret.with_raw_response.store(
             secret_name="secret_name",
             secret_value="secret_value",
@@ -161,7 +161,7 @@ class TestAsyncSecret:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_store(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_store(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.secret.with_streaming_response.store(
             secret_name="secret_name",
             secret_value="secret_value",

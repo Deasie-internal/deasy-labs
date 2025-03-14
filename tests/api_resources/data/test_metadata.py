@@ -7,12 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.data import (
-    MetadataListResponse,
-    MetadataDeleteResponse,
-)
+from Deasy.types.data import MetadataListResponse, MetadataDeleteResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +19,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         metadata = client.data.metadata.list(
             vector_db_config={},
             x_user="x-user",
@@ -31,7 +28,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_list_with_all_params(self, client: Deasy) -> None:
         metadata = client.data.metadata.list(
             vector_db_config={},
             x_user="x-user",
@@ -48,7 +45,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.data.metadata.with_raw_response.list(
             vector_db_config={},
             x_user="x-user",
@@ -61,7 +58,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.data.metadata.with_streaming_response.list(
             vector_db_config={},
             x_user="x-user",
@@ -76,7 +73,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         metadata = client.data.metadata.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -87,7 +84,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.data.metadata.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -99,7 +96,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.data.metadata.with_raw_response.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -114,7 +111,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.data.metadata.with_streaming_response.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -135,7 +132,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.data.metadata.list(
             vector_db_config={},
             x_user="x-user",
@@ -144,7 +141,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.data.metadata.list(
             vector_db_config={},
             x_user="x-user",
@@ -161,7 +158,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.data.metadata.with_raw_response.list(
             vector_db_config={},
             x_user="x-user",
@@ -174,7 +171,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.data.metadata.with_streaming_response.list(
             vector_db_config={},
             x_user="x-user",
@@ -189,7 +186,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.data.metadata.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -200,7 +197,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.data.metadata.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -212,7 +209,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.data.metadata.with_raw_response.delete(
             file_names=["string"],
             metadata_keys=["string"],
@@ -227,7 +224,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.data.metadata.with_streaming_response.delete(
             file_names=["string"],
             metadata_keys=["string"],

@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import SuggestHierarchySuggestResponse
 from tests.utils import assert_matches_type
-from Deasy_Labs.types import SuggestHierarchySuggestResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,9 +19,8 @@ class TestSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest(self, client: DeasyLabs) -> None:
+    def test_method_suggest(self, client: Deasy) -> None:
         suggest_hierarchy = client.suggest_hierarchy.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         )
@@ -29,30 +28,27 @@ class TestSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_suggest_with_all_params(self, client: Deasy) -> None:
         suggest_hierarchy = client.suggest_hierarchy.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
-            context="context",
+            condition={},
             context_level="context_level",
             current_tree={},
+            dataslice_id="dataslice_id",
             file_names=["string"],
             max_height=0,
             node={},
-            tag_type="tag_type",
-            total_files=0,
             use_existing_tags=True,
             use_extracted_tags=True,
-            usecase_id="usecase_id",
+            user_context="user_context",
         )
         assert_matches_type(SuggestHierarchySuggestResponse, suggest_hierarchy, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_suggest(self, client: DeasyLabs) -> None:
+    def test_raw_response_suggest(self, client: Deasy) -> None:
         response = client.suggest_hierarchy.with_raw_response.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         )
@@ -64,9 +60,8 @@ class TestSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_suggest(self, client: DeasyLabs) -> None:
+    def test_streaming_response_suggest(self, client: Deasy) -> None:
         with client.suggest_hierarchy.with_streaming_response.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         ) as response:
@@ -84,9 +79,8 @@ class TestAsyncSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_suggest(self, async_client: AsyncDeasy) -> None:
         suggest_hierarchy = await async_client.suggest_hierarchy.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         )
@@ -94,30 +88,27 @@ class TestAsyncSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_suggest_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_hierarchy = await async_client.suggest_hierarchy.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
-            context="context",
+            condition={},
             context_level="context_level",
             current_tree={},
+            dataslice_id="dataslice_id",
             file_names=["string"],
             max_height=0,
             node={},
-            tag_type="tag_type",
-            total_files=0,
             use_existing_tags=True,
             use_extracted_tags=True,
-            usecase_id="usecase_id",
+            user_context="user_context",
         )
         assert_matches_type(SuggestHierarchySuggestResponse, suggest_hierarchy, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_suggest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_suggest(self, async_client: AsyncDeasy) -> None:
         response = await async_client.suggest_hierarchy.with_raw_response.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         )
@@ -129,9 +120,8 @@ class TestAsyncSuggestHierarchy:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_suggest(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_suggest(self, async_client: AsyncDeasy) -> None:
         async with async_client.suggest_hierarchy.with_streaming_response.suggest(
-            condition={},
             endpoint_manager_config={},
             vector_db_config={},
         ) as response:

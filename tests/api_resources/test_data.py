@@ -7,13 +7,13 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
-from tests.utils import assert_matches_type
-from Deasy_Labs.types import (
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import (
     DataListPaginatedResponse,
     DataGetDocumentTextResponse,
     DataGetVdbTotalFilesResponse,
 )
+from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_document_text(self, client: DeasyLabs) -> None:
+    def test_method_get_document_text(self, client: Deasy) -> None:
         data = client.data.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -32,7 +32,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_document_text(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_document_text(self, client: Deasy) -> None:
         response = client.data.with_raw_response.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -45,7 +45,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_document_text(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_document_text(self, client: Deasy) -> None:
         with client.data.with_streaming_response.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -60,7 +60,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_vdb_total_files(self, client: DeasyLabs) -> None:
+    def test_method_get_vdb_total_files(self, client: Deasy) -> None:
         data = client.data.get_vdb_total_files(
             vector_db_config={},
         )
@@ -68,7 +68,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_vdb_total_files(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_vdb_total_files(self, client: Deasy) -> None:
         response = client.data.with_raw_response.get_vdb_total_files(
             vector_db_config={},
         )
@@ -80,7 +80,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_vdb_total_files(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_vdb_total_files(self, client: Deasy) -> None:
         with client.data.with_streaming_response.get_vdb_total_files(
             vector_db_config={},
         ) as response:
@@ -94,7 +94,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_paginated(self, client: DeasyLabs) -> None:
+    def test_method_list_paginated(self, client: Deasy) -> None:
         data = client.data.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -103,7 +103,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_paginated_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_list_paginated_with_all_params(self, client: Deasy) -> None:
         data = client.data.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -119,7 +119,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list_paginated(self, client: DeasyLabs) -> None:
+    def test_raw_response_list_paginated(self, client: Deasy) -> None:
         response = client.data.with_raw_response.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -132,7 +132,7 @@ class TestData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list_paginated(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list_paginated(self, client: Deasy) -> None:
         with client.data.with_streaming_response.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -151,7 +151,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_document_text(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_document_text(self, async_client: AsyncDeasy) -> None:
         data = await async_client.data.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -160,7 +160,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_document_text(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_document_text(self, async_client: AsyncDeasy) -> None:
         response = await async_client.data.with_raw_response.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -173,7 +173,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_document_text(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_document_text(self, async_client: AsyncDeasy) -> None:
         async with async_client.data.with_streaming_response.get_document_text(
             file_names=["string"],
             vector_db_config={},
@@ -188,7 +188,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_vdb_total_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_vdb_total_files(self, async_client: AsyncDeasy) -> None:
         data = await async_client.data.get_vdb_total_files(
             vector_db_config={},
         )
@@ -196,7 +196,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_vdb_total_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_vdb_total_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.data.with_raw_response.get_vdb_total_files(
             vector_db_config={},
         )
@@ -208,7 +208,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_vdb_total_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_vdb_total_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.data.with_streaming_response.get_vdb_total_files(
             vector_db_config={},
         ) as response:
@@ -222,7 +222,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_paginated(self, async_client: AsyncDeasy) -> None:
         data = await async_client.data.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -231,7 +231,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasy) -> None:
         data = await async_client.data.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -247,7 +247,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         response = await async_client.data.with_raw_response.list_paginated(
             vector_db_config={},
             x_user="x-user",
@@ -260,7 +260,7 @@ class TestAsyncData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         async with async_client.data.with_streaming_response.list_paginated(
             vector_db_config={},
             x_user="x-user",

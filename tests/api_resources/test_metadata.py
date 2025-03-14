@@ -7,9 +7,8 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
-from tests.utils import assert_matches_type
-from Deasy_Labs.types import (
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import (
     MetadataDeleteResponse,
     MetadataGetEvidenceResponse,
     MetadataGetUniqueTagsResponse,
@@ -17,13 +16,14 @@ from Deasy_Labs.types import (
     MetadataGetDistributionsResponse,
     MetadataGetTagStatisticsResponse,
     MetadataGetDistinctValuesResponse,
+    MetadataCountDistributionsResponse,
     MetadataFilterByConditionsResponse,
-    MetadataGetOobTagFileCountResponse,
     MetadataGetFilteredMetadataResponse,
-    MetadataGetCountDistributionsResponse,
+    MetadataGetOobTaggedFileCountResponse,
     MetadataApplyStandardizationDBResponse,
     MetadataSuggestStandardizationResponse,
 )
+from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -33,7 +33,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vector_db_config={},
             x_user="x-user",
@@ -42,7 +42,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vector_db_config={},
             x_user="x-user",
@@ -60,7 +60,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -73,7 +73,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -88,7 +88,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_apply_standardization_db(self, client: DeasyLabs) -> None:
+    def test_method_apply_standardization_db(self, client: Deasy) -> None:
         metadata = client.metadata.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -99,7 +99,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_apply_standardization_db(self, client: DeasyLabs) -> None:
+    def test_raw_response_apply_standardization_db(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -114,7 +114,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_apply_standardization_db(self, client: DeasyLabs) -> None:
+    def test_streaming_response_apply_standardization_db(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -131,7 +131,61 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_filter_by_conditions(self, client: DeasyLabs) -> None:
+    def test_method_count_distributions(self, client: Deasy) -> None:
+        metadata = client.metadata.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_count_distributions_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+            conditions=[
+                {
+                    "tag_id": "tag_id",
+                    "values": ["string"],
+                }
+            ],
+            endpoint_manager_config={},
+            x_token="x-token",
+        )
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_count_distributions(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = response.parse()
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_count_distributions(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = response.parse()
+            assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_filter_by_conditions(self, client: Deasy) -> None:
         metadata = client.metadata.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -140,7 +194,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_filter_by_conditions_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_filter_by_conditions_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.filter_by_conditions(
             conditions=[
                 {
@@ -156,7 +210,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_filter_by_conditions(self, client: DeasyLabs) -> None:
+    def test_raw_response_filter_by_conditions(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -169,7 +223,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_filter_by_conditions(self, client: DeasyLabs) -> None:
+    def test_streaming_response_filter_by_conditions(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -184,7 +238,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_basic_metadata(self, client: DeasyLabs) -> None:
+    def test_method_get_basic_metadata(self, client: Deasy) -> None:
         metadata = client.metadata.get_basic_metadata(
             vector_db_config={},
         )
@@ -192,7 +246,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_basic_metadata(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_basic_metadata(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_basic_metadata(
             vector_db_config={},
         )
@@ -204,7 +258,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_basic_metadata(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_basic_metadata(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_basic_metadata(
             vector_db_config={},
         ) as response:
@@ -218,61 +272,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_count_distributions(self, client: DeasyLabs) -> None:
-        metadata = client.metadata.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        )
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_count_distributions_with_all_params(self, client: DeasyLabs) -> None:
-        metadata = client.metadata.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-            conditions=[
-                {
-                    "tag_id": "tag_id",
-                    "values": ["string"],
-                }
-            ],
-            endpoint_manager_config={},
-            x_token="x-token",
-        )
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_get_count_distributions(self, client: DeasyLabs) -> None:
-        response = client.metadata.with_raw_response.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        metadata = response.parse()
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_get_count_distributions(self, client: DeasyLabs) -> None:
-        with client.metadata.with_streaming_response.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            metadata = response.parse()
-            assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_distinct_values(self, client: DeasyLabs) -> None:
+    def test_method_get_distinct_values(self, client: Deasy) -> None:
         metadata = client.metadata.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -283,7 +283,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_distinct_values_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_distinct_values_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -297,7 +297,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_distinct_values(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_distinct_values(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -312,7 +312,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_distinct_values(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_distinct_values(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -329,7 +329,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_distributions(self, client: DeasyLabs) -> None:
+    def test_method_get_distributions(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
             vector_db_config={},
         )
@@ -337,7 +337,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_distributions_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_distributions_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
             vector_db_config={},
             columns=["string"],
@@ -349,6 +349,7 @@ class TestMetadata:
                     "values": ["string"],
                 },
             },
+            dataslice_id="dataslice_id",
             max_val_per_tag=0,
             node_condition=[
                 {
@@ -357,13 +358,12 @@ class TestMetadata:
                     "values": ["string"],
                 }
             ],
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_distributions(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_distributions(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_distributions(
             vector_db_config={},
         )
@@ -375,7 +375,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_distributions(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_distributions(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_distributions(
             vector_db_config={},
         ) as response:
@@ -389,7 +389,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_evidence(self, client: DeasyLabs) -> None:
+    def test_method_get_evidence(self, client: Deasy) -> None:
         metadata = client.metadata.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -401,7 +401,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_evidence(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_evidence(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -417,7 +417,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_evidence(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_evidence(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -435,7 +435,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_filtered_metadata(self, client: DeasyLabs) -> None:
+    def test_method_get_filtered_metadata(self, client: Deasy) -> None:
         metadata = client.metadata.get_filtered_metadata(
             conditions=[
                 {
@@ -449,7 +449,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_filtered_metadata_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_filtered_metadata_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_filtered_metadata(
             conditions=[
                 {
@@ -466,6 +466,7 @@ class TestMetadata:
                     "values": ["string"],
                 },
             },
+            dataslice_id="dataslice_id",
             limit=0,
             node_condition=[
                 {
@@ -478,13 +479,12 @@ class TestMetadata:
             search_query="search_query",
             sort_by="sort_by",
             sort_order="sort_order",
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetFilteredMetadataResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_filtered_metadata(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_filtered_metadata(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_filtered_metadata(
             conditions=[
                 {
@@ -502,7 +502,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_filtered_metadata(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_filtered_metadata(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_filtered_metadata(
             conditions=[
                 {
@@ -522,16 +522,16 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_oob_tag_file_count(self, client: DeasyLabs) -> None:
-        metadata = client.metadata.get_oob_tag_file_count(
+    def test_method_get_oob_tagged_file_count(self, client: Deasy) -> None:
+        metadata = client.metadata.get_oob_tagged_file_count(
             vector_db_config={},
         )
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_oob_tag_file_count_with_all_params(self, client: DeasyLabs) -> None:
-        metadata = client.metadata.get_oob_tag_file_count(
+    def test_method_get_oob_tagged_file_count_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.get_oob_tagged_file_count(
             vector_db_config={},
             conditions=[
                 {
@@ -541,37 +541,37 @@ class TestMetadata:
                 }
             ],
         )
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_oob_tag_file_count(self, client: DeasyLabs) -> None:
-        response = client.metadata.with_raw_response.get_oob_tag_file_count(
+    def test_raw_response_get_oob_tagged_file_count(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.get_oob_tagged_file_count(
             vector_db_config={},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metadata = response.parse()
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_oob_tag_file_count(self, client: DeasyLabs) -> None:
-        with client.metadata.with_streaming_response.get_oob_tag_file_count(
+    def test_streaming_response_get_oob_tagged_file_count(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.get_oob_tagged_file_count(
             vector_db_config={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metadata = response.parse()
-            assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+            assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_tag_statistics(self, client: DeasyLabs) -> None:
+    def test_method_get_tag_statistics(self, client: Deasy) -> None:
         metadata = client.metadata.get_tag_statistics(
             vector_db_config={},
         )
@@ -579,7 +579,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_tag_statistics_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_tag_statistics_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_tag_statistics(
             vector_db_config={},
             conditions=[
@@ -595,7 +595,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_tag_statistics(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_tag_statistics(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_tag_statistics(
             vector_db_config={},
         )
@@ -607,7 +607,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_tag_statistics(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_tag_statistics(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_tag_statistics(
             vector_db_config={},
         ) as response:
@@ -621,7 +621,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_unique_tags(self, client: DeasyLabs) -> None:
+    def test_method_get_unique_tags(self, client: Deasy) -> None:
         metadata = client.metadata.get_unique_tags(
             vector_db_config={},
         )
@@ -629,9 +629,10 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_unique_tags_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_unique_tags_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_unique_tags(
             vector_db_config={},
+            dataslice_id="dataslice_id",
             file_names=["string"],
             node_condition=[
                 {
@@ -640,13 +641,12 @@ class TestMetadata:
                     "values": ["string"],
                 }
             ],
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetUniqueTagsResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_unique_tags(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_unique_tags(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_unique_tags(
             vector_db_config={},
         )
@@ -658,7 +658,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_unique_tags(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_unique_tags(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_unique_tags(
             vector_db_config={},
         ) as response:
@@ -672,7 +672,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest_standardization(self, client: DeasyLabs) -> None:
+    def test_method_suggest_standardization(self, client: Deasy) -> None:
         metadata = client.metadata.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -685,7 +685,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest_standardization_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_suggest_standardization_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -700,7 +700,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_suggest_standardization(self, client: DeasyLabs) -> None:
+    def test_raw_response_suggest_standardization(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -717,7 +717,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_suggest_standardization(self, client: DeasyLabs) -> None:
+    def test_streaming_response_suggest_standardization(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -740,7 +740,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vector_db_config={},
             x_user="x-user",
@@ -749,7 +749,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vector_db_config={},
             x_user="x-user",
@@ -767,7 +767,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -780,7 +780,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.delete(
             vector_db_config={},
             x_user="x-user",
@@ -795,7 +795,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_apply_standardization_db(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -806,7 +806,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_apply_standardization_db(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -821,7 +821,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_apply_standardization_db(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.apply_standardization_db(
             endpoint_manager_config={},
             standard_mapping={"foo": [{}]},
@@ -838,7 +838,61 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_filter_by_conditions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_count_distributions(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_count_distributions_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+            conditions=[
+                {
+                    "tag_id": "tag_id",
+                    "values": ["string"],
+                }
+            ],
+            endpoint_manager_config={},
+            x_token="x-token",
+        )
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_count_distributions(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = await response.parse()
+        assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_count_distributions(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.count_distributions(
+            current_tree="current_tree",
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = await response.parse()
+            assert_matches_type(MetadataCountDistributionsResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_filter_by_conditions(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -847,7 +901,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_filter_by_conditions_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_filter_by_conditions_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.filter_by_conditions(
             conditions=[
                 {
@@ -863,7 +917,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_filter_by_conditions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_filter_by_conditions(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -876,7 +930,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_filter_by_conditions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_filter_by_conditions(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.filter_by_conditions(
             conditions=[{"tag_id": "tag_id"}],
             vector_db_config={},
@@ -891,7 +945,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_basic_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_basic_metadata(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_basic_metadata(
             vector_db_config={},
         )
@@ -899,7 +953,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_basic_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_basic_metadata(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_basic_metadata(
             vector_db_config={},
         )
@@ -911,7 +965,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_basic_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_basic_metadata(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_basic_metadata(
             vector_db_config={},
         ) as response:
@@ -925,61 +979,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_count_distributions(self, async_client: AsyncDeasyLabs) -> None:
-        metadata = await async_client.metadata.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        )
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_count_distributions_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
-        metadata = await async_client.metadata.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-            conditions=[
-                {
-                    "tag_id": "tag_id",
-                    "values": ["string"],
-                }
-            ],
-            endpoint_manager_config={},
-            x_token="x-token",
-        )
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_get_count_distributions(self, async_client: AsyncDeasyLabs) -> None:
-        response = await async_client.metadata.with_raw_response.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        metadata = await response.parse()
-        assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_get_count_distributions(self, async_client: AsyncDeasyLabs) -> None:
-        async with async_client.metadata.with_streaming_response.get_count_distributions(
-            current_tree="current_tree",
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            metadata = await response.parse()
-            assert_matches_type(MetadataGetCountDistributionsResponse, metadata, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_distinct_values(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_distinct_values(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -990,7 +990,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_distinct_values_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_distinct_values_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -1004,7 +1004,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_distinct_values(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_distinct_values(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -1019,7 +1019,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_distinct_values(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_distinct_values(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_distinct_values(
             page=0,
             tag_id="tag_id",
@@ -1036,7 +1036,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_distributions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_distributions(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
             vector_db_config={},
         )
@@ -1044,7 +1044,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_distributions_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_distributions_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
             vector_db_config={},
             columns=["string"],
@@ -1056,6 +1056,7 @@ class TestAsyncMetadata:
                     "values": ["string"],
                 },
             },
+            dataslice_id="dataslice_id",
             max_val_per_tag=0,
             node_condition=[
                 {
@@ -1064,13 +1065,12 @@ class TestAsyncMetadata:
                     "values": ["string"],
                 }
             ],
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_distributions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_distributions(
             vector_db_config={},
         )
@@ -1082,7 +1082,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_distributions(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_distributions(
             vector_db_config={},
         ) as response:
@@ -1096,7 +1096,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_evidence(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_evidence(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -1108,7 +1108,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_evidence(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_evidence(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -1124,7 +1124,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_evidence(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_evidence(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_evidence(
             filename="filename",
             tag_id="tag_id",
@@ -1142,7 +1142,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_filtered_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_filtered_metadata(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_filtered_metadata(
             conditions=[
                 {
@@ -1156,7 +1156,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_filtered_metadata_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_filtered_metadata_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_filtered_metadata(
             conditions=[
                 {
@@ -1173,6 +1173,7 @@ class TestAsyncMetadata:
                     "values": ["string"],
                 },
             },
+            dataslice_id="dataslice_id",
             limit=0,
             node_condition=[
                 {
@@ -1185,13 +1186,12 @@ class TestAsyncMetadata:
             search_query="search_query",
             sort_by="sort_by",
             sort_order="sort_order",
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetFilteredMetadataResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_filtered_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_filtered_metadata(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_filtered_metadata(
             conditions=[
                 {
@@ -1209,7 +1209,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_filtered_metadata(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_filtered_metadata(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_filtered_metadata(
             conditions=[
                 {
@@ -1229,16 +1229,16 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_oob_tag_file_count(self, async_client: AsyncDeasyLabs) -> None:
-        metadata = await async_client.metadata.get_oob_tag_file_count(
+    async def test_method_get_oob_tagged_file_count(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.get_oob_tagged_file_count(
             vector_db_config={},
         )
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_oob_tag_file_count_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
-        metadata = await async_client.metadata.get_oob_tag_file_count(
+    async def test_method_get_oob_tagged_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.get_oob_tagged_file_count(
             vector_db_config={},
             conditions=[
                 {
@@ -1248,37 +1248,37 @@ class TestAsyncMetadata:
                 }
             ],
         )
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_oob_tag_file_count(self, async_client: AsyncDeasyLabs) -> None:
-        response = await async_client.metadata.with_raw_response.get_oob_tag_file_count(
+    async def test_raw_response_get_oob_tagged_file_count(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.get_oob_tagged_file_count(
             vector_db_config={},
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metadata = await response.parse()
-        assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+        assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_oob_tag_file_count(self, async_client: AsyncDeasyLabs) -> None:
-        async with async_client.metadata.with_streaming_response.get_oob_tag_file_count(
+    async def test_streaming_response_get_oob_tagged_file_count(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.get_oob_tagged_file_count(
             vector_db_config={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metadata = await response.parse()
-            assert_matches_type(MetadataGetOobTagFileCountResponse, metadata, path=["response"])
+            assert_matches_type(MetadataGetOobTaggedFileCountResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_tag_statistics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_tag_statistics(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_tag_statistics(
             vector_db_config={},
         )
@@ -1286,7 +1286,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_tag_statistics_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_tag_statistics_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_tag_statistics(
             vector_db_config={},
             conditions=[
@@ -1302,7 +1302,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_tag_statistics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_tag_statistics(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_tag_statistics(
             vector_db_config={},
         )
@@ -1314,7 +1314,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_tag_statistics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_tag_statistics(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_tag_statistics(
             vector_db_config={},
         ) as response:
@@ -1328,7 +1328,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_unique_tags(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_unique_tags(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_unique_tags(
             vector_db_config={},
         )
@@ -1336,9 +1336,10 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_unique_tags_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_unique_tags_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_unique_tags(
             vector_db_config={},
+            dataslice_id="dataslice_id",
             file_names=["string"],
             node_condition=[
                 {
@@ -1347,13 +1348,12 @@ class TestAsyncMetadata:
                     "values": ["string"],
                 }
             ],
-            usecase_id="usecase_id",
         )
         assert_matches_type(MetadataGetUniqueTagsResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_unique_tags(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_unique_tags(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_unique_tags(
             vector_db_config={},
         )
@@ -1365,7 +1365,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_unique_tags(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_unique_tags(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_unique_tags(
             vector_db_config={},
         ) as response:
@@ -1379,7 +1379,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest_standardization(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_suggest_standardization(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -1392,7 +1392,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest_standardization_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_suggest_standardization_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -1407,7 +1407,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_suggest_standardization(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_suggest_standardization(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.suggest_standardization(
             description="description",
             endpoint_manager_config={},
@@ -1424,7 +1424,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_suggest_standardization(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_suggest_standardization(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.suggest_standardization(
             description="description",
             endpoint_manager_config={},

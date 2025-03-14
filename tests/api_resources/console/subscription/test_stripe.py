@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console.subscription import (
+from Deasy.types.console.subscription import (
     StripeCancelResponse,
     StripeValidateResponse,
     StripeCreateSessionResponse,
@@ -23,7 +23,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_cancel(self, client: DeasyLabs) -> None:
+    def test_method_cancel(self, client: Deasy) -> None:
         stripe = client.console.subscription.stripe.cancel(
             x_user="x-user",
         )
@@ -31,7 +31,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_cancel(self, client: DeasyLabs) -> None:
+    def test_raw_response_cancel(self, client: Deasy) -> None:
         response = client.console.subscription.stripe.with_raw_response.cancel(
             x_user="x-user",
         )
@@ -43,7 +43,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_cancel(self, client: DeasyLabs) -> None:
+    def test_streaming_response_cancel(self, client: Deasy) -> None:
         with client.console.subscription.stripe.with_streaming_response.cancel(
             x_user="x-user",
         ) as response:
@@ -57,7 +57,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_session(self, client: DeasyLabs) -> None:
+    def test_method_create_session(self, client: Deasy) -> None:
         stripe = client.console.subscription.stripe.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -66,7 +66,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create_session(self, client: DeasyLabs) -> None:
+    def test_raw_response_create_session(self, client: Deasy) -> None:
         response = client.console.subscription.stripe.with_raw_response.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -79,7 +79,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create_session(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create_session(self, client: Deasy) -> None:
         with client.console.subscription.stripe.with_streaming_response.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -94,7 +94,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_validate(self, client: DeasyLabs) -> None:
+    def test_method_validate(self, client: Deasy) -> None:
         stripe = client.console.subscription.stripe.validate(
             x_user="x-user",
         )
@@ -102,7 +102,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_validate(self, client: DeasyLabs) -> None:
+    def test_raw_response_validate(self, client: Deasy) -> None:
         response = client.console.subscription.stripe.with_raw_response.validate(
             x_user="x-user",
         )
@@ -114,7 +114,7 @@ class TestStripe:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_validate(self, client: DeasyLabs) -> None:
+    def test_streaming_response_validate(self, client: Deasy) -> None:
         with client.console.subscription.stripe.with_streaming_response.validate(
             x_user="x-user",
         ) as response:
@@ -132,7 +132,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_cancel(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_cancel(self, async_client: AsyncDeasy) -> None:
         stripe = await async_client.console.subscription.stripe.cancel(
             x_user="x-user",
         )
@@ -140,7 +140,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_cancel(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_cancel(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.subscription.stripe.with_raw_response.cancel(
             x_user="x-user",
         )
@@ -152,7 +152,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_cancel(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_cancel(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.subscription.stripe.with_streaming_response.cancel(
             x_user="x-user",
         ) as response:
@@ -166,7 +166,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_session(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create_session(self, async_client: AsyncDeasy) -> None:
         stripe = await async_client.console.subscription.stripe.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -175,7 +175,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create_session(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create_session(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.subscription.stripe.with_raw_response.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -188,7 +188,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create_session(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create_session(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.subscription.stripe.with_streaming_response.create_session(
             tier_id="tier_id",
             x_user="x-user",
@@ -203,7 +203,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_validate(self, async_client: AsyncDeasy) -> None:
         stripe = await async_client.console.subscription.stripe.validate(
             x_user="x-user",
         )
@@ -211,7 +211,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_validate(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.subscription.stripe.with_raw_response.validate(
             x_user="x-user",
         )
@@ -223,7 +223,7 @@ class TestAsyncStripe:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_validate(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.subscription.stripe.with_streaming_response.validate(
             x_user="x-user",
         ) as response:

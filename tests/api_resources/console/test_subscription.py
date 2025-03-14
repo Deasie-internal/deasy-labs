@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import SubscriptionRetrieveResponse
+from Deasy.types.console import SubscriptionRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve(self, client: DeasyLabs) -> None:
+    def test_method_retrieve(self, client: Deasy) -> None:
         subscription = client.console.subscription.retrieve(
             x_user="x-user",
         )
@@ -27,7 +27,7 @@ class TestSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_retrieve(self, client: DeasyLabs) -> None:
+    def test_raw_response_retrieve(self, client: Deasy) -> None:
         response = client.console.subscription.with_raw_response.retrieve(
             x_user="x-user",
         )
@@ -39,7 +39,7 @@ class TestSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_retrieve(self, client: DeasyLabs) -> None:
+    def test_streaming_response_retrieve(self, client: Deasy) -> None:
         with client.console.subscription.with_streaming_response.retrieve(
             x_user="x-user",
         ) as response:
@@ -57,7 +57,7 @@ class TestAsyncSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_retrieve(self, async_client: AsyncDeasy) -> None:
         subscription = await async_client.console.subscription.retrieve(
             x_user="x-user",
         )
@@ -65,7 +65,7 @@ class TestAsyncSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.subscription.with_raw_response.retrieve(
             x_user="x-user",
         )
@@ -77,7 +77,7 @@ class TestAsyncSubscription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.subscription.with_streaming_response.retrieve(
             x_user="x-user",
         ) as response:

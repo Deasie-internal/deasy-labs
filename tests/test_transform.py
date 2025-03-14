@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from Deasy_Labs._types import Base64FileInput
-from Deasy_Labs._utils import (
+from Deasy._types import Base64FileInput
+from Deasy._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from Deasy_Labs._compat import PYDANTIC_V2
-from Deasy_Labs._models import BaseModel
+from Deasy._compat import PYDANTIC_V2
+from Deasy._models import BaseModel
 
 _T = TypeVar("_T")
 

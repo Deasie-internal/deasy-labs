@@ -7,15 +7,15 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
-from tests.utils import assert_matches_type
-from Deasy_Labs.types import (
+from Deasy import Deasy, AsyncDeasy
+from Deasy.types import (
+    TagResponse,
     TagListResponse,
     TagCreateResponse,
-    TagDeleteResponse,
-    TagUpdateResponse,
+    TagUpsertResponse,
     TagGetDeleteStatsResponse,
 )
+from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,7 +25,7 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         tag = client.tags.create(
             tag_data={},
             x_user="x-user",
@@ -34,17 +34,7 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
-        tag = client.tags.create(
-            tag_data={},
-            x_user="x-user",
-            block_overlapping_names=True,
-        )
-        assert_matches_type(TagCreateResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.create(
             tag_data={},
             x_user="x-user",
@@ -57,7 +47,7 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.create(
             tag_data={},
             x_user="x-user",
@@ -72,16 +62,16 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update(self, client: DeasyLabs) -> None:
+    def test_method_update(self, client: Deasy) -> None:
         tag = client.tags.update(
             tag_data={},
             x_user="x-user",
         )
-        assert_matches_type(TagUpdateResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update(self, client: DeasyLabs) -> None:
+    def test_raw_response_update(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.update(
             tag_data={},
             x_user="x-user",
@@ -90,11 +80,11 @@ class TestTags:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tag = response.parse()
-        assert_matches_type(TagUpdateResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update(self, client: DeasyLabs) -> None:
+    def test_streaming_response_update(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.update(
             tag_data={},
             x_user="x-user",
@@ -103,13 +93,13 @@ class TestTags:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tag = response.parse()
-            assert_matches_type(TagUpdateResponse, tag, path=["response"])
+            assert_matches_type(TagResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         tag = client.tags.list(
             x_user="x-user",
         )
@@ -117,7 +107,7 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.list(
             x_user="x-user",
         )
@@ -129,7 +119,7 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -143,51 +133,51 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         tag = client.tags.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
-        assert_matches_type(TagDeleteResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tag = response.parse()
-        assert_matches_type(TagDeleteResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tag = response.parse()
-            assert_matches_type(TagDeleteResponse, tag, path=["response"])
+            assert_matches_type(TagResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_method_get_delete_stats(self, client: Deasy) -> None:
         tag = client.tags.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
 
         assert response.is_closed is True
@@ -197,9 +187,9 @@ class TestTags:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -209,13 +199,50 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_upsert(self, client: Deasy) -> None:
+        tag = client.tags.upsert(
+            tag_data={},
+            x_user="x-user",
+        )
+        assert_matches_type(TagUpsertResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_upsert(self, client: Deasy) -> None:
+        response = client.tags.with_raw_response.upsert(
+            tag_data={},
+            x_user="x-user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = response.parse()
+        assert_matches_type(TagUpsertResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_upsert(self, client: Deasy) -> None:
+        with client.tags.with_streaming_response.upsert(
+            tag_data={},
+            x_user="x-user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = response.parse()
+            assert_matches_type(TagUpsertResponse, tag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncTags:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.create(
             tag_data={},
             x_user="x-user",
@@ -224,17 +251,7 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
-        tag = await async_client.tags.create(
-            tag_data={},
-            x_user="x-user",
-            block_overlapping_names=True,
-        )
-        assert_matches_type(TagCreateResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.create(
             tag_data={},
             x_user="x-user",
@@ -247,7 +264,7 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.create(
             tag_data={},
             x_user="x-user",
@@ -262,16 +279,16 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.update(
             tag_data={},
             x_user="x-user",
         )
-        assert_matches_type(TagUpdateResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.update(
             tag_data={},
             x_user="x-user",
@@ -280,11 +297,11 @@ class TestAsyncTags:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tag = await response.parse()
-        assert_matches_type(TagUpdateResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.update(
             tag_data={},
             x_user="x-user",
@@ -293,13 +310,13 @@ class TestAsyncTags:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tag = await response.parse()
-            assert_matches_type(TagUpdateResponse, tag, path=["response"])
+            assert_matches_type(TagResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.list(
             x_user="x-user",
         )
@@ -307,7 +324,7 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.list(
             x_user="x-user",
         )
@@ -319,7 +336,7 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.list(
             x_user="x-user",
         ) as response:
@@ -333,51 +350,51 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
-        assert_matches_type(TagDeleteResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tag = await response.parse()
-        assert_matches_type(TagDeleteResponse, tag, path=["response"])
+        assert_matches_type(TagResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.delete(
-            tag_id="tag_id",
+            tag_name="tag_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tag = await response.parse()
-            assert_matches_type(TagDeleteResponse, tag, path=["response"])
+            assert_matches_type(TagResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         )
 
         assert response.is_closed is True
@@ -387,14 +404,51 @@ class TestAsyncTags:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.get_delete_stats(
-            tag_id="tag_id",
+            tag_name="tag_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tag = await response.parse()
             assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
+        tag = await async_client.tags.upsert(
+            tag_data={},
+            x_user="x-user",
+        )
+        assert_matches_type(TagUpsertResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.tags.with_raw_response.upsert(
+            tag_data={},
+            x_user="x-user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = await response.parse()
+        assert_matches_type(TagUpsertResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
+        async with async_client.tags.with_streaming_response.upsert(
+            tag_data={},
+            x_user="x-user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = await response.parse()
+            assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True

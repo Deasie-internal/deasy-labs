@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.metadata import FileListResponse
+from Deasy.types.metadata import FileListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestFile:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         file = client.metadata.file.list(
             file_names=["string"],
             vector_db_config={},
@@ -28,7 +28,7 @@ class TestFile:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.metadata.file.with_raw_response.list(
             file_names=["string"],
             vector_db_config={},
@@ -41,7 +41,7 @@ class TestFile:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.metadata.file.with_streaming_response.list(
             file_names=["string"],
             vector_db_config={},
@@ -60,7 +60,7 @@ class TestAsyncFile:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         file = await async_client.metadata.file.list(
             file_names=["string"],
             vector_db_config={},
@@ -69,7 +69,7 @@ class TestAsyncFile:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.file.with_raw_response.list(
             file_names=["string"],
             vector_db_config={},
@@ -82,7 +82,7 @@ class TestAsyncFile:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.file.with_streaming_response.list(
             file_names=["string"],
             vector_db_config={},

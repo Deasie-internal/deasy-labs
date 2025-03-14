@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import LlmProviderValidateResponse
+from Deasy.types.console import LlmProviderValidateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_validate(self, client: DeasyLabs) -> None:
+    def test_method_validate(self, client: Deasy) -> None:
         llm_provider = client.console.llm_provider.validate(
             endpoint_manager_config={},
             x_user="x-user",
@@ -28,7 +28,7 @@ class TestLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_validate(self, client: DeasyLabs) -> None:
+    def test_raw_response_validate(self, client: Deasy) -> None:
         response = client.console.llm_provider.with_raw_response.validate(
             endpoint_manager_config={},
             x_user="x-user",
@@ -41,7 +41,7 @@ class TestLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_validate(self, client: DeasyLabs) -> None:
+    def test_streaming_response_validate(self, client: Deasy) -> None:
         with client.console.llm_provider.with_streaming_response.validate(
             endpoint_manager_config={},
             x_user="x-user",
@@ -60,7 +60,7 @@ class TestAsyncLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_validate(self, async_client: AsyncDeasy) -> None:
         llm_provider = await async_client.console.llm_provider.validate(
             endpoint_manager_config={},
             x_user="x-user",
@@ -69,7 +69,7 @@ class TestAsyncLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_validate(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.llm_provider.with_raw_response.validate(
             endpoint_manager_config={},
             x_user="x-user",
@@ -82,7 +82,7 @@ class TestAsyncLlmProvider:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_validate(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.llm_provider.with_streaming_response.validate(
             endpoint_manager_config={},
             x_user="x-user",

@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy_Labs import DeasyLabs, AsyncDeasyLabs
+from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
-from Deasy_Labs.types.console import (
+from Deasy.types.console import (
     VectorDBValidateResponse,
     VectorDBCheckIndexesResponse,
 )
@@ -22,7 +22,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_check_indexes(self, client: DeasyLabs) -> None:
+    def test_method_check_indexes(self, client: Deasy) -> None:
         vector_db = client.console.vector_db.check_indexes(
             body={},
             x_user="x-user",
@@ -31,7 +31,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_check_indexes(self, client: DeasyLabs) -> None:
+    def test_raw_response_check_indexes(self, client: Deasy) -> None:
         response = client.console.vector_db.with_raw_response.check_indexes(
             body={},
             x_user="x-user",
@@ -44,7 +44,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_check_indexes(self, client: DeasyLabs) -> None:
+    def test_streaming_response_check_indexes(self, client: Deasy) -> None:
         with client.console.vector_db.with_streaming_response.check_indexes(
             body={},
             x_user="x-user",
@@ -59,7 +59,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_validate(self, client: DeasyLabs) -> None:
+    def test_method_validate(self, client: Deasy) -> None:
         vector_db = client.console.vector_db.validate(
             body={},
             x_user="x-user",
@@ -68,7 +68,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_validate(self, client: DeasyLabs) -> None:
+    def test_raw_response_validate(self, client: Deasy) -> None:
         response = client.console.vector_db.with_raw_response.validate(
             body={},
             x_user="x-user",
@@ -81,7 +81,7 @@ class TestVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_validate(self, client: DeasyLabs) -> None:
+    def test_streaming_response_validate(self, client: Deasy) -> None:
         with client.console.vector_db.with_streaming_response.validate(
             body={},
             x_user="x-user",
@@ -100,7 +100,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_check_indexes(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_check_indexes(self, async_client: AsyncDeasy) -> None:
         vector_db = await async_client.console.vector_db.check_indexes(
             body={},
             x_user="x-user",
@@ -109,7 +109,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_check_indexes(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_check_indexes(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.vector_db.with_raw_response.check_indexes(
             body={},
             x_user="x-user",
@@ -122,7 +122,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_check_indexes(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_check_indexes(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.vector_db.with_streaming_response.check_indexes(
             body={},
             x_user="x-user",
@@ -137,7 +137,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_validate(self, async_client: AsyncDeasy) -> None:
         vector_db = await async_client.console.vector_db.validate(
             body={},
             x_user="x-user",
@@ -146,7 +146,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_validate(self, async_client: AsyncDeasy) -> None:
         response = await async_client.console.vector_db.with_raw_response.validate(
             body={},
             x_user="x-user",
@@ -159,7 +159,7 @@ class TestAsyncVectorDB:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_validate(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_validate(self, async_client: AsyncDeasy) -> None:
         async with async_client.console.vector_db.with_streaming_response.validate(
             body={},
             x_user="x-user",
