@@ -12,7 +12,10 @@ from . import _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
+    Body,
     Omit,
+    Query,
+    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -24,6 +27,12 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from ._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from .resources import graph, classify, suggest_hierarchy, suggest_description
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import DeasyError, APIStatusError
@@ -31,6 +40,7 @@ from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
     AsyncAPIClient,
+    make_request_options,
 )
 from .resources.tags import tags
 from .resources.metadata import metadata
@@ -121,6 +131,12 @@ class Deasy(SyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        bearer_token = self.bearer_token
+        return {"Authorization": f"Bearer {bearer_token}"}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -178,6 +194,25 @@ class Deasy(SyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """Root"""
+        return self.get(
+            "/",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
 
     @override
     def _make_status_error(
@@ -295,6 +330,12 @@ class AsyncDeasy(AsyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        bearer_token = self.bearer_token
+        return {"Authorization": f"Bearer {bearer_token}"}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -353,6 +394,25 @@ class AsyncDeasy(AsyncAPIClient):
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
+    async def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """Root"""
+        return await self.get(
+            "/",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
     @override
     def _make_status_error(
         self,
@@ -399,6 +459,10 @@ class DeasyWithRawResponse:
         self.dataslice = dataslice.DatasliceResourceWithRawResponse(client.dataslice)
         self.graph = graph.GraphResourceWithRawResponse(client.graph)
 
+        self.retrieve = to_raw_response_wrapper(
+            client.retrieve,
+        )
+
 
 class AsyncDeasyWithRawResponse:
     def __init__(self, client: AsyncDeasy) -> None:
@@ -413,6 +477,10 @@ class AsyncDeasyWithRawResponse:
         self.metadata = metadata.AsyncMetadataResourceWithRawResponse(client.metadata)
         self.dataslice = dataslice.AsyncDatasliceResourceWithRawResponse(client.dataslice)
         self.graph = graph.AsyncGraphResourceWithRawResponse(client.graph)
+
+        self.retrieve = async_to_raw_response_wrapper(
+            client.retrieve,
+        )
 
 
 class DeasyWithStreamedResponse:
@@ -429,6 +497,10 @@ class DeasyWithStreamedResponse:
         self.dataslice = dataslice.DatasliceResourceWithStreamingResponse(client.dataslice)
         self.graph = graph.GraphResourceWithStreamingResponse(client.graph)
 
+        self.retrieve = to_streamed_response_wrapper(
+            client.retrieve,
+        )
+
 
 class AsyncDeasyWithStreamedResponse:
     def __init__(self, client: AsyncDeasy) -> None:
@@ -443,6 +515,10 @@ class AsyncDeasyWithStreamedResponse:
         self.metadata = metadata.AsyncMetadataResourceWithStreamingResponse(client.metadata)
         self.dataslice = dataslice.AsyncDatasliceResourceWithStreamingResponse(client.dataslice)
         self.graph = graph.AsyncGraphResourceWithStreamingResponse(client.graph)
+
+        self.retrieve = async_to_streamed_response_wrapper(
+            client.retrieve,
+        )
 
 
 Client = Deasy

@@ -9,6 +9,7 @@ import pytest
 
 from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
+from Deasy.types.dataslice import ExportExportToVdbResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -62,6 +63,52 @@ class TestExport:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_export_to_vdb(self, client: Deasy) -> None:
+        export = client.dataslice.export.export_to_vdb(
+            target_vector_db_config={},
+        )
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_export_to_vdb_with_all_params(self, client: Deasy) -> None:
+        export = client.dataslice.export.export_to_vdb(
+            target_vector_db_config={},
+            dataslice_id="dataslice_id",
+            export_level="file",
+            export_tags=[{}],
+            ori_vector_db_config={},
+        )
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_export_to_vdb(self, client: Deasy) -> None:
+        response = client.dataslice.export.with_raw_response.export_to_vdb(
+            target_vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_export_to_vdb(self, client: Deasy) -> None:
+        with client.dataslice.export.with_streaming_response.export_to_vdb(
+            target_vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            export = response.parse()
+            assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncExport:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -109,5 +156,51 @@ class TestAsyncExport:
 
             export = await response.parse()
             assert_matches_type(object, export, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_export_to_vdb(self, async_client: AsyncDeasy) -> None:
+        export = await async_client.dataslice.export.export_to_vdb(
+            target_vector_db_config={},
+        )
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_export_to_vdb_with_all_params(self, async_client: AsyncDeasy) -> None:
+        export = await async_client.dataslice.export.export_to_vdb(
+            target_vector_db_config={},
+            dataslice_id="dataslice_id",
+            export_level="file",
+            export_tags=[{}],
+            ori_vector_db_config={},
+        )
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_export_to_vdb(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.dataslice.export.with_raw_response.export_to_vdb(
+            target_vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = await response.parse()
+        assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_export_to_vdb(self, async_client: AsyncDeasy) -> None:
+        async with async_client.dataslice.export.with_streaming_response.export_to_vdb(
+            target_vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            export = await response.parse()
+            assert_matches_type(ExportExportToVdbResponse, export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
