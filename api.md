@@ -109,10 +109,7 @@ Types:
 
 ```python
 from Deasy.types import (
-    BasicMetadataRequest,
     ConditionInput,
-    HierarchyStatsNode,
-    TagCondition,
     MetadataDeleteResponse,
     MetadataListMetadataResponse,
     MetadataListPaginatedMetadataResponse,

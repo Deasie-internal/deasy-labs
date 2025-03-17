@@ -20,7 +20,6 @@ from .graph_update_params import GraphUpdateParams as GraphUpdateParams
 from .graph_upsert_params import GraphUpsertParams as GraphUpsertParams
 from .openai_config_param import OpenAIConfigParam as OpenAIConfigParam
 from .s3_connector_config import S3ConnectorConfig as S3ConnectorConfig
-from .tag_condition_param import TagConditionParam as TagConditionParam
 from .tag_create_response import TagCreateResponse as TagCreateResponse
 from .tag_upsert_response import TagUpsertResponse as TagUpsertResponse
 from .condition_input_param import ConditionInputParam as ConditionInputParam
