@@ -14,8 +14,6 @@ from Deasy.types import (
     DatasliceDeleteResponse,
     DatasliceGetFilesResponse,
     DatasliceGetMetricsResponse,
-    DatasliceGetFileCountResponse,
-    DatasliceCheckSyncScoreResponse,
     DatasliceTagVdbDistributionResponse,
 )
 from tests.utils import assert_matches_type
@@ -151,99 +149,6 @@ class TestDataslice:
 
             dataslice = response.parse()
             assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_check_sync_score(self, client: Deasy) -> None:
-        dataslice = client.dataslice.check_sync_score()
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_check_sync_score_with_all_params(self, client: Deasy) -> None:
-        dataslice = client.dataslice.check_sync_score(
-            dataslice_id="dataslice_id",
-            hard_limit=0,
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_check_sync_score(self, client: Deasy) -> None:
-        response = client.dataslice.with_raw_response.check_sync_score()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = response.parse()
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_check_sync_score(self, client: Deasy) -> None:
-        with client.dataslice.with_streaming_response.check_sync_score() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = response.parse()
-            assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_file_count(self, client: Deasy) -> None:
-        dataslice = client.dataslice.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_file_count_with_all_params(self, client: Deasy) -> None:
-        dataslice = client.dataslice.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-            dataslice_id="dataslice_id",
-            new_condition={
-                "children": [],
-                "condition": "AND",
-                "tag": {
-                    "name": "name",
-                    "values": ["string"],
-                },
-            },
-        )
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_get_file_count(self, client: Deasy) -> None:
-        response = client.dataslice.with_raw_response.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = response.parse()
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_get_file_count(self, client: Deasy) -> None:
-        with client.dataslice.with_streaming_response.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = response.parse()
-            assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -487,99 +392,6 @@ class TestAsyncDataslice:
 
             dataslice = await response.parse()
             assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_check_sync_score(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.check_sync_score()
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_check_sync_score_with_all_params(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.check_sync_score(
-            dataslice_id="dataslice_id",
-            hard_limit=0,
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_check_sync_score(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.dataslice.with_raw_response.check_sync_score()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = await response.parse()
-        assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_check_sync_score(self, async_client: AsyncDeasy) -> None:
-        async with async_client.dataslice.with_streaming_response.check_sync_score() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = await response.parse()
-            assert_matches_type(DatasliceCheckSyncScoreResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_file_count(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-            dataslice_id="dataslice_id",
-            new_condition={
-                "children": [],
-                "condition": "AND",
-                "tag": {
-                    "name": "name",
-                    "values": ["string"],
-                },
-            },
-        )
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_get_file_count(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.dataslice.with_raw_response.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = await response.parse()
-        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_get_file_count(self, async_client: AsyncDeasy) -> None:
-        async with async_client.dataslice.with_streaming_response.get_file_count(
-            condition=[{}],
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = await response.parse()
-            assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

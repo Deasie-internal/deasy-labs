@@ -34,19 +34,12 @@ from ._response import (
     async_to_streamed_response_wrapper,
 )
 from .resources import (
-    ocr,
     graph,
-    health,
     classify,
-    tag_text,
-    refine_tag,
     classify_bulk,
-    contextualize,
     llm_connector,
     vdb_connector,
-    progress_tracker,
     suggest_hierarchy,
-    generate_file_tags,
     suggest_description,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
@@ -57,10 +50,7 @@ from ._base_client import (
     AsyncAPIClient,
     make_request_options,
 )
-from .resources.data import data
 from .resources.tags import tags
-from .resources.admin import admin
-from .resources.console import console
 from .resources.metadata import metadata
 from .resources.dataslice import dataslice
 
@@ -68,26 +58,16 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "A
 
 
 class Deasy(SyncAPIClient):
-    admin: admin.AdminResource
-    console: console.ConsoleResource
     classify_bulk: classify_bulk.ClassifyBulkResource
     classify: classify.ClassifyResource
     suggest_hierarchy: suggest_hierarchy.SuggestHierarchyResource
-    refine_tag: refine_tag.RefineTagResource
-    tag_text: tag_text.TagTextResource
-    generate_file_tags: generate_file_tags.GenerateFileTagsResource
-    contextualize: contextualize.ContextualizeResource
     suggest_description: suggest_description.SuggestDescriptionResource
-    data: data.DataResource
     tags: tags.TagsResource
     metadata: metadata.MetadataResource
     vdb_connector: vdb_connector.VdbConnectorResource
     llm_connector: llm_connector.LlmConnectorResource
     dataslice: dataslice.DatasliceResource
     graph: graph.GraphResource
-    ocr: ocr.OcrResource
-    progress_tracker: progress_tracker.ProgressTrackerResource
-    health: health.HealthResource
     with_raw_response: DeasyWithRawResponse
     with_streaming_response: DeasyWithStreamedResponse
 
@@ -145,26 +125,16 @@ class Deasy(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.admin = admin.AdminResource(self)
-        self.console = console.ConsoleResource(self)
         self.classify_bulk = classify_bulk.ClassifyBulkResource(self)
         self.classify = classify.ClassifyResource(self)
         self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResource(self)
-        self.refine_tag = refine_tag.RefineTagResource(self)
-        self.tag_text = tag_text.TagTextResource(self)
-        self.generate_file_tags = generate_file_tags.GenerateFileTagsResource(self)
-        self.contextualize = contextualize.ContextualizeResource(self)
         self.suggest_description = suggest_description.SuggestDescriptionResource(self)
-        self.data = data.DataResource(self)
         self.tags = tags.TagsResource(self)
         self.metadata = metadata.MetadataResource(self)
         self.vdb_connector = vdb_connector.VdbConnectorResource(self)
         self.llm_connector = llm_connector.LlmConnectorResource(self)
         self.dataslice = dataslice.DatasliceResource(self)
         self.graph = graph.GraphResource(self)
-        self.ocr = ocr.OcrResource(self)
-        self.progress_tracker = progress_tracker.ProgressTrackerResource(self)
-        self.health = health.HealthResource(self)
         self.with_raw_response = DeasyWithRawResponse(self)
         self.with_streaming_response = DeasyWithStreamedResponse(self)
 
@@ -293,26 +263,16 @@ class Deasy(SyncAPIClient):
 
 
 class AsyncDeasy(AsyncAPIClient):
-    admin: admin.AsyncAdminResource
-    console: console.AsyncConsoleResource
     classify_bulk: classify_bulk.AsyncClassifyBulkResource
     classify: classify.AsyncClassifyResource
     suggest_hierarchy: suggest_hierarchy.AsyncSuggestHierarchyResource
-    refine_tag: refine_tag.AsyncRefineTagResource
-    tag_text: tag_text.AsyncTagTextResource
-    generate_file_tags: generate_file_tags.AsyncGenerateFileTagsResource
-    contextualize: contextualize.AsyncContextualizeResource
     suggest_description: suggest_description.AsyncSuggestDescriptionResource
-    data: data.AsyncDataResource
     tags: tags.AsyncTagsResource
     metadata: metadata.AsyncMetadataResource
     vdb_connector: vdb_connector.AsyncVdbConnectorResource
     llm_connector: llm_connector.AsyncLlmConnectorResource
     dataslice: dataslice.AsyncDatasliceResource
     graph: graph.AsyncGraphResource
-    ocr: ocr.AsyncOcrResource
-    progress_tracker: progress_tracker.AsyncProgressTrackerResource
-    health: health.AsyncHealthResource
     with_raw_response: AsyncDeasyWithRawResponse
     with_streaming_response: AsyncDeasyWithStreamedResponse
 
@@ -370,26 +330,16 @@ class AsyncDeasy(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.admin = admin.AsyncAdminResource(self)
-        self.console = console.AsyncConsoleResource(self)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResource(self)
         self.classify = classify.AsyncClassifyResource(self)
         self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResource(self)
-        self.refine_tag = refine_tag.AsyncRefineTagResource(self)
-        self.tag_text = tag_text.AsyncTagTextResource(self)
-        self.generate_file_tags = generate_file_tags.AsyncGenerateFileTagsResource(self)
-        self.contextualize = contextualize.AsyncContextualizeResource(self)
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResource(self)
-        self.data = data.AsyncDataResource(self)
         self.tags = tags.AsyncTagsResource(self)
         self.metadata = metadata.AsyncMetadataResource(self)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResource(self)
         self.llm_connector = llm_connector.AsyncLlmConnectorResource(self)
         self.dataslice = dataslice.AsyncDatasliceResource(self)
         self.graph = graph.AsyncGraphResource(self)
-        self.ocr = ocr.AsyncOcrResource(self)
-        self.progress_tracker = progress_tracker.AsyncProgressTrackerResource(self)
-        self.health = health.AsyncHealthResource(self)
         self.with_raw_response = AsyncDeasyWithRawResponse(self)
         self.with_streaming_response = AsyncDeasyWithStreamedResponse(self)
 
@@ -519,28 +469,18 @@ class AsyncDeasy(AsyncAPIClient):
 
 class DeasyWithRawResponse:
     def __init__(self, client: Deasy) -> None:
-        self.admin = admin.AdminResourceWithRawResponse(client.admin)
-        self.console = console.ConsoleResourceWithRawResponse(client.console)
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithRawResponse(client.classify)
         self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithRawResponse(client.suggest_hierarchy)
-        self.refine_tag = refine_tag.RefineTagResourceWithRawResponse(client.refine_tag)
-        self.tag_text = tag_text.TagTextResourceWithRawResponse(client.tag_text)
-        self.generate_file_tags = generate_file_tags.GenerateFileTagsResourceWithRawResponse(client.generate_file_tags)
-        self.contextualize = contextualize.ContextualizeResourceWithRawResponse(client.contextualize)
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
-        self.data = data.DataResourceWithRawResponse(client.data)
         self.tags = tags.TagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithRawResponse(client.vdb_connector)
         self.llm_connector = llm_connector.LlmConnectorResourceWithRawResponse(client.llm_connector)
         self.dataslice = dataslice.DatasliceResourceWithRawResponse(client.dataslice)
         self.graph = graph.GraphResourceWithRawResponse(client.graph)
-        self.ocr = ocr.OcrResourceWithRawResponse(client.ocr)
-        self.progress_tracker = progress_tracker.ProgressTrackerResourceWithRawResponse(client.progress_tracker)
-        self.health = health.HealthResourceWithRawResponse(client.health)
 
         self.retrieve = to_raw_response_wrapper(
             client.retrieve,
@@ -549,32 +489,20 @@ class DeasyWithRawResponse:
 
 class AsyncDeasyWithRawResponse:
     def __init__(self, client: AsyncDeasy) -> None:
-        self.admin = admin.AsyncAdminResourceWithRawResponse(client.admin)
-        self.console = console.AsyncConsoleResourceWithRawResponse(client.console)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithRawResponse(client.classify)
         self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithRawResponse(
             client.suggest_hierarchy
         )
-        self.refine_tag = refine_tag.AsyncRefineTagResourceWithRawResponse(client.refine_tag)
-        self.tag_text = tag_text.AsyncTagTextResourceWithRawResponse(client.tag_text)
-        self.generate_file_tags = generate_file_tags.AsyncGenerateFileTagsResourceWithRawResponse(
-            client.generate_file_tags
-        )
-        self.contextualize = contextualize.AsyncContextualizeResourceWithRawResponse(client.contextualize)
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
-        self.data = data.AsyncDataResourceWithRawResponse(client.data)
         self.tags = tags.AsyncTagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithRawResponse(client.vdb_connector)
         self.llm_connector = llm_connector.AsyncLlmConnectorResourceWithRawResponse(client.llm_connector)
         self.dataslice = dataslice.AsyncDatasliceResourceWithRawResponse(client.dataslice)
         self.graph = graph.AsyncGraphResourceWithRawResponse(client.graph)
-        self.ocr = ocr.AsyncOcrResourceWithRawResponse(client.ocr)
-        self.progress_tracker = progress_tracker.AsyncProgressTrackerResourceWithRawResponse(client.progress_tracker)
-        self.health = health.AsyncHealthResourceWithRawResponse(client.health)
 
         self.retrieve = async_to_raw_response_wrapper(
             client.retrieve,
@@ -583,32 +511,20 @@ class AsyncDeasyWithRawResponse:
 
 class DeasyWithStreamedResponse:
     def __init__(self, client: Deasy) -> None:
-        self.admin = admin.AdminResourceWithStreamingResponse(client.admin)
-        self.console = console.ConsoleResourceWithStreamingResponse(client.console)
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithStreamingResponse(client.classify)
         self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithStreamingResponse(
             client.suggest_hierarchy
         )
-        self.refine_tag = refine_tag.RefineTagResourceWithStreamingResponse(client.refine_tag)
-        self.tag_text = tag_text.TagTextResourceWithStreamingResponse(client.tag_text)
-        self.generate_file_tags = generate_file_tags.GenerateFileTagsResourceWithStreamingResponse(
-            client.generate_file_tags
-        )
-        self.contextualize = contextualize.ContextualizeResourceWithStreamingResponse(client.contextualize)
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )
-        self.data = data.DataResourceWithStreamingResponse(client.data)
         self.tags = tags.TagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithStreamingResponse(client.vdb_connector)
         self.llm_connector = llm_connector.LlmConnectorResourceWithStreamingResponse(client.llm_connector)
         self.dataslice = dataslice.DatasliceResourceWithStreamingResponse(client.dataslice)
         self.graph = graph.GraphResourceWithStreamingResponse(client.graph)
-        self.ocr = ocr.OcrResourceWithStreamingResponse(client.ocr)
-        self.progress_tracker = progress_tracker.ProgressTrackerResourceWithStreamingResponse(client.progress_tracker)
-        self.health = health.HealthResourceWithStreamingResponse(client.health)
 
         self.retrieve = to_streamed_response_wrapper(
             client.retrieve,
@@ -617,34 +533,20 @@ class DeasyWithStreamedResponse:
 
 class AsyncDeasyWithStreamedResponse:
     def __init__(self, client: AsyncDeasy) -> None:
-        self.admin = admin.AsyncAdminResourceWithStreamingResponse(client.admin)
-        self.console = console.AsyncConsoleResourceWithStreamingResponse(client.console)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithStreamingResponse(client.classify)
         self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithStreamingResponse(
             client.suggest_hierarchy
         )
-        self.refine_tag = refine_tag.AsyncRefineTagResourceWithStreamingResponse(client.refine_tag)
-        self.tag_text = tag_text.AsyncTagTextResourceWithStreamingResponse(client.tag_text)
-        self.generate_file_tags = generate_file_tags.AsyncGenerateFileTagsResourceWithStreamingResponse(
-            client.generate_file_tags
-        )
-        self.contextualize = contextualize.AsyncContextualizeResourceWithStreamingResponse(client.contextualize)
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )
-        self.data = data.AsyncDataResourceWithStreamingResponse(client.data)
         self.tags = tags.AsyncTagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithStreamingResponse(client.vdb_connector)
         self.llm_connector = llm_connector.AsyncLlmConnectorResourceWithStreamingResponse(client.llm_connector)
         self.dataslice = dataslice.AsyncDatasliceResourceWithStreamingResponse(client.dataslice)
         self.graph = graph.AsyncGraphResourceWithStreamingResponse(client.graph)
-        self.ocr = ocr.AsyncOcrResourceWithStreamingResponse(client.ocr)
-        self.progress_tracker = progress_tracker.AsyncProgressTrackerResourceWithStreamingResponse(
-            client.progress_tracker
-        )
-        self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
 
         self.retrieve = async_to_streamed_response_wrapper(
             client.retrieve,
