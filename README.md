@@ -27,36 +27,37 @@ pip install git+ssh://git@github.com/Deasie-internal/deasy-sdk.git
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from Deasy import Deasy
 
 client = Deasy(
-    bearer_token="My Bearer Token",
+    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
-response = client.classify.classify_files(
-    vdb_profile_name="vdb_profile_name",
-)
-print(response.message)
+client = client.retrieve()
 ```
+
+While you can provide a `bearer_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `DEASY_BEARER_TOKEN="My Bearer Token"` to your `.env` file
+so that your Bearer Token is not stored in source control.
 
 ## Async usage
 
 Simply import `AsyncDeasy` instead of `Deasy` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
-    bearer_token="My Bearer Token",
+    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
 
 async def main() -> None:
-    response = await client.classify.classify_files(
-        vdb_profile_name="vdb_profile_name",
-    )
-    print(response.message)
+    client = await client.retrieve()
 
 
 asyncio.run(main())
@@ -80,16 +81,11 @@ Nested parameters are dictionaries, typed using `TypedDict`, for example:
 ```python
 from Deasy import Deasy
 
-client = Deasy(
-    bearer_token="My Bearer Token",
-)
+client = Deasy()
 
-dataslice = client.dataslice.create(
-    dataslice_name="dataslice_name",
-    graph_id="graph_id",
-    latest_graph={},
-    vdb_profile_name="vdb_profile_name",
-    condition_new={
+response = client.metadata.get_distributions(
+    vector_db_config={},
+    conditions_new={
         "children": [{}],
         "condition": "AND",
         "tag": {
@@ -98,7 +94,7 @@ dataslice = client.dataslice.create(
         },
     },
 )
-print(dataslice.condition_new)
+print(response.conditions_new)
 ```
 
 ## Handling errors
@@ -114,14 +110,10 @@ All errors inherit from `Deasy.APIError`.
 import Deasy
 from Deasy import Deasy
 
-client = Deasy(
-    bearer_token="My Bearer Token",
-)
+client = Deasy()
 
 try:
-    client.classify.classify_files(
-        vdb_profile_name="vdb_profile_name",
-    )
+    client.retrieve()
 except Deasy.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -161,13 +153,10 @@ from Deasy import Deasy
 client = Deasy(
     # default is 2
     max_retries=0,
-    bearer_token="My Bearer Token",
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).classify.classify_files(
-    vdb_profile_name="vdb_profile_name",
-)
+client.with_options(max_retries=5).retrieve()
 ```
 
 ### Timeouts
@@ -182,19 +171,15 @@ from Deasy import Deasy
 client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
-    bearer_token="My Bearer Token",
 )
 
 # More granular control:
 client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
-    bearer_token="My Bearer Token",
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).classify.classify_files(
-    vdb_profile_name="vdb_profile_name",
-)
+client.with_options(timeout=5.0).retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -234,16 +219,12 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from Deasy import Deasy
 
-client = Deasy(
-    bearer_token="My Bearer Token",
-)
-response = client.classify.with_raw_response.classify_files(
-    vdb_profile_name="vdb_profile_name",
-)
+client = Deasy()
+response = client.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
-classify = response.parse()  # get the object that `classify.classify_files()` would have returned
-print(classify.message)
+client = response.parse()  # get the object that `retrieve()` would have returned
+print(client)
 ```
 
 These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-sdk/tree/main/src/Deasy/_response.py) object.
@@ -257,9 +238,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.classify.with_streaming_response.classify_files(
-    vdb_profile_name="vdb_profile_name",
-) as response:
+with client.with_streaming_response.retrieve() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -321,7 +300,6 @@ client = Deasy(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    bearer_token="My Bearer Token",
 )
 ```
 
@@ -338,9 +316,7 @@ By default the library closes underlying HTTP connections whenever the client is
 ```py
 from Deasy import Deasy
 
-with Deasy(
-    bearer_token="My Bearer Token",
-) as client:
+with Deasy() as client:
   # make requests here
   ...
 

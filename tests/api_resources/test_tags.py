@@ -13,6 +13,7 @@ from Deasy.types import (
     TagListResponse,
     TagCreateResponse,
     TagUpsertResponse,
+    TagGetDeleteStatsResponse,
 )
 from tests.utils import assert_matches_type
 
@@ -161,6 +162,40 @@ class TestTags:
 
             tag = response.parse()
             assert_matches_type(TagResponse, tag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_get_delete_stats(self, client: Deasy) -> None:
+        tag = client.tags.get_delete_stats(
+            tag_name="tag_name",
+        )
+        assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
+        response = client.tags.with_raw_response.get_delete_stats(
+            tag_name="tag_name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = response.parse()
+        assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
+        with client.tags.with_streaming_response.get_delete_stats(
+            tag_name="tag_name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = response.parse()
+            assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -344,6 +379,40 @@ class TestAsyncTags:
 
             tag = await response.parse()
             assert_matches_type(TagResponse, tag, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
+        tag = await async_client.tags.get_delete_stats(
+            tag_name="tag_name",
+        )
+        assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.tags.with_raw_response.get_delete_stats(
+            tag_name="tag_name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tag = await response.parse()
+        assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
+        async with async_client.tags.with_streaming_response.get_delete_stats(
+            tag_name="tag_name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tag = await response.parse()
+            assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

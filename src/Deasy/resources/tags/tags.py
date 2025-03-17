@@ -4,7 +4,21 @@ from __future__ import annotations
 
 import httpx
 
-from ...types import tag_create_params, tag_delete_params, tag_update_params, tag_upsert_params
+from .groups import (
+    GroupsResource,
+    AsyncGroupsResource,
+    GroupsResourceWithRawResponse,
+    AsyncGroupsResourceWithRawResponse,
+    GroupsResourceWithStreamingResponse,
+    AsyncGroupsResourceWithStreamingResponse,
+)
+from ...types import (
+    tag_create_params,
+    tag_delete_params,
+    tag_update_params,
+    tag_upsert_params,
+    tag_get_delete_stats_params,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -23,11 +37,16 @@ from ...types.tag_response import TagResponse
 from ...types.tag_list_response import TagListResponse
 from ...types.tag_create_response import TagCreateResponse
 from ...types.tag_upsert_response import TagUpsertResponse
+from ...types.tag_get_delete_stats_response import TagGetDeleteStatsResponse
 
 __all__ = ["TagsResource", "AsyncTagsResource"]
 
 
 class TagsResource(SyncAPIResource):
+    @cached_property
+    def groups(self) -> GroupsResource:
+        return GroupsResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> TagsResourceWithRawResponse:
         """
@@ -182,6 +201,38 @@ class TagsResource(SyncAPIResource):
             cast_to=TagResponse,
         )
 
+    def get_delete_stats(
+        self,
+        *,
+        tag_name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagGetDeleteStatsResponse:
+        """
+        Get tag delete stats
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/tags/delete_stats",
+            body=maybe_transform({"tag_name": tag_name}, tag_get_delete_stats_params.TagGetDeleteStatsParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagGetDeleteStatsResponse,
+        )
+
     def upsert(
         self,
         *,
@@ -218,6 +269,10 @@ class TagsResource(SyncAPIResource):
 
 
 class AsyncTagsResource(AsyncAPIResource):
+    @cached_property
+    def groups(self) -> AsyncGroupsResource:
+        return AsyncGroupsResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncTagsResourceWithRawResponse:
         """
@@ -372,6 +427,40 @@ class AsyncTagsResource(AsyncAPIResource):
             cast_to=TagResponse,
         )
 
+    async def get_delete_stats(
+        self,
+        *,
+        tag_name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagGetDeleteStatsResponse:
+        """
+        Get tag delete stats
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/tags/delete_stats",
+            body=await async_maybe_transform(
+                {"tag_name": tag_name}, tag_get_delete_stats_params.TagGetDeleteStatsParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagGetDeleteStatsResponse,
+        )
+
     async def upsert(
         self,
         *,
@@ -423,9 +512,16 @@ class TagsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             tags.delete,
         )
+        self.get_delete_stats = to_raw_response_wrapper(
+            tags.get_delete_stats,
+        )
         self.upsert = to_raw_response_wrapper(
             tags.upsert,
         )
+
+    @cached_property
+    def groups(self) -> GroupsResourceWithRawResponse:
+        return GroupsResourceWithRawResponse(self._tags.groups)
 
 
 class AsyncTagsResourceWithRawResponse:
@@ -444,9 +540,16 @@ class AsyncTagsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             tags.delete,
         )
+        self.get_delete_stats = async_to_raw_response_wrapper(
+            tags.get_delete_stats,
+        )
         self.upsert = async_to_raw_response_wrapper(
             tags.upsert,
         )
+
+    @cached_property
+    def groups(self) -> AsyncGroupsResourceWithRawResponse:
+        return AsyncGroupsResourceWithRawResponse(self._tags.groups)
 
 
 class TagsResourceWithStreamingResponse:
@@ -465,9 +568,16 @@ class TagsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             tags.delete,
         )
+        self.get_delete_stats = to_streamed_response_wrapper(
+            tags.get_delete_stats,
+        )
         self.upsert = to_streamed_response_wrapper(
             tags.upsert,
         )
+
+    @cached_property
+    def groups(self) -> GroupsResourceWithStreamingResponse:
+        return GroupsResourceWithStreamingResponse(self._tags.groups)
 
 
 class AsyncTagsResourceWithStreamingResponse:
@@ -486,6 +596,13 @@ class AsyncTagsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             tags.delete,
         )
+        self.get_delete_stats = async_to_streamed_response_wrapper(
+            tags.get_delete_stats,
+        )
         self.upsert = async_to_streamed_response_wrapper(
             tags.upsert,
         )
+
+    @cached_property
+    def groups(self) -> AsyncGroupsResourceWithStreamingResponse:
+        return AsyncGroupsResourceWithStreamingResponse(self._tags.groups)
