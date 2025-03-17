@@ -12,27 +12,27 @@ __all__ = ["ClassifyClassifyFilesParams", "TagDatas"]
 
 
 class ClassifyClassifyFilesParams(TypedDict, total=False):
+    dataslice_id: Required[Optional[str]]
+
+    file_names: Required[Optional[List[str]]]
+
+    hierarchy_name: Required[Optional[str]]
+
+    llm_profile_name: Required[Optional[str]]
+
+    tag_datas: Required[Optional[Dict[str, TagDatas]]]
+
+    tag_names: Required[Optional[List[str]]]
+
     vdb_profile_name: Required[str]
-
-    dataslice_id: Optional[str]
-
-    file_names: Optional[List[str]]
 
     hierarchy_data: Optional[object]
 
-    hierarchy_name: Optional[str]
-
     job_id: Optional[str]
-
-    llm_profile_name: Optional[str]
 
     overwrite: bool
 
     soft_run: bool
-
-    tag_datas: Optional[Dict[str, TagDatas]]
-
-    tag_names: Optional[List[str]]
 
 
 class TagDatas(TypedDict, total=False):
