@@ -24,6 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from .resources import graph, classify, suggest_hierarchy, suggest_description
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import DeasyError, APIStatusError
 from ._base_client import (
@@ -31,13 +32,21 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.tags import tags
 from .resources.metadata import metadata
+from .resources.dataslice import dataslice
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "AsyncDeasy", "Client", "AsyncClient"]
 
 
 class Deasy(SyncAPIClient):
+    classify: classify.ClassifyResource
+    suggest_hierarchy: suggest_hierarchy.SuggestHierarchyResource
+    suggest_description: suggest_description.SuggestDescriptionResource
+    tags: tags.TagsResource
     metadata: metadata.MetadataResource
+    dataslice: dataslice.DatasliceResource
+    graph: graph.GraphResource
     with_raw_response: DeasyWithRawResponse
     with_streaming_response: DeasyWithStreamedResponse
 
@@ -95,7 +104,13 @@ class Deasy(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.classify = classify.ClassifyResource(self)
+        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResource(self)
+        self.suggest_description = suggest_description.SuggestDescriptionResource(self)
+        self.tags = tags.TagsResource(self)
         self.metadata = metadata.MetadataResource(self)
+        self.dataslice = dataslice.DatasliceResource(self)
+        self.graph = graph.GraphResource(self)
         self.with_raw_response = DeasyWithRawResponse(self)
         self.with_streaming_response = DeasyWithStreamedResponse(self)
 
@@ -199,7 +214,13 @@ class Deasy(SyncAPIClient):
 
 
 class AsyncDeasy(AsyncAPIClient):
+    classify: classify.AsyncClassifyResource
+    suggest_hierarchy: suggest_hierarchy.AsyncSuggestHierarchyResource
+    suggest_description: suggest_description.AsyncSuggestDescriptionResource
+    tags: tags.AsyncTagsResource
     metadata: metadata.AsyncMetadataResource
+    dataslice: dataslice.AsyncDatasliceResource
+    graph: graph.AsyncGraphResource
     with_raw_response: AsyncDeasyWithRawResponse
     with_streaming_response: AsyncDeasyWithStreamedResponse
 
@@ -257,7 +278,13 @@ class AsyncDeasy(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.classify = classify.AsyncClassifyResource(self)
+        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResource(self)
+        self.suggest_description = suggest_description.AsyncSuggestDescriptionResource(self)
+        self.tags = tags.AsyncTagsResource(self)
         self.metadata = metadata.AsyncMetadataResource(self)
+        self.dataslice = dataslice.AsyncDatasliceResource(self)
+        self.graph = graph.AsyncGraphResource(self)
         self.with_raw_response = AsyncDeasyWithRawResponse(self)
         self.with_streaming_response = AsyncDeasyWithStreamedResponse(self)
 
@@ -362,22 +389,60 @@ class AsyncDeasy(AsyncAPIClient):
 
 class DeasyWithRawResponse:
     def __init__(self, client: Deasy) -> None:
+        self.classify = classify.ClassifyResourceWithRawResponse(client.classify)
+        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithRawResponse(client.suggest_hierarchy)
+        self.suggest_description = suggest_description.SuggestDescriptionResourceWithRawResponse(
+            client.suggest_description
+        )
+        self.tags = tags.TagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithRawResponse(client.metadata)
+        self.dataslice = dataslice.DatasliceResourceWithRawResponse(client.dataslice)
+        self.graph = graph.GraphResourceWithRawResponse(client.graph)
 
 
 class AsyncDeasyWithRawResponse:
     def __init__(self, client: AsyncDeasy) -> None:
+        self.classify = classify.AsyncClassifyResourceWithRawResponse(client.classify)
+        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithRawResponse(
+            client.suggest_hierarchy
+        )
+        self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithRawResponse(
+            client.suggest_description
+        )
+        self.tags = tags.AsyncTagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithRawResponse(client.metadata)
+        self.dataslice = dataslice.AsyncDatasliceResourceWithRawResponse(client.dataslice)
+        self.graph = graph.AsyncGraphResourceWithRawResponse(client.graph)
 
 
 class DeasyWithStreamedResponse:
     def __init__(self, client: Deasy) -> None:
+        self.classify = classify.ClassifyResourceWithStreamingResponse(client.classify)
+        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithStreamingResponse(
+            client.suggest_hierarchy
+        )
+        self.suggest_description = suggest_description.SuggestDescriptionResourceWithStreamingResponse(
+            client.suggest_description
+        )
+        self.tags = tags.TagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithStreamingResponse(client.metadata)
+        self.dataslice = dataslice.DatasliceResourceWithStreamingResponse(client.dataslice)
+        self.graph = graph.GraphResourceWithStreamingResponse(client.graph)
 
 
 class AsyncDeasyWithStreamedResponse:
     def __init__(self, client: AsyncDeasy) -> None:
+        self.classify = classify.AsyncClassifyResourceWithStreamingResponse(client.classify)
+        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithStreamingResponse(
+            client.suggest_hierarchy
+        )
+        self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithStreamingResponse(
+            client.suggest_description
+        )
+        self.tags = tags.AsyncTagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithStreamingResponse(client.metadata)
+        self.dataslice = dataslice.AsyncDatasliceResourceWithStreamingResponse(client.dataslice)
+        self.graph = graph.AsyncGraphResourceWithStreamingResponse(client.graph)
 
 
 Client = Deasy

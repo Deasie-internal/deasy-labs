@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -20,46 +21,48 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.metadata import file_list_params
-from ...types.metadata.file_list_response import FileListResponse
+from ...types.dataslice import export_export_metadata_params
 
-__all__ = ["FileResource", "AsyncFileResource"]
+__all__ = ["ExportResource", "AsyncExportResource"]
 
 
-class FileResource(SyncAPIResource):
+class ExportResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> FileResourceWithRawResponse:
+    def with_raw_response(self) -> ExportResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
         """
-        return FileResourceWithRawResponse(self)
+        return ExportResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> FileResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ExportResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
         """
-        return FileResourceWithStreamingResponse(self)
+        return ExportResourceWithStreamingResponse(self)
 
-    def list(
+    def export_metadata(
         self,
         *,
-        file_names: List[str],
-        vector_db_config: object,
+        vdb_profile_name: str,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        export_file_level: bool | NotGiven = NOT_GIVEN,
+        export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
+        selected_metadata_fields: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileListResponse:
+    ) -> object:
         """
-        Get file level metadata for specified files
+        Export file-level/chunk-level metadata for a use case
 
         Args:
           extra_headers: Send extra headers
@@ -71,55 +74,61 @@ class FileResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/metadata/file/list",
+            "/dataslice/export/metadata",
             body=maybe_transform(
                 {
-                    "file_names": file_names,
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
+                    "dataslice_id": dataslice_id,
+                    "export_file_level": export_file_level,
+                    "export_format": export_format,
+                    "selected_metadata_fields": selected_metadata_fields,
                 },
-                file_list_params.FileListParams,
+                export_export_metadata_params.ExportExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FileListResponse,
+            cast_to=object,
         )
 
 
-class AsyncFileResource(AsyncAPIResource):
+class AsyncExportResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncFileResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncExportResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
         """
-        return AsyncFileResourceWithRawResponse(self)
+        return AsyncExportResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncFileResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncExportResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
         """
-        return AsyncFileResourceWithStreamingResponse(self)
+        return AsyncExportResourceWithStreamingResponse(self)
 
-    async def list(
+    async def export_metadata(
         self,
         *,
-        file_names: List[str],
-        vector_db_config: object,
+        vdb_profile_name: str,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        export_file_level: bool | NotGiven = NOT_GIVEN,
+        export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
+        selected_metadata_fields: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileListResponse:
+    ) -> object:
         """
-        Get file level metadata for specified files
+        Export file-level/chunk-level metadata for a use case
 
         Args:
           extra_headers: Send extra headers
@@ -131,52 +140,55 @@ class AsyncFileResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/metadata/file/list",
+            "/dataslice/export/metadata",
             body=await async_maybe_transform(
                 {
-                    "file_names": file_names,
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
+                    "dataslice_id": dataslice_id,
+                    "export_file_level": export_file_level,
+                    "export_format": export_format,
+                    "selected_metadata_fields": selected_metadata_fields,
                 },
-                file_list_params.FileListParams,
+                export_export_metadata_params.ExportExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FileListResponse,
+            cast_to=object,
         )
 
 
-class FileResourceWithRawResponse:
-    def __init__(self, file: FileResource) -> None:
-        self._file = file
+class ExportResourceWithRawResponse:
+    def __init__(self, export: ExportResource) -> None:
+        self._export = export
 
-        self.list = to_raw_response_wrapper(
-            file.list,
+        self.export_metadata = to_raw_response_wrapper(
+            export.export_metadata,
         )
 
 
-class AsyncFileResourceWithRawResponse:
-    def __init__(self, file: AsyncFileResource) -> None:
-        self._file = file
+class AsyncExportResourceWithRawResponse:
+    def __init__(self, export: AsyncExportResource) -> None:
+        self._export = export
 
-        self.list = async_to_raw_response_wrapper(
-            file.list,
+        self.export_metadata = async_to_raw_response_wrapper(
+            export.export_metadata,
         )
 
 
-class FileResourceWithStreamingResponse:
-    def __init__(self, file: FileResource) -> None:
-        self._file = file
+class ExportResourceWithStreamingResponse:
+    def __init__(self, export: ExportResource) -> None:
+        self._export = export
 
-        self.list = to_streamed_response_wrapper(
-            file.list,
+        self.export_metadata = to_streamed_response_wrapper(
+            export.export_metadata,
         )
 
 
-class AsyncFileResourceWithStreamingResponse:
-    def __init__(self, file: AsyncFileResource) -> None:
-        self._file = file
+class AsyncExportResourceWithStreamingResponse:
+    def __init__(self, export: AsyncExportResource) -> None:
+        self._export = export
 
-        self.list = async_to_streamed_response_wrapper(
-            file.list,
+        self.export_metadata = async_to_streamed_response_wrapper(
+            export.export_metadata,
         )
