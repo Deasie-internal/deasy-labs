@@ -23,10 +23,12 @@ from pydantic import ValidationError
 
 from Deasy import Deasy, AsyncDeasy, APIResponseValidationError
 from Deasy._types import Omit
+from Deasy._utils import maybe_transform
 from Deasy._models import BaseModel, FinalRequestOptions
 from Deasy._constants import RAW_RESPONSE_HEADER
 from Deasy._exceptions import DeasyError, APIStatusError, APITimeoutError, APIResponseValidationError
 from Deasy._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from Deasy.types.metadata_list_metadata_params import MetadataListMetadataParams
 
 from .utils import update_env
 
@@ -735,20 +737,30 @@ class TestDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/metadata/list").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.get("/", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
+            self.client.post(
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vector_db_config={}), MetadataListMetadataParams)),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+            )
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/").mock(return_value=httpx.Response(500))
+        respx_mock.post("/metadata/list").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.get("/", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
+            self.client.post(
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vector_db_config={}), MetadataListMetadataParams)),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+            )
 
         assert _get_open_connections(self.client) == 0
 
@@ -776,9 +788,9 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.with_raw_response.retrieve()
+        response = client.metadata.with_raw_response.list_metadata(vector_db_config={})
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -798,9 +810,11 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.with_raw_response.retrieve(extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.metadata.with_raw_response.list_metadata(
+            vector_db_config={}, extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -821,9 +835,11 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.with_raw_response.retrieve(extra_headers={"x-stainless-retry-count": "42"})
+        response = client.metadata.with_raw_response.list_metadata(
+            vector_db_config={}, extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1517,20 +1533,30 @@ class TestAsyncDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/metadata/list").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.get("/", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
+            await self.client.post(
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vector_db_config={}), MetadataListMetadataParams)),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+            )
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/").mock(return_value=httpx.Response(500))
+        respx_mock.post("/metadata/list").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.get("/", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
+            await self.client.post(
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vector_db_config={}), MetadataListMetadataParams)),
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+            )
 
         assert _get_open_connections(self.client) == 0
 
@@ -1559,9 +1585,9 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.with_raw_response.retrieve()
+        response = await client.metadata.with_raw_response.list_metadata(vector_db_config={})
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1584,9 +1610,11 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.with_raw_response.retrieve(extra_headers={"x-stainless-retry-count": Omit()})
+        response = await client.metadata.with_raw_response.list_metadata(
+            vector_db_config={}, extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1608,9 +1636,11 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.with_raw_response.retrieve(extra_headers={"x-stainless-retry-count": "42"})
+        response = await client.metadata.with_raw_response.list_metadata(
+            vector_db_config={}, extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 

@@ -34,7 +34,10 @@ client = Deasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
-client = client.retrieve()
+response = client.metadata.list_metadata(
+    vector_db_config={},
+)
+print(response.metadata)
 ```
 
 While you can provide a `bearer_token` keyword argument,
@@ -57,7 +60,10 @@ client = AsyncDeasy(
 
 
 async def main() -> None:
-    client = await client.retrieve()
+    response = await client.metadata.list_metadata(
+        vector_db_config={},
+    )
+    print(response.metadata)
 
 
 asyncio.run(main())
@@ -113,7 +119,9 @@ from Deasy import Deasy
 client = Deasy()
 
 try:
-    client.retrieve()
+    client.metadata.list_metadata(
+        vector_db_config={},
+    )
 except Deasy.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -156,7 +164,9 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).retrieve()
+client.with_options(max_retries=5).metadata.list_metadata(
+    vector_db_config={},
+)
 ```
 
 ### Timeouts
@@ -179,7 +189,9 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).retrieve()
+client.with_options(timeout=5.0).metadata.list_metadata(
+    vector_db_config={},
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -220,11 +232,13 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from Deasy import Deasy
 
 client = Deasy()
-response = client.with_raw_response.retrieve()
+response = client.metadata.with_raw_response.list_metadata(
+    vector_db_config={},
+)
 print(response.headers.get('X-My-Header'))
 
-client = response.parse()  # get the object that `retrieve()` would have returned
-print(client)
+metadata = response.parse()  # get the object that `metadata.list_metadata()` would have returned
+print(metadata.metadata)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) object.
@@ -238,7 +252,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.with_streaming_response.retrieve() as response:
+with client.metadata.with_streaming_response.list_metadata(
+    vector_db_config={},
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
