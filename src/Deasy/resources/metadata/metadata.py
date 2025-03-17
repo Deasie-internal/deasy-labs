@@ -50,7 +50,6 @@ from .standardize import (
     AsyncStandardizeResourceWithStreamingResponse,
 )
 from ..._base_client import make_request_options
-from ...types.tag_condition_param import TagConditionParam
 from ...types.condition_input_param import ConditionInputParam
 from ...types.metadata_delete_response import MetadataDeleteResponse
 from ...types.metadata_upsert_response import MetadataUpsertResponse
@@ -97,7 +96,7 @@ class MetadataResource(SyncAPIResource):
         *,
         vector_db_config: object,
         x_user: str,
-        conditions: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[Iterable[metadata_delete_params.Condition]] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -310,7 +309,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         *,
         vector_db_config: object,
         x_user: str,
-        conditions: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[Iterable[metadata_delete_params.Condition]] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
