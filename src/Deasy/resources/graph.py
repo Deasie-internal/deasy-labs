@@ -69,12 +69,11 @@ class GraphResource(SyncAPIResource):
         """
         Create a new graph.
 
-        Args: request: The request containing graph details (name, description, data).
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: GraphOperationResponse: The response containing the created graph ID.
-
-        Raises: HTTPException: If there's an error creating the graph.
+            graph_name: The name of the graph to create.
+            graph_description: The description of the graph to create.
+            graph_data: The data of the graph to create.
 
         Args:
           extra_headers: Send extra headers
@@ -117,12 +116,11 @@ class GraphResource(SyncAPIResource):
         """
         Update a graph in the database.
 
-        Args: request: The request containing graph details (name, description, data).
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: GraphOperationResponse: The response containing the upserted graph ID.
-
-        Raises: HTTPException: If there's an error upserting the graph.
+            graph_name: The name of the graph to update.
+            graph_description: The description of the graph to update.
+            graph_data: The data of the graph to update.
 
         Args:
           extra_headers: Send extra headers
@@ -163,12 +161,9 @@ class GraphResource(SyncAPIResource):
         """
         List all graphs for the authenticated user.
 
-        Args: request: The request containing optional filter by graph names.
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: ListGraphsResponse: The response containing the list of graphs.
-
-        Raises: HTTPException: If there's an error retrieving the graphs.
+            graph_names: The names of the graphs to filter by.
 
         Args:
           extra_headers: Send extra headers
@@ -199,16 +194,12 @@ class GraphResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> GraphOperationResponse:
-        """Delete a graph by ID.
+        """
+        Delete a graph by name.
 
-        Args: graph_id: The ID of the graph to delete.
+        Attributes:
 
-        x_user_and_token_id: The
-        authenticated user and token ID.
-
-        Returns: GraphOperationResponse: The response containing the deleted graph ID.
-
-        Raises: HTTPException: If there's an error deleting the graph.
+            graph_name: The name of the graph to delete.
 
         Args:
           extra_headers: Send extra headers
@@ -248,14 +239,12 @@ class GraphResource(SyncAPIResource):
         """
         Upsert a graph in the database.
 
-        Creates a new graph if graph_id is None, otherwise updates an existing graph.
+        Attributes:
 
-        Args: request: The request containing graph details (id, name, description,
-        data). x_user_and_token_id: The authenticated user and token ID.
-
-        Returns: GraphOperationResponse: The response containing the upserted graph ID.
-
-        Raises: HTTPException: If there's an error upserting the graph.
+            graph_name: The stored name of the graph to upsert.
+            new_graph_name: The new name of the graph to upsert.
+            graph_description: The description of the graph to upsert.
+            graph_data: The data of the graph to upsert.
 
         Args:
           extra_headers: Send extra headers
@@ -320,12 +309,11 @@ class AsyncGraphResource(AsyncAPIResource):
         """
         Create a new graph.
 
-        Args: request: The request containing graph details (name, description, data).
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: GraphOperationResponse: The response containing the created graph ID.
-
-        Raises: HTTPException: If there's an error creating the graph.
+            graph_name: The name of the graph to create.
+            graph_description: The description of the graph to create.
+            graph_data: The data of the graph to create.
 
         Args:
           extra_headers: Send extra headers
@@ -368,12 +356,11 @@ class AsyncGraphResource(AsyncAPIResource):
         """
         Update a graph in the database.
 
-        Args: request: The request containing graph details (name, description, data).
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: GraphOperationResponse: The response containing the upserted graph ID.
-
-        Raises: HTTPException: If there's an error upserting the graph.
+            graph_name: The name of the graph to update.
+            graph_description: The description of the graph to update.
+            graph_data: The data of the graph to update.
 
         Args:
           extra_headers: Send extra headers
@@ -414,12 +401,9 @@ class AsyncGraphResource(AsyncAPIResource):
         """
         List all graphs for the authenticated user.
 
-        Args: request: The request containing optional filter by graph names.
-        x_user_and_token_id: The authenticated user and token ID.
+        Attributes:
 
-        Returns: ListGraphsResponse: The response containing the list of graphs.
-
-        Raises: HTTPException: If there's an error retrieving the graphs.
+            graph_names: The names of the graphs to filter by.
 
         Args:
           extra_headers: Send extra headers
@@ -450,16 +434,12 @@ class AsyncGraphResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> GraphOperationResponse:
-        """Delete a graph by ID.
+        """
+        Delete a graph by name.
 
-        Args: graph_id: The ID of the graph to delete.
+        Attributes:
 
-        x_user_and_token_id: The
-        authenticated user and token ID.
-
-        Returns: GraphOperationResponse: The response containing the deleted graph ID.
-
-        Raises: HTTPException: If there's an error deleting the graph.
+            graph_name: The name of the graph to delete.
 
         Args:
           extra_headers: Send extra headers
@@ -499,14 +479,12 @@ class AsyncGraphResource(AsyncAPIResource):
         """
         Upsert a graph in the database.
 
-        Creates a new graph if graph_id is None, otherwise updates an existing graph.
+        Attributes:
 
-        Args: request: The request containing graph details (id, name, description,
-        data). x_user_and_token_id: The authenticated user and token ID.
-
-        Returns: GraphOperationResponse: The response containing the upserted graph ID.
-
-        Raises: HTTPException: If there's an error upserting the graph.
+            graph_name: The stored name of the graph to upsert.
+            new_graph_name: The new name of the graph to upsert.
+            graph_description: The description of the graph to upsert.
+            graph_data: The data of the graph to upsert.
 
         Args:
           extra_headers: Send extra headers

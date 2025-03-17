@@ -13,7 +13,6 @@ from Deasy.types import (
     DatasliceCreateResponse,
     DatasliceDeleteResponse,
     DatasliceGetFilesResponse,
-    DatasliceGetMetricsResponse,
     DatasliceTagVdbDistributionResponse,
 )
 from tests.utils import assert_matches_type
@@ -183,46 +182,6 @@ class TestDataslice:
 
             dataslice = response.parse()
             assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_metrics(self, client: Deasy) -> None:
-        dataslice = client.dataslice.get_metrics()
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_get_metrics_with_all_params(self, client: Deasy) -> None:
-        dataslice = client.dataslice.get_metrics(
-            dataslice_id="dataslice_id",
-            file_names=["string"],
-            node_ids=["string"],
-            tags=["string"],
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_get_metrics(self, client: Deasy) -> None:
-        response = client.dataslice.with_raw_response.get_metrics()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = response.parse()
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_get_metrics(self, client: Deasy) -> None:
-        with client.dataslice.with_streaming_response.get_metrics() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = response.parse()
-            assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -426,46 +385,6 @@ class TestAsyncDataslice:
 
             dataslice = await response.parse()
             assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_metrics(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.get_metrics()
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_get_metrics_with_all_params(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.get_metrics(
-            dataslice_id="dataslice_id",
-            file_names=["string"],
-            node_ids=["string"],
-            tags=["string"],
-            vector_db_config={},
-        )
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_get_metrics(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.dataslice.with_raw_response.get_metrics()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dataslice = await response.parse()
-        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_get_metrics(self, async_client: AsyncDeasy) -> None:
-        async with async_client.dataslice.with_streaming_response.get_metrics() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dataslice = await response.parse()
-            assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

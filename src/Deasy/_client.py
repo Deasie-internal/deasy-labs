@@ -34,8 +34,10 @@ from ._response import (
     async_to_streamed_response_wrapper,
 )
 from .resources import (
+    tags,
     graph,
     classify,
+    metadata,
     classify_bulk,
     llm_connector,
     vdb_connector,
@@ -50,8 +52,6 @@ from ._base_client import (
     AsyncAPIClient,
     make_request_options,
 )
-from .resources.tags import tags
-from .resources.metadata import metadata
 from .resources.dataslice import dataslice
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "AsyncDeasy", "Client", "AsyncClient"]
