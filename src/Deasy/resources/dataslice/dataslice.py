@@ -19,8 +19,6 @@ from ...types import (
     dataslice_delete_params,
     dataslice_get_files_params,
     dataslice_get_metrics_params,
-    dataslice_get_file_count_params,
-    dataslice_check_sync_score_params,
     dataslice_tag_vdb_distribution_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -43,8 +41,6 @@ from ...types.dataslice_create_response import DatasliceCreateResponse
 from ...types.dataslice_delete_response import DatasliceDeleteResponse
 from ...types.dataslice_get_files_response import DatasliceGetFilesResponse
 from ...types.dataslice_get_metrics_response import DatasliceGetMetricsResponse
-from ...types.dataslice_get_file_count_response import DatasliceGetFileCountResponse
-from ...types.dataslice_check_sync_score_response import DatasliceCheckSyncScoreResponse
 from ...types.dataslice_tag_vdb_distribution_response import DatasliceTagVdbDistributionResponse
 
 __all__ = ["DatasliceResource", "AsyncDatasliceResource"]
@@ -179,90 +175,6 @@ class DatasliceResource(SyncAPIResource):
                 query=maybe_transform({"dataslice_id": dataslice_id}, dataslice_delete_params.DatasliceDeleteParams),
             ),
             cast_to=DatasliceDeleteResponse,
-        )
-
-    def check_sync_score(
-        self,
-        *,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hard_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceCheckSyncScoreResponse:
-        """
-        Check the synchronization status of a specific use case
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/dataslice/sync_score",
-            body=maybe_transform(
-                {
-                    "dataslice_id": dataslice_id,
-                    "hard_limit": hard_limit,
-                    "vector_db_config": vector_db_config,
-                },
-                dataslice_check_sync_score_params.DatasliceCheckSyncScoreParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DatasliceCheckSyncScoreResponse,
-        )
-
-    def get_file_count(
-        self,
-        *,
-        condition: Iterable[object],
-        vector_db_config: object,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        new_condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceGetFileCountResponse:
-        """
-        Get count of files matching dataslice conditions or provided conditions
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/dataslice/file_count",
-            body=maybe_transform(
-                {
-                    "condition": condition,
-                    "vector_db_config": vector_db_config,
-                    "dataslice_id": dataslice_id,
-                    "new_condition": new_condition,
-                },
-                dataslice_get_file_count_params.DatasliceGetFileCountParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DatasliceGetFileCountResponse,
         )
 
     def get_files(
@@ -515,90 +427,6 @@ class AsyncDatasliceResource(AsyncAPIResource):
             cast_to=DatasliceDeleteResponse,
         )
 
-    async def check_sync_score(
-        self,
-        *,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        hard_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceCheckSyncScoreResponse:
-        """
-        Check the synchronization status of a specific use case
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/dataslice/sync_score",
-            body=await async_maybe_transform(
-                {
-                    "dataslice_id": dataslice_id,
-                    "hard_limit": hard_limit,
-                    "vector_db_config": vector_db_config,
-                },
-                dataslice_check_sync_score_params.DatasliceCheckSyncScoreParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DatasliceCheckSyncScoreResponse,
-        )
-
-    async def get_file_count(
-        self,
-        *,
-        condition: Iterable[object],
-        vector_db_config: object,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        new_condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceGetFileCountResponse:
-        """
-        Get count of files matching dataslice conditions or provided conditions
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/dataslice/file_count",
-            body=await async_maybe_transform(
-                {
-                    "condition": condition,
-                    "vector_db_config": vector_db_config,
-                    "dataslice_id": dataslice_id,
-                    "new_condition": new_condition,
-                },
-                dataslice_get_file_count_params.DatasliceGetFileCountParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DatasliceGetFileCountResponse,
-        )
-
     async def get_files(
         self,
         *,
@@ -731,12 +559,6 @@ class DatasliceResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             dataslice.delete,
         )
-        self.check_sync_score = to_raw_response_wrapper(
-            dataslice.check_sync_score,
-        )
-        self.get_file_count = to_raw_response_wrapper(
-            dataslice.get_file_count,
-        )
         self.get_files = to_raw_response_wrapper(
             dataslice.get_files,
         )
@@ -764,12 +586,6 @@ class AsyncDatasliceResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             dataslice.delete,
-        )
-        self.check_sync_score = async_to_raw_response_wrapper(
-            dataslice.check_sync_score,
-        )
-        self.get_file_count = async_to_raw_response_wrapper(
-            dataslice.get_file_count,
         )
         self.get_files = async_to_raw_response_wrapper(
             dataslice.get_files,
@@ -799,12 +615,6 @@ class DatasliceResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             dataslice.delete,
         )
-        self.check_sync_score = to_streamed_response_wrapper(
-            dataslice.check_sync_score,
-        )
-        self.get_file_count = to_streamed_response_wrapper(
-            dataslice.get_file_count,
-        )
         self.get_files = to_streamed_response_wrapper(
             dataslice.get_files,
         )
@@ -832,12 +642,6 @@ class AsyncDatasliceResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             dataslice.delete,
-        )
-        self.check_sync_score = async_to_streamed_response_wrapper(
-            dataslice.check_sync_score,
-        )
-        self.get_file_count = async_to_streamed_response_wrapper(
-            dataslice.get_file_count,
         )
         self.get_files = async_to_streamed_response_wrapper(
             dataslice.get_files,

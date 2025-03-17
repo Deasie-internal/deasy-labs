@@ -34,12 +34,7 @@ client = Deasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
-token_create_response = client.admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
-)
-print(token_create_response.token_id)
+client = client.retrieve()
 ```
 
 While you can provide a `bearer_token` keyword argument,
@@ -62,12 +57,7 @@ client = AsyncDeasy(
 
 
 async def main() -> None:
-    token_create_response = await client.admin.token.create(
-        username="username",
-        x_token="x-token",
-        x_user="x-user",
-    )
-    print(token_create_response.token_id)
+    client = await client.retrieve()
 
 
 asyncio.run(main())
@@ -93,9 +83,9 @@ from Deasy import Deasy
 
 client = Deasy()
 
-response = client.metadata.get_distributions(
+response = client.metadata.list_metadata(
     vector_db_config={},
-    conditions_new={
+    conditions={
         "children": [],
         "condition": "AND",
         "tag": {
@@ -104,7 +94,7 @@ response = client.metadata.get_distributions(
         },
     },
 )
-print(response.conditions_new)
+print(response.conditions)
 ```
 
 ## Handling errors
@@ -123,11 +113,7 @@ from Deasy import Deasy
 client = Deasy()
 
 try:
-    client.admin.token.create(
-        username="username",
-        x_token="x-token",
-        x_user="x-user",
-    )
+    client.retrieve()
 except Deasy.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -170,11 +156,7 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
-)
+client.with_options(max_retries=5).retrieve()
 ```
 
 ### Timeouts
@@ -197,11 +179,7 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
-)
+client.with_options(timeout=5.0).retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -242,15 +220,11 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from Deasy import Deasy
 
 client = Deasy()
-response = client.admin.token.with_raw_response.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
-)
+response = client.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
-token = response.parse()  # get the object that `admin.token.create()` would have returned
-print(token.token_id)
+client = response.parse()  # get the object that `retrieve()` would have returned
+print(client)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) object.
@@ -264,11 +238,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.admin.token.with_streaming_response.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
-) as response:
+with client.with_streaming_response.retrieve() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
