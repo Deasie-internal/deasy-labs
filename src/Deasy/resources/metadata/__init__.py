@@ -8,14 +8,6 @@ from .file import (
     FileResourceWithStreamingResponse,
     AsyncFileResourceWithStreamingResponse,
 )
-from .chunk import (
-    ChunkResource,
-    AsyncChunkResource,
-    ChunkResourceWithRawResponse,
-    AsyncChunkResourceWithRawResponse,
-    ChunkResourceWithStreamingResponse,
-    AsyncChunkResourceWithStreamingResponse,
-)
 from .metadata import (
     MetadataResource,
     AsyncMetadataResource,
@@ -23,14 +15,6 @@ from .metadata import (
     AsyncMetadataResourceWithRawResponse,
     MetadataResourceWithStreamingResponse,
     AsyncMetadataResourceWithStreamingResponse,
-)
-from .standardize import (
-    StandardizeResource,
-    AsyncStandardizeResource,
-    StandardizeResourceWithRawResponse,
-    AsyncStandardizeResourceWithRawResponse,
-    StandardizeResourceWithStreamingResponse,
-    AsyncStandardizeResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -40,18 +24,6 @@ __all__ = [
     "AsyncFileResourceWithRawResponse",
     "FileResourceWithStreamingResponse",
     "AsyncFileResourceWithStreamingResponse",
-    "ChunkResource",
-    "AsyncChunkResource",
-    "ChunkResourceWithRawResponse",
-    "AsyncChunkResourceWithRawResponse",
-    "ChunkResourceWithStreamingResponse",
-    "AsyncChunkResourceWithStreamingResponse",
-    "StandardizeResource",
-    "AsyncStandardizeResource",
-    "StandardizeResourceWithRawResponse",
-    "AsyncStandardizeResourceWithRawResponse",
-    "StandardizeResourceWithStreamingResponse",
-    "AsyncStandardizeResourceWithStreamingResponse",
     "MetadataResource",
     "AsyncMetadataResource",
     "MetadataResourceWithRawResponse",

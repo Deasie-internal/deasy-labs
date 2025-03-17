@@ -27,47 +27,38 @@ pip install git+ssh://git@github.com/Deasie-internal/deasy-sdk.git
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-import os
 from Deasy import Deasy
 
 client = Deasy(
-    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
+    bearer_token="My Bearer Token",
 )
 
-create_response = client.admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
+file = client.metadata.file.list(
+    file_names=["string"],
+    vector_db_config={},
 )
-print(create_response.token_id)
+print(file.file_tags)
 ```
-
-While you can provide a `bearer_token` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `DEASY_BEARER_TOKEN="My Bearer Token"` to your `.env` file
-so that your Bearer Token is not stored in source control.
 
 ## Async usage
 
 Simply import `AsyncDeasy` instead of `Deasy` and use `await` with each API call:
 
 ```python
-import os
 import asyncio
 from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
-    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
+    bearer_token="My Bearer Token",
 )
 
 
 async def main() -> None:
-    create_response = await client.admin.token.create(
-        username="username",
-        x_token="x-token",
-        x_user="x-user",
+    file = await client.metadata.file.list(
+        file_names=["string"],
+        vector_db_config={},
     )
-    print(create_response.token_id)
+    print(file.file_tags)
 
 
 asyncio.run(main())
@@ -84,29 +75,6 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
-## Nested params
-
-Nested parameters are dictionaries, typed using `TypedDict`, for example:
-
-```python
-from Deasy import Deasy
-
-client = Deasy()
-
-response = client.metadata.get_distributions(
-    vector_db_config={},
-    conditions_new={
-        "children": [],
-        "condition": "AND",
-        "tag": {
-            "name": "name",
-            "values": ["string"],
-        },
-    },
-)
-print(response.conditions_new)
-```
-
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `Deasy.APIConnectionError` is raised.
@@ -120,13 +88,14 @@ All errors inherit from `Deasy.APIError`.
 import Deasy
 from Deasy import Deasy
 
-client = Deasy()
+client = Deasy(
+    bearer_token="My Bearer Token",
+)
 
 try:
-    client.admin.token.create(
-        username="username",
-        x_token="x-token",
-        x_user="x-user",
+    client.metadata.file.list(
+        file_names=["string"],
+        vector_db_config={},
     )
 except Deasy.APIConnectionError as e:
     print("The server could not be reached")
@@ -167,13 +136,13 @@ from Deasy import Deasy
 client = Deasy(
     # default is 2
     max_retries=0,
+    bearer_token="My Bearer Token",
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
+client.with_options(max_retries=5).metadata.file.list(
+    file_names=["string"],
+    vector_db_config={},
 )
 ```
 
@@ -189,18 +158,19 @@ from Deasy import Deasy
 client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
+    bearer_token="My Bearer Token",
 )
 
 # More granular control:
 client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+    bearer_token="My Bearer Token",
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).admin.token.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
+client.with_options(timeout=5.0).metadata.file.list(
+    file_names=["string"],
+    vector_db_config={},
 )
 ```
 
@@ -241,16 +211,17 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from Deasy import Deasy
 
-client = Deasy()
-response = client.admin.token.with_raw_response.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
+client = Deasy(
+    bearer_token="My Bearer Token",
+)
+response = client.metadata.file.with_raw_response.list(
+    file_names=["string"],
+    vector_db_config={},
 )
 print(response.headers.get('X-My-Header'))
 
-token = response.parse()  # get the object that `admin.token.create()` would have returned
-print(token.token_id)
+file = response.parse()  # get the object that `metadata.file.list()` would have returned
+print(file.file_tags)
 ```
 
 These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-sdk/tree/main/src/Deasy/_response.py) object.
@@ -264,10 +235,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.admin.token.with_streaming_response.create(
-    username="username",
-    x_token="x-token",
-    x_user="x-user",
+with client.metadata.file.with_streaming_response.list(
+    file_names=["string"],
+    vector_db_config={},
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -330,6 +300,7 @@ client = Deasy(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
+    bearer_token="My Bearer Token",
 )
 ```
 
@@ -346,7 +317,9 @@ By default the library closes underlying HTTP connections whenever the client is
 ```py
 from Deasy import Deasy
 
-with Deasy() as client:
+with Deasy(
+    bearer_token="My Bearer Token",
+) as client:
   # make requests here
   ...
 
