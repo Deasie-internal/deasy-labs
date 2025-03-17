@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -21,8 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.dataslice import export_to_vdb_params, export_metadata_params
-from ...types.dataslice.export_to_vdb_response import ExportToVdbResponse
+from ...types.dataslice import export_metadata_params
 
 __all__ = ["ExportResource", "AsyncExportResource"]
 
@@ -65,6 +64,14 @@ class ExportResource(SyncAPIResource):
         """
         Export file-level/chunk-level metadata for a use case
 
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to export metadata from.
+            dataslice_id: The id of the dataslice to export metadata from.
+            export_file_level: Whether to export file-level metadata or chunk-level metadata.
+            export_format: The format to export the metadata in, JSON or CSV.
+            selected_metadata_fields: The metadata fields to include in the export.
+
         Args:
           extra_headers: Send extra headers
 
@@ -90,51 +97,6 @@ class ExportResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=object,
-        )
-
-    def to_vdb(
-        self,
-        *,
-        target_vector_db_config: object,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        export_level: Literal["file", "chunk", "both"] | NotGiven = NOT_GIVEN,
-        export_tags: Iterable[object] | NotGiven = NOT_GIVEN,
-        ori_vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExportToVdbResponse:
-        """
-        Export metadata for a use case to a target vector database
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/dataslice/export/vdb",
-            body=maybe_transform(
-                {
-                    "target_vector_db_config": target_vector_db_config,
-                    "dataslice_id": dataslice_id,
-                    "export_level": export_level,
-                    "export_tags": export_tags,
-                    "ori_vector_db_config": ori_vector_db_config,
-                },
-                export_to_vdb_params.ExportToVdbParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ExportToVdbResponse,
         )
 
 
@@ -176,6 +138,14 @@ class AsyncExportResource(AsyncAPIResource):
         """
         Export file-level/chunk-level metadata for a use case
 
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to export metadata from.
+            dataslice_id: The id of the dataslice to export metadata from.
+            export_file_level: Whether to export file-level metadata or chunk-level metadata.
+            export_format: The format to export the metadata in, JSON or CSV.
+            selected_metadata_fields: The metadata fields to include in the export.
+
         Args:
           extra_headers: Send extra headers
 
@@ -203,51 +173,6 @@ class AsyncExportResource(AsyncAPIResource):
             cast_to=object,
         )
 
-    async def to_vdb(
-        self,
-        *,
-        target_vector_db_config: object,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        export_level: Literal["file", "chunk", "both"] | NotGiven = NOT_GIVEN,
-        export_tags: Iterable[object] | NotGiven = NOT_GIVEN,
-        ori_vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExportToVdbResponse:
-        """
-        Export metadata for a use case to a target vector database
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/dataslice/export/vdb",
-            body=await async_maybe_transform(
-                {
-                    "target_vector_db_config": target_vector_db_config,
-                    "dataslice_id": dataslice_id,
-                    "export_level": export_level,
-                    "export_tags": export_tags,
-                    "ori_vector_db_config": ori_vector_db_config,
-                },
-                export_to_vdb_params.ExportToVdbParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ExportToVdbResponse,
-        )
-
 
 class ExportResourceWithRawResponse:
     def __init__(self, export: ExportResource) -> None:
@@ -255,9 +180,6 @@ class ExportResourceWithRawResponse:
 
         self.metadata = to_raw_response_wrapper(
             export.metadata,
-        )
-        self.to_vdb = to_raw_response_wrapper(
-            export.to_vdb,
         )
 
 
@@ -268,9 +190,6 @@ class AsyncExportResourceWithRawResponse:
         self.metadata = async_to_raw_response_wrapper(
             export.metadata,
         )
-        self.to_vdb = async_to_raw_response_wrapper(
-            export.to_vdb,
-        )
 
 
 class ExportResourceWithStreamingResponse:
@@ -280,9 +199,6 @@ class ExportResourceWithStreamingResponse:
         self.metadata = to_streamed_response_wrapper(
             export.metadata,
         )
-        self.to_vdb = to_streamed_response_wrapper(
-            export.to_vdb,
-        )
 
 
 class AsyncExportResourceWithStreamingResponse:
@@ -291,7 +207,4 @@ class AsyncExportResourceWithStreamingResponse:
 
         self.metadata = async_to_streamed_response_wrapper(
             export.metadata,
-        )
-        self.to_vdb = async_to_streamed_response_wrapper(
-            export.to_vdb,
         )

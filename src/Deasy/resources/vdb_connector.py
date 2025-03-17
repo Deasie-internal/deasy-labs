@@ -66,6 +66,11 @@ class VdbConnectorResource(SyncAPIResource):
         """
         Create a new vdb connector
 
+        Attributes:
+
+            connector_name: The profile name of the connector to create.
+            connector_body: The body of the connector to create.
+
         Args:
           extra_headers: Send extra headers
 
@@ -104,6 +109,11 @@ class VdbConnectorResource(SyncAPIResource):
     ) -> ConnectorResponse:
         """
         Update a vdb connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to update.
+            connector_body: The body of the connector to update.
 
         Args:
           extra_headers: Send extra headers
@@ -162,6 +172,10 @@ class VdbConnectorResource(SyncAPIResource):
         """
         Delete a vdb connector
 
+        Attributes:
+
+            connector_name: The profile name of the connector to delete.
+
         Args:
           extra_headers: Send extra headers
 
@@ -195,6 +209,10 @@ class VdbConnectorResource(SyncAPIResource):
     ) -> VdbConnectorGetDeleteStatsResponse:
         """
         Get tag delete stats of a vdb connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to get the delete stats for.
 
         Args:
           extra_headers: Send extra headers
@@ -253,6 +271,11 @@ class AsyncVdbConnectorResource(AsyncAPIResource):
         """
         Create a new vdb connector
 
+        Attributes:
+
+            connector_name: The profile name of the connector to create.
+            connector_body: The body of the connector to create.
+
         Args:
           extra_headers: Send extra headers
 
@@ -291,6 +314,11 @@ class AsyncVdbConnectorResource(AsyncAPIResource):
     ) -> ConnectorResponse:
         """
         Update a vdb connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to update.
+            connector_body: The body of the connector to update.
 
         Args:
           extra_headers: Send extra headers
@@ -349,6 +377,10 @@ class AsyncVdbConnectorResource(AsyncAPIResource):
         """
         Delete a vdb connector
 
+        Attributes:
+
+            connector_name: The profile name of the connector to delete.
+
         Args:
           extra_headers: Send extra headers
 
@@ -382,6 +414,10 @@ class AsyncVdbConnectorResource(AsyncAPIResource):
     ) -> VdbConnectorGetDeleteStatsResponse:
         """
         Get tag delete stats of a vdb connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to get the delete stats for.
 
         Args:
           extra_headers: Send extra headers

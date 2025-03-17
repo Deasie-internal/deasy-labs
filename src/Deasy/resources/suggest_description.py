@@ -65,6 +65,15 @@ class SuggestDescriptionResource(SyncAPIResource):
         """
         Suggest a description for a tag based on context and vector DB content
 
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            endpoint_manager_config: The endpoint manager configuration to use.
+            tag_name: The name of the tag to suggest a description for.
+            context: The context to suggest a description for the tag.
+            current_description: The current description of the tag.
+            available_values: The available values for the tag.
+
         Args:
           extra_headers: Send extra headers
 
@@ -132,6 +141,15 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
     ) -> SuggestDescriptionCreateResponse:
         """
         Suggest a description for a tag based on context and vector DB content
+
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            endpoint_manager_config: The endpoint manager configuration to use.
+            tag_name: The name of the tag to suggest a description for.
+            context: The context to suggest a description for the tag.
+            current_description: The current description of the tag.
+            available_values: The available values for the tag.
 
         Args:
           extra_headers: Send extra headers

@@ -2,69 +2,76 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
-
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
+from ..types import (
+    tag_create_params,
+    tag_delete_params,
+    tag_update_params,
+    tag_upsert_params,
+    tag_get_delete_stats_params,
+)
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.tags import group_create_params, group_delete_params, group_update_params
-from ..._base_client import make_request_options
-from ...types.tags.group_list_response import GroupListResponse
-from ...types.tags.group_create_response import GroupCreateResponse
-from ...types.tags.group_delete_response import GroupDeleteResponse
-from ...types.tags.group_update_response import GroupUpdateResponse
+from .._base_client import make_request_options
+from ..types.tag_response import TagResponse
+from ..types.tag_list_response import TagListResponse
+from ..types.tag_create_response import TagCreateResponse
+from ..types.tag_upsert_response import TagUpsertResponse
+from ..types.tag_get_delete_stats_response import TagGetDeleteStatsResponse
 
-__all__ = ["GroupsResource", "AsyncGroupsResource"]
+__all__ = ["TagsResource", "AsyncTagsResource"]
 
 
-class GroupsResource(SyncAPIResource):
+class TagsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> GroupsResourceWithRawResponse:
+    def with_raw_response(self) -> TagsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
-        return GroupsResourceWithRawResponse(self)
+        return TagsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> GroupsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> TagsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
-        return GroupsResourceWithStreamingResponse(self)
+        return TagsResourceWithStreamingResponse(self)
 
     def create(
         self,
         *,
-        group_name: str,
+        tag_data: object,
         x_user: str,
-        group_description: str | NotGiven = NOT_GIVEN,
-        tag_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupCreateResponse:
+    ) -> TagCreateResponse:
         """
-        Create a new tag group
+        Create a new tag
+
+        Attributes:
+
+            tag_data: The tag data to create the tag with.
 
         Args:
           extra_headers: Send extra headers
@@ -77,38 +84,32 @@ class GroupsResource(SyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._post(
-            "/tags/groups/create",
-            body=maybe_transform(
-                {
-                    "group_name": group_name,
-                    "group_description": group_description,
-                    "tag_ids": tag_ids,
-                },
-                group_create_params.GroupCreateParams,
-            ),
+            "/tags/create",
+            body=maybe_transform({"tag_data": tag_data}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupCreateResponse,
+            cast_to=TagCreateResponse,
         )
 
     def update(
         self,
         *,
-        group_id: str,
+        tag_data: object,
         x_user: str,
-        group_description: Optional[str] | NotGiven = NOT_GIVEN,
-        group_name: Optional[str] | NotGiven = NOT_GIVEN,
-        tag_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupUpdateResponse:
+    ) -> TagResponse:
         """
-        Update an existing tag group
+        Update an existing tag
+
+        Attributes:
+
+            tag_data: The tag data to update the tag with.
 
         Args:
           extra_headers: Send extra headers
@@ -121,20 +122,12 @@ class GroupsResource(SyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._put(
-            "/tags/groups/update",
-            body=maybe_transform(
-                {
-                    "group_id": group_id,
-                    "group_description": group_description,
-                    "group_name": group_name,
-                    "tag_ids": tag_ids,
-                },
-                group_update_params.GroupUpdateParams,
-            ),
+            "/tags/update",
+            body=maybe_transform({"tag_data": tag_data}, tag_update_params.TagUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupUpdateResponse,
+            cast_to=TagResponse,
         )
 
     def list(
@@ -147,9 +140,9 @@ class GroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupListResponse:
+    ) -> TagListResponse:
         """
-        List all tag groups
+        Lists all tags
 
         Args:
           extra_headers: Send extra headers
@@ -162,28 +155,31 @@ class GroupsResource(SyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._get(
-            "/tags/groups/list",
+            "/tags/list",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupListResponse,
+            cast_to=TagListResponse,
         )
 
     def delete(
         self,
         *,
-        group_id: str,
+        tag_name: str,
         x_user: str,
-        delete_associated_tags: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupDeleteResponse:
+    ) -> TagResponse:
         """
-        Delete a tag group
+        Delete a tag
+
+        Attributes:
+
+            tag_name: The name of the tag to delete.
 
         Args:
           extra_headers: Send extra headers
@@ -196,60 +192,132 @@ class GroupsResource(SyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._delete(
-            "/tags/groups/delete",
+            "/tags/delete",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "group_id": group_id,
-                        "delete_associated_tags": delete_associated_tags,
-                    },
-                    group_delete_params.GroupDeleteParams,
-                ),
+                query=maybe_transform({"tag_name": tag_name}, tag_delete_params.TagDeleteParams),
             ),
-            cast_to=GroupDeleteResponse,
+            cast_to=TagResponse,
         )
 
-
-class AsyncGroupsResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncGroupsResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncGroupsResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncGroupsResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
-        """
-        return AsyncGroupsResourceWithStreamingResponse(self)
-
-    async def create(
+    def get_delete_stats(
         self,
         *,
-        group_name: str,
+        tag_name: str,
         x_user: str,
-        group_description: str | NotGiven = NOT_GIVEN,
-        tag_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupCreateResponse:
+    ) -> TagGetDeleteStatsResponse:
         """
-        Create a new tag group
+        Get tag delete stats
+
+        Attributes:
+
+            tag_name: The name of the tag to get the delete stats for.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        return self._post(
+            "/tags/delete_stats",
+            body=maybe_transform({"tag_name": tag_name}, tag_get_delete_stats_params.TagGetDeleteStatsParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagGetDeleteStatsResponse,
+        )
+
+    def upsert(
+        self,
+        *,
+        tag_data: object,
+        x_user: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagUpsertResponse:
+        """
+        Upsert a tag
+
+        Attributes:
+
+            tag_data: The tag data to upsert the tag with.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        return self._post(
+            "/tags/upsert",
+            body=maybe_transform({"tag_data": tag_data}, tag_upsert_params.TagUpsertParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagUpsertResponse,
+        )
+
+
+class AsyncTagsResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncTagsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncTagsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncTagsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
+        """
+        return AsyncTagsResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        *,
+        tag_data: object,
+        x_user: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagCreateResponse:
+        """
+        Create a new tag
+
+        Attributes:
+
+            tag_data: The tag data to create the tag with.
 
         Args:
           extra_headers: Send extra headers
@@ -262,38 +330,32 @@ class AsyncGroupsResource(AsyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._post(
-            "/tags/groups/create",
-            body=await async_maybe_transform(
-                {
-                    "group_name": group_name,
-                    "group_description": group_description,
-                    "tag_ids": tag_ids,
-                },
-                group_create_params.GroupCreateParams,
-            ),
+            "/tags/create",
+            body=await async_maybe_transform({"tag_data": tag_data}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupCreateResponse,
+            cast_to=TagCreateResponse,
         )
 
     async def update(
         self,
         *,
-        group_id: str,
+        tag_data: object,
         x_user: str,
-        group_description: Optional[str] | NotGiven = NOT_GIVEN,
-        group_name: Optional[str] | NotGiven = NOT_GIVEN,
-        tag_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupUpdateResponse:
+    ) -> TagResponse:
         """
-        Update an existing tag group
+        Update an existing tag
+
+        Attributes:
+
+            tag_data: The tag data to update the tag with.
 
         Args:
           extra_headers: Send extra headers
@@ -306,20 +368,12 @@ class AsyncGroupsResource(AsyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._put(
-            "/tags/groups/update",
-            body=await async_maybe_transform(
-                {
-                    "group_id": group_id,
-                    "group_description": group_description,
-                    "group_name": group_name,
-                    "tag_ids": tag_ids,
-                },
-                group_update_params.GroupUpdateParams,
-            ),
+            "/tags/update",
+            body=await async_maybe_transform({"tag_data": tag_data}, tag_update_params.TagUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupUpdateResponse,
+            cast_to=TagResponse,
         )
 
     async def list(
@@ -332,9 +386,9 @@ class AsyncGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupListResponse:
+    ) -> TagListResponse:
         """
-        List all tag groups
+        Lists all tags
 
         Args:
           extra_headers: Send extra headers
@@ -347,28 +401,31 @@ class AsyncGroupsResource(AsyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._get(
-            "/tags/groups/list",
+            "/tags/list",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GroupListResponse,
+            cast_to=TagListResponse,
         )
 
     async def delete(
         self,
         *,
-        group_id: str,
+        tag_name: str,
         x_user: str,
-        delete_associated_tags: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GroupDeleteResponse:
+    ) -> TagResponse:
         """
-        Delete a tag group
+        Delete a tag
+
+        Attributes:
+
+            tag_name: The name of the tag to delete.
 
         Args:
           extra_headers: Send extra headers
@@ -381,91 +438,187 @@ class AsyncGroupsResource(AsyncAPIResource):
         """
         extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._delete(
-            "/tags/groups/delete",
+            "/tags/delete",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "group_id": group_id,
-                        "delete_associated_tags": delete_associated_tags,
-                    },
-                    group_delete_params.GroupDeleteParams,
-                ),
+                query=await async_maybe_transform({"tag_name": tag_name}, tag_delete_params.TagDeleteParams),
             ),
-            cast_to=GroupDeleteResponse,
+            cast_to=TagResponse,
+        )
+
+    async def get_delete_stats(
+        self,
+        *,
+        tag_name: str,
+        x_user: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagGetDeleteStatsResponse:
+        """
+        Get tag delete stats
+
+        Attributes:
+
+            tag_name: The name of the tag to get the delete stats for.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        return await self._post(
+            "/tags/delete_stats",
+            body=await async_maybe_transform(
+                {"tag_name": tag_name}, tag_get_delete_stats_params.TagGetDeleteStatsParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagGetDeleteStatsResponse,
+        )
+
+    async def upsert(
+        self,
+        *,
+        tag_data: object,
+        x_user: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TagUpsertResponse:
+        """
+        Upsert a tag
+
+        Attributes:
+
+            tag_data: The tag data to upsert the tag with.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        return await self._post(
+            "/tags/upsert",
+            body=await async_maybe_transform({"tag_data": tag_data}, tag_upsert_params.TagUpsertParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TagUpsertResponse,
         )
 
 
-class GroupsResourceWithRawResponse:
-    def __init__(self, groups: GroupsResource) -> None:
-        self._groups = groups
+class TagsResourceWithRawResponse:
+    def __init__(self, tags: TagsResource) -> None:
+        self._tags = tags
 
         self.create = to_raw_response_wrapper(
-            groups.create,
+            tags.create,
         )
         self.update = to_raw_response_wrapper(
-            groups.update,
+            tags.update,
         )
         self.list = to_raw_response_wrapper(
-            groups.list,
+            tags.list,
         )
         self.delete = to_raw_response_wrapper(
-            groups.delete,
+            tags.delete,
+        )
+        self.get_delete_stats = to_raw_response_wrapper(
+            tags.get_delete_stats,
+        )
+        self.upsert = to_raw_response_wrapper(
+            tags.upsert,
         )
 
 
-class AsyncGroupsResourceWithRawResponse:
-    def __init__(self, groups: AsyncGroupsResource) -> None:
-        self._groups = groups
+class AsyncTagsResourceWithRawResponse:
+    def __init__(self, tags: AsyncTagsResource) -> None:
+        self._tags = tags
 
         self.create = async_to_raw_response_wrapper(
-            groups.create,
+            tags.create,
         )
         self.update = async_to_raw_response_wrapper(
-            groups.update,
+            tags.update,
         )
         self.list = async_to_raw_response_wrapper(
-            groups.list,
+            tags.list,
         )
         self.delete = async_to_raw_response_wrapper(
-            groups.delete,
+            tags.delete,
+        )
+        self.get_delete_stats = async_to_raw_response_wrapper(
+            tags.get_delete_stats,
+        )
+        self.upsert = async_to_raw_response_wrapper(
+            tags.upsert,
         )
 
 
-class GroupsResourceWithStreamingResponse:
-    def __init__(self, groups: GroupsResource) -> None:
-        self._groups = groups
+class TagsResourceWithStreamingResponse:
+    def __init__(self, tags: TagsResource) -> None:
+        self._tags = tags
 
         self.create = to_streamed_response_wrapper(
-            groups.create,
+            tags.create,
         )
         self.update = to_streamed_response_wrapper(
-            groups.update,
+            tags.update,
         )
         self.list = to_streamed_response_wrapper(
-            groups.list,
+            tags.list,
         )
         self.delete = to_streamed_response_wrapper(
-            groups.delete,
+            tags.delete,
+        )
+        self.get_delete_stats = to_streamed_response_wrapper(
+            tags.get_delete_stats,
+        )
+        self.upsert = to_streamed_response_wrapper(
+            tags.upsert,
         )
 
 
-class AsyncGroupsResourceWithStreamingResponse:
-    def __init__(self, groups: AsyncGroupsResource) -> None:
-        self._groups = groups
+class AsyncTagsResourceWithStreamingResponse:
+    def __init__(self, tags: AsyncTagsResource) -> None:
+        self._tags = tags
 
         self.create = async_to_streamed_response_wrapper(
-            groups.create,
+            tags.create,
         )
         self.update = async_to_streamed_response_wrapper(
-            groups.update,
+            tags.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            groups.list,
+            tags.list,
         )
         self.delete = async_to_streamed_response_wrapper(
-            groups.delete,
+            tags.delete,
+        )
+        self.get_delete_stats = async_to_streamed_response_wrapper(
+            tags.get_delete_stats,
+        )
+        self.upsert = async_to_streamed_response_wrapper(
+            tags.upsert,
         )

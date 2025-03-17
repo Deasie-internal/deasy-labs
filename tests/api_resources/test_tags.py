@@ -136,6 +136,7 @@ class TestTags:
     def test_method_delete(self, client: Deasy) -> None:
         tag = client.tags.delete(
             tag_name="tag_name",
+            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -144,6 +145,7 @@ class TestTags:
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.delete(
             tag_name="tag_name",
+            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -156,6 +158,7 @@ class TestTags:
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.delete(
             tag_name="tag_name",
+            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -170,6 +173,7 @@ class TestTags:
     def test_method_get_delete_stats(self, client: Deasy) -> None:
         tag = client.tags.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
@@ -178,6 +182,7 @@ class TestTags:
     def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -190,6 +195,7 @@ class TestTags:
     def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -353,6 +359,7 @@ class TestAsyncTags:
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.delete(
             tag_name="tag_name",
+            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -361,6 +368,7 @@ class TestAsyncTags:
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.delete(
             tag_name="tag_name",
+            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -373,6 +381,7 @@ class TestAsyncTags:
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.delete(
             tag_name="tag_name",
+            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -387,6 +396,7 @@ class TestAsyncTags:
     async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
@@ -395,6 +405,7 @@ class TestAsyncTags:
     async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -407,6 +418,7 @@ class TestAsyncTags:
     async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.get_delete_stats(
             tag_name="tag_name",
+            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

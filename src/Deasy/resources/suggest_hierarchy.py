@@ -71,6 +71,21 @@ class SuggestHierarchyResource(SyncAPIResource):
         """
         Suggest a hierarchical tag schema based on file content and existing metadata
 
+        Attributes:
+
+            vdb_profile_name: The name of the vector database profile to use for accessing file content.
+            llm_profile_name: Optional name of the language model profile to use for generating suggestions. Defaults to DeasyLabs compute
+            file_names: Optional list of specific files to analyze for the hierarchy suggestion.
+            dataslice_id: Optional ID of a dataslice to pull files from for the hierarchy suggestion.
+            current_tree: Optional existing hierarchy tree to build upon.
+            node: Optional node location of the existing hierarchy tree to build upon.
+            condition: Optional filtering condition to select specific files for analysis.
+            user_context: Optional user-provided context to guide the suggestion process.
+            context_level: Level at which to analyze content ('file' or 'chunk'). Defaults to 'file'.
+            max_height: Maximum depth of the generated hierarchy tree. Defaults to 2.
+            use_existing_tags: Whether to incorporate existing tags in suggestions. Defaults to False.
+            use_extracted_tags: Whether to use previously extracted tags. Defaults to False.
+
         Args:
           extra_headers: Send extra headers
 
@@ -150,6 +165,21 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
     ) -> SuggestHierarchyCreateResponse:
         """
         Suggest a hierarchical tag schema based on file content and existing metadata
+
+        Attributes:
+
+            vdb_profile_name: The name of the vector database profile to use for accessing file content.
+            llm_profile_name: Optional name of the language model profile to use for generating suggestions. Defaults to DeasyLabs compute
+            file_names: Optional list of specific files to analyze for the hierarchy suggestion.
+            dataslice_id: Optional ID of a dataslice to pull files from for the hierarchy suggestion.
+            current_tree: Optional existing hierarchy tree to build upon.
+            node: Optional node location of the existing hierarchy tree to build upon.
+            condition: Optional filtering condition to select specific files for analysis.
+            user_context: Optional user-provided context to guide the suggestion process.
+            context_level: Level at which to analyze content ('file' or 'chunk'). Defaults to 'file'.
+            max_height: Maximum depth of the generated hierarchy tree. Defaults to 2.
+            use_existing_tags: Whether to incorporate existing tags in suggestions. Defaults to False.
+            use_extracted_tags: Whether to use previously extracted tags. Defaults to False.
 
         Args:
           extra_headers: Send extra headers

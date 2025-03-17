@@ -6,72 +6,36 @@ from typing import Dict, List, Iterable, Optional
 
 import httpx
 
-from .file import (
-    FileResource,
-    AsyncFileResource,
-    FileResourceWithRawResponse,
-    AsyncFileResourceWithRawResponse,
-    FileResourceWithStreamingResponse,
-    AsyncFileResourceWithStreamingResponse,
-)
-from .chunk import (
-    ChunkResource,
-    AsyncChunkResource,
-    ChunkResourceWithRawResponse,
-    AsyncChunkResourceWithRawResponse,
-    ChunkResourceWithStreamingResponse,
-    AsyncChunkResourceWithStreamingResponse,
-)
-from ...types import (
+from ..types import (
     metadata_delete_params,
     metadata_upsert_params,
     metadata_list_metadata_params,
     metadata_list_paginated_metadata_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .standardize import (
-    StandardizeResource,
-    AsyncStandardizeResource,
-    StandardizeResourceWithRawResponse,
-    AsyncStandardizeResourceWithRawResponse,
-    StandardizeResourceWithStreamingResponse,
-    AsyncStandardizeResourceWithStreamingResponse,
-)
-from ..._base_client import make_request_options
-from ...types.condition_input_param import ConditionInputParam
-from ...types.metadata_delete_response import MetadataDeleteResponse
-from ...types.metadata_upsert_response import MetadataUpsertResponse
-from ...types.metadata_list_metadata_response import MetadataListMetadataResponse
-from ...types.metadata_list_paginated_metadata_response import MetadataListPaginatedMetadataResponse
+from .._base_client import make_request_options
+from ..types.condition_input_param import ConditionInputParam
+from ..types.metadata_delete_response import MetadataDeleteResponse
+from ..types.metadata_upsert_response import MetadataUpsertResponse
+from ..types.metadata_list_metadata_response import MetadataListMetadataResponse
+from ..types.metadata_list_paginated_metadata_response import MetadataListPaginatedMetadataResponse
 
 __all__ = ["MetadataResource", "AsyncMetadataResource"]
 
 
 class MetadataResource(SyncAPIResource):
-    @cached_property
-    def file(self) -> FileResource:
-        return FileResource(self._client)
-
-    @cached_property
-    def chunk(self) -> ChunkResource:
-        return ChunkResource(self._client)
-
-    @cached_property
-    def standardize(self) -> StandardizeResource:
-        return StandardizeResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> MetadataResourceWithRawResponse:
         """
@@ -108,6 +72,13 @@ class MetadataResource(SyncAPIResource):
     ) -> MetadataDeleteResponse:
         """
         Delete metadata for specified files and tags from the chunk-level metadata table
+
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            file_names: The files to delete the metadata for.
+            tags: The tags to delete the metadata for.
+            conditions: The conditions to delete the metadata for.
 
         Args:
           extra_headers: Send extra headers
@@ -153,6 +124,14 @@ class MetadataResource(SyncAPIResource):
     ) -> MetadataListMetadataResponse:
         """
         Get paginated filtered metadata based on conditions
+
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
 
         Args:
           extra_headers: Send extra headers
@@ -201,6 +180,16 @@ class MetadataResource(SyncAPIResource):
         """
         Get paginated filtered metadata based on conditions
 
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
+            offset: The offset to start the pagination from.
+            limit: The limit to the number of metadata to return.
+
         Args:
           extra_headers: Send extra headers
 
@@ -246,6 +235,12 @@ class MetadataResource(SyncAPIResource):
         """
         Upsert metadata for a given tag
 
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            metadata: The metadata to upsert.
+
         Args:
           extra_headers: Send extra headers
 
@@ -273,18 +268,6 @@ class MetadataResource(SyncAPIResource):
 
 
 class AsyncMetadataResource(AsyncAPIResource):
-    @cached_property
-    def file(self) -> AsyncFileResource:
-        return AsyncFileResource(self._client)
-
-    @cached_property
-    def chunk(self) -> AsyncChunkResource:
-        return AsyncChunkResource(self._client)
-
-    @cached_property
-    def standardize(self) -> AsyncStandardizeResource:
-        return AsyncStandardizeResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> AsyncMetadataResourceWithRawResponse:
         """
@@ -321,6 +304,13 @@ class AsyncMetadataResource(AsyncAPIResource):
     ) -> MetadataDeleteResponse:
         """
         Delete metadata for specified files and tags from the chunk-level metadata table
+
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            file_names: The files to delete the metadata for.
+            tags: The tags to delete the metadata for.
+            conditions: The conditions to delete the metadata for.
 
         Args:
           extra_headers: Send extra headers
@@ -366,6 +356,14 @@ class AsyncMetadataResource(AsyncAPIResource):
     ) -> MetadataListMetadataResponse:
         """
         Get paginated filtered metadata based on conditions
+
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
 
         Args:
           extra_headers: Send extra headers
@@ -414,6 +412,16 @@ class AsyncMetadataResource(AsyncAPIResource):
         """
         Get paginated filtered metadata based on conditions
 
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
+            offset: The offset to start the pagination from.
+            limit: The limit to the number of metadata to return.
+
         Args:
           extra_headers: Send extra headers
 
@@ -459,6 +467,12 @@ class AsyncMetadataResource(AsyncAPIResource):
         """
         Upsert metadata for a given tag
 
+        Attributes:
+
+            vector_db_config: The vector database configuration to use.
+            dataslice_id: The dataslice for getting files from.
+            metadata: The metadata to upsert.
+
         Args:
           extra_headers: Send extra headers
 
@@ -502,18 +516,6 @@ class MetadataResourceWithRawResponse:
             metadata.upsert,
         )
 
-    @cached_property
-    def file(self) -> FileResourceWithRawResponse:
-        return FileResourceWithRawResponse(self._metadata.file)
-
-    @cached_property
-    def chunk(self) -> ChunkResourceWithRawResponse:
-        return ChunkResourceWithRawResponse(self._metadata.chunk)
-
-    @cached_property
-    def standardize(self) -> StandardizeResourceWithRawResponse:
-        return StandardizeResourceWithRawResponse(self._metadata.standardize)
-
 
 class AsyncMetadataResourceWithRawResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
@@ -531,18 +533,6 @@ class AsyncMetadataResourceWithRawResponse:
         self.upsert = async_to_raw_response_wrapper(
             metadata.upsert,
         )
-
-    @cached_property
-    def file(self) -> AsyncFileResourceWithRawResponse:
-        return AsyncFileResourceWithRawResponse(self._metadata.file)
-
-    @cached_property
-    def chunk(self) -> AsyncChunkResourceWithRawResponse:
-        return AsyncChunkResourceWithRawResponse(self._metadata.chunk)
-
-    @cached_property
-    def standardize(self) -> AsyncStandardizeResourceWithRawResponse:
-        return AsyncStandardizeResourceWithRawResponse(self._metadata.standardize)
 
 
 class MetadataResourceWithStreamingResponse:
@@ -562,18 +552,6 @@ class MetadataResourceWithStreamingResponse:
             metadata.upsert,
         )
 
-    @cached_property
-    def file(self) -> FileResourceWithStreamingResponse:
-        return FileResourceWithStreamingResponse(self._metadata.file)
-
-    @cached_property
-    def chunk(self) -> ChunkResourceWithStreamingResponse:
-        return ChunkResourceWithStreamingResponse(self._metadata.chunk)
-
-    @cached_property
-    def standardize(self) -> StandardizeResourceWithStreamingResponse:
-        return StandardizeResourceWithStreamingResponse(self._metadata.standardize)
-
 
 class AsyncMetadataResourceWithStreamingResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
@@ -591,15 +569,3 @@ class AsyncMetadataResourceWithStreamingResponse:
         self.upsert = async_to_streamed_response_wrapper(
             metadata.upsert,
         )
-
-    @cached_property
-    def file(self) -> AsyncFileResourceWithStreamingResponse:
-        return AsyncFileResourceWithStreamingResponse(self._metadata.file)
-
-    @cached_property
-    def chunk(self) -> AsyncChunkResourceWithStreamingResponse:
-        return AsyncChunkResourceWithStreamingResponse(self._metadata.chunk)
-
-    @cached_property
-    def standardize(self) -> AsyncStandardizeResourceWithStreamingResponse:
-        return AsyncStandardizeResourceWithStreamingResponse(self._metadata.standardize)

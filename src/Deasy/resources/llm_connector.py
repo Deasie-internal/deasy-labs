@@ -58,7 +58,12 @@ class LlmConnectorResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectorResponse:
         """
-        Create a new vdb connector
+        Create a new llm connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to create.
+            connector_body: The body of the connector to create.
 
         Args:
           extra_headers: Send extra headers
@@ -98,6 +103,11 @@ class LlmConnectorResource(SyncAPIResource):
     ) -> ConnectorResponse:
         """
         Update a llm connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to update.
+            connector_body: The body of the connector to update.
 
         Args:
           extra_headers: Send extra headers
@@ -156,6 +166,10 @@ class LlmConnectorResource(SyncAPIResource):
         """
         Delete a llm connector
 
+        Attributes:
+
+            connector_name: The profile name of the connector to delete.
+
         Args:
           extra_headers: Send extra headers
 
@@ -210,7 +224,12 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectorResponse:
         """
-        Create a new vdb connector
+        Create a new llm connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to create.
+            connector_body: The body of the connector to create.
 
         Args:
           extra_headers: Send extra headers
@@ -250,6 +269,11 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
     ) -> ConnectorResponse:
         """
         Update a llm connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to update.
+            connector_body: The body of the connector to update.
 
         Args:
           extra_headers: Send extra headers
@@ -307,6 +331,10 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
     ) -> ConnectorResponse:
         """
         Delete a llm connector
+
+        Attributes:
+
+            connector_name: The profile name of the connector to delete.
 
         Args:
           extra_headers: Send extra headers
