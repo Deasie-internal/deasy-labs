@@ -6,7 +6,7 @@ from typing import List, Optional
 
 import httpx
 
-from ..types import suggest_hierarchy_suggest_params
+from ..types import suggest_hierarchy_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,7 +21,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.suggest_hierarchy_suggest_response import SuggestHierarchySuggestResponse
+from ..types.suggest_hierarchy_create_response import SuggestHierarchyCreateResponse
 
 __all__ = ["SuggestHierarchyResource", "AsyncSuggestHierarchyResource"]
 
@@ -33,7 +33,7 @@ class SuggestHierarchyResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return SuggestHierarchyResourceWithRawResponse(self)
 
@@ -42,11 +42,11 @@ class SuggestHierarchyResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return SuggestHierarchyResourceWithStreamingResponse(self)
 
-    def suggest(
+    def create(
         self,
         *,
         vdb_profile_name: str,
@@ -67,7 +67,7 @@ class SuggestHierarchyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SuggestHierarchySuggestResponse:
+    ) -> SuggestHierarchyCreateResponse:
         """
         Suggest a hierarchical tag schema based on file content and existing metadata
 
@@ -97,12 +97,12 @@ class SuggestHierarchyResource(SyncAPIResource):
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
                 },
-                suggest_hierarchy_suggest_params.SuggestHierarchySuggestParams,
+                suggest_hierarchy_create_params.SuggestHierarchyCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SuggestHierarchySuggestResponse,
+            cast_to=SuggestHierarchyCreateResponse,
         )
 
 
@@ -113,7 +113,7 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return AsyncSuggestHierarchyResourceWithRawResponse(self)
 
@@ -122,11 +122,11 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return AsyncSuggestHierarchyResourceWithStreamingResponse(self)
 
-    async def suggest(
+    async def create(
         self,
         *,
         vdb_profile_name: str,
@@ -147,7 +147,7 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SuggestHierarchySuggestResponse:
+    ) -> SuggestHierarchyCreateResponse:
         """
         Suggest a hierarchical tag schema based on file content and existing metadata
 
@@ -177,12 +177,12 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
                 },
-                suggest_hierarchy_suggest_params.SuggestHierarchySuggestParams,
+                suggest_hierarchy_create_params.SuggestHierarchyCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SuggestHierarchySuggestResponse,
+            cast_to=SuggestHierarchyCreateResponse,
         )
 
 
@@ -190,8 +190,8 @@ class SuggestHierarchyResourceWithRawResponse:
     def __init__(self, suggest_hierarchy: SuggestHierarchyResource) -> None:
         self._suggest_hierarchy = suggest_hierarchy
 
-        self.suggest = to_raw_response_wrapper(
-            suggest_hierarchy.suggest,
+        self.create = to_raw_response_wrapper(
+            suggest_hierarchy.create,
         )
 
 
@@ -199,8 +199,8 @@ class AsyncSuggestHierarchyResourceWithRawResponse:
     def __init__(self, suggest_hierarchy: AsyncSuggestHierarchyResource) -> None:
         self._suggest_hierarchy = suggest_hierarchy
 
-        self.suggest = async_to_raw_response_wrapper(
-            suggest_hierarchy.suggest,
+        self.create = async_to_raw_response_wrapper(
+            suggest_hierarchy.create,
         )
 
 
@@ -208,8 +208,8 @@ class SuggestHierarchyResourceWithStreamingResponse:
     def __init__(self, suggest_hierarchy: SuggestHierarchyResource) -> None:
         self._suggest_hierarchy = suggest_hierarchy
 
-        self.suggest = to_streamed_response_wrapper(
-            suggest_hierarchy.suggest,
+        self.create = to_streamed_response_wrapper(
+            suggest_hierarchy.create,
         )
 
 
@@ -217,6 +217,6 @@ class AsyncSuggestHierarchyResourceWithStreamingResponse:
     def __init__(self, suggest_hierarchy: AsyncSuggestHierarchyResource) -> None:
         self._suggest_hierarchy = suggest_hierarchy
 
-        self.suggest = async_to_streamed_response_wrapper(
-            suggest_hierarchy.suggest,
+        self.create = async_to_streamed_response_wrapper(
+            suggest_hierarchy.create,
         )

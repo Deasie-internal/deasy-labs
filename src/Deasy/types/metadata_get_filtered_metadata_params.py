@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from typing import List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 from .tag_condition_param import TagConditionParam
 
-__all__ = ["MetadataGetFilteredMetadataParams", "Condition", "ConditionsNew", "ConditionsNewTag"]
+__all__ = ["MetadataGetFilteredMetadataParams", "Condition"]
 
 
 class MetadataGetFilteredMetadataParams(TypedDict, total=False):
@@ -15,7 +15,7 @@ class MetadataGetFilteredMetadataParams(TypedDict, total=False):
 
     vector_db_config: Required[object]
 
-    conditions_new: Optional[ConditionsNew]
+    conditions_new: Optional["ConditionInputParam"]
 
     dataslice_id: Optional[str]
 
@@ -34,15 +34,4 @@ class Condition(TypedDict, total=False):
     values: Required[List[str]]
 
 
-class ConditionsNewTag(TypedDict, total=False):
-    name: Required[str]
-
-    values: Required[List[str]]
-
-
-class ConditionsNew(TypedDict, total=False):
-    children: Optional[Iterable[object]]
-
-    condition: Optional[Literal["AND", "OR"]]
-
-    tag: Optional[ConditionsNewTag]
+from .condition_input_param import ConditionInputParam

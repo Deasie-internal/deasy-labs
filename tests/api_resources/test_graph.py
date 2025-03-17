@@ -9,8 +9,8 @@ import pytest
 
 from Deasy import Deasy, AsyncDeasy
 from Deasy.types import (
-    GraphOperation,
     GraphListResponse,
+    GraphOperationResponse,
 )
 from tests.utils import assert_matches_type
 
@@ -26,7 +26,7 @@ class TestGraph:
         graph = client.graph.create(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -36,7 +36,7 @@ class TestGraph:
             graph_data={},
             graph_description="graph_description",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -48,7 +48,7 @@ class TestGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -60,7 +60,7 @@ class TestGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -70,7 +70,7 @@ class TestGraph:
         graph = client.graph.update(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -80,7 +80,7 @@ class TestGraph:
             graph_data={},
             graph_description="graph_description",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -92,7 +92,7 @@ class TestGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -104,7 +104,7 @@ class TestGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -150,7 +150,7 @@ class TestGraph:
         graph = client.graph.delete(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -162,7 +162,7 @@ class TestGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -174,7 +174,7 @@ class TestGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -184,7 +184,7 @@ class TestGraph:
         graph = client.graph.upsert(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -195,7 +195,7 @@ class TestGraph:
             graph_description="graph_description",
             new_graph_name="new_graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -207,7 +207,7 @@ class TestGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -219,7 +219,7 @@ class TestGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -233,7 +233,7 @@ class TestAsyncGraph:
         graph = await async_client.graph.create(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -243,7 +243,7 @@ class TestAsyncGraph:
             graph_data={},
             graph_description="graph_description",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -255,7 +255,7 @@ class TestAsyncGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = await response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -267,7 +267,7 @@ class TestAsyncGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = await response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -277,7 +277,7 @@ class TestAsyncGraph:
         graph = await async_client.graph.update(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -287,7 +287,7 @@ class TestAsyncGraph:
             graph_data={},
             graph_description="graph_description",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -299,7 +299,7 @@ class TestAsyncGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = await response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -311,7 +311,7 @@ class TestAsyncGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = await response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -357,7 +357,7 @@ class TestAsyncGraph:
         graph = await async_client.graph.delete(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -369,7 +369,7 @@ class TestAsyncGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = await response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -381,7 +381,7 @@ class TestAsyncGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = await response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -391,7 +391,7 @@ class TestAsyncGraph:
         graph = await async_client.graph.upsert(
             graph_name="graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -402,7 +402,7 @@ class TestAsyncGraph:
             graph_description="graph_description",
             new_graph_name="new_graph_name",
         )
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -414,7 +414,7 @@ class TestAsyncGraph:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         graph = await response.parse()
-        assert_matches_type(GraphOperation, graph, path=["response"])
+        assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -426,6 +426,6 @@ class TestAsyncGraph:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             graph = await response.parse()
-            assert_matches_type(GraphOperation, graph, path=["response"])
+            assert_matches_type(GraphOperationResponse, graph, path=["response"])
 
         assert cast(Any, response.is_closed) is True

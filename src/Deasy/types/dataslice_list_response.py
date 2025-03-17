@@ -1,26 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
+from .._compat import PYDANTIC_V2
 from .._models import BaseModel
 
-__all__ = ["DatasliceListResponse", "Dataslice", "DatasliceConditionNew", "DatasliceConditionNewTag"]
-
-
-class DatasliceConditionNewTag(BaseModel):
-    name: str
-
-    values: List[str]
-
-
-class DatasliceConditionNew(BaseModel):
-    children: Optional[List[object]] = None
-
-    condition: Optional[Literal["AND", "OR"]] = None
-
-    tag: Optional[DatasliceConditionNewTag] = None
+__all__ = ["DatasliceListResponse", "Dataslice"]
 
 
 class Dataslice(BaseModel):
@@ -36,7 +24,7 @@ class Dataslice(BaseModel):
 
     condition: Optional[List[object]] = None
 
-    condition_new: Optional[DatasliceConditionNew] = None
+    condition_new: Optional["ConditionOutput"] = None
 
     description: Optional[str] = None
 
@@ -51,3 +39,13 @@ class Dataslice(BaseModel):
 
 class DatasliceListResponse(BaseModel):
     dataslices: List[Dataslice]
+
+
+from .condition_output import ConditionOutput
+
+if PYDANTIC_V2:
+    DatasliceListResponse.model_rebuild()
+    Dataslice.model_rebuild()
+else:
+    DatasliceListResponse.update_forward_refs()  # type: ignore
+    Dataslice.update_forward_refs()  # type: ignore

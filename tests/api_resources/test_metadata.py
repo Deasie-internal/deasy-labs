@@ -10,18 +10,21 @@ import pytest
 from Deasy import Deasy, AsyncDeasy
 from Deasy.types import (
     MetadataDeleteResponse,
+    MetadataUpsertResponse,
     MetadataGetEvidenceResponse,
+    MetadataListMetadataResponse,
     MetadataGetUniqueTagsResponse,
+    MetadataStandardizeDBResponse,
     MetadataGetBasicMetadataResponse,
     MetadataGetDistributionsResponse,
     MetadataGetTagStatisticsResponse,
     MetadataGetDistinctValuesResponse,
     MetadataCountDistributionsResponse,
     MetadataFilterByConditionsResponse,
+    MetadataStandardizeSuggestResponse,
     MetadataGetFilteredMetadataResponse,
     MetadataGetOobTaggedFileCountResponse,
-    MetadataApplyStandardizationDBResponse,
-    MetadataSuggestStandardizationResponse,
+    MetadataListPaginatedMetadataResponse,
 )
 from tests.utils import assert_matches_type
 
@@ -83,49 +86,6 @@ class TestMetadata:
 
             metadata = response.parse()
             assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_apply_standardization_db(self, client: Deasy) -> None:
-        metadata = client.metadata.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        )
-        assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_apply_standardization_db(self, client: Deasy) -> None:
-        response = client.metadata.with_raw_response.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        metadata = response.parse()
-        assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_apply_standardization_db(self, client: Deasy) -> None:
-        with client.metadata.with_streaming_response.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            metadata = response.parse()
-            assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -342,7 +302,7 @@ class TestMetadata:
             vector_db_config={},
             columns=["string"],
             conditions_new={
-                "children": [{}],
+                "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -459,7 +419,7 @@ class TestMetadata:
             ],
             vector_db_config={},
             conditions_new={
-                "children": [{}],
+                "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -670,8 +630,159 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest_standardization(self, client: Deasy) -> None:
-        metadata = client.metadata.suggest_standardization(
+    def test_method_list_metadata(self, client: Deasy) -> None:
+        metadata = client.metadata.list_metadata(
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_list_metadata_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.list_metadata(
+            vector_db_config={},
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+            include_chunk_level=True,
+            tag_names=["string"],
+        )
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_list_metadata(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.list_metadata(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = response.parse()
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_list_metadata(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.list_metadata(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = response.parse()
+            assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_list_paginated_metadata(self, client: Deasy) -> None:
+        metadata = client.metadata.list_paginated_metadata(
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_list_paginated_metadata_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.list_paginated_metadata(
+            vector_db_config={},
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+            include_chunk_level=True,
+            limit=0,
+            offset=0,
+            tag_names=["string"],
+        )
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_list_paginated_metadata(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.list_paginated_metadata(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = response.parse()
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_list_paginated_metadata(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.list_paginated_metadata(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = response.parse()
+            assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_standardize_db(self, client: Deasy) -> None:
+        metadata = client.metadata.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_standardize_db(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = response.parse()
+        assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_standardize_db(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = response.parse()
+            assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_standardize_suggest(self, client: Deasy) -> None:
+        metadata = client.metadata.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -679,12 +790,12 @@ class TestMetadata:
             value_distribution={"foo": 0},
             vector_db_config={},
         )
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_suggest_standardization_with_all_params(self, client: Deasy) -> None:
-        metadata = client.metadata.suggest_standardization(
+    def test_method_standardize_suggest_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -694,12 +805,12 @@ class TestMetadata:
             context="context",
             existing_categories={},
         )
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_suggest_standardization(self, client: Deasy) -> None:
-        response = client.metadata.with_raw_response.suggest_standardization(
+    def test_raw_response_standardize_suggest(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -711,12 +822,12 @@ class TestMetadata:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metadata = response.parse()
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_suggest_standardization(self, client: Deasy) -> None:
-        with client.metadata.with_streaming_response.suggest_standardization(
+    def test_streaming_response_standardize_suggest(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -728,7 +839,66 @@ class TestMetadata:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metadata = response.parse()
-            assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+            assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_upsert(self, client: Deasy) -> None:
+        metadata = client.metadata.upsert(
+            metadata={"foo": {"foo": {}}},
+        )
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_upsert_with_all_params(self, client: Deasy) -> None:
+        metadata = client.metadata.upsert(
+            metadata={
+                "foo": {
+                    "foo": {
+                        "chunk_level": {
+                            "foo": {
+                                "evidence": "evidence",
+                                "values": ["string"],
+                            }
+                        },
+                        "file_level": {
+                            "evidence": "evidence",
+                            "values": ["string"],
+                        },
+                    }
+                }
+            },
+            dataslice_id="dataslice_id",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_upsert(self, client: Deasy) -> None:
+        response = client.metadata.with_raw_response.upsert(
+            metadata={"foo": {"foo": {}}},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = response.parse()
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_upsert(self, client: Deasy) -> None:
+        with client.metadata.with_streaming_response.upsert(
+            metadata={"foo": {"foo": {}}},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = response.parse()
+            assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -788,49 +958,6 @@ class TestAsyncMetadata:
 
             metadata = await response.parse()
             assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
-        metadata = await async_client.metadata.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        )
-        assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.metadata.with_raw_response.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        metadata = await response.parse()
-        assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_apply_standardization_db(self, async_client: AsyncDeasy) -> None:
-        async with async_client.metadata.with_streaming_response.apply_standardization_db(
-            endpoint_manager_config={},
-            standard_mapping={"foo": [{}]},
-            tag_name="tag_name",
-            vector_db_config={},
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            metadata = await response.parse()
-            assert_matches_type(MetadataApplyStandardizationDBResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1047,7 +1174,7 @@ class TestAsyncMetadata:
             vector_db_config={},
             columns=["string"],
             conditions_new={
-                "children": [{}],
+                "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -1164,7 +1291,7 @@ class TestAsyncMetadata:
             ],
             vector_db_config={},
             conditions_new={
-                "children": [{}],
+                "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -1375,8 +1502,159 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest_standardization(self, async_client: AsyncDeasy) -> None:
-        metadata = await async_client.metadata.suggest_standardization(
+    async def test_method_list_metadata(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.list_metadata(
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_list_metadata_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.list_metadata(
+            vector_db_config={},
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+            include_chunk_level=True,
+            tag_names=["string"],
+        )
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_list_metadata(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.list_metadata(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = await response.parse()
+        assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_list_metadata(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.list_metadata(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = await response.parse()
+            assert_matches_type(MetadataListMetadataResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_list_paginated_metadata(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.list_paginated_metadata(
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_list_paginated_metadata_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.list_paginated_metadata(
+            vector_db_config={},
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+            include_chunk_level=True,
+            limit=0,
+            offset=0,
+            tag_names=["string"],
+        )
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_list_paginated_metadata(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.list_paginated_metadata(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = await response.parse()
+        assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_list_paginated_metadata(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.list_paginated_metadata(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = await response.parse()
+            assert_matches_type(MetadataListPaginatedMetadataResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_standardize_db(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_standardize_db(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = await response.parse()
+        assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_standardize_db(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.standardize_db(
+            endpoint_manager_config={},
+            standard_mapping={"foo": [{}]},
+            tag_name="tag_name",
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = await response.parse()
+            assert_matches_type(MetadataStandardizeDBResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_standardize_suggest(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -1384,12 +1662,12 @@ class TestAsyncMetadata:
             value_distribution={"foo": 0},
             vector_db_config={},
         )
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_suggest_standardization_with_all_params(self, async_client: AsyncDeasy) -> None:
-        metadata = await async_client.metadata.suggest_standardization(
+    async def test_method_standardize_suggest_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -1399,12 +1677,12 @@ class TestAsyncMetadata:
             context="context",
             existing_categories={},
         )
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_suggest_standardization(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.metadata.with_raw_response.suggest_standardization(
+    async def test_raw_response_standardize_suggest(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -1416,12 +1694,12 @@ class TestAsyncMetadata:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         metadata = await response.parse()
-        assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+        assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_suggest_standardization(self, async_client: AsyncDeasy) -> None:
-        async with async_client.metadata.with_streaming_response.suggest_standardization(
+    async def test_streaming_response_standardize_suggest(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.standardize_suggest(
             description="description",
             endpoint_manager_config={},
             output_type="output_type",
@@ -1433,6 +1711,65 @@ class TestAsyncMetadata:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             metadata = await response.parse()
-            assert_matches_type(MetadataSuggestStandardizationResponse, metadata, path=["response"])
+            assert_matches_type(MetadataStandardizeSuggestResponse, metadata, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.upsert(
+            metadata={"foo": {"foo": {}}},
+        )
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
+        metadata = await async_client.metadata.upsert(
+            metadata={
+                "foo": {
+                    "foo": {
+                        "chunk_level": {
+                            "foo": {
+                                "evidence": "evidence",
+                                "values": ["string"],
+                            }
+                        },
+                        "file_level": {
+                            "evidence": "evidence",
+                            "values": ["string"],
+                        },
+                    }
+                }
+            },
+            dataslice_id="dataslice_id",
+            vector_db_config={},
+        )
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.metadata.with_raw_response.upsert(
+            metadata={"foo": {"foo": {}}},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        metadata = await response.parse()
+        assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
+        async with async_client.metadata.with_streaming_response.upsert(
+            metadata={"foo": {"foo": {}}},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            metadata = await response.parse()
+            assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
         assert cast(Any, response.is_closed) is True
