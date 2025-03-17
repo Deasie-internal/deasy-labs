@@ -27,8 +27,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.graph_operation import GraphOperation
 from ..types.graph_list_response import GraphListResponse
+from ..types.graph_operation_response import GraphOperationResponse
 
 __all__ = ["GraphResource", "AsyncGraphResource"]
 
@@ -40,7 +40,7 @@ class GraphResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return GraphResourceWithRawResponse(self)
 
@@ -49,7 +49,7 @@ class GraphResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return GraphResourceWithStreamingResponse(self)
 
@@ -65,7 +65,7 @@ class GraphResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Create a new graph.
 
@@ -98,7 +98,7 @@ class GraphResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     def update(
@@ -113,7 +113,7 @@ class GraphResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Update a graph in the database.
 
@@ -146,7 +146,7 @@ class GraphResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     def list(
@@ -198,7 +198,7 @@ class GraphResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """Delete a graph by ID.
 
         Args: graph_id: The ID of the graph to delete.
@@ -228,7 +228,7 @@ class GraphResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"graph_name": graph_name}, graph_delete_params.GraphDeleteParams),
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     def upsert(
@@ -244,7 +244,7 @@ class GraphResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Upsert a graph in the database.
 
@@ -280,7 +280,7 @@ class GraphResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
 
@@ -291,7 +291,7 @@ class AsyncGraphResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return AsyncGraphResourceWithRawResponse(self)
 
@@ -300,7 +300,7 @@ class AsyncGraphResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return AsyncGraphResourceWithStreamingResponse(self)
 
@@ -316,7 +316,7 @@ class AsyncGraphResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Create a new graph.
 
@@ -349,7 +349,7 @@ class AsyncGraphResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     async def update(
@@ -364,7 +364,7 @@ class AsyncGraphResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Update a graph in the database.
 
@@ -397,7 +397,7 @@ class AsyncGraphResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     async def list(
@@ -449,7 +449,7 @@ class AsyncGraphResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """Delete a graph by ID.
 
         Args: graph_id: The ID of the graph to delete.
@@ -479,7 +479,7 @@ class AsyncGraphResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform({"graph_name": graph_name}, graph_delete_params.GraphDeleteParams),
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
     async def upsert(
@@ -495,7 +495,7 @@ class AsyncGraphResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GraphOperation:
+    ) -> GraphOperationResponse:
         """
         Upsert a graph in the database.
 
@@ -531,7 +531,7 @@ class AsyncGraphResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=GraphOperation,
+            cast_to=GraphOperationResponse,
         )
 
 

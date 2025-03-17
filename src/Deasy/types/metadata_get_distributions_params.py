@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from typing import List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 from .tag_condition_param import TagConditionParam
 
-__all__ = ["MetadataGetDistributionsParams", "ConditionsNew", "ConditionsNewTag"]
+__all__ = ["MetadataGetDistributionsParams"]
 
 
 class MetadataGetDistributionsParams(TypedDict, total=False):
@@ -15,7 +15,7 @@ class MetadataGetDistributionsParams(TypedDict, total=False):
 
     columns: Optional[List[str]]
 
-    conditions_new: Optional[ConditionsNew]
+    conditions_new: Optional["ConditionInputParam"]
 
     dataslice_id: Optional[str]
 
@@ -24,15 +24,4 @@ class MetadataGetDistributionsParams(TypedDict, total=False):
     node_condition: Optional[Iterable[TagConditionParam]]
 
 
-class ConditionsNewTag(TypedDict, total=False):
-    name: Required[str]
-
-    values: Required[List[str]]
-
-
-class ConditionsNew(TypedDict, total=False):
-    children: Optional[Iterable[object]]
-
-    condition: Optional[Literal["AND", "OR"]]
-
-    tag: Optional[ConditionsNewTag]
+from .condition_input_param import ConditionInputParam

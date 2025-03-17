@@ -21,7 +21,7 @@ from ...types import (
     dataslice_get_metrics_params,
     dataslice_get_file_count_params,
     dataslice_check_sync_score_params,
-    dataslice_get_tag_vdb_distribution_params,
+    dataslice_tag_vdb_distribution_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
@@ -37,6 +37,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.condition_input_param import ConditionInputParam
 from ...types.dataslice_list_response import DatasliceListResponse
 from ...types.dataslice_create_response import DatasliceCreateResponse
 from ...types.dataslice_delete_response import DatasliceDeleteResponse
@@ -44,7 +45,7 @@ from ...types.dataslice_get_files_response import DatasliceGetFilesResponse
 from ...types.dataslice_get_metrics_response import DatasliceGetMetricsResponse
 from ...types.dataslice_get_file_count_response import DatasliceGetFileCountResponse
 from ...types.dataslice_check_sync_score_response import DatasliceCheckSyncScoreResponse
-from ...types.dataslice_get_tag_vdb_distribution_response import DatasliceGetTagVdbDistributionResponse
+from ...types.dataslice_tag_vdb_distribution_response import DatasliceTagVdbDistributionResponse
 
 __all__ = ["DatasliceResource", "AsyncDatasliceResource"]
 
@@ -60,7 +61,7 @@ class DatasliceResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return DatasliceResourceWithRawResponse(self)
 
@@ -69,7 +70,7 @@ class DatasliceResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return DatasliceResourceWithStreamingResponse(self)
 
@@ -81,7 +82,7 @@ class DatasliceResource(SyncAPIResource):
         latest_graph: object,
         vdb_profile_name: str,
         condition: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        condition_new: Optional[dataslice_create_params.ConditionNew] | NotGiven = NOT_GIVEN,
+        condition_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
@@ -227,7 +228,7 @@ class DatasliceResource(SyncAPIResource):
         condition: Iterable[object],
         vector_db_config: object,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        new_condition: Optional[dataslice_get_file_count_params.NewCondition] | NotGiven = NOT_GIVEN,
+        new_condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -341,7 +342,7 @@ class DatasliceResource(SyncAPIResource):
             cast_to=DatasliceGetMetricsResponse,
         )
 
-    def get_tag_vdb_distribution(
+    def tag_vdb_distribution(
         self,
         *,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -352,7 +353,7 @@ class DatasliceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceGetTagVdbDistributionResponse:
+    ) -> DatasliceTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice
 
@@ -372,12 +373,12 @@ class DatasliceResource(SyncAPIResource):
                     "dataslice_id": dataslice_id,
                     "vector_db_config": vector_db_config,
                 },
-                dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
+                dataslice_tag_vdb_distribution_params.DatasliceTagVdbDistributionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DatasliceGetTagVdbDistributionResponse,
+            cast_to=DatasliceTagVdbDistributionResponse,
         )
 
 
@@ -392,7 +393,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return AsyncDatasliceResourceWithRawResponse(self)
 
@@ -401,7 +402,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return AsyncDatasliceResourceWithStreamingResponse(self)
 
@@ -413,7 +414,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         latest_graph: object,
         vdb_profile_name: str,
         condition: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        condition_new: Optional[dataslice_create_params.ConditionNew] | NotGiven = NOT_GIVEN,
+        condition_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
@@ -561,7 +562,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         condition: Iterable[object],
         vector_db_config: object,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        new_condition: Optional[dataslice_get_file_count_params.NewCondition] | NotGiven = NOT_GIVEN,
+        new_condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -677,7 +678,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
             cast_to=DatasliceGetMetricsResponse,
         )
 
-    async def get_tag_vdb_distribution(
+    async def tag_vdb_distribution(
         self,
         *,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -688,7 +689,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceGetTagVdbDistributionResponse:
+    ) -> DatasliceTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice
 
@@ -708,12 +709,12 @@ class AsyncDatasliceResource(AsyncAPIResource):
                     "dataslice_id": dataslice_id,
                     "vector_db_config": vector_db_config,
                 },
-                dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
+                dataslice_tag_vdb_distribution_params.DatasliceTagVdbDistributionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DatasliceGetTagVdbDistributionResponse,
+            cast_to=DatasliceTagVdbDistributionResponse,
         )
 
 
@@ -742,8 +743,8 @@ class DatasliceResourceWithRawResponse:
         self.get_metrics = to_raw_response_wrapper(
             dataslice.get_metrics,
         )
-        self.get_tag_vdb_distribution = to_raw_response_wrapper(
-            dataslice.get_tag_vdb_distribution,
+        self.tag_vdb_distribution = to_raw_response_wrapper(
+            dataslice.tag_vdb_distribution,
         )
 
     @cached_property
@@ -776,8 +777,8 @@ class AsyncDatasliceResourceWithRawResponse:
         self.get_metrics = async_to_raw_response_wrapper(
             dataslice.get_metrics,
         )
-        self.get_tag_vdb_distribution = async_to_raw_response_wrapper(
-            dataslice.get_tag_vdb_distribution,
+        self.tag_vdb_distribution = async_to_raw_response_wrapper(
+            dataslice.tag_vdb_distribution,
         )
 
     @cached_property
@@ -810,8 +811,8 @@ class DatasliceResourceWithStreamingResponse:
         self.get_metrics = to_streamed_response_wrapper(
             dataslice.get_metrics,
         )
-        self.get_tag_vdb_distribution = to_streamed_response_wrapper(
-            dataslice.get_tag_vdb_distribution,
+        self.tag_vdb_distribution = to_streamed_response_wrapper(
+            dataslice.tag_vdb_distribution,
         )
 
     @cached_property
@@ -844,8 +845,8 @@ class AsyncDatasliceResourceWithStreamingResponse:
         self.get_metrics = async_to_streamed_response_wrapper(
             dataslice.get_metrics,
         )
-        self.get_tag_vdb_distribution = async_to_streamed_response_wrapper(
-            dataslice.get_tag_vdb_distribution,
+        self.tag_vdb_distribution = async_to_streamed_response_wrapper(
+            dataslice.tag_vdb_distribution,
         )
 
     @cached_property

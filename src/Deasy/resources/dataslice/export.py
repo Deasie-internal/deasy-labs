@@ -21,8 +21,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.dataslice import export_export_to_vdb_params, export_export_metadata_params
-from ...types.dataslice.export_export_to_vdb_response import ExportExportToVdbResponse
+from ...types.dataslice import export_to_vdb_params, export_metadata_params
+from ...types.dataslice.export_to_vdb_response import ExportToVdbResponse
 
 __all__ = ["ExportResource", "AsyncExportResource"]
 
@@ -34,7 +34,7 @@ class ExportResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return ExportResourceWithRawResponse(self)
 
@@ -43,11 +43,11 @@ class ExportResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return ExportResourceWithStreamingResponse(self)
 
-    def export_metadata(
+    def metadata(
         self,
         *,
         vdb_profile_name: str,
@@ -84,7 +84,7 @@ class ExportResource(SyncAPIResource):
                     "export_format": export_format,
                     "selected_metadata_fields": selected_metadata_fields,
                 },
-                export_export_metadata_params.ExportExportMetadataParams,
+                export_metadata_params.ExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -92,7 +92,7 @@ class ExportResource(SyncAPIResource):
             cast_to=object,
         )
 
-    def export_to_vdb(
+    def to_vdb(
         self,
         *,
         target_vector_db_config: object,
@@ -106,7 +106,7 @@ class ExportResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExportExportToVdbResponse:
+    ) -> ExportToVdbResponse:
         """
         Export metadata for a use case to a target vector database
 
@@ -129,12 +129,12 @@ class ExportResource(SyncAPIResource):
                     "export_tags": export_tags,
                     "ori_vector_db_config": ori_vector_db_config,
                 },
-                export_export_to_vdb_params.ExportExportToVdbParams,
+                export_to_vdb_params.ExportToVdbParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExportExportToVdbResponse,
+            cast_to=ExportToVdbResponse,
         )
 
 
@@ -145,7 +145,7 @@ class AsyncExportResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return AsyncExportResourceWithRawResponse(self)
 
@@ -154,11 +154,11 @@ class AsyncExportResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return AsyncExportResourceWithStreamingResponse(self)
 
-    async def export_metadata(
+    async def metadata(
         self,
         *,
         vdb_profile_name: str,
@@ -195,7 +195,7 @@ class AsyncExportResource(AsyncAPIResource):
                     "export_format": export_format,
                     "selected_metadata_fields": selected_metadata_fields,
                 },
-                export_export_metadata_params.ExportExportMetadataParams,
+                export_metadata_params.ExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -203,7 +203,7 @@ class AsyncExportResource(AsyncAPIResource):
             cast_to=object,
         )
 
-    async def export_to_vdb(
+    async def to_vdb(
         self,
         *,
         target_vector_db_config: object,
@@ -217,7 +217,7 @@ class AsyncExportResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExportExportToVdbResponse:
+    ) -> ExportToVdbResponse:
         """
         Export metadata for a use case to a target vector database
 
@@ -240,12 +240,12 @@ class AsyncExportResource(AsyncAPIResource):
                     "export_tags": export_tags,
                     "ori_vector_db_config": ori_vector_db_config,
                 },
-                export_export_to_vdb_params.ExportExportToVdbParams,
+                export_to_vdb_params.ExportToVdbParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExportExportToVdbResponse,
+            cast_to=ExportToVdbResponse,
         )
 
 
@@ -253,11 +253,11 @@ class ExportResourceWithRawResponse:
     def __init__(self, export: ExportResource) -> None:
         self._export = export
 
-        self.export_metadata = to_raw_response_wrapper(
-            export.export_metadata,
+        self.metadata = to_raw_response_wrapper(
+            export.metadata,
         )
-        self.export_to_vdb = to_raw_response_wrapper(
-            export.export_to_vdb,
+        self.to_vdb = to_raw_response_wrapper(
+            export.to_vdb,
         )
 
 
@@ -265,11 +265,11 @@ class AsyncExportResourceWithRawResponse:
     def __init__(self, export: AsyncExportResource) -> None:
         self._export = export
 
-        self.export_metadata = async_to_raw_response_wrapper(
-            export.export_metadata,
+        self.metadata = async_to_raw_response_wrapper(
+            export.metadata,
         )
-        self.export_to_vdb = async_to_raw_response_wrapper(
-            export.export_to_vdb,
+        self.to_vdb = async_to_raw_response_wrapper(
+            export.to_vdb,
         )
 
 
@@ -277,11 +277,11 @@ class ExportResourceWithStreamingResponse:
     def __init__(self, export: ExportResource) -> None:
         self._export = export
 
-        self.export_metadata = to_streamed_response_wrapper(
-            export.export_metadata,
+        self.metadata = to_streamed_response_wrapper(
+            export.metadata,
         )
-        self.export_to_vdb = to_streamed_response_wrapper(
-            export.export_to_vdb,
+        self.to_vdb = to_streamed_response_wrapper(
+            export.to_vdb,
         )
 
 
@@ -289,9 +289,9 @@ class AsyncExportResourceWithStreamingResponse:
     def __init__(self, export: AsyncExportResource) -> None:
         self._export = export
 
-        self.export_metadata = async_to_streamed_response_wrapper(
-            export.export_metadata,
+        self.metadata = async_to_streamed_response_wrapper(
+            export.metadata,
         )
-        self.export_to_vdb = async_to_streamed_response_wrapper(
-            export.export_to_vdb,
+        self.to_vdb = async_to_streamed_response_wrapper(
+            export.to_vdb,
         )

@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from .export_export_to_vdb_params import ExportExportToVdbParams as ExportExportToVdbParams
-from .export_export_metadata_params import ExportExportMetadataParams as ExportExportMetadataParams
-from .export_export_to_vdb_response import ExportExportToVdbResponse as ExportExportToVdbResponse
+from .export_to_vdb_params import ExportToVdbParams as ExportToVdbParams
+from .export_metadata_params import ExportMetadataParams as ExportMetadataParams
+from .export_to_vdb_response import ExportToVdbResponse as ExportToVdbResponse

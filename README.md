@@ -15,8 +15,8 @@ The REST API documentation can be found on [docs.deasy.com](https://docs.Deasy.c
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/Deasie-internal/deasy-sdk.git
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/Deasy-python.git
 ```
 
 > [!NOTE]
@@ -34,7 +34,12 @@ client = Deasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
-client = client.retrieve()
+token_create_response = client.admin.token.create(
+    username="username",
+    x_token="x-token",
+    x_user="x-user",
+)
+print(token_create_response.token_id)
 ```
 
 While you can provide a `bearer_token` keyword argument,
@@ -57,7 +62,12 @@ client = AsyncDeasy(
 
 
 async def main() -> None:
-    client = await client.retrieve()
+    token_create_response = await client.admin.token.create(
+        username="username",
+        x_token="x-token",
+        x_user="x-user",
+    )
+    print(token_create_response.token_id)
 
 
 asyncio.run(main())
@@ -86,7 +96,7 @@ client = Deasy()
 response = client.metadata.get_distributions(
     vector_db_config={},
     conditions_new={
-        "children": [{}],
+        "children": [],
         "condition": "AND",
         "tag": {
             "name": "name",
@@ -113,7 +123,11 @@ from Deasy import Deasy
 client = Deasy()
 
 try:
-    client.retrieve()
+    client.admin.token.create(
+        username="username",
+        x_token="x-token",
+        x_user="x-user",
+    )
 except Deasy.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -156,7 +170,11 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).retrieve()
+client.with_options(max_retries=5).admin.token.create(
+    username="username",
+    x_token="x-token",
+    x_user="x-user",
+)
 ```
 
 ### Timeouts
@@ -179,7 +197,11 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).retrieve()
+client.with_options(timeout=5.0).admin.token.create(
+    username="username",
+    x_token="x-token",
+    x_user="x-user",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -220,16 +242,20 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from Deasy import Deasy
 
 client = Deasy()
-response = client.with_raw_response.retrieve()
+response = client.admin.token.with_raw_response.create(
+    username="username",
+    x_token="x-token",
+    x_user="x-user",
+)
 print(response.headers.get('X-My-Header'))
 
-client = response.parse()  # get the object that `retrieve()` would have returned
-print(client)
+token = response.parse()  # get the object that `admin.token.create()` would have returned
+print(token.token_id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-sdk/tree/main/src/Deasy/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/Deasie-internal/deasy-sdk/tree/main/src/Deasy/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -238,7 +264,11 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.with_streaming_response.retrieve() as response:
+with client.admin.token.with_streaming_response.create(
+    username="username",
+    x_token="x-token",
+    x_user="x-user",
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -333,7 +363,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/Deasie-internal/deasy-sdk/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/Deasy-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

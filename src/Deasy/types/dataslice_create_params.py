@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Iterable, Optional
+from typing_extensions import Required, TypedDict
 
-__all__ = ["DatasliceCreateParams", "ConditionNew", "ConditionNewTag"]
+__all__ = ["DatasliceCreateParams"]
 
 
 class DatasliceCreateParams(TypedDict, total=False):
@@ -19,7 +19,7 @@ class DatasliceCreateParams(TypedDict, total=False):
 
     condition: Optional[Iterable[object]]
 
-    condition_new: Optional[ConditionNew]
+    condition_new: Optional["ConditionInputParam"]
 
     data_points: Optional[int]
 
@@ -28,15 +28,4 @@ class DatasliceCreateParams(TypedDict, total=False):
     status: str
 
 
-class ConditionNewTag(TypedDict, total=False):
-    name: Required[str]
-
-    values: Required[List[str]]
-
-
-class ConditionNew(TypedDict, total=False):
-    children: Optional[Iterable[object]]
-
-    condition: Optional[Literal["AND", "OR"]]
-
-    tag: Optional[ConditionNewTag]
+from .condition_input_param import ConditionInputParam

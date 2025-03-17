@@ -24,17 +24,20 @@ from .chunk import (
 )
 from ...types import (
     metadata_delete_params,
+    metadata_upsert_params,
     metadata_get_evidence_params,
+    metadata_list_metadata_params,
+    metadata_standardize_db_params,
     metadata_get_unique_tags_params,
     metadata_get_distributions_params,
     metadata_get_basic_metadata_params,
     metadata_get_tag_statistics_params,
     metadata_count_distributions_params,
     metadata_get_distinct_values_params,
+    metadata_standardize_suggest_params,
     metadata_filter_by_conditions_params,
     metadata_get_filtered_metadata_params,
-    metadata_suggest_standardization_params,
-    metadata_apply_standardization_db_params,
+    metadata_list_paginated_metadata_params,
     metadata_get_oob_tagged_file_count_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -61,18 +64,22 @@ from .standardize import (
 )
 from ..._base_client import make_request_options
 from ...types.tag_condition_param import TagConditionParam
+from ...types.condition_input_param import ConditionInputParam
 from ...types.metadata_delete_response import MetadataDeleteResponse
+from ...types.metadata_upsert_response import MetadataUpsertResponse
 from ...types.metadata_get_evidence_response import MetadataGetEvidenceResponse
+from ...types.metadata_list_metadata_response import MetadataListMetadataResponse
+from ...types.metadata_standardize_db_response import MetadataStandardizeDBResponse
 from ...types.metadata_get_unique_tags_response import MetadataGetUniqueTagsResponse
 from ...types.metadata_get_distributions_response import MetadataGetDistributionsResponse
 from ...types.metadata_get_basic_metadata_response import MetadataGetBasicMetadataResponse
 from ...types.metadata_get_tag_statistics_response import MetadataGetTagStatisticsResponse
 from ...types.metadata_count_distributions_response import MetadataCountDistributionsResponse
 from ...types.metadata_get_distinct_values_response import MetadataGetDistinctValuesResponse
+from ...types.metadata_standardize_suggest_response import MetadataStandardizeSuggestResponse
 from ...types.metadata_filter_by_conditions_response import MetadataFilterByConditionsResponse
 from ...types.metadata_get_filtered_metadata_response import MetadataGetFilteredMetadataResponse
-from ...types.metadata_suggest_standardization_response import MetadataSuggestStandardizationResponse
-from ...types.metadata_apply_standardization_db_response import MetadataApplyStandardizationDBResponse
+from ...types.metadata_list_paginated_metadata_response import MetadataListPaginatedMetadataResponse
 from ...types.metadata_get_oob_tagged_file_count_response import MetadataGetOobTaggedFileCountResponse
 
 __all__ = ["MetadataResource", "AsyncMetadataResource"]
@@ -97,7 +104,7 @@ class MetadataResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return MetadataResourceWithRawResponse(self)
 
@@ -106,7 +113,7 @@ class MetadataResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return MetadataResourceWithStreamingResponse(self)
 
@@ -153,49 +160,6 @@ class MetadataResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=MetadataDeleteResponse,
-        )
-
-    def apply_standardization_db(
-        self,
-        *,
-        endpoint_manager_config: object,
-        standard_mapping: Dict[str, Iterable[object]],
-        tag_name: str,
-        vector_db_config: object,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataApplyStandardizationDBResponse:
-        """
-        Apply standardization mapping to metadata values in database
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/metadata/standardization_db",
-            body=maybe_transform(
-                {
-                    "endpoint_manager_config": endpoint_manager_config,
-                    "standard_mapping": standard_mapping,
-                    "tag_name": tag_name,
-                    "vector_db_config": vector_db_config,
-                },
-                metadata_apply_standardization_db_params.MetadataApplyStandardizationDBParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MetadataApplyStandardizationDBResponse,
         )
 
     def count_distributions(
@@ -374,7 +338,7 @@ class MetadataResource(SyncAPIResource):
         *,
         vector_db_config: object,
         columns: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        conditions_new: Optional[metadata_get_distributions_params.ConditionsNew] | NotGiven = NOT_GIVEN,
+        conditions_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         max_val_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         node_condition: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
@@ -466,7 +430,7 @@ class MetadataResource(SyncAPIResource):
         *,
         conditions: Iterable[metadata_get_filtered_metadata_params.Condition],
         vector_db_config: object,
-        conditions_new: Optional[metadata_get_filtered_metadata_params.ConditionsNew] | NotGiven = NOT_GIVEN,
+        conditions_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: Optional[int] | NotGiven = NOT_GIVEN,
         node_condition: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
@@ -635,7 +599,144 @@ class MetadataResource(SyncAPIResource):
             cast_to=MetadataGetUniqueTagsResponse,
         )
 
-    def suggest_standardization(
+    def list_metadata(
+        self,
+        *,
+        vector_db_config: object,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListMetadataResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/list",
+            body=maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "tag_names": tag_names,
+                },
+                metadata_list_metadata_params.MetadataListMetadataParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListMetadataResponse,
+        )
+
+    def list_paginated_metadata(
+        self,
+        *,
+        vector_db_config: object,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        limit: Optional[int] | NotGiven = NOT_GIVEN,
+        offset: Optional[int] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListPaginatedMetadataResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/list_paginated",
+            body=maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "limit": limit,
+                    "offset": offset,
+                    "tag_names": tag_names,
+                },
+                metadata_list_paginated_metadata_params.MetadataListPaginatedMetadataParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListPaginatedMetadataResponse,
+        )
+
+    def standardize_db(
+        self,
+        *,
+        endpoint_manager_config: object,
+        standard_mapping: Dict[str, Iterable[object]],
+        tag_name: str,
+        vector_db_config: object,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataStandardizeDBResponse:
+        """
+        Apply standardization mapping to metadata values in database
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/standardization_db",
+            body=maybe_transform(
+                {
+                    "endpoint_manager_config": endpoint_manager_config,
+                    "standard_mapping": standard_mapping,
+                    "tag_name": tag_name,
+                    "vector_db_config": vector_db_config,
+                },
+                metadata_standardize_db_params.MetadataStandardizeDBParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataStandardizeDBResponse,
+        )
+
+    def standardize_suggest(
         self,
         *,
         description: str,
@@ -652,7 +753,7 @@ class MetadataResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataSuggestStandardizationResponse:
+    ) -> MetadataStandardizeSuggestResponse:
         """
         Standardize metadata values using LLM
 
@@ -678,12 +779,53 @@ class MetadataResource(SyncAPIResource):
                     "context": context,
                     "existing_categories": existing_categories,
                 },
-                metadata_suggest_standardization_params.MetadataSuggestStandardizationParams,
+                metadata_standardize_suggest_params.MetadataStandardizeSuggestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetadataSuggestStandardizationResponse,
+            cast_to=MetadataStandardizeSuggestResponse,
+        )
+
+    def upsert(
+        self,
+        *,
+        metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataUpsertResponse:
+        """
+        Upsert metadata for a given tag
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/upsert",
+            body=maybe_transform(
+                {
+                    "metadata": metadata,
+                    "dataslice_id": dataslice_id,
+                    "vector_db_config": vector_db_config,
+                },
+                metadata_upsert_params.MetadataUpsertParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataUpsertResponse,
         )
 
 
@@ -706,7 +848,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#accessing-raw-response-data-eg-headers
         """
         return AsyncMetadataResourceWithRawResponse(self)
 
@@ -715,7 +857,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-sdk#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return AsyncMetadataResourceWithStreamingResponse(self)
 
@@ -762,49 +904,6 @@ class AsyncMetadataResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=MetadataDeleteResponse,
-        )
-
-    async def apply_standardization_db(
-        self,
-        *,
-        endpoint_manager_config: object,
-        standard_mapping: Dict[str, Iterable[object]],
-        tag_name: str,
-        vector_db_config: object,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataApplyStandardizationDBResponse:
-        """
-        Apply standardization mapping to metadata values in database
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/metadata/standardization_db",
-            body=await async_maybe_transform(
-                {
-                    "endpoint_manager_config": endpoint_manager_config,
-                    "standard_mapping": standard_mapping,
-                    "tag_name": tag_name,
-                    "vector_db_config": vector_db_config,
-                },
-                metadata_apply_standardization_db_params.MetadataApplyStandardizationDBParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MetadataApplyStandardizationDBResponse,
         )
 
     async def count_distributions(
@@ -983,7 +1082,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         *,
         vector_db_config: object,
         columns: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        conditions_new: Optional[metadata_get_distributions_params.ConditionsNew] | NotGiven = NOT_GIVEN,
+        conditions_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         max_val_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         node_condition: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
@@ -1075,7 +1174,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         *,
         conditions: Iterable[metadata_get_filtered_metadata_params.Condition],
         vector_db_config: object,
-        conditions_new: Optional[metadata_get_filtered_metadata_params.ConditionsNew] | NotGiven = NOT_GIVEN,
+        conditions_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: Optional[int] | NotGiven = NOT_GIVEN,
         node_condition: Optional[Iterable[TagConditionParam]] | NotGiven = NOT_GIVEN,
@@ -1244,7 +1343,144 @@ class AsyncMetadataResource(AsyncAPIResource):
             cast_to=MetadataGetUniqueTagsResponse,
         )
 
-    async def suggest_standardization(
+    async def list_metadata(
+        self,
+        *,
+        vector_db_config: object,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListMetadataResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/list",
+            body=await async_maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "tag_names": tag_names,
+                },
+                metadata_list_metadata_params.MetadataListMetadataParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListMetadataResponse,
+        )
+
+    async def list_paginated_metadata(
+        self,
+        *,
+        vector_db_config: object,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        limit: Optional[int] | NotGiven = NOT_GIVEN,
+        offset: Optional[int] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListPaginatedMetadataResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/list_paginated",
+            body=await async_maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "limit": limit,
+                    "offset": offset,
+                    "tag_names": tag_names,
+                },
+                metadata_list_paginated_metadata_params.MetadataListPaginatedMetadataParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListPaginatedMetadataResponse,
+        )
+
+    async def standardize_db(
+        self,
+        *,
+        endpoint_manager_config: object,
+        standard_mapping: Dict[str, Iterable[object]],
+        tag_name: str,
+        vector_db_config: object,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataStandardizeDBResponse:
+        """
+        Apply standardization mapping to metadata values in database
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/standardization_db",
+            body=await async_maybe_transform(
+                {
+                    "endpoint_manager_config": endpoint_manager_config,
+                    "standard_mapping": standard_mapping,
+                    "tag_name": tag_name,
+                    "vector_db_config": vector_db_config,
+                },
+                metadata_standardize_db_params.MetadataStandardizeDBParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataStandardizeDBResponse,
+        )
+
+    async def standardize_suggest(
         self,
         *,
         description: str,
@@ -1261,7 +1497,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataSuggestStandardizationResponse:
+    ) -> MetadataStandardizeSuggestResponse:
         """
         Standardize metadata values using LLM
 
@@ -1287,12 +1523,53 @@ class AsyncMetadataResource(AsyncAPIResource):
                     "context": context,
                     "existing_categories": existing_categories,
                 },
-                metadata_suggest_standardization_params.MetadataSuggestStandardizationParams,
+                metadata_standardize_suggest_params.MetadataStandardizeSuggestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetadataSuggestStandardizationResponse,
+            cast_to=MetadataStandardizeSuggestResponse,
+        )
+
+    async def upsert(
+        self,
+        *,
+        metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataUpsertResponse:
+        """
+        Upsert metadata for a given tag
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/upsert",
+            body=await async_maybe_transform(
+                {
+                    "metadata": metadata,
+                    "dataslice_id": dataslice_id,
+                    "vector_db_config": vector_db_config,
+                },
+                metadata_upsert_params.MetadataUpsertParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataUpsertResponse,
         )
 
 
@@ -1302,9 +1579,6 @@ class MetadataResourceWithRawResponse:
 
         self.delete = to_raw_response_wrapper(
             metadata.delete,
-        )
-        self.apply_standardization_db = to_raw_response_wrapper(
-            metadata.apply_standardization_db,
         )
         self.count_distributions = to_raw_response_wrapper(
             metadata.count_distributions,
@@ -1336,8 +1610,20 @@ class MetadataResourceWithRawResponse:
         self.get_unique_tags = to_raw_response_wrapper(
             metadata.get_unique_tags,
         )
-        self.suggest_standardization = to_raw_response_wrapper(
-            metadata.suggest_standardization,
+        self.list_metadata = to_raw_response_wrapper(
+            metadata.list_metadata,
+        )
+        self.list_paginated_metadata = to_raw_response_wrapper(
+            metadata.list_paginated_metadata,
+        )
+        self.standardize_db = to_raw_response_wrapper(
+            metadata.standardize_db,
+        )
+        self.standardize_suggest = to_raw_response_wrapper(
+            metadata.standardize_suggest,
+        )
+        self.upsert = to_raw_response_wrapper(
+            metadata.upsert,
         )
 
     @cached_property
@@ -1359,9 +1645,6 @@ class AsyncMetadataResourceWithRawResponse:
 
         self.delete = async_to_raw_response_wrapper(
             metadata.delete,
-        )
-        self.apply_standardization_db = async_to_raw_response_wrapper(
-            metadata.apply_standardization_db,
         )
         self.count_distributions = async_to_raw_response_wrapper(
             metadata.count_distributions,
@@ -1393,8 +1676,20 @@ class AsyncMetadataResourceWithRawResponse:
         self.get_unique_tags = async_to_raw_response_wrapper(
             metadata.get_unique_tags,
         )
-        self.suggest_standardization = async_to_raw_response_wrapper(
-            metadata.suggest_standardization,
+        self.list_metadata = async_to_raw_response_wrapper(
+            metadata.list_metadata,
+        )
+        self.list_paginated_metadata = async_to_raw_response_wrapper(
+            metadata.list_paginated_metadata,
+        )
+        self.standardize_db = async_to_raw_response_wrapper(
+            metadata.standardize_db,
+        )
+        self.standardize_suggest = async_to_raw_response_wrapper(
+            metadata.standardize_suggest,
+        )
+        self.upsert = async_to_raw_response_wrapper(
+            metadata.upsert,
         )
 
     @cached_property
@@ -1416,9 +1711,6 @@ class MetadataResourceWithStreamingResponse:
 
         self.delete = to_streamed_response_wrapper(
             metadata.delete,
-        )
-        self.apply_standardization_db = to_streamed_response_wrapper(
-            metadata.apply_standardization_db,
         )
         self.count_distributions = to_streamed_response_wrapper(
             metadata.count_distributions,
@@ -1450,8 +1742,20 @@ class MetadataResourceWithStreamingResponse:
         self.get_unique_tags = to_streamed_response_wrapper(
             metadata.get_unique_tags,
         )
-        self.suggest_standardization = to_streamed_response_wrapper(
-            metadata.suggest_standardization,
+        self.list_metadata = to_streamed_response_wrapper(
+            metadata.list_metadata,
+        )
+        self.list_paginated_metadata = to_streamed_response_wrapper(
+            metadata.list_paginated_metadata,
+        )
+        self.standardize_db = to_streamed_response_wrapper(
+            metadata.standardize_db,
+        )
+        self.standardize_suggest = to_streamed_response_wrapper(
+            metadata.standardize_suggest,
+        )
+        self.upsert = to_streamed_response_wrapper(
+            metadata.upsert,
         )
 
     @cached_property
@@ -1473,9 +1777,6 @@ class AsyncMetadataResourceWithStreamingResponse:
 
         self.delete = async_to_streamed_response_wrapper(
             metadata.delete,
-        )
-        self.apply_standardization_db = async_to_streamed_response_wrapper(
-            metadata.apply_standardization_db,
         )
         self.count_distributions = async_to_streamed_response_wrapper(
             metadata.count_distributions,
@@ -1507,8 +1808,20 @@ class AsyncMetadataResourceWithStreamingResponse:
         self.get_unique_tags = async_to_streamed_response_wrapper(
             metadata.get_unique_tags,
         )
-        self.suggest_standardization = async_to_streamed_response_wrapper(
-            metadata.suggest_standardization,
+        self.list_metadata = async_to_streamed_response_wrapper(
+            metadata.list_metadata,
+        )
+        self.list_paginated_metadata = async_to_streamed_response_wrapper(
+            metadata.list_paginated_metadata,
+        )
+        self.standardize_db = async_to_streamed_response_wrapper(
+            metadata.standardize_db,
+        )
+        self.standardize_suggest = async_to_streamed_response_wrapper(
+            metadata.standardize_suggest,
+        )
+        self.upsert = async_to_streamed_response_wrapper(
+            metadata.upsert,
         )
 
     @cached_property

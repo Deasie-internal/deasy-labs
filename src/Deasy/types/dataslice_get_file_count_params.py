@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Iterable, Optional
+from typing_extensions import Required, TypedDict
 
-__all__ = ["DatasliceGetFileCountParams", "NewCondition", "NewConditionTag"]
+__all__ = ["DatasliceGetFileCountParams"]
 
 
 class DatasliceGetFileCountParams(TypedDict, total=False):
@@ -15,18 +15,7 @@ class DatasliceGetFileCountParams(TypedDict, total=False):
 
     dataslice_id: Optional[str]
 
-    new_condition: Optional[NewCondition]
+    new_condition: Optional["ConditionInputParam"]
 
 
-class NewConditionTag(TypedDict, total=False):
-    name: Required[str]
-
-    values: Required[List[str]]
-
-
-class NewCondition(TypedDict, total=False):
-    children: Optional[Iterable[object]]
-
-    condition: Optional[Literal["AND", "OR"]]
-
-    tag: Optional[NewConditionTag]
+from .condition_input_param import ConditionInputParam
