@@ -58,7 +58,6 @@ class TagsResource(SyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,7 +81,6 @@ class TagsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._post(
             "/tags/create",
             body=maybe_transform({"tag_data": tag_data}, tag_create_params.TagCreateParams),
@@ -96,7 +94,6 @@ class TagsResource(SyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,7 +117,6 @@ class TagsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._put(
             "/tags/update",
             body=maybe_transform({"tag_data": tag_data}, tag_update_params.TagUpdateParams),
@@ -133,7 +129,6 @@ class TagsResource(SyncAPIResource):
     def list(
         self,
         *,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -141,19 +136,7 @@ class TagsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TagListResponse:
-        """
-        Lists all tags
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        """Lists all tags"""
         return self._get(
             "/tags/list",
             options=make_request_options(
@@ -166,7 +149,6 @@ class TagsResource(SyncAPIResource):
         self,
         *,
         tag_name: str,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -190,7 +172,6 @@ class TagsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._delete(
             "/tags/delete",
             options=make_request_options(
@@ -207,7 +188,6 @@ class TagsResource(SyncAPIResource):
         self,
         *,
         tag_name: str,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -231,7 +211,6 @@ class TagsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._post(
             "/tags/delete_stats",
             body=maybe_transform({"tag_name": tag_name}, tag_get_delete_stats_params.TagGetDeleteStatsParams),
@@ -245,7 +224,6 @@ class TagsResource(SyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -269,7 +247,6 @@ class TagsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._post(
             "/tags/upsert",
             body=maybe_transform({"tag_data": tag_data}, tag_upsert_params.TagUpsertParams),
@@ -304,7 +281,6 @@ class AsyncTagsResource(AsyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -328,7 +304,6 @@ class AsyncTagsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._post(
             "/tags/create",
             body=await async_maybe_transform({"tag_data": tag_data}, tag_create_params.TagCreateParams),
@@ -342,7 +317,6 @@ class AsyncTagsResource(AsyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,7 +340,6 @@ class AsyncTagsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._put(
             "/tags/update",
             body=await async_maybe_transform({"tag_data": tag_data}, tag_update_params.TagUpdateParams),
@@ -379,7 +352,6 @@ class AsyncTagsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -387,19 +359,7 @@ class AsyncTagsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TagListResponse:
-        """
-        Lists all tags
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
+        """Lists all tags"""
         return await self._get(
             "/tags/list",
             options=make_request_options(
@@ -412,7 +372,6 @@ class AsyncTagsResource(AsyncAPIResource):
         self,
         *,
         tag_name: str,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -436,7 +395,6 @@ class AsyncTagsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._delete(
             "/tags/delete",
             options=make_request_options(
@@ -453,7 +411,6 @@ class AsyncTagsResource(AsyncAPIResource):
         self,
         *,
         tag_name: str,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -477,7 +434,6 @@ class AsyncTagsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._post(
             "/tags/delete_stats",
             body=await async_maybe_transform(
@@ -493,7 +449,6 @@ class AsyncTagsResource(AsyncAPIResource):
         self,
         *,
         tag_data: object,
-        x_user: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -517,7 +472,6 @@ class AsyncTagsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._post(
             "/tags/upsert",
             body=await async_maybe_transform({"tag_data": tag_data}, tag_upsert_params.TagUpsertParams),

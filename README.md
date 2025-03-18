@@ -30,6 +30,7 @@ The full API of this library can be found in [api.md](api.md).
 from Deasy import Deasy
 
 client = Deasy(
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -38,11 +39,6 @@ metadata = client.metadata.list(
 )
 print(metadata.metadata)
 ```
-
-While you can provide a `x_token` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `DEASY_API_KEY="My X Token"` to your `.env` file
-so that your X Token is not stored in source control.
 
 ## Async usage
 
@@ -53,6 +49,7 @@ import asyncio
 from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -86,6 +83,7 @@ Nested parameters are dictionaries, typed using `TypedDict`, for example:
 from Deasy import Deasy
 
 client = Deasy(
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -117,6 +115,7 @@ import Deasy
 from Deasy import Deasy
 
 client = Deasy(
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -163,6 +162,7 @@ from Deasy import Deasy
 client = Deasy(
     # default is 2
     max_retries=0,
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -184,12 +184,14 @@ from Deasy import Deasy
 client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
+    x_token="My X Token",
     x_user="My X User",
 )
 
 # More granular control:
 client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+    x_token="My X Token",
     x_user="My X User",
 )
 
@@ -237,6 +239,7 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from Deasy import Deasy
 
 client = Deasy(
+    x_token="My X Token",
     x_user="My X User",
 )
 response = client.metadata.with_raw_response.list(
@@ -323,6 +326,7 @@ client = Deasy(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
+    x_token="My X Token",
     x_user="My X User",
 )
 ```
@@ -341,6 +345,7 @@ By default the library closes underlying HTTP connections whenever the client is
 from Deasy import Deasy
 
 with Deasy(
+    x_token="My X Token",
     x_user="My X User",
 ) as client:
   # make requests here

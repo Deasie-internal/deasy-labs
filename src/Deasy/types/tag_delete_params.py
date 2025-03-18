@@ -2,14 +2,10 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Required, TypedDict
 
 __all__ = ["TagDeleteParams"]
 
 
 class TagDeleteParams(TypedDict, total=False):
     tag_name: Required[str]
-
-    x_user: Required[Annotated[str, PropertyInfo(alias="x-user")]]

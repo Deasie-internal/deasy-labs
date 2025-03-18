@@ -112,7 +112,6 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        x_user: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -142,7 +141,6 @@ class MetadataResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return self._post(
             "/metadata/delete",
             body=maybe_transform(
@@ -344,7 +342,6 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        x_user: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -374,7 +371,6 @@ class AsyncMetadataResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-user": x_user, **(extra_headers or {})}
         return await self._post(
             "/metadata/delete",
             body=await async_maybe_transform(

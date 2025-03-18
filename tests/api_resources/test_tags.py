@@ -28,7 +28,6 @@ class TestTags:
     def test_method_create(self, client: Deasy) -> None:
         tag = client.tags.create(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
@@ -37,7 +36,6 @@ class TestTags:
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.create(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -50,7 +48,6 @@ class TestTags:
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.create(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +62,6 @@ class TestTags:
     def test_method_update(self, client: Deasy) -> None:
         tag = client.tags.update(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -74,7 +70,6 @@ class TestTags:
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.update(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -87,7 +82,6 @@ class TestTags:
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.update(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -100,17 +94,13 @@ class TestTags:
     @pytest.mark.skip()
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
-        tag = client.tags.list(
-            x_user="x-user",
-        )
+        tag = client.tags.list()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
-        response = client.tags.with_raw_response.list(
-            x_user="x-user",
-        )
+        response = client.tags.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,9 +110,7 @@ class TestTags:
     @pytest.mark.skip()
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
-        with client.tags.with_streaming_response.list(
-            x_user="x-user",
-        ) as response:
+        with client.tags.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -136,7 +124,6 @@ class TestTags:
     def test_method_delete(self, client: Deasy) -> None:
         tag = client.tags.delete(
             tag_name="tag_name",
-            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -145,7 +132,6 @@ class TestTags:
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.delete(
             tag_name="tag_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -158,7 +144,6 @@ class TestTags:
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.delete(
             tag_name="tag_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -173,7 +158,6 @@ class TestTags:
     def test_method_get_delete_stats(self, client: Deasy) -> None:
         tag = client.tags.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
@@ -182,7 +166,6 @@ class TestTags:
     def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -195,7 +178,6 @@ class TestTags:
     def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -210,7 +192,6 @@ class TestTags:
     def test_method_upsert(self, client: Deasy) -> None:
         tag = client.tags.upsert(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
@@ -219,7 +200,6 @@ class TestTags:
     def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.upsert(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -232,7 +212,6 @@ class TestTags:
     def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.upsert(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -251,7 +230,6 @@ class TestAsyncTags:
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.create(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
@@ -260,7 +238,6 @@ class TestAsyncTags:
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.create(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -273,7 +250,6 @@ class TestAsyncTags:
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.create(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -288,7 +264,6 @@ class TestAsyncTags:
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.update(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -297,7 +272,6 @@ class TestAsyncTags:
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.update(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -310,7 +284,6 @@ class TestAsyncTags:
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.update(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -323,17 +296,13 @@ class TestAsyncTags:
     @pytest.mark.skip()
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
-        tag = await async_client.tags.list(
-            x_user="x-user",
-        )
+        tag = await async_client.tags.list()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.tags.with_raw_response.list(
-            x_user="x-user",
-        )
+        response = await async_client.tags.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -343,9 +312,7 @@ class TestAsyncTags:
     @pytest.mark.skip()
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
-        async with async_client.tags.with_streaming_response.list(
-            x_user="x-user",
-        ) as response:
+        async with async_client.tags.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -359,7 +326,6 @@ class TestAsyncTags:
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.delete(
             tag_name="tag_name",
-            x_user="x-user",
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -368,7 +334,6 @@ class TestAsyncTags:
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.delete(
             tag_name="tag_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -381,7 +346,6 @@ class TestAsyncTags:
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.delete(
             tag_name="tag_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -396,7 +360,6 @@ class TestAsyncTags:
     async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
@@ -405,7 +368,6 @@ class TestAsyncTags:
     async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -418,7 +380,6 @@ class TestAsyncTags:
     async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.get_delete_stats(
             tag_name="tag_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -433,7 +394,6 @@ class TestAsyncTags:
     async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.upsert(
             tag_data={},
-            x_user="x-user",
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
@@ -442,7 +402,6 @@ class TestAsyncTags:
     async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.upsert(
             tag_data={},
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -455,7 +414,6 @@ class TestAsyncTags:
     async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.upsert(
             tag_data={},
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
