@@ -62,16 +62,14 @@ class Deasy(SyncAPIClient):
     with_streaming_response: DeasyWithStreamedResponse
 
     # client options
-    bearer_token: str
     x_user: str
     x_token: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
-        x_user: str,
-        x_token: str,
+        x_user: str | None = None,
+        x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -93,18 +91,24 @@ class Deasy(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Deasy client instance.
 
-        This automatically infers the `bearer_token` argument from the `DEASY_BEARER_TOKEN` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `x_user` from `DEASY_USER`
+        - `x_token` from `DEASY_API_TOKEN`
         """
-        if bearer_token is None:
-            bearer_token = os.environ.get("DEASY_BEARER_TOKEN")
-        if bearer_token is None:
+        if x_user is None:
+            x_user = os.environ.get("DEASY_USER")
+        if x_user is None:
             raise DeasyError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the DEASY_BEARER_TOKEN environment variable"
+                "The x_user client option must be set either by passing x_user to the client or by setting the DEASY_USER environment variable"
             )
-        self.bearer_token = bearer_token
-
         self.x_user = x_user
 
+        if x_token is None:
+            x_token = os.environ.get("DEASY_API_TOKEN")
+        if x_token is None:
+            raise DeasyError(
+                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_TOKEN environment variable"
+            )
         self.x_token = x_token
 
         if base_url is None:
@@ -143,12 +147,6 @@ class Deasy(SyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        bearer_token = self.bearer_token
-        return {"Authorization": f"Bearer {bearer_token}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -159,7 +157,6 @@ class Deasy(SyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
         x_user: str | None = None,
         x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
@@ -195,7 +192,6 @@ class Deasy(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
             x_user=x_user or self.x_user,
             x_token=x_token or self.x_token,
             base_url=base_url or self.base_url,
@@ -260,16 +256,14 @@ class AsyncDeasy(AsyncAPIClient):
     with_streaming_response: AsyncDeasyWithStreamedResponse
 
     # client options
-    bearer_token: str
     x_user: str
     x_token: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
-        x_user: str,
-        x_token: str,
+        x_user: str | None = None,
+        x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -291,18 +285,24 @@ class AsyncDeasy(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncDeasy client instance.
 
-        This automatically infers the `bearer_token` argument from the `DEASY_BEARER_TOKEN` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `x_user` from `DEASY_USER`
+        - `x_token` from `DEASY_API_TOKEN`
         """
-        if bearer_token is None:
-            bearer_token = os.environ.get("DEASY_BEARER_TOKEN")
-        if bearer_token is None:
+        if x_user is None:
+            x_user = os.environ.get("DEASY_USER")
+        if x_user is None:
             raise DeasyError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the DEASY_BEARER_TOKEN environment variable"
+                "The x_user client option must be set either by passing x_user to the client or by setting the DEASY_USER environment variable"
             )
-        self.bearer_token = bearer_token
-
         self.x_user = x_user
 
+        if x_token is None:
+            x_token = os.environ.get("DEASY_API_TOKEN")
+        if x_token is None:
+            raise DeasyError(
+                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_TOKEN environment variable"
+            )
         self.x_token = x_token
 
         if base_url is None:
@@ -341,12 +341,6 @@ class AsyncDeasy(AsyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        bearer_token = self.bearer_token
-        return {"Authorization": f"Bearer {bearer_token}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -357,7 +351,6 @@ class AsyncDeasy(AsyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
         x_user: str | None = None,
         x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
@@ -393,7 +386,6 @@ class AsyncDeasy(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
             x_user=x_user or self.x_user,
             x_token=x_token or self.x_token,
             base_url=base_url or self.base_url,
