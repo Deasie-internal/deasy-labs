@@ -80,7 +80,6 @@ class TestMetadata:
     def test_method_delete(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
@@ -89,7 +88,6 @@ class TestMetadata:
     def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -108,7 +106,6 @@ class TestMetadata:
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -121,7 +118,6 @@ class TestMetadata:
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -307,7 +303,6 @@ class TestAsyncMetadata:
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
@@ -316,7 +311,6 @@ class TestAsyncMetadata:
     async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -335,7 +329,6 @@ class TestAsyncMetadata:
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         )
 
         assert response.is_closed is True
@@ -348,7 +341,6 @@ class TestAsyncMetadata:
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.delete(
             vdb_profile_name="vdb_profile_name",
-            x_user="x-user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

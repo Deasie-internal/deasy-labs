@@ -3,17 +3,13 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Required, TypedDict
 
 __all__ = ["MetadataDeleteParams"]
 
 
 class MetadataDeleteParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
-
-    x_user: Required[Annotated[str, PropertyInfo(alias="x-user")]]
 
     conditions: Optional["ConditionInputParam"]
 

@@ -139,16 +139,12 @@ class Deasy(SyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        x_token = self.x_token
-        return {"Deasy-Api-Key": x_token}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
             "X-Stainless-Async": "false",
+            "X-Token": self.x_token,
+            "X-User": self.x_user,
             **self._custom_headers,
         }
 
@@ -331,16 +327,12 @@ class AsyncDeasy(AsyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        x_token = self.x_token
-        return {"Deasy-Api-Key": x_token}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
             "X-Stainless-Async": f"async:{get_async_library()}",
+            "X-Token": self.x_token,
+            "X-User": self.x_user,
             **self._custom_headers,
         }
 
