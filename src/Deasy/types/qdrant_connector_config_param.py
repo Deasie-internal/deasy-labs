@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["QdrantConnectorConfigParam", "IndexInfo"]
@@ -16,13 +17,13 @@ class QdrantConnectorConfigParam(TypedDict, total=False):
 
     collection_name: Required[str]
 
-    index_info: Required[IndexInfo]
-
     name: Required[str]
 
     url: Required[str]
 
     filename_key: str
+
+    index_info: Optional[IndexInfo]
 
     text_key: str
 

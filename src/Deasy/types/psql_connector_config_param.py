@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["PsqlConnectorConfigParam", "IndexInfo"]
 
@@ -35,4 +35,4 @@ class PsqlConnectorConfigParam(TypedDict, total=False):
 
     text_key: str
 
-    type: str
+    type: Literal["PSQLVectorDBManager"]

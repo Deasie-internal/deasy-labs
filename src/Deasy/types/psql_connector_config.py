@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
@@ -34,4 +35,4 @@ class PsqlConnectorConfig(BaseModel):
 
     text_key: Optional[str] = None
 
-    type: Optional[str] = None
+    type: Optional[Literal["PSQLVectorDBManager"]] = None

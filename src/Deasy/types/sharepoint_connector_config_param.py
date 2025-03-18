@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["SharepointConnectorConfigParam"]
 
@@ -18,4 +18,4 @@ class SharepointConnectorConfigParam(TypedDict, total=False):
 
     tenant_id: Required[str]
 
-    type: str
+    type: Literal["SharepointDataSourceManager"]
