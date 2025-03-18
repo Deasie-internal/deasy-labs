@@ -5,7 +5,7 @@ from typing import Dict, List, Optional
 from .._models import BaseModel
 
 __all__ = [
-    "MetadataListPaginatedMetadataResponse",
+    "MetadataListPaginatedResponse",
     "MetadataMetadataItem",
     "MetadataMetadataItemChunkLevel",
     "MetadataMetadataItemFileLevel",
@@ -30,7 +30,7 @@ class MetadataMetadataItem(BaseModel):
     file_level: Optional[MetadataMetadataItemFileLevel] = None
 
 
-class MetadataListPaginatedMetadataResponse(BaseModel):
+class MetadataListPaginatedResponse(BaseModel):
     metadata: Dict[str, Dict[str, MetadataMetadataItem]]
 
     next_offset: Optional[int] = None

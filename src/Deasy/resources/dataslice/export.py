@@ -21,7 +21,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.dataslice import export_metadata_params
+from ...types.dataslice import export_export_metadata_params
 
 __all__ = ["ExportResource", "AsyncExportResource"]
 
@@ -46,7 +46,7 @@ class ExportResource(SyncAPIResource):
         """
         return ExportResourceWithStreamingResponse(self)
 
-    def metadata(
+    def export_metadata(
         self,
         *,
         vdb_profile_name: str,
@@ -91,7 +91,7 @@ class ExportResource(SyncAPIResource):
                     "export_format": export_format,
                     "selected_metadata_fields": selected_metadata_fields,
                 },
-                export_metadata_params.ExportMetadataParams,
+                export_export_metadata_params.ExportExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -120,7 +120,7 @@ class AsyncExportResource(AsyncAPIResource):
         """
         return AsyncExportResourceWithStreamingResponse(self)
 
-    async def metadata(
+    async def export_metadata(
         self,
         *,
         vdb_profile_name: str,
@@ -165,7 +165,7 @@ class AsyncExportResource(AsyncAPIResource):
                     "export_format": export_format,
                     "selected_metadata_fields": selected_metadata_fields,
                 },
-                export_metadata_params.ExportMetadataParams,
+                export_export_metadata_params.ExportExportMetadataParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -178,8 +178,8 @@ class ExportResourceWithRawResponse:
     def __init__(self, export: ExportResource) -> None:
         self._export = export
 
-        self.metadata = to_raw_response_wrapper(
-            export.metadata,
+        self.export_metadata = to_raw_response_wrapper(
+            export.export_metadata,
         )
 
 
@@ -187,8 +187,8 @@ class AsyncExportResourceWithRawResponse:
     def __init__(self, export: AsyncExportResource) -> None:
         self._export = export
 
-        self.metadata = async_to_raw_response_wrapper(
-            export.metadata,
+        self.export_metadata = async_to_raw_response_wrapper(
+            export.export_metadata,
         )
 
 
@@ -196,8 +196,8 @@ class ExportResourceWithStreamingResponse:
     def __init__(self, export: ExportResource) -> None:
         self._export = export
 
-        self.metadata = to_streamed_response_wrapper(
-            export.metadata,
+        self.export_metadata = to_streamed_response_wrapper(
+            export.export_metadata,
         )
 
 
@@ -205,6 +205,6 @@ class AsyncExportResourceWithStreamingResponse:
     def __init__(self, export: AsyncExportResource) -> None:
         self._export = export
 
-        self.metadata = async_to_streamed_response_wrapper(
-            export.metadata,
+        self.export_metadata = async_to_streamed_response_wrapper(
+            export.export_metadata,
         )

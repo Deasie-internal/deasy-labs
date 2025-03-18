@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 
 import httpx
 
@@ -18,7 +18,9 @@ from ...types import (
     dataslice_create_params,
     dataslice_delete_params,
     dataslice_get_files_params,
-    dataslice_tag_vdb_distribution_params,
+    dataslice_get_metrics_params,
+    dataslice_get_file_count_params,
+    dataslice_get_tag_vdb_distribution_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
@@ -39,7 +41,9 @@ from ...types.dataslice_list_response import DatasliceListResponse
 from ...types.dataslice_create_response import DatasliceCreateResponse
 from ...types.dataslice_delete_response import DatasliceDeleteResponse
 from ...types.dataslice_get_files_response import DatasliceGetFilesResponse
-from ...types.dataslice_tag_vdb_distribution_response import DatasliceTagVdbDistributionResponse
+from ...types.dataslice_get_metrics_response import DatasliceGetMetricsResponse
+from ...types.dataslice_get_file_count_response import DatasliceGetFileCountResponse
+from ...types.dataslice_get_tag_vdb_distribution_response import DatasliceGetTagVdbDistributionResponse
 
 __all__ = ["DatasliceResource", "AsyncDatasliceResource"]
 
@@ -189,6 +193,47 @@ class DatasliceResource(SyncAPIResource):
             cast_to=DatasliceDeleteResponse,
         )
 
+    def get_file_count(
+        self,
+        *,
+        vector_db_config: object,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DatasliceGetFileCountResponse:
+        """
+        Get count of files matching dataslice conditions or provided conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/dataslice/file_count",
+            body=maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "condition": condition,
+                    "dataslice_id": dataslice_id,
+                },
+                dataslice_get_file_count_params.DatasliceGetFileCountParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DatasliceGetFileCountResponse,
+        )
+
     def get_files(
         self,
         *,
@@ -221,7 +266,52 @@ class DatasliceResource(SyncAPIResource):
             cast_to=DatasliceGetFilesResponse,
         )
 
-    def tag_vdb_distribution(
+    def get_metrics(
+        self,
+        *,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DatasliceGetMetricsResponse:
+        """
+        Retrieve use case metrics
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/dataslice/metrics",
+            body=maybe_transform(
+                {
+                    "dataslice_id": dataslice_id,
+                    "file_names": file_names,
+                    "node_ids": node_ids,
+                    "tags": tags,
+                    "vector_db_config": vector_db_config,
+                },
+                dataslice_get_metrics_params.DatasliceGetMetricsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DatasliceGetMetricsResponse,
+        )
+
+    def get_tag_vdb_distribution(
         self,
         *,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -232,7 +322,7 @@ class DatasliceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceTagVdbDistributionResponse:
+    ) -> DatasliceGetTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice
 
@@ -252,12 +342,12 @@ class DatasliceResource(SyncAPIResource):
                     "dataslice_id": dataslice_id,
                     "vector_db_config": vector_db_config,
                 },
-                dataslice_tag_vdb_distribution_params.DatasliceTagVdbDistributionParams,
+                dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DatasliceTagVdbDistributionResponse,
+            cast_to=DatasliceGetTagVdbDistributionResponse,
         )
 
 
@@ -408,6 +498,47 @@ class AsyncDatasliceResource(AsyncAPIResource):
             cast_to=DatasliceDeleteResponse,
         )
 
+    async def get_file_count(
+        self,
+        *,
+        vector_db_config: object,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DatasliceGetFileCountResponse:
+        """
+        Get count of files matching dataslice conditions or provided conditions
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/dataslice/file_count",
+            body=await async_maybe_transform(
+                {
+                    "vector_db_config": vector_db_config,
+                    "condition": condition,
+                    "dataslice_id": dataslice_id,
+                },
+                dataslice_get_file_count_params.DatasliceGetFileCountParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DatasliceGetFileCountResponse,
+        )
+
     async def get_files(
         self,
         *,
@@ -442,7 +573,52 @@ class AsyncDatasliceResource(AsyncAPIResource):
             cast_to=DatasliceGetFilesResponse,
         )
 
-    async def tag_vdb_distribution(
+    async def get_metrics(
+        self,
+        *,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DatasliceGetMetricsResponse:
+        """
+        Retrieve use case metrics
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/dataslice/metrics",
+            body=await async_maybe_transform(
+                {
+                    "dataslice_id": dataslice_id,
+                    "file_names": file_names,
+                    "node_ids": node_ids,
+                    "tags": tags,
+                    "vector_db_config": vector_db_config,
+                },
+                dataslice_get_metrics_params.DatasliceGetMetricsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=DatasliceGetMetricsResponse,
+        )
+
+    async def get_tag_vdb_distribution(
         self,
         *,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -453,7 +629,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DatasliceTagVdbDistributionResponse:
+    ) -> DatasliceGetTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice
 
@@ -473,12 +649,12 @@ class AsyncDatasliceResource(AsyncAPIResource):
                     "dataslice_id": dataslice_id,
                     "vector_db_config": vector_db_config,
                 },
-                dataslice_tag_vdb_distribution_params.DatasliceTagVdbDistributionParams,
+                dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DatasliceTagVdbDistributionResponse,
+            cast_to=DatasliceGetTagVdbDistributionResponse,
         )
 
 
@@ -495,11 +671,17 @@ class DatasliceResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             dataslice.delete,
         )
+        self.get_file_count = to_raw_response_wrapper(
+            dataslice.get_file_count,
+        )
         self.get_files = to_raw_response_wrapper(
             dataslice.get_files,
         )
-        self.tag_vdb_distribution = to_raw_response_wrapper(
-            dataslice.tag_vdb_distribution,
+        self.get_metrics = to_raw_response_wrapper(
+            dataslice.get_metrics,
+        )
+        self.get_tag_vdb_distribution = to_raw_response_wrapper(
+            dataslice.get_tag_vdb_distribution,
         )
 
     @cached_property
@@ -520,11 +702,17 @@ class AsyncDatasliceResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             dataslice.delete,
         )
+        self.get_file_count = async_to_raw_response_wrapper(
+            dataslice.get_file_count,
+        )
         self.get_files = async_to_raw_response_wrapper(
             dataslice.get_files,
         )
-        self.tag_vdb_distribution = async_to_raw_response_wrapper(
-            dataslice.tag_vdb_distribution,
+        self.get_metrics = async_to_raw_response_wrapper(
+            dataslice.get_metrics,
+        )
+        self.get_tag_vdb_distribution = async_to_raw_response_wrapper(
+            dataslice.get_tag_vdb_distribution,
         )
 
     @cached_property
@@ -545,11 +733,17 @@ class DatasliceResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             dataslice.delete,
         )
+        self.get_file_count = to_streamed_response_wrapper(
+            dataslice.get_file_count,
+        )
         self.get_files = to_streamed_response_wrapper(
             dataslice.get_files,
         )
-        self.tag_vdb_distribution = to_streamed_response_wrapper(
-            dataslice.tag_vdb_distribution,
+        self.get_metrics = to_streamed_response_wrapper(
+            dataslice.get_metrics,
+        )
+        self.get_tag_vdb_distribution = to_streamed_response_wrapper(
+            dataslice.get_tag_vdb_distribution,
         )
 
     @cached_property
@@ -570,11 +764,17 @@ class AsyncDatasliceResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             dataslice.delete,
         )
+        self.get_file_count = async_to_streamed_response_wrapper(
+            dataslice.get_file_count,
+        )
         self.get_files = async_to_streamed_response_wrapper(
             dataslice.get_files,
         )
-        self.tag_vdb_distribution = async_to_streamed_response_wrapper(
-            dataslice.tag_vdb_distribution,
+        self.get_metrics = async_to_streamed_response_wrapper(
+            dataslice.get_metrics,
+        )
+        self.get_tag_vdb_distribution = async_to_streamed_response_wrapper(
+            dataslice.get_tag_vdb_distribution,
         )
 
     @cached_property

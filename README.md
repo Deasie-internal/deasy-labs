@@ -34,10 +34,10 @@ client = Deasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
 )
 
-response = client.metadata.list_metadata(
+metadata = client.metadata.list(
     vdb_profile_name="vdb_profile_name",
 )
-print(response.metadata)
+print(metadata.metadata)
 ```
 
 While you can provide a `bearer_token` keyword argument,
@@ -60,10 +60,10 @@ client = AsyncDeasy(
 
 
 async def main() -> None:
-    response = await client.metadata.list_metadata(
+    metadata = await client.metadata.list(
         vdb_profile_name="vdb_profile_name",
     )
-    print(response.metadata)
+    print(metadata.metadata)
 
 
 asyncio.run(main())
@@ -119,7 +119,7 @@ from Deasy import Deasy
 client = Deasy()
 
 try:
-    client.metadata.list_metadata(
+    client.metadata.list(
         vdb_profile_name="vdb_profile_name",
     )
 except Deasy.APIConnectionError as e:
@@ -164,7 +164,7 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).metadata.list_metadata(
+client.with_options(max_retries=5).metadata.list(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -189,7 +189,7 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).metadata.list_metadata(
+client.with_options(timeout=5.0).metadata.list(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -232,12 +232,12 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from Deasy import Deasy
 
 client = Deasy()
-response = client.metadata.with_raw_response.list_metadata(
+response = client.metadata.with_raw_response.list(
     vdb_profile_name="vdb_profile_name",
 )
 print(response.headers.get('X-My-Header'))
 
-metadata = response.parse()  # get the object that `metadata.list_metadata()` would have returned
+metadata = response.parse()  # get the object that `metadata.list()` would have returned
 print(metadata.metadata)
 ```
 
@@ -252,7 +252,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.metadata.with_streaming_response.list_metadata(
+with client.metadata.with_streaming_response.list(
     vdb_profile_name="vdb_profile_name",
 ) as response:
     print(response.headers.get("X-My-Header"))

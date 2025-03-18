@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import Required, TypedDict
 
-__all__ = ["MetadataListPaginatedMetadataParams"]
+__all__ = ["MetadataListParams"]
 
 
-class MetadataListPaginatedMetadataParams(TypedDict, total=False):
+class MetadataListParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
 
     conditions: Optional["ConditionInputParam"]
@@ -16,10 +16,6 @@ class MetadataListPaginatedMetadataParams(TypedDict, total=False):
     dataslice_id: Optional[str]
 
     include_chunk_level: Optional[bool]
-
-    limit: Optional[int]
-
-    offset: Optional[int]
 
     tag_names: Optional[List[str]]
 

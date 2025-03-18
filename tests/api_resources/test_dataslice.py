@@ -13,7 +13,9 @@ from Deasy.types import (
     DatasliceCreateResponse,
     DatasliceDeleteResponse,
     DatasliceGetFilesResponse,
-    DatasliceTagVdbDistributionResponse,
+    DatasliceGetMetricsResponse,
+    DatasliceGetFileCountResponse,
+    DatasliceGetTagVdbDistributionResponse,
 )
 from tests.utils import assert_matches_type
 
@@ -152,6 +154,57 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
+    def test_method_get_file_count(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_file_count(
+            vector_db_config={},
+        )
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_get_file_count_with_all_params(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_file_count(
+            vector_db_config={},
+            condition={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+        )
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_get_file_count(self, client: Deasy) -> None:
+        response = client.dataslice.with_raw_response.get_file_count(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dataslice = response.parse()
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_get_file_count(self, client: Deasy) -> None:
+        with client.dataslice.with_streaming_response.get_file_count(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dataslice = response.parse()
+            assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
     def test_method_get_files(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_files(
             dataslice_id="dataslice_id",
@@ -186,38 +239,78 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_tag_vdb_distribution(self, client: Deasy) -> None:
-        dataslice = client.dataslice.tag_vdb_distribution()
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+    def test_method_get_metrics(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_metrics()
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_tag_vdb_distribution_with_all_params(self, client: Deasy) -> None:
-        dataslice = client.dataslice.tag_vdb_distribution(
+    def test_method_get_metrics_with_all_params(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_metrics(
             dataslice_id="dataslice_id",
+            file_names=["string"],
+            node_ids=["string"],
+            tags=["string"],
             vector_db_config={},
         )
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_tag_vdb_distribution(self, client: Deasy) -> None:
-        response = client.dataslice.with_raw_response.tag_vdb_distribution()
+    def test_raw_response_get_metrics(self, client: Deasy) -> None:
+        response = client.dataslice.with_raw_response.get_metrics()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dataslice = response.parse()
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_tag_vdb_distribution(self, client: Deasy) -> None:
-        with client.dataslice.with_streaming_response.tag_vdb_distribution() as response:
+    def test_streaming_response_get_metrics(self, client: Deasy) -> None:
+        with client.dataslice.with_streaming_response.get_metrics() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dataslice = response.parse()
-            assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+            assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_get_tag_vdb_distribution(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_tag_vdb_distribution()
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_get_tag_vdb_distribution_with_all_params(self, client: Deasy) -> None:
+        dataslice = client.dataslice.get_tag_vdb_distribution(
+            dataslice_id="dataslice_id",
+            vector_db_config={},
+        )
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
+        response = client.dataslice.with_raw_response.get_tag_vdb_distribution()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dataslice = response.parse()
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
+        with client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dataslice = response.parse()
+            assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -354,6 +447,57 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
+    async def test_method_get_file_count(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_file_count(
+            vector_db_config={},
+        )
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_file_count(
+            vector_db_config={},
+            condition={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
+            dataslice_id="dataslice_id",
+        )
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_get_file_count(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.dataslice.with_raw_response.get_file_count(
+            vector_db_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dataslice = await response.parse()
+        assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_get_file_count(self, async_client: AsyncDeasy) -> None:
+        async with async_client.dataslice.with_streaming_response.get_file_count(
+            vector_db_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dataslice = await response.parse()
+            assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
     async def test_method_get_files(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_files(
             dataslice_id="dataslice_id",
@@ -388,37 +532,77 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.tag_vdb_distribution()
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+    async def test_method_get_metrics(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_metrics()
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasy) -> None:
-        dataslice = await async_client.dataslice.tag_vdb_distribution(
+    async def test_method_get_metrics_with_all_params(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_metrics(
             dataslice_id="dataslice_id",
+            file_names=["string"],
+            node_ids=["string"],
+            tags=["string"],
             vector_db_config={},
         )
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
-        response = await async_client.dataslice.with_raw_response.tag_vdb_distribution()
+    async def test_raw_response_get_metrics(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.dataslice.with_raw_response.get_metrics()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         dataslice = await response.parse()
-        assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+        assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
-        async with async_client.dataslice.with_streaming_response.tag_vdb_distribution() as response:
+    async def test_streaming_response_get_metrics(self, async_client: AsyncDeasy) -> None:
+        async with async_client.dataslice.with_streaming_response.get_metrics() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             dataslice = await response.parse()
-            assert_matches_type(DatasliceTagVdbDistributionResponse, dataslice, path=["response"])
+            assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_tag_vdb_distribution()
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_get_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasy) -> None:
+        dataslice = await async_client.dataslice.get_tag_vdb_distribution(
+            dataslice_id="dataslice_id",
+            vector_db_config={},
+        )
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
+        response = await async_client.dataslice.with_raw_response.get_tag_vdb_distribution()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dataslice = await response.parse()
+        assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
+        async with async_client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dataslice = await response.parse()
+            assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
         assert cast(Any, response.is_closed) is True

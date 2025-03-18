@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import Optional
 from typing_extensions import TypedDict
 
-__all__ = ["DatasliceTagVdbDistributionParams"]
+__all__ = ["DatasliceGetTagVdbDistributionParams"]
 
 
-class DatasliceTagVdbDistributionParams(TypedDict, total=False):
+class DatasliceGetTagVdbDistributionParams(TypedDict, total=False):
     dataslice_id: Optional[str]
 
     vector_db_config: Optional[object]

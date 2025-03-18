@@ -28,7 +28,7 @@ from Deasy._models import BaseModel, FinalRequestOptions
 from Deasy._constants import RAW_RESPONSE_HEADER
 from Deasy._exceptions import DeasyError, APIStatusError, APITimeoutError, APIResponseValidationError
 from Deasy._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
-from Deasy.types.metadata_list_metadata_params import MetadataListMetadataParams
+from Deasy.types.metadata_list_params import MetadataListParams
 
 from .utils import update_env
 
@@ -742,9 +742,7 @@ class TestDeasy:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/metadata/list",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListMetadataParams)
-                ),
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -759,9 +757,7 @@ class TestDeasy:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/metadata/list",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListMetadataParams)
-                ),
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -794,7 +790,7 @@ class TestDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.metadata.with_raw_response.list_metadata(vdb_profile_name="vdb_profile_name")
+        response = client.metadata.with_raw_response.list(vdb_profile_name="vdb_profile_name")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -816,7 +812,7 @@ class TestDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.metadata.with_raw_response.list_metadata(
+        response = client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -841,7 +837,7 @@ class TestDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.metadata.with_raw_response.list_metadata(
+        response = client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": "42"}
         )
 
@@ -1542,9 +1538,7 @@ class TestAsyncDeasy:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/metadata/list",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListMetadataParams)
-                ),
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1559,9 +1553,7 @@ class TestAsyncDeasy:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/metadata/list",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListMetadataParams)
-                ),
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1595,7 +1587,7 @@ class TestAsyncDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.metadata.with_raw_response.list_metadata(vdb_profile_name="vdb_profile_name")
+        response = await client.metadata.with_raw_response.list(vdb_profile_name="vdb_profile_name")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1620,7 +1612,7 @@ class TestAsyncDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.metadata.with_raw_response.list_metadata(
+        response = await client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -1646,7 +1638,7 @@ class TestAsyncDeasy:
 
         respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.metadata.with_raw_response.list_metadata(
+        response = await client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": "42"}
         )
 

@@ -7,10 +7,10 @@ from typing import Dict, List, Optional
 import httpx
 
 from ..types import (
+    metadata_list_params,
     metadata_delete_params,
     metadata_upsert_params,
-    metadata_list_metadata_params,
-    metadata_list_paginated_metadata_params,
+    metadata_list_paginated_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -27,10 +27,10 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.condition_input_param import ConditionInputParam
+from ..types.metadata_list_response import MetadataListResponse
 from ..types.metadata_delete_response import MetadataDeleteResponse
 from ..types.metadata_upsert_response import MetadataUpsertResponse
-from ..types.metadata_list_metadata_response import MetadataListMetadataResponse
-from ..types.metadata_list_paginated_metadata_response import MetadataListPaginatedMetadataResponse
+from ..types.metadata_list_paginated_response import MetadataListPaginatedResponse
 
 __all__ = ["MetadataResource", "AsyncMetadataResource"]
 
@@ -54,6 +54,59 @@ class MetadataResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/Deasy-python#with_streaming_response
         """
         return MetadataResourceWithStreamingResponse(self)
+
+    def list(
+        self,
+        *,
+        vdb_profile_name: str,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/list",
+            body=maybe_transform(
+                {
+                    "vdb_profile_name": vdb_profile_name,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "tag_names": tag_names,
+                },
+                metadata_list_params.MetadataListParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListResponse,
+        )
 
     def delete(
         self,
@@ -107,60 +160,7 @@ class MetadataResource(SyncAPIResource):
             cast_to=MetadataDeleteResponse,
         )
 
-    def list_metadata(
-        self,
-        *,
-        vdb_profile_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataListMetadataResponse:
-        """
-        Get paginated filtered metadata based on conditions
-
-        Attributes:
-
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
-            dataslice_id: The dataslice for getting files from.
-            conditions: The conditions to filter the files by.
-            tag_names: The names of the tags to include in the metadata.
-            include_chunk_level: Whether to include the chunk-level metadata.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/metadata/list",
-            body=maybe_transform(
-                {
-                    "vdb_profile_name": vdb_profile_name,
-                    "conditions": conditions,
-                    "dataslice_id": dataslice_id,
-                    "include_chunk_level": include_chunk_level,
-                    "tag_names": tag_names,
-                },
-                metadata_list_metadata_params.MetadataListMetadataParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MetadataListMetadataResponse,
-        )
-
-    def list_paginated_metadata(
+    def list_paginated(
         self,
         *,
         vdb_profile_name: str,
@@ -176,7 +176,7 @@ class MetadataResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataListPaginatedMetadataResponse:
+    ) -> MetadataListPaginatedResponse:
         """
         Get paginated filtered metadata based on conditions
 
@@ -211,12 +211,12 @@ class MetadataResource(SyncAPIResource):
                     "offset": offset,
                     "tag_names": tag_names,
                 },
-                metadata_list_paginated_metadata_params.MetadataListPaginatedMetadataParams,
+                metadata_list_paginated_params.MetadataListPaginatedParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetadataListPaginatedMetadataResponse,
+            cast_to=MetadataListPaginatedResponse,
         )
 
     def upsert(
@@ -287,6 +287,59 @@ class AsyncMetadataResource(AsyncAPIResource):
         """
         return AsyncMetadataResourceWithStreamingResponse(self)
 
+    async def list(
+        self,
+        *,
+        vdb_profile_name: str,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataListResponse:
+        """
+        Get paginated filtered metadata based on conditions
+
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            dataslice_id: The dataslice for getting files from.
+            conditions: The conditions to filter the files by.
+            tag_names: The names of the tags to include in the metadata.
+            include_chunk_level: Whether to include the chunk-level metadata.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/list",
+            body=await async_maybe_transform(
+                {
+                    "vdb_profile_name": vdb_profile_name,
+                    "conditions": conditions,
+                    "dataslice_id": dataslice_id,
+                    "include_chunk_level": include_chunk_level,
+                    "tag_names": tag_names,
+                },
+                metadata_list_params.MetadataListParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataListResponse,
+        )
+
     async def delete(
         self,
         *,
@@ -339,60 +392,7 @@ class AsyncMetadataResource(AsyncAPIResource):
             cast_to=MetadataDeleteResponse,
         )
 
-    async def list_metadata(
-        self,
-        *,
-        vdb_profile_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataListMetadataResponse:
-        """
-        Get paginated filtered metadata based on conditions
-
-        Attributes:
-
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
-            dataslice_id: The dataslice for getting files from.
-            conditions: The conditions to filter the files by.
-            tag_names: The names of the tags to include in the metadata.
-            include_chunk_level: Whether to include the chunk-level metadata.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/metadata/list",
-            body=await async_maybe_transform(
-                {
-                    "vdb_profile_name": vdb_profile_name,
-                    "conditions": conditions,
-                    "dataslice_id": dataslice_id,
-                    "include_chunk_level": include_chunk_level,
-                    "tag_names": tag_names,
-                },
-                metadata_list_metadata_params.MetadataListMetadataParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=MetadataListMetadataResponse,
-        )
-
-    async def list_paginated_metadata(
+    async def list_paginated(
         self,
         *,
         vdb_profile_name: str,
@@ -408,7 +408,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MetadataListPaginatedMetadataResponse:
+    ) -> MetadataListPaginatedResponse:
         """
         Get paginated filtered metadata based on conditions
 
@@ -443,12 +443,12 @@ class AsyncMetadataResource(AsyncAPIResource):
                     "offset": offset,
                     "tag_names": tag_names,
                 },
-                metadata_list_paginated_metadata_params.MetadataListPaginatedMetadataParams,
+                metadata_list_paginated_params.MetadataListPaginatedParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=MetadataListPaginatedMetadataResponse,
+            cast_to=MetadataListPaginatedResponse,
         )
 
     async def upsert(
@@ -503,14 +503,14 @@ class MetadataResourceWithRawResponse:
     def __init__(self, metadata: MetadataResource) -> None:
         self._metadata = metadata
 
+        self.list = to_raw_response_wrapper(
+            metadata.list,
+        )
         self.delete = to_raw_response_wrapper(
             metadata.delete,
         )
-        self.list_metadata = to_raw_response_wrapper(
-            metadata.list_metadata,
-        )
-        self.list_paginated_metadata = to_raw_response_wrapper(
-            metadata.list_paginated_metadata,
+        self.list_paginated = to_raw_response_wrapper(
+            metadata.list_paginated,
         )
         self.upsert = to_raw_response_wrapper(
             metadata.upsert,
@@ -521,14 +521,14 @@ class AsyncMetadataResourceWithRawResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
         self._metadata = metadata
 
+        self.list = async_to_raw_response_wrapper(
+            metadata.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             metadata.delete,
         )
-        self.list_metadata = async_to_raw_response_wrapper(
-            metadata.list_metadata,
-        )
-        self.list_paginated_metadata = async_to_raw_response_wrapper(
-            metadata.list_paginated_metadata,
+        self.list_paginated = async_to_raw_response_wrapper(
+            metadata.list_paginated,
         )
         self.upsert = async_to_raw_response_wrapper(
             metadata.upsert,
@@ -539,14 +539,14 @@ class MetadataResourceWithStreamingResponse:
     def __init__(self, metadata: MetadataResource) -> None:
         self._metadata = metadata
 
+        self.list = to_streamed_response_wrapper(
+            metadata.list,
+        )
         self.delete = to_streamed_response_wrapper(
             metadata.delete,
         )
-        self.list_metadata = to_streamed_response_wrapper(
-            metadata.list_metadata,
-        )
-        self.list_paginated_metadata = to_streamed_response_wrapper(
-            metadata.list_paginated_metadata,
+        self.list_paginated = to_streamed_response_wrapper(
+            metadata.list_paginated,
         )
         self.upsert = to_streamed_response_wrapper(
             metadata.upsert,
@@ -557,14 +557,14 @@ class AsyncMetadataResourceWithStreamingResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
         self._metadata = metadata
 
+        self.list = async_to_streamed_response_wrapper(
+            metadata.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             metadata.delete,
         )
-        self.list_metadata = async_to_streamed_response_wrapper(
-            metadata.list_metadata,
-        )
-        self.list_paginated_metadata = async_to_streamed_response_wrapper(
-            metadata.list_paginated_metadata,
+        self.list_paginated = async_to_streamed_response_wrapper(
+            metadata.list_paginated,
         )
         self.upsert = async_to_streamed_response_wrapper(
             metadata.upsert,

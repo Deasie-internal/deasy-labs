@@ -1,21 +1,9 @@
-# Deasy
-
-Types:
-
-```python
-from Deasy.types import RetrieveResponse
-```
-
-Methods:
-
-- <code title="get /">client.<a href="./src/Deasy/_client.py">retrieve</a>() -> <a href="./src/Deasy/types/retrieve_response.py">object</a></code>
-
 # ClassifyBulk
 
 Types:
 
 ```python
-from Deasy.types import ClassifyBulkClassifyResponse
+from Deasy.types import ConditionInput, ClassifyBulkClassifyResponse
 ```
 
 Methods:
@@ -88,19 +76,18 @@ Types:
 
 ```python
 from Deasy.types import (
-    ConditionInput,
+    MetadataListResponse,
     MetadataDeleteResponse,
-    MetadataListMetadataResponse,
-    MetadataListPaginatedMetadataResponse,
+    MetadataListPaginatedResponse,
     MetadataUpsertResponse,
 )
 ```
 
 Methods:
 
+- <code title="post /metadata/list">client.metadata.<a href="./src/Deasy/resources/metadata.py">list</a>(\*\*<a href="src/Deasy/types/metadata_list_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_list_response.py">MetadataListResponse</a></code>
 - <code title="post /metadata/delete">client.metadata.<a href="./src/Deasy/resources/metadata.py">delete</a>(\*\*<a href="src/Deasy/types/metadata_delete_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_delete_response.py">MetadataDeleteResponse</a></code>
-- <code title="post /metadata/list">client.metadata.<a href="./src/Deasy/resources/metadata.py">list_metadata</a>(\*\*<a href="src/Deasy/types/metadata_list_metadata_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_list_metadata_response.py">MetadataListMetadataResponse</a></code>
-- <code title="post /metadata/list_paginated">client.metadata.<a href="./src/Deasy/resources/metadata.py">list_paginated_metadata</a>(\*\*<a href="src/Deasy/types/metadata_list_paginated_metadata_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_list_paginated_metadata_response.py">MetadataListPaginatedMetadataResponse</a></code>
+- <code title="post /metadata/list_paginated">client.metadata.<a href="./src/Deasy/resources/metadata.py">list_paginated</a>(\*\*<a href="src/Deasy/types/metadata_list_paginated_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_list_paginated_response.py">MetadataListPaginatedResponse</a></code>
 - <code title="post /metadata/upsert">client.metadata.<a href="./src/Deasy/resources/metadata.py">upsert</a>(\*\*<a href="src/Deasy/types/metadata_upsert_params.py">params</a>) -> <a href="./src/Deasy/types/metadata_upsert_response.py">MetadataUpsertResponse</a></code>
 
 # VdbConnector
@@ -153,8 +140,10 @@ from Deasy.types import (
     DatasliceCreateResponse,
     DatasliceListResponse,
     DatasliceDeleteResponse,
+    DatasliceGetFileCountResponse,
     DatasliceGetFilesResponse,
-    DatasliceTagVdbDistributionResponse,
+    DatasliceGetMetricsResponse,
+    DatasliceGetTagVdbDistributionResponse,
 )
 ```
 
@@ -163,20 +152,22 @@ Methods:
 - <code title="post /dataslice/create">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">create</a>(\*\*<a href="src/Deasy/types/dataslice_create_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_create_response.py">DatasliceCreateResponse</a></code>
 - <code title="get /dataslice/list">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">list</a>() -> <a href="./src/Deasy/types/dataslice_list_response.py">DatasliceListResponse</a></code>
 - <code title="delete /dataslice/delete">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">delete</a>(\*\*<a href="src/Deasy/types/dataslice_delete_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_delete_response.py">DatasliceDeleteResponse</a></code>
+- <code title="post /dataslice/file_count">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">get_file_count</a>(\*\*<a href="src/Deasy/types/dataslice_get_file_count_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_get_file_count_response.py">DatasliceGetFileCountResponse</a></code>
 - <code title="post /dataslice/files">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">get_files</a>(\*\*<a href="src/Deasy/types/dataslice_get_files_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_get_files_response.py">DatasliceGetFilesResponse</a></code>
-- <code title="post /dataslice/tag_vdb_distribution">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">tag_vdb_distribution</a>(\*\*<a href="src/Deasy/types/dataslice_tag_vdb_distribution_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_tag_vdb_distribution_response.py">DatasliceTagVdbDistributionResponse</a></code>
+- <code title="post /dataslice/metrics">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">get_metrics</a>(\*\*<a href="src/Deasy/types/dataslice_get_metrics_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_get_metrics_response.py">DatasliceGetMetricsResponse</a></code>
+- <code title="post /dataslice/tag_vdb_distribution">client.dataslice.<a href="./src/Deasy/resources/dataslice/dataslice.py">get_tag_vdb_distribution</a>(\*\*<a href="src/Deasy/types/dataslice_get_tag_vdb_distribution_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice_get_tag_vdb_distribution_response.py">DatasliceGetTagVdbDistributionResponse</a></code>
 
 ## Export
 
 Types:
 
 ```python
-from Deasy.types.dataslice import ExportMetadataResponse
+from Deasy.types.dataslice import ExportExportMetadataResponse
 ```
 
 Methods:
 
-- <code title="post /dataslice/export/metadata">client.dataslice.export.<a href="./src/Deasy/resources/dataslice/export.py">metadata</a>(\*\*<a href="src/Deasy/types/dataslice/export_metadata_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice/export_metadata_response.py">object</a></code>
+- <code title="post /dataslice/export/metadata">client.dataslice.export.<a href="./src/Deasy/resources/dataslice/export.py">export_metadata</a>(\*\*<a href="src/Deasy/types/dataslice/export_export_metadata_params.py">params</a>) -> <a href="./src/Deasy/types/dataslice/export_export_metadata_response.py">object</a></code>
 
 # Graph
 
