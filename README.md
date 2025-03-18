@@ -32,6 +32,8 @@ from Deasy import Deasy
 
 client = Deasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
+    x_user="My X User",
+    x_token="My X Token",
 )
 
 metadata = client.metadata.list(
@@ -56,6 +58,8 @@ from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
     bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
+    x_user="My X User",
+    x_token="My X Token",
 )
 
 
@@ -87,7 +91,10 @@ Nested parameters are dictionaries, typed using `TypedDict`, for example:
 ```python
 from Deasy import Deasy
 
-client = Deasy()
+client = Deasy(
+    x_user="My X User",
+    x_token="My X Token",
+)
 
 response = client.classify_bulk.classify(
     vdb_profile_name="vdb_profile_name",
@@ -116,7 +123,10 @@ All errors inherit from `Deasy.APIError`.
 import Deasy
 from Deasy import Deasy
 
-client = Deasy()
+client = Deasy(
+    x_user="My X User",
+    x_token="My X Token",
+)
 
 try:
     client.metadata.list(
@@ -161,6 +171,8 @@ from Deasy import Deasy
 client = Deasy(
     # default is 2
     max_retries=0,
+    x_user="My X User",
+    x_token="My X Token",
 )
 
 # Or, configure per-request:
@@ -181,11 +193,15 @@ from Deasy import Deasy
 client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
+    x_user="My X User",
+    x_token="My X Token",
 )
 
 # More granular control:
 client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+    x_user="My X User",
+    x_token="My X Token",
 )
 
 # Override per-request:
@@ -231,7 +247,10 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from Deasy import Deasy
 
-client = Deasy()
+client = Deasy(
+    x_user="My X User",
+    x_token="My X Token",
+)
 response = client.metadata.with_raw_response.list(
     vdb_profile_name="vdb_profile_name",
 )
@@ -316,6 +335,8 @@ client = Deasy(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
+    x_user="My X User",
+    x_token="My X Token",
 )
 ```
 
@@ -332,7 +353,10 @@ By default the library closes underlying HTTP connections whenever the client is
 ```py
 from Deasy import Deasy
 
-with Deasy() as client:
+with Deasy(
+    x_user="My X User",
+    x_token="My X Token",
+) as client:
   # make requests here
   ...
 
