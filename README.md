@@ -31,7 +31,6 @@ from Deasy import Deasy
 
 client = Deasy(
     x_user="My X User",
-    x_token="My X Token",
 )
 
 metadata = client.metadata.list(
@@ -39,6 +38,11 @@ metadata = client.metadata.list(
 )
 print(metadata.metadata)
 ```
+
+While you can provide a `x_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `DEASY_API_KEY="My X Token"` to your `.env` file
+so that your X Token is not stored in source control.
 
 ## Async usage
 
@@ -50,7 +54,6 @@ from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
     x_user="My X User",
-    x_token="My X Token",
 )
 
 
@@ -84,7 +87,6 @@ from Deasy import Deasy
 
 client = Deasy(
     x_user="My X User",
-    x_token="My X Token",
 )
 
 response = client.classify_bulk.classify(
@@ -116,7 +118,6 @@ from Deasy import Deasy
 
 client = Deasy(
     x_user="My X User",
-    x_token="My X Token",
 )
 
 try:
@@ -163,7 +164,6 @@ client = Deasy(
     # default is 2
     max_retries=0,
     x_user="My X User",
-    x_token="My X Token",
 )
 
 # Or, configure per-request:
@@ -185,14 +185,12 @@ client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
     x_user="My X User",
-    x_token="My X Token",
 )
 
 # More granular control:
 client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     x_user="My X User",
-    x_token="My X Token",
 )
 
 # Override per-request:
@@ -240,7 +238,6 @@ from Deasy import Deasy
 
 client = Deasy(
     x_user="My X User",
-    x_token="My X Token",
 )
 response = client.metadata.with_raw_response.list(
     vdb_profile_name="vdb_profile_name",
@@ -327,7 +324,6 @@ client = Deasy(
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
     x_user="My X User",
-    x_token="My X Token",
 )
 ```
 
@@ -346,7 +342,6 @@ from Deasy import Deasy
 
 with Deasy(
     x_user="My X User",
-    x_token="My X Token",
 ) as client:
   # make requests here
   ...
