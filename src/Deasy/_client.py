@@ -106,7 +106,7 @@ class Deasy(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
         if base_url is None:
-            base_url = f"https://dev-deasy.web.app/"
+            base_url = f"https://dev-deasy-api-service-678999874120.us-east1.run.app/"
 
         super().__init__(
             version=__version__,
@@ -298,7 +298,7 @@ class AsyncDeasy(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
         if base_url is None:
-            base_url = f"https://dev-deasy.web.app/"
+            base_url = f"https://dev-deasy-api-service-678999874120.us-east1.run.app/"
 
         super().__init__(
             version=__version__,
