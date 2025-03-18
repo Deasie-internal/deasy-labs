@@ -33,8 +33,8 @@ from Deasy.types.metadata_list_params import MetadataListParams
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-x_user = "My X User"
 x_token = "My X Token"
+x_user = "My X User"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -56,7 +56,7 @@ def _get_open_connections(client: Deasy | AsyncDeasy) -> int:
 
 
 class TestDeasy:
-    client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+    client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -82,13 +82,13 @@ class TestDeasy:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(x_user="another My X User")
-        assert copied.x_user == "another My X User"
-        assert self.client.x_user == "My X User"
-
         copied = self.client.copy(x_token="another My X Token")
         assert copied.x_token == "another My X Token"
         assert self.client.x_token == "My X Token"
+
+        copied = self.client.copy(x_user="another My X User")
+        assert copied.x_user == "another My X User"
+        assert self.client.x_user == "My X User"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -109,8 +109,8 @@ class TestDeasy:
     def test_copy_default_headers(self) -> None:
         client = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -147,8 +147,8 @@ class TestDeasy:
     def test_copy_default_query(self) -> None:
         client = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -276,8 +276,8 @@ class TestDeasy:
     def test_client_timeout_option(self) -> None:
         client = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -291,8 +291,8 @@ class TestDeasy:
         with httpx.Client(timeout=None) as http_client:
             client = Deasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -305,8 +305,8 @@ class TestDeasy:
         with httpx.Client() as http_client:
             client = Deasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -319,8 +319,8 @@ class TestDeasy:
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = Deasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -334,8 +334,8 @@ class TestDeasy:
             async with httpx.AsyncClient() as http_client:
                 Deasy(
                     base_url=base_url,
-                    x_user=x_user,
                     x_token=x_token,
+                    x_user=x_user,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -343,8 +343,8 @@ class TestDeasy:
     def test_default_headers_option(self) -> None:
         client = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -354,8 +354,8 @@ class TestDeasy:
 
         client2 = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -369,8 +369,8 @@ class TestDeasy:
     def test_default_query_option(self) -> None:
         client = Deasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -573,7 +573,7 @@ class TestDeasy:
 
     def test_base_url_setter(self) -> None:
         client = Deasy(
-            base_url="https://example.com/from_init", x_user=x_user, x_token=x_token, _strict_response_validation=True
+            base_url="https://example.com/from_init", x_token=x_token, x_user=x_user, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
 
@@ -583,7 +583,7 @@ class TestDeasy:
 
     def test_base_url_env(self) -> None:
         with update_env(DEASY_BASE_URL="http://localhost:5000/from/env"):
-            client = Deasy(x_user=x_user, x_token=x_token, _strict_response_validation=True)
+            client = Deasy(x_token=x_token, x_user=x_user, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -591,14 +591,14 @@ class TestDeasy:
         [
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -620,14 +620,14 @@ class TestDeasy:
         [
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -649,14 +649,14 @@ class TestDeasy:
         [
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             Deasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -674,7 +674,7 @@ class TestDeasy:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -685,7 +685,7 @@ class TestDeasy:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -708,8 +708,8 @@ class TestDeasy:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
             Deasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -721,12 +721,12 @@ class TestDeasy:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        strict_client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=False)
+        client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -754,7 +754,7 @@ class TestDeasy:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = Deasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -872,7 +872,7 @@ class TestDeasy:
 
 
 class TestAsyncDeasy:
-    client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+    client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -900,13 +900,13 @@ class TestAsyncDeasy:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(x_user="another My X User")
-        assert copied.x_user == "another My X User"
-        assert self.client.x_user == "My X User"
-
         copied = self.client.copy(x_token="another My X Token")
         assert copied.x_token == "another My X Token"
         assert self.client.x_token == "My X Token"
+
+        copied = self.client.copy(x_user="another My X User")
+        assert copied.x_user == "another My X User"
+        assert self.client.x_user == "My X User"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -927,8 +927,8 @@ class TestAsyncDeasy:
     def test_copy_default_headers(self) -> None:
         client = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -965,8 +965,8 @@ class TestAsyncDeasy:
     def test_copy_default_query(self) -> None:
         client = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -1094,8 +1094,8 @@ class TestAsyncDeasy:
     async def test_client_timeout_option(self) -> None:
         client = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -1109,8 +1109,8 @@ class TestAsyncDeasy:
         async with httpx.AsyncClient(timeout=None) as http_client:
             client = AsyncDeasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1123,8 +1123,8 @@ class TestAsyncDeasy:
         async with httpx.AsyncClient() as http_client:
             client = AsyncDeasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1137,8 +1137,8 @@ class TestAsyncDeasy:
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = AsyncDeasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1152,8 +1152,8 @@ class TestAsyncDeasy:
             with httpx.Client() as http_client:
                 AsyncDeasy(
                     base_url=base_url,
-                    x_user=x_user,
                     x_token=x_token,
+                    x_user=x_user,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -1161,8 +1161,8 @@ class TestAsyncDeasy:
     def test_default_headers_option(self) -> None:
         client = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -1172,8 +1172,8 @@ class TestAsyncDeasy:
 
         client2 = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -1187,8 +1187,8 @@ class TestAsyncDeasy:
     def test_default_query_option(self) -> None:
         client = AsyncDeasy(
             base_url=base_url,
-            x_user=x_user,
             x_token=x_token,
+            x_user=x_user,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -1391,7 +1391,7 @@ class TestAsyncDeasy:
 
     def test_base_url_setter(self) -> None:
         client = AsyncDeasy(
-            base_url="https://example.com/from_init", x_user=x_user, x_token=x_token, _strict_response_validation=True
+            base_url="https://example.com/from_init", x_token=x_token, x_user=x_user, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
 
@@ -1401,7 +1401,7 @@ class TestAsyncDeasy:
 
     def test_base_url_env(self) -> None:
         with update_env(DEASY_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncDeasy(x_user=x_user, x_token=x_token, _strict_response_validation=True)
+            client = AsyncDeasy(x_token=x_token, x_user=x_user, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -1409,14 +1409,14 @@ class TestAsyncDeasy:
         [
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1438,14 +1438,14 @@ class TestAsyncDeasy:
         [
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1467,14 +1467,14 @@ class TestAsyncDeasy:
         [
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
             ),
             AsyncDeasy(
                 base_url="http://localhost:5000/custom/path/",
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1492,7 +1492,7 @@ class TestAsyncDeasy:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1504,7 +1504,7 @@ class TestAsyncDeasy:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1528,8 +1528,8 @@ class TestAsyncDeasy:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
             AsyncDeasy(
                 base_url=base_url,
-                x_user=x_user,
                 x_token=x_token,
+                x_user=x_user,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -1542,12 +1542,12 @@ class TestAsyncDeasy:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        strict_client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=False)
+        client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1576,7 +1576,7 @@ class TestAsyncDeasy:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncDeasy(base_url=base_url, x_user=x_user, x_token=x_token, _strict_response_validation=True)
+        client = AsyncDeasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)

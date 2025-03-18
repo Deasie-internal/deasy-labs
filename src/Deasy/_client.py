@@ -62,14 +62,14 @@ class Deasy(SyncAPIClient):
     with_streaming_response: DeasyWithStreamedResponse
 
     # client options
-    x_user: str
     x_token: str
+    x_user: str
 
     def __init__(
         self,
         *,
-        x_user: str | None = None,
         x_token: str | None = None,
+        x_user: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -91,25 +91,17 @@ class Deasy(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Deasy client instance.
 
-        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `x_user` from `DEASY_USER`
-        - `x_token` from `DEASY_API_TOKEN`
+        This automatically infers the `x_token` argument from the `DEASY_API_KEY` environment variable if it is not provided.
         """
-        if x_user is None:
-            x_user = os.environ.get("DEASY_USER")
-        if x_user is None:
-            raise DeasyError(
-                "The x_user client option must be set either by passing x_user to the client or by setting the DEASY_USER environment variable"
-            )
-        self.x_user = x_user
-
         if x_token is None:
-            x_token = os.environ.get("DEASY_API_TOKEN")
+            x_token = os.environ.get("DEASY_API_KEY")
         if x_token is None:
             raise DeasyError(
-                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_TOKEN environment variable"
+                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_KEY environment variable"
             )
         self.x_token = x_token
+
+        self.x_user = x_user
 
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
@@ -147,6 +139,12 @@ class Deasy(SyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        x_token = self.x_token
+        return {"Deasy-Api-Key": x_token}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -157,8 +155,8 @@ class Deasy(SyncAPIClient):
     def copy(
         self,
         *,
-        x_user: str | None = None,
         x_token: str | None = None,
+        x_user: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -192,8 +190,8 @@ class Deasy(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            x_user=x_user or self.x_user,
             x_token=x_token or self.x_token,
+            x_user=x_user or self.x_user,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -256,14 +254,14 @@ class AsyncDeasy(AsyncAPIClient):
     with_streaming_response: AsyncDeasyWithStreamedResponse
 
     # client options
-    x_user: str
     x_token: str
+    x_user: str
 
     def __init__(
         self,
         *,
-        x_user: str | None = None,
         x_token: str | None = None,
+        x_user: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -285,25 +283,17 @@ class AsyncDeasy(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncDeasy client instance.
 
-        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `x_user` from `DEASY_USER`
-        - `x_token` from `DEASY_API_TOKEN`
+        This automatically infers the `x_token` argument from the `DEASY_API_KEY` environment variable if it is not provided.
         """
-        if x_user is None:
-            x_user = os.environ.get("DEASY_USER")
-        if x_user is None:
-            raise DeasyError(
-                "The x_user client option must be set either by passing x_user to the client or by setting the DEASY_USER environment variable"
-            )
-        self.x_user = x_user
-
         if x_token is None:
-            x_token = os.environ.get("DEASY_API_TOKEN")
+            x_token = os.environ.get("DEASY_API_KEY")
         if x_token is None:
             raise DeasyError(
-                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_TOKEN environment variable"
+                "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_KEY environment variable"
             )
         self.x_token = x_token
+
+        self.x_user = x_user
 
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
@@ -341,6 +331,12 @@ class AsyncDeasy(AsyncAPIClient):
 
     @property
     @override
+    def auth_headers(self) -> dict[str, str]:
+        x_token = self.x_token
+        return {"Deasy-Api-Key": x_token}
+
+    @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -351,8 +347,8 @@ class AsyncDeasy(AsyncAPIClient):
     def copy(
         self,
         *,
-        x_user: str | None = None,
         x_token: str | None = None,
+        x_user: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -386,8 +382,8 @@ class AsyncDeasy(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            x_user=x_user or self.x_user,
             x_token=x_token or self.x_token,
+            x_user=x_user or self.x_user,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
