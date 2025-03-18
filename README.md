@@ -27,11 +27,9 @@ pip install git+ssh://git@github.com/stainless-sdks/Deasy-python.git
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-import os
 from Deasy import Deasy
 
 client = Deasy(
-    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
     x_user="My X User",
     x_token="My X Token",
 )
@@ -42,22 +40,15 @@ metadata = client.metadata.list(
 print(metadata.metadata)
 ```
 
-While you can provide a `bearer_token` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `DEASY_BEARER_TOKEN="My Bearer Token"` to your `.env` file
-so that your Bearer Token is not stored in source control.
-
 ## Async usage
 
 Simply import `AsyncDeasy` instead of `Deasy` and use `await` with each API call:
 
 ```python
-import os
 import asyncio
 from Deasy import AsyncDeasy
 
 client = AsyncDeasy(
-    bearer_token=os.environ.get("DEASY_BEARER_TOKEN"),  # This is the default and can be omitted
     x_user="My X User",
     x_token="My X Token",
 )
