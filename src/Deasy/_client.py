@@ -63,11 +63,15 @@ class Deasy(SyncAPIClient):
 
     # client options
     bearer_token: str
+    x_user: str
+    x_token: str
 
     def __init__(
         self,
         *,
         bearer_token: str | None = None,
+        x_user: str,
+        x_token: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -98,6 +102,10 @@ class Deasy(SyncAPIClient):
                 "The bearer_token client option must be set either by passing bearer_token to the client or by setting the DEASY_BEARER_TOKEN environment variable"
             )
         self.bearer_token = bearer_token
+
+        self.x_user = x_user
+
+        self.x_token = x_token
 
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
@@ -152,6 +160,8 @@ class Deasy(SyncAPIClient):
         self,
         *,
         bearer_token: str | None = None,
+        x_user: str | None = None,
+        x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -186,6 +196,8 @@ class Deasy(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             bearer_token=bearer_token or self.bearer_token,
+            x_user=x_user or self.x_user,
+            x_token=x_token or self.x_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -249,11 +261,15 @@ class AsyncDeasy(AsyncAPIClient):
 
     # client options
     bearer_token: str
+    x_user: str
+    x_token: str
 
     def __init__(
         self,
         *,
         bearer_token: str | None = None,
+        x_user: str,
+        x_token: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -284,6 +300,10 @@ class AsyncDeasy(AsyncAPIClient):
                 "The bearer_token client option must be set either by passing bearer_token to the client or by setting the DEASY_BEARER_TOKEN environment variable"
             )
         self.bearer_token = bearer_token
+
+        self.x_user = x_user
+
+        self.x_token = x_token
 
         if base_url is None:
             base_url = os.environ.get("DEASY_BASE_URL")
@@ -338,6 +358,8 @@ class AsyncDeasy(AsyncAPIClient):
         self,
         *,
         bearer_token: str | None = None,
+        x_user: str | None = None,
+        x_token: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -372,6 +394,8 @@ class AsyncDeasy(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             bearer_token=bearer_token or self.bearer_token,
+            x_user=x_user or self.x_user,
+            x_token=x_token or self.x_token,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
