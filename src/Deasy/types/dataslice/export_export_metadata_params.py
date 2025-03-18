@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["ExportMetadataParams"]
+__all__ = ["ExportExportMetadataParams"]
 
 
-class ExportMetadataParams(TypedDict, total=False):
+class ExportExportMetadataParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
 
     dataslice_id: Optional[str]

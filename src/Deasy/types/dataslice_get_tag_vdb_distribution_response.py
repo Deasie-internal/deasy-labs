@@ -4,8 +4,8 @@ from typing import Dict
 
 from .._models import BaseModel
 
-__all__ = ["DatasliceTagVdbDistributionResponse"]
+__all__ = ["DatasliceGetTagVdbDistributionResponse"]
 
 
-class DatasliceTagVdbDistributionResponse(BaseModel):
+class DatasliceGetTagVdbDistributionResponse(BaseModel):
     tag_distribution: Dict[str, int]
