@@ -14,7 +14,7 @@ __all__ = ["ClassifyBulkClassifyParams", "TagDatas"]
 class ClassifyBulkClassifyParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
 
-    conditions: Optional[Iterable[object]]
+    conditions: Optional["ConditionInputParam"]
 
     dataslice_id: Optional[str]
 
@@ -63,3 +63,6 @@ class TagDatas(TypedDict, total=False):
     updated_at: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
 
     username: Optional[str]
+
+
+from .condition_input_param import ConditionInputParam

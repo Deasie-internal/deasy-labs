@@ -70,6 +70,19 @@ class ClassifyResource(SyncAPIResource):
         """
         Classify files specified in the request with the provided tags
 
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to use for classification.
+            llm_profile_name: The name of the llm profile to use for classification.
+            file_names: The names of the files to classify.
+            tag_names: The names of the tags to use for classification if tag datas are not provided.
+            tag_datas: The data of the tags to use for classification.
+            overwrite: Whether to overwrite existing tags.
+            hierarchy_name: The name of the graph to use for classification if hierarchy data is not provided.
+            hierarchy_data: The data of the graph to use for classification.
+            dataslice_id: The id of the dataslice to use for classification file filtering.
+            soft_run: If true, the classification will not save to Deasy and will attempt to return the results.
+
         Args:
           extra_headers: Send extra headers
 
@@ -147,6 +160,19 @@ class AsyncClassifyResource(AsyncAPIResource):
     ) -> ClassifyClassifyFilesResponse:
         """
         Classify files specified in the request with the provided tags
+
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to use for classification.
+            llm_profile_name: The name of the llm profile to use for classification.
+            file_names: The names of the files to classify.
+            tag_names: The names of the tags to use for classification if tag datas are not provided.
+            tag_datas: The data of the tags to use for classification.
+            overwrite: Whether to overwrite existing tags.
+            hierarchy_name: The name of the graph to use for classification if hierarchy data is not provided.
+            hierarchy_data: The data of the graph to use for classification.
+            dataslice_id: The id of the dataslice to use for classification file filtering.
+            soft_run: If true, the classification will not save to Deasy and will attempt to return the results.
 
         Args:
           extra_headers: Send extra headers

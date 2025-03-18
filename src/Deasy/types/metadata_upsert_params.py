@@ -18,7 +18,7 @@ class MetadataUpsertParams(TypedDict, total=False):
 
     dataslice_id: Optional[str]
 
-    vector_db_config: Optional[object]
+    vdb_profile_name: Optional[str]
 
 
 class MetadataMetadataItemChunkLevel(TypedDict, total=False):

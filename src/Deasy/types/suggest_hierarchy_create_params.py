@@ -11,7 +11,7 @@ __all__ = ["SuggestHierarchyCreateParams"]
 class SuggestHierarchyCreateParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
 
-    condition: Optional[object]
+    condition: Optional["ConditionInputParam"]
 
     context_level: Optional[str]
 
@@ -32,3 +32,6 @@ class SuggestHierarchyCreateParams(TypedDict, total=False):
     use_extracted_tags: Optional[bool]
 
     user_context: Optional[str]
+
+
+from .condition_input_param import ConditionInputParam

@@ -133,7 +133,7 @@ Methods:
 Types:
 
 ```python
-from Deasy.types import DeasyComputeConfig, OpenAIConfig
+from Deasy.types import OpenAIConfig
 ```
 
 Methods:

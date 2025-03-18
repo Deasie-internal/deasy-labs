@@ -9,9 +9,9 @@ __all__ = ["SuggestDescriptionCreateParams"]
 
 
 class SuggestDescriptionCreateParams(TypedDict, total=False):
-    endpoint_manager_config: Required[object]
-
     tag_name: Required[str]
+
+    vdb_profile_name: Required[str]
 
     available_values: Optional[List[str]]
 
@@ -19,4 +19,4 @@ class SuggestDescriptionCreateParams(TypedDict, total=False):
 
     current_description: Optional[str]
 
-    vector_db_config: Optional[object]
+    llm_profile_name: Optional[str]

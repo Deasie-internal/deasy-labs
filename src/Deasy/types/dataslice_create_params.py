@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["DatasliceCreateParams"]
@@ -17,9 +17,7 @@ class DatasliceCreateParams(TypedDict, total=False):
 
     vdb_profile_name: Required[str]
 
-    condition: Optional[Iterable[object]]
-
-    condition_new: Optional["ConditionInputParam"]
+    condition: Optional["ConditionInputParam"]
 
     data_points: Optional[int]
 
