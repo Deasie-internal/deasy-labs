@@ -17,13 +17,13 @@ class QdrantConnectorConfig(BaseModel):
 
     collection_name: str
 
-    index_info: IndexInfo
-
     name: str
 
     url: str
 
     filename_key: Optional[str] = None
+
+    index_info: Optional[IndexInfo] = None
 
     text_key: Optional[str] = None
 

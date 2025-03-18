@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["S3ConnectorConfigParam"]
 
@@ -16,4 +16,4 @@ class S3ConnectorConfigParam(TypedDict, total=False):
 
     name: Required[str]
 
-    type: str
+    type: Literal["S3DataSourceManager"]

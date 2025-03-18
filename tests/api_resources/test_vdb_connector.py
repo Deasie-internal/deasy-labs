@@ -44,7 +44,7 @@ class TestVdbConnector:
                 "aws_secret_access_key": "aws_secret_access_key",
                 "bucket_name": "bucket_name",
                 "name": "name",
-                "type": "type",
+                "type": "S3DataSourceManager",
             },
             connector_name="connector_name",
         )
@@ -111,7 +111,7 @@ class TestVdbConnector:
                 "aws_secret_access_key": "aws_secret_access_key",
                 "bucket_name": "bucket_name",
                 "name": "name",
-                "type": "type",
+                "type": "S3DataSourceManager",
             },
             connector_name="connector_name",
         )
@@ -278,7 +278,7 @@ class TestAsyncVdbConnector:
                 "aws_secret_access_key": "aws_secret_access_key",
                 "bucket_name": "bucket_name",
                 "name": "name",
-                "type": "type",
+                "type": "S3DataSourceManager",
             },
             connector_name="connector_name",
         )
@@ -345,7 +345,7 @@ class TestAsyncVdbConnector:
                 "aws_secret_access_key": "aws_secret_access_key",
                 "bucket_name": "bucket_name",
                 "name": "name",
-                "type": "type",
+                "type": "S3DataSourceManager",
             },
             connector_name="connector_name",
         )
