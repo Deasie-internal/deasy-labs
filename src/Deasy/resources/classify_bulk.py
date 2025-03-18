@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
+from typing import Dict, List, Optional
 
 import httpx
 
@@ -21,6 +21,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.condition_input_param import ConditionInputParam
 from ..types.classify_bulk_classify_response import ClassifyBulkClassifyResponse
 
 __all__ = ["ClassifyBulkResource", "AsyncClassifyBulkResource"]
@@ -50,7 +51,7 @@ class ClassifyBulkResource(SyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        conditions: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[object] | NotGiven = NOT_GIVEN,
         hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
@@ -69,6 +70,19 @@ class ClassifyBulkResource(SyncAPIResource):
     ) -> ClassifyBulkClassifyResponse:
         """
         Classify all files in data source in batches with the provided tags
+
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to use for classification.
+            llm_profile_name: The name of the llm profile to use for classification.
+            total_data_sets: The total number of files to classify.
+            tag_names: The names of the tags to use for classification if tag datas are not provided.
+            tag_datas: The data of the tags to use for classification.
+            overwrite: Whether to overwrite existing tags.
+            hierarchy_name: The name of the graph to use for classification if hierarchy data is not provided.
+            hierarchy_data: The data of the graph to use for classification.
+            dataslice_id: The id of the dataslice to use for classification file filtering.
+            conditions: The conditions to use for classification file filtering.
 
         Args:
           extra_headers: Send extra headers
@@ -128,7 +142,7 @@ class AsyncClassifyBulkResource(AsyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        conditions: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[object] | NotGiven = NOT_GIVEN,
         hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
@@ -147,6 +161,19 @@ class AsyncClassifyBulkResource(AsyncAPIResource):
     ) -> ClassifyBulkClassifyResponse:
         """
         Classify all files in data source in batches with the provided tags
+
+        Attributes:
+
+            vdb_profile_name: The name of the vdb profile to use for classification.
+            llm_profile_name: The name of the llm profile to use for classification.
+            total_data_sets: The total number of files to classify.
+            tag_names: The names of the tags to use for classification if tag datas are not provided.
+            tag_datas: The data of the tags to use for classification.
+            overwrite: Whether to overwrite existing tags.
+            hierarchy_name: The name of the graph to use for classification if hierarchy data is not provided.
+            hierarchy_data: The data of the graph to use for classification.
+            dataslice_id: The id of the dataslice to use for classification file filtering.
+            conditions: The conditions to use for classification file filtering.
 
         Args:
           extra_headers: Send extra headers

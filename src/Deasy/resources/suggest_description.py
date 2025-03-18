@@ -49,12 +49,12 @@ class SuggestDescriptionResource(SyncAPIResource):
     def create(
         self,
         *,
-        endpoint_manager_config: object,
         tag_name: str,
+        vdb_profile_name: str,
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,8 +67,8 @@ class SuggestDescriptionResource(SyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
-            endpoint_manager_config: The endpoint manager configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            llm_profile_name: The name of the llm profile to use for the suggestion.
             tag_name: The name of the tag to suggest a description for.
             context: The context to suggest a description for the tag.
             current_description: The current description of the tag.
@@ -87,12 +87,12 @@ class SuggestDescriptionResource(SyncAPIResource):
             "/suggest_description",
             body=maybe_transform(
                 {
-                    "endpoint_manager_config": endpoint_manager_config,
                     "tag_name": tag_name,
+                    "vdb_profile_name": vdb_profile_name,
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,
-                    "vector_db_config": vector_db_config,
+                    "llm_profile_name": llm_profile_name,
                 },
                 suggest_description_create_params.SuggestDescriptionCreateParams,
             ),
@@ -126,12 +126,12 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        endpoint_manager_config: object,
         tag_name: str,
+        vdb_profile_name: str,
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -144,8 +144,8 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
-            endpoint_manager_config: The endpoint manager configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            llm_profile_name: The name of the llm profile to use for the suggestion.
             tag_name: The name of the tag to suggest a description for.
             context: The context to suggest a description for the tag.
             current_description: The current description of the tag.
@@ -164,12 +164,12 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
             "/suggest_description",
             body=await async_maybe_transform(
                 {
-                    "endpoint_manager_config": endpoint_manager_config,
                     "tag_name": tag_name,
+                    "vdb_profile_name": vdb_profile_name,
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,
-                    "vector_db_config": vector_db_config,
+                    "llm_profile_name": llm_profile_name,
                 },
                 suggest_description_create_params.SuggestDescriptionCreateParams,
             ),

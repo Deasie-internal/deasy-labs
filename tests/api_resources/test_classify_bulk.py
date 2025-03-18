@@ -31,7 +31,14 @@ class TestClassifyBulk:
     def test_method_classify_with_all_params(self, client: Deasy) -> None:
         classify_bulk = client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
-            conditions=[{}],
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
             dataslice_id="dataslice_id",
             hierarchy_data={},
             hierarchy_name="hierarchy_name",
@@ -104,7 +111,14 @@ class TestAsyncClassifyBulk:
     async def test_method_classify_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify_bulk = await async_client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
-            conditions=[{}],
+            conditions={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
             dataslice_id="dataslice_id",
             hierarchy_data={},
             hierarchy_name="hierarchy_name",

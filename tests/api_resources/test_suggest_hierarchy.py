@@ -30,7 +30,14 @@ class TestSuggestHierarchy:
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         suggest_hierarchy = client.suggest_hierarchy.create(
             vdb_profile_name="vdb_profile_name",
-            condition={},
+            condition={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
             context_level="context_level",
             current_tree={},
             dataslice_id="dataslice_id",
@@ -87,7 +94,14 @@ class TestAsyncSuggestHierarchy:
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_hierarchy = await async_client.suggest_hierarchy.create(
             vdb_profile_name="vdb_profile_name",
-            condition={},
+            condition={
+                "children": [],
+                "condition": "AND",
+                "tag": {
+                    "name": "name",
+                    "values": ["string"],
+                },
+            },
             context_level="context_level",
             current_tree={},
             dataslice_id="dataslice_id",

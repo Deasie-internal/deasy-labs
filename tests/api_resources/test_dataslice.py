@@ -42,8 +42,7 @@ class TestDataslice:
             graph_id="graph_id",
             latest_graph={},
             vdb_profile_name="vdb_profile_name",
-            condition=[{}],
-            condition_new={
+            condition={
                 "children": [],
                 "condition": "AND",
                 "tag": {
@@ -245,8 +244,7 @@ class TestAsyncDataslice:
             graph_id="graph_id",
             latest_graph={},
             vdb_profile_name="vdb_profile_name",
-            condition=[{}],
-            condition_new={
+            condition={
                 "children": [],
                 "condition": "AND",
                 "tag": {

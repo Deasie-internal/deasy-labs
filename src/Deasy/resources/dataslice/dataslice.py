@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Optional
 
 import httpx
 
@@ -75,8 +75,7 @@ class DatasliceResource(SyncAPIResource):
         graph_id: str,
         latest_graph: object,
         vdb_profile_name: str,
-        condition: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        condition_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
@@ -120,7 +119,6 @@ class DatasliceResource(SyncAPIResource):
                     "latest_graph": latest_graph,
                     "vdb_profile_name": vdb_profile_name,
                     "condition": condition,
-                    "condition_new": condition_new,
                     "data_points": data_points,
                     "description": description,
                     "status": status,
@@ -294,8 +292,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         graph_id: str,
         latest_graph: object,
         vdb_profile_name: str,
-        condition: Optional[Iterable[object]] | NotGiven = NOT_GIVEN,
-        condition_new: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
@@ -339,7 +336,6 @@ class AsyncDatasliceResource(AsyncAPIResource):
                     "latest_graph": latest_graph,
                     "vdb_profile_name": vdb_profile_name,
                     "condition": condition,
-                    "condition_new": condition_new,
                     "data_points": data_points,
                     "description": description,
                     "status": status,

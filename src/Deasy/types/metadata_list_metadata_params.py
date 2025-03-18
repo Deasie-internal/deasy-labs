@@ -9,7 +9,7 @@ __all__ = ["MetadataListMetadataParams"]
 
 
 class MetadataListMetadataParams(TypedDict, total=False):
-    vector_db_config: Required[object]
+    vdb_profile_name: Required[str]
 
     conditions: Optional["ConditionInputParam"]
 

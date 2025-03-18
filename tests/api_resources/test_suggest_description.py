@@ -21,8 +21,8 @@ class TestSuggestDescription:
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         suggest_description = client.suggest_description.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])
 
@@ -30,12 +30,12 @@ class TestSuggestDescription:
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         suggest_description = client.suggest_description.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
             available_values=["string"],
             context="context",
             current_description="current_description",
-            vector_db_config={},
+            llm_profile_name="llm_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])
 
@@ -43,8 +43,8 @@ class TestSuggestDescription:
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.suggest_description.with_raw_response.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         )
 
         assert response.is_closed is True
@@ -56,8 +56,8 @@ class TestSuggestDescription:
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.suggest_description.with_streaming_response.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -75,8 +75,8 @@ class TestAsyncSuggestDescription:
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         suggest_description = await async_client.suggest_description.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])
 
@@ -84,12 +84,12 @@ class TestAsyncSuggestDescription:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_description = await async_client.suggest_description.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
             available_values=["string"],
             context="context",
             current_description="current_description",
-            vector_db_config={},
+            llm_profile_name="llm_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])
 
@@ -97,8 +97,8 @@ class TestAsyncSuggestDescription:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.suggest_description.with_raw_response.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         )
 
         assert response.is_closed is True
@@ -110,8 +110,8 @@ class TestAsyncSuggestDescription:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.suggest_description.with_streaming_response.create(
-            endpoint_manager_config={},
             tag_name="tag_name",
+            vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -37,7 +37,6 @@ from .dataslice_create_response import DatasliceCreateResponse as DatasliceCreat
 from .dataslice_delete_response import DatasliceDeleteResponse as DatasliceDeleteResponse
 from .s3_connector_config_param import S3ConnectorConfigParam as S3ConnectorConfigParam
 from .dataslice_get_files_params import DatasliceGetFilesParams as DatasliceGetFilesParams
-from .deasy_compute_config_param import DeasyComputeConfigParam as DeasyComputeConfigParam
 from .llm_connector_create_params import LlmConnectorCreateParams as LlmConnectorCreateParams
 from .llm_connector_delete_params import LlmConnectorDeleteParams as LlmConnectorDeleteParams
 from .llm_connector_update_params import LlmConnectorUpdateParams as LlmConnectorUpdateParams

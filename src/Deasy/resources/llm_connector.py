@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import llm_connector_create_params, llm_connector_delete_params, llm_connector_update_params
+from ..types import (
+    llm_connector_create_params,
+    llm_connector_delete_params,
+    llm_connector_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,6 +25,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.connector_response import ConnectorResponse
 from ..types.list_vdb_connector import ListVdbConnector
+from ..types.openai_config_param import OpenAIConfigParam
 
 __all__ = ["LlmConnectorResource", "AsyncLlmConnectorResource"]
 
@@ -48,7 +53,7 @@ class LlmConnectorResource(SyncAPIResource):
     def create(
         self,
         *,
-        connector_body: llm_connector_create_params.ConnectorBody,
+        connector_body: OpenAIConfigParam,
         connector_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -92,7 +97,7 @@ class LlmConnectorResource(SyncAPIResource):
     def update(
         self,
         *,
-        connector_body: llm_connector_update_params.ConnectorBody,
+        connector_body: OpenAIConfigParam,
         connector_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -214,7 +219,7 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        connector_body: llm_connector_create_params.ConnectorBody,
+        connector_body: OpenAIConfigParam,
         connector_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -258,7 +263,7 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        connector_body: llm_connector_update_params.ConnectorBody,
+        connector_body: OpenAIConfigParam,
         connector_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

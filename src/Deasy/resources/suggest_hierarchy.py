@@ -21,6 +21,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.condition_input_param import ConditionInputParam
 from ..types.suggest_hierarchy_create_response import SuggestHierarchyCreateResponse
 
 __all__ = ["SuggestHierarchyResource", "AsyncSuggestHierarchyResource"]
@@ -50,7 +51,7 @@ class SuggestHierarchyResource(SyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        condition: Optional[object] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[object] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -145,7 +146,7 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
         self,
         *,
         vdb_profile_name: str,
-        condition: Optional[object] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[object] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,

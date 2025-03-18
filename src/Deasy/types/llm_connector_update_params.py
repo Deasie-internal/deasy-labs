@@ -2,19 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import Required, TypeAlias, TypedDict
+from typing_extensions import Required, TypedDict
 
 from .openai_config_param import OpenAIConfigParam
-from .deasy_compute_config_param import DeasyComputeConfigParam
 
-__all__ = ["LlmConnectorUpdateParams", "ConnectorBody"]
+__all__ = ["LlmConnectorUpdateParams"]
 
 
 class LlmConnectorUpdateParams(TypedDict, total=False):
-    connector_body: Required[ConnectorBody]
+    connector_body: Required[OpenAIConfigParam]
 
     connector_name: Required[str]
-
-
-ConnectorBody: TypeAlias = Union[DeasyComputeConfigParam, OpenAIConfigParam]

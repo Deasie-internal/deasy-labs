@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
+from typing import Dict, List, Optional
 
 import httpx
 
@@ -58,9 +58,9 @@ class MetadataResource(SyncAPIResource):
     def delete(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         x_user: str,
-        conditions: Optional[Iterable[metadata_delete_params.Condition]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -71,7 +71,7 @@ class MetadataResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetadataDeleteResponse:
         """
-        Delete metadata for specified files and tags from the chunk-level metadata table
+        Delete metadata for specified files and tags
 
         Attributes:
 
@@ -94,7 +94,7 @@ class MetadataResource(SyncAPIResource):
             "/metadata/delete",
             body=maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "file_names": file_names,
                     "tags": tags,
@@ -110,7 +110,7 @@ class MetadataResource(SyncAPIResource):
     def list_metadata(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -127,7 +127,7 @@ class MetadataResource(SyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
@@ -146,7 +146,7 @@ class MetadataResource(SyncAPIResource):
             "/metadata/list",
             body=maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "include_chunk_level": include_chunk_level,
@@ -163,7 +163,7 @@ class MetadataResource(SyncAPIResource):
     def list_paginated_metadata(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -182,7 +182,7 @@ class MetadataResource(SyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
@@ -203,7 +203,7 @@ class MetadataResource(SyncAPIResource):
             "/metadata/list_paginated",
             body=maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "include_chunk_level": include_chunk_level,
@@ -224,7 +224,7 @@ class MetadataResource(SyncAPIResource):
         *,
         metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -233,13 +233,13 @@ class MetadataResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetadataUpsertResponse:
         """
-        Upsert metadata for a given tag
+        Upsert metadata for files and tags
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
-            metadata: The metadata to upsert.
+            metadata: The metadata to upsert with the form {file_name: {tag_name: tag_value}}.
 
         Args:
           extra_headers: Send extra headers
@@ -256,7 +256,7 @@ class MetadataResource(SyncAPIResource):
                 {
                     "metadata": metadata,
                     "dataslice_id": dataslice_id,
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                 },
                 metadata_upsert_params.MetadataUpsertParams,
             ),
@@ -290,9 +290,9 @@ class AsyncMetadataResource(AsyncAPIResource):
     async def delete(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         x_user: str,
-        conditions: Optional[Iterable[metadata_delete_params.Condition]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -303,7 +303,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetadataDeleteResponse:
         """
-        Delete metadata for specified files and tags from the chunk-level metadata table
+        Delete metadata for specified files and tags
 
         Attributes:
 
@@ -326,7 +326,7 @@ class AsyncMetadataResource(AsyncAPIResource):
             "/metadata/delete",
             body=await async_maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "file_names": file_names,
                     "tags": tags,
@@ -342,7 +342,7 @@ class AsyncMetadataResource(AsyncAPIResource):
     async def list_metadata(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -359,7 +359,7 @@ class AsyncMetadataResource(AsyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
@@ -378,7 +378,7 @@ class AsyncMetadataResource(AsyncAPIResource):
             "/metadata/list",
             body=await async_maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "include_chunk_level": include_chunk_level,
@@ -395,7 +395,7 @@ class AsyncMetadataResource(AsyncAPIResource):
     async def list_paginated_metadata(
         self,
         *,
-        vector_db_config: object,
+        vdb_profile_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -414,7 +414,7 @@ class AsyncMetadataResource(AsyncAPIResource):
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
@@ -435,7 +435,7 @@ class AsyncMetadataResource(AsyncAPIResource):
             "/metadata/list_paginated",
             body=await async_maybe_transform(
                 {
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "include_chunk_level": include_chunk_level,
@@ -456,7 +456,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         *,
         metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        vector_db_config: Optional[object] | NotGiven = NOT_GIVEN,
+        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -465,13 +465,13 @@ class AsyncMetadataResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MetadataUpsertResponse:
         """
-        Upsert metadata for a given tag
+        Upsert metadata for files and tags
 
         Attributes:
 
-            vector_db_config: The vector database configuration to use.
+            vdb_profile_name: The name of the vdb profile to include in the dataslice.
             dataslice_id: The dataslice for getting files from.
-            metadata: The metadata to upsert.
+            metadata: The metadata to upsert with the form {file_name: {tag_name: tag_value}}.
 
         Args:
           extra_headers: Send extra headers
@@ -488,7 +488,7 @@ class AsyncMetadataResource(AsyncAPIResource):
                 {
                     "metadata": metadata,
                     "dataslice_id": dataslice_id,
-                    "vector_db_config": vector_db_config,
+                    "vdb_profile_name": vdb_profile_name,
                 },
                 metadata_upsert_params.MetadataUpsertParams,
             ),

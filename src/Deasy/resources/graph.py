@@ -163,7 +163,7 @@ class GraphResource(SyncAPIResource):
 
         Attributes:
 
-            graph_names: The names of the graphs to filter by.
+            graph_names: The names of the graphs to retrieve.
 
         Args:
           extra_headers: Send extra headers
@@ -403,7 +403,7 @@ class AsyncGraphResource(AsyncAPIResource):
 
         Attributes:
 
-            graph_names: The names of the graphs to filter by.
+            graph_names: The names of the graphs to retrieve.
 
         Args:
           extra_headers: Send extra headers
