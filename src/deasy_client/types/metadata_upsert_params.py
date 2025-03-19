@@ -22,15 +22,15 @@ class MetadataUpsertParams(TypedDict, total=False):
 
 
 class MetadataMetadataItemChunkLevel(TypedDict, total=False):
-    evidence: Required[str]
-
     values: Required[List[str]]
+
+    evidence: Optional[str]
 
 
 class MetadataMetadataItemFileLevel(TypedDict, total=False):
-    evidence: Required[str]
-
     values: Required[List[str]]
+
+    evidence: Optional[str]
 
 
 class MetadataMetadataItem(TypedDict, total=False):
