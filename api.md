@@ -120,14 +120,14 @@ Methods:
 Types:
 
 ```python
-from Deasy.types import OpenAIConfig
+from Deasy.types import OpenAIConfig, LlmConnectorListResponse
 ```
 
 Methods:
 
 - <code title="post /llm_connector/create">client.llm_connector.<a href="./src/Deasy/resources/llm_connector.py">create</a>(\*\*<a href="src/Deasy/types/llm_connector_create_params.py">params</a>) -> <a href="./src/Deasy/types/connector_response.py">ConnectorResponse</a></code>
 - <code title="post /llm_connector/update">client.llm_connector.<a href="./src/Deasy/resources/llm_connector.py">update</a>(\*\*<a href="src/Deasy/types/llm_connector_update_params.py">params</a>) -> <a href="./src/Deasy/types/connector_response.py">ConnectorResponse</a></code>
-- <code title="post /llm_connector/list">client.llm_connector.<a href="./src/Deasy/resources/llm_connector.py">list</a>() -> <a href="./src/Deasy/types/list_vdb_connector.py">ListVdbConnector</a></code>
+- <code title="post /llm_connector/list">client.llm_connector.<a href="./src/Deasy/resources/llm_connector.py">list</a>() -> <a href="./src/Deasy/types/llm_connector_list_response.py">LlmConnectorListResponse</a></code>
 - <code title="post /llm_connector/delete">client.llm_connector.<a href="./src/Deasy/resources/llm_connector.py">delete</a>(\*\*<a href="src/Deasy/types/llm_connector_delete_params.py">params</a>) -> <a href="./src/Deasy/types/connector_response.py">ConnectorResponse</a></code>
 
 # Dataslice

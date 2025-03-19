@@ -9,8 +9,8 @@ import pytest
 
 from Deasy import Deasy, AsyncDeasy
 from Deasy.types import (
-    ListVdbConnector,
     ConnectorResponse,
+    LlmConnectorListResponse,
 )
 from tests.utils import assert_matches_type
 
@@ -156,7 +156,7 @@ class TestLlmConnector:
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.list()
-        assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+        assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -166,7 +166,7 @@ class TestLlmConnector:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm_connector = response.parse()
-        assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+        assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -176,7 +176,7 @@ class TestLlmConnector:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm_connector = response.parse()
-            assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+            assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -354,7 +354,7 @@ class TestAsyncLlmConnector:
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.list()
-        assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+        assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -364,7 +364,7 @@ class TestAsyncLlmConnector:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm_connector = await response.parse()
-        assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+        assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -374,7 +374,7 @@ class TestAsyncLlmConnector:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm_connector = await response.parse()
-            assert_matches_type(ListVdbConnector, llm_connector, path=["response"])
+            assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

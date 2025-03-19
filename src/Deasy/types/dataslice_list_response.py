@@ -12,8 +12,6 @@ __all__ = ["DatasliceListResponse", "Dataslice"]
 
 
 class Dataslice(BaseModel):
-    data_points: int
-
     dataslice_id: str
 
     dataslice_name: str
@@ -25,6 +23,8 @@ class Dataslice(BaseModel):
     condition: Optional[List[object]] = None
 
     condition_new: Optional["ConditionOutput"] = None
+
+    data_points: Optional[int] = None
 
     description: Optional[str] = None
 

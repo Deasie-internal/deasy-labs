@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .deasy_tag import DeasyTag as DeasyTag
 from .tag_response import TagResponse as TagResponse
+from .openai_config import OpenAIConfig as OpenAIConfig
 from .condition_output import ConditionOutput as ConditionOutput
 from .graph_list_params import GraphListParams as GraphListParams
 from .tag_create_params import TagCreateParams as TagCreateParams
@@ -41,6 +42,7 @@ from .s3_connector_config_param import S3ConnectorConfigParam as S3ConnectorConf
 from .dataslice_get_files_params import DatasliceGetFilesParams as DatasliceGetFilesParams
 from .llm_connector_create_params import LlmConnectorCreateParams as LlmConnectorCreateParams
 from .llm_connector_delete_params import LlmConnectorDeleteParams as LlmConnectorDeleteParams
+from .llm_connector_list_response import LlmConnectorListResponse as LlmConnectorListResponse
 from .llm_connector_update_params import LlmConnectorUpdateParams as LlmConnectorUpdateParams
 from .psql_connector_config_param import PsqlConnectorConfigParam as PsqlConnectorConfigParam
 from .sharepoint_connector_config import SharepointConnectorConfig as SharepointConnectorConfig

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["PsqlConnectorConfigParam", "IndexInfo"]
@@ -21,8 +21,6 @@ class PsqlConnectorConfigParam(TypedDict, total=False):
 
     db_user: Required[str]
 
-    index_info: Required[IndexInfo]
-
     name: Required[str]
 
     password: Required[str]
@@ -32,6 +30,8 @@ class PsqlConnectorConfigParam(TypedDict, total=False):
     url: Required[str]
 
     filename_key: str
+
+    index_info: Optional[IndexInfo]
 
     text_key: str
 
