@@ -10,13 +10,13 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [docs.deasy.com](https://docs.Deasy.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [storage.googleapis.com](https://storage.googleapis.com/public-deasy/api-documentation.html). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/Deasie-internal/deasy-python.git
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/Deasy-python.git
 ```
 
 > [!NOTE]
@@ -120,7 +120,7 @@ client = Deasy(
 )
 
 try:
-    client.classify.classify_files(
+    client.metadata.list(
         vdb_profile_name="vdb_profile_name",
     )
 except Deasy.APIConnectionError as e:
@@ -167,7 +167,7 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).classify.classify_files(
+client.with_options(max_retries=5).metadata.list(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -196,7 +196,7 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).classify.classify_files(
+client.with_options(timeout=5.0).metadata.list(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -242,18 +242,18 @@ client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
-response = client.classify.with_raw_response.classify_files(
+response = client.metadata.with_raw_response.list(
     vdb_profile_name="vdb_profile_name",
 )
 print(response.headers.get('X-My-Header'))
 
-classify = response.parse()  # get the object that `classify.classify_files()` would have returned
-print(classify.message)
+metadata = response.parse()  # get the object that `metadata.list()` would have returned
+print(metadata.metadata)
 ```
 
-These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/Deasy/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/Deasy/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/Deasy-python/tree/main/src/Deasy/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -262,7 +262,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.classify.with_streaming_response.classify_files(
+with client.metadata.with_streaming_response.list(
     vdb_profile_name="vdb_profile_name",
 ) as response:
     print(response.headers.get("X-My-Header"))
@@ -364,7 +364,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/Deasie-internal/deasy-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/Deasy-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

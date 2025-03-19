@@ -28,7 +28,7 @@ from Deasy._models import BaseModel, FinalRequestOptions
 from Deasy._constants import RAW_RESPONSE_HEADER
 from Deasy._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from Deasy._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
-from Deasy.types.classify_classify_files_params import ClassifyClassifyFilesParams
+from Deasy.types.metadata_list_params import MetadataListParams
 
 from .utils import update_env
 
@@ -764,14 +764,12 @@ class TestDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/classify").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/metadata/list").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             self.client.post(
-                "/classify",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), ClassifyClassifyFilesParams)
-                ),
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -781,14 +779,12 @@ class TestDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/classify").mock(return_value=httpx.Response(500))
+        respx_mock.post("/metadata/list").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             self.client.post(
-                "/classify",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), ClassifyClassifyFilesParams)
-                ),
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -819,9 +815,9 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.classify.with_raw_response.classify_files(vdb_profile_name="vdb_profile_name")
+        response = client.metadata.with_raw_response.list(vdb_profile_name="vdb_profile_name")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -841,9 +837,9 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.classify.with_raw_response.classify_files(
+        response = client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -866,9 +862,9 @@ class TestDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = client.classify.with_raw_response.classify_files(
+        response = client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": "42"}
         )
 
@@ -1590,14 +1586,12 @@ class TestAsyncDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/classify").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/metadata/list").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await self.client.post(
-                "/classify",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), ClassifyClassifyFilesParams)
-                ),
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1607,14 +1601,12 @@ class TestAsyncDeasy:
     @mock.patch("Deasy._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.post("/classify").mock(return_value=httpx.Response(500))
+        respx_mock.post("/metadata/list").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await self.client.post(
-                "/classify",
-                body=cast(
-                    object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), ClassifyClassifyFilesParams)
-                ),
+                "/metadata/list",
+                body=cast(object, maybe_transform(dict(vdb_profile_name="vdb_profile_name"), MetadataListParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1646,9 +1638,9 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.classify.with_raw_response.classify_files(vdb_profile_name="vdb_profile_name")
+        response = await client.metadata.with_raw_response.list(vdb_profile_name="vdb_profile_name")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1671,9 +1663,9 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.classify.with_raw_response.classify_files(
+        response = await client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -1697,9 +1689,9 @@ class TestAsyncDeasy:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/classify").mock(side_effect=retry_handler)
+        respx_mock.post("/metadata/list").mock(side_effect=retry_handler)
 
-        response = await client.classify.with_raw_response.classify_files(
+        response = await client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name", extra_headers={"x-stainless-retry-count": "42"}
         )
 
