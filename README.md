@@ -120,7 +120,7 @@ client = Deasy(
 )
 
 try:
-    client.metadata.list(
+    client.classify.classify_files(
         vdb_profile_name="vdb_profile_name",
     )
 except Deasy.APIConnectionError as e:
@@ -167,7 +167,7 @@ client = Deasy(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).metadata.list(
+client.with_options(max_retries=5).classify.classify_files(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -196,7 +196,7 @@ client = Deasy(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).metadata.list(
+client.with_options(timeout=5.0).classify.classify_files(
     vdb_profile_name="vdb_profile_name",
 )
 ```
@@ -242,13 +242,13 @@ client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
-response = client.metadata.with_raw_response.list(
+response = client.classify.with_raw_response.classify_files(
     vdb_profile_name="vdb_profile_name",
 )
 print(response.headers.get('X-My-Header'))
 
-metadata = response.parse()  # get the object that `metadata.list()` would have returned
-print(metadata.metadata)
+classify = response.parse()  # get the object that `classify.classify_files()` would have returned
+print(classify.message)
 ```
 
 These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/Deasy/_response.py) object.
@@ -262,7 +262,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.metadata.with_streaming_response.list(
+with client.classify.with_streaming_response.classify_files(
     vdb_profile_name="vdb_profile_name",
 ) as response:
     print(response.headers.get("X-My-Header"))
