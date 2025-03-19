@@ -24,8 +24,8 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.connector_response import ConnectorResponse
-from ..types.list_vdb_connector import ListVdbConnector
 from ..types.openai_config_param import OpenAIConfigParam
+from ..types.llm_connector_list_response import LlmConnectorListResponse
 
 __all__ = ["LlmConnectorResource", "AsyncLlmConnectorResource"]
 
@@ -147,14 +147,14 @@ class LlmConnectorResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ListVdbConnector:
+    ) -> LlmConnectorListResponse:
         """List all the llm connectors"""
         return self._post(
             "/llm_connector/list",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ListVdbConnector,
+            cast_to=LlmConnectorListResponse,
         )
 
     def delete(
@@ -313,14 +313,14 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ListVdbConnector:
+    ) -> LlmConnectorListResponse:
         """List all the llm connectors"""
         return await self._post(
             "/llm_connector/list",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ListVdbConnector,
+            cast_to=LlmConnectorListResponse,
         )
 
     async def delete(

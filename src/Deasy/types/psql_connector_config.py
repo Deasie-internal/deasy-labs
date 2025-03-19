@@ -21,8 +21,6 @@ class PsqlConnectorConfig(BaseModel):
 
     db_user: str
 
-    index_info: IndexInfo
-
     name: str
 
     password: str
@@ -32,6 +30,8 @@ class PsqlConnectorConfig(BaseModel):
     url: str
 
     filename_key: Optional[str] = None
+
+    index_info: Optional[IndexInfo] = None
 
     text_key: Optional[str] = None
 

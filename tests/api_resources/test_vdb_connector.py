@@ -26,10 +26,13 @@ class TestVdbConnector:
     def test_method_create(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -40,11 +43,20 @@ class TestVdbConnector:
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
-                "type": "S3DataSourceManager",
+                "password": "password",
+                "port": "port",
+                "url": "url",
+                "filename_key": "filename_key",
+                "index_info": {
+                    "found_indexes": ["string"],
+                    "total_indexes_found": 0,
+                },
+                "text_key": "text_key",
+                "type": "PSQLVectorDBManager",
             },
             connector_name="connector_name",
         )
@@ -55,10 +67,13 @@ class TestVdbConnector:
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -73,10 +88,13 @@ class TestVdbConnector:
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         ) as response:
@@ -93,10 +111,13 @@ class TestVdbConnector:
     def test_method_update(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -107,11 +128,20 @@ class TestVdbConnector:
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
-                "type": "S3DataSourceManager",
+                "password": "password",
+                "port": "port",
+                "url": "url",
+                "filename_key": "filename_key",
+                "index_info": {
+                    "found_indexes": ["string"],
+                    "total_indexes_found": 0,
+                },
+                "text_key": "text_key",
+                "type": "PSQLVectorDBManager",
             },
             connector_name="connector_name",
         )
@@ -122,10 +152,13 @@ class TestVdbConnector:
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -140,10 +173,13 @@ class TestVdbConnector:
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         ) as response:
@@ -260,10 +296,13 @@ class TestAsyncVdbConnector:
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -274,11 +313,20 @@ class TestAsyncVdbConnector:
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
-                "type": "S3DataSourceManager",
+                "password": "password",
+                "port": "port",
+                "url": "url",
+                "filename_key": "filename_key",
+                "index_info": {
+                    "found_indexes": ["string"],
+                    "total_indexes_found": 0,
+                },
+                "text_key": "text_key",
+                "type": "PSQLVectorDBManager",
             },
             connector_name="connector_name",
         )
@@ -289,10 +337,13 @@ class TestAsyncVdbConnector:
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -307,10 +358,13 @@ class TestAsyncVdbConnector:
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.create(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         ) as response:
@@ -327,10 +381,13 @@ class TestAsyncVdbConnector:
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -341,11 +398,20 @@ class TestAsyncVdbConnector:
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
-                "type": "S3DataSourceManager",
+                "password": "password",
+                "port": "port",
+                "url": "url",
+                "filename_key": "filename_key",
+                "index_info": {
+                    "found_indexes": ["string"],
+                    "total_indexes_found": 0,
+                },
+                "text_key": "text_key",
+                "type": "PSQLVectorDBManager",
             },
             connector_name="connector_name",
         )
@@ -356,10 +422,13 @@ class TestAsyncVdbConnector:
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         )
@@ -374,10 +443,13 @@ class TestAsyncVdbConnector:
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.update(
             connector_body={
-                "aws_access_key_id": "aws_access_key_id",
-                "aws_secret_access_key": "aws_secret_access_key",
-                "bucket_name": "bucket_name",
+                "collection_name": "collection_name",
+                "database_name": "database_name",
+                "db_user": "db_user",
                 "name": "name",
+                "password": "password",
+                "port": "port",
+                "url": "url",
             },
             connector_name="connector_name",
         ) as response:
