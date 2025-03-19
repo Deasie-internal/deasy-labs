@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 import pytest
 from pytest_asyncio import is_async_test
 
-from deasy_python import DeasyLabs, AsyncDeasyLabs
+from deasy_client import DeasyLabs, AsyncDeasyLabs
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("deasy_python").setLevel(logging.DEBUG)
+logging.getLogger("deasy_client").setLevel(logging.DEBUG)
 
 
 # automatically add `pytest.mark.asyncio()` to all of our async tests
