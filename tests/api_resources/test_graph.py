@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_python import DeasyLabs, AsyncDeasyLabs
-from deasy_python.types import (
+from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client.types import (
     GraphListResponse,
     GraphOperationResponse,
 )
