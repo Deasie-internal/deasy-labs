@@ -37,7 +37,7 @@ from .resources import (
     suggest_description,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, DeasyLabsError
+from ._exceptions import DeasyError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -45,19 +45,10 @@ from ._base_client import (
 )
 from .resources.dataslice import dataslice
 
-__all__ = [
-    "Timeout",
-    "Transport",
-    "ProxiesTypes",
-    "RequestOptions",
-    "DeasyLabs",
-    "AsyncDeasyLabs",
-    "Client",
-    "AsyncClient",
-]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "AsyncDeasy", "Client", "AsyncClient"]
 
 
-class DeasyLabs(SyncAPIClient):
+class Deasy(SyncAPIClient):
     classify_bulk: classify_bulk.ClassifyBulkResource
     classify: classify.ClassifyResource
     prepare_data: prepare_data.PrepareDataResource
@@ -69,8 +60,8 @@ class DeasyLabs(SyncAPIClient):
     llm_connector: llm_connector.LlmConnectorResource
     dataslice: dataslice.DatasliceResource
     graph: graph.GraphResource
-    with_raw_response: DeasyLabsWithRawResponse
-    with_streaming_response: DeasyLabsWithStreamedResponse
+    with_raw_response: DeasyWithRawResponse
+    with_streaming_response: DeasyWithStreamedResponse
 
     # client options
     x_token: str
@@ -100,14 +91,14 @@ class DeasyLabs(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous DeasyLabs client instance.
+        """Construct a new synchronous Deasy client instance.
 
         This automatically infers the `x_token` argument from the `DEASY_API_KEY` environment variable if it is not provided.
         """
         if x_token is None:
             x_token = os.environ.get("DEASY_API_KEY")
         if x_token is None:
-            raise DeasyLabsError(
+            raise DeasyError(
                 "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_KEY environment variable"
             )
         self.x_token = x_token
@@ -115,7 +106,7 @@ class DeasyLabs(SyncAPIClient):
         self.x_user = x_user
 
         if base_url is None:
-            base_url = os.environ.get("DEASY_LABS_BASE_URL")
+            base_url = os.environ.get("DEASY_BASE_URL")
         if base_url is None:
             base_url = f"https://dev-deasy-api-service-678999874120.us-east1.run.app/"
 
@@ -141,8 +132,8 @@ class DeasyLabs(SyncAPIClient):
         self.llm_connector = llm_connector.LlmConnectorResource(self)
         self.dataslice = dataslice.DatasliceResource(self)
         self.graph = graph.GraphResource(self)
-        self.with_raw_response = DeasyLabsWithRawResponse(self)
-        self.with_streaming_response = DeasyLabsWithStreamedResponse(self)
+        self.with_raw_response = DeasyWithRawResponse(self)
+        self.with_streaming_response = DeasyWithStreamedResponse(self)
 
     @property
     @override
@@ -247,7 +238,7 @@ class DeasyLabs(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncDeasyLabs(AsyncAPIClient):
+class AsyncDeasy(AsyncAPIClient):
     classify_bulk: classify_bulk.AsyncClassifyBulkResource
     classify: classify.AsyncClassifyResource
     prepare_data: prepare_data.AsyncPrepareDataResource
@@ -259,8 +250,8 @@ class AsyncDeasyLabs(AsyncAPIClient):
     llm_connector: llm_connector.AsyncLlmConnectorResource
     dataslice: dataslice.AsyncDatasliceResource
     graph: graph.AsyncGraphResource
-    with_raw_response: AsyncDeasyLabsWithRawResponse
-    with_streaming_response: AsyncDeasyLabsWithStreamedResponse
+    with_raw_response: AsyncDeasyWithRawResponse
+    with_streaming_response: AsyncDeasyWithStreamedResponse
 
     # client options
     x_token: str
@@ -290,14 +281,14 @@ class AsyncDeasyLabs(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncDeasyLabs client instance.
+        """Construct a new async AsyncDeasy client instance.
 
         This automatically infers the `x_token` argument from the `DEASY_API_KEY` environment variable if it is not provided.
         """
         if x_token is None:
             x_token = os.environ.get("DEASY_API_KEY")
         if x_token is None:
-            raise DeasyLabsError(
+            raise DeasyError(
                 "The x_token client option must be set either by passing x_token to the client or by setting the DEASY_API_KEY environment variable"
             )
         self.x_token = x_token
@@ -305,7 +296,7 @@ class AsyncDeasyLabs(AsyncAPIClient):
         self.x_user = x_user
 
         if base_url is None:
-            base_url = os.environ.get("DEASY_LABS_BASE_URL")
+            base_url = os.environ.get("DEASY_BASE_URL")
         if base_url is None:
             base_url = f"https://dev-deasy-api-service-678999874120.us-east1.run.app/"
 
@@ -331,8 +322,8 @@ class AsyncDeasyLabs(AsyncAPIClient):
         self.llm_connector = llm_connector.AsyncLlmConnectorResource(self)
         self.dataslice = dataslice.AsyncDatasliceResource(self)
         self.graph = graph.AsyncGraphResource(self)
-        self.with_raw_response = AsyncDeasyLabsWithRawResponse(self)
-        self.with_streaming_response = AsyncDeasyLabsWithStreamedResponse(self)
+        self.with_raw_response = AsyncDeasyWithRawResponse(self)
+        self.with_streaming_response = AsyncDeasyWithStreamedResponse(self)
 
     @property
     @override
@@ -437,8 +428,8 @@ class AsyncDeasyLabs(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class DeasyLabsWithRawResponse:
-    def __init__(self, client: DeasyLabs) -> None:
+class DeasyWithRawResponse:
+    def __init__(self, client: Deasy) -> None:
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithRawResponse(client.prepare_data)
@@ -454,8 +445,8 @@ class DeasyLabsWithRawResponse:
         self.graph = graph.GraphResourceWithRawResponse(client.graph)
 
 
-class AsyncDeasyLabsWithRawResponse:
-    def __init__(self, client: AsyncDeasyLabs) -> None:
+class AsyncDeasyWithRawResponse:
+    def __init__(self, client: AsyncDeasy) -> None:
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithRawResponse(client.prepare_data)
@@ -473,8 +464,8 @@ class AsyncDeasyLabsWithRawResponse:
         self.graph = graph.AsyncGraphResourceWithRawResponse(client.graph)
 
 
-class DeasyLabsWithStreamedResponse:
-    def __init__(self, client: DeasyLabs) -> None:
+class DeasyWithStreamedResponse:
+    def __init__(self, client: Deasy) -> None:
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithStreamingResponse(client.prepare_data)
@@ -492,8 +483,8 @@ class DeasyLabsWithStreamedResponse:
         self.graph = graph.GraphResourceWithStreamingResponse(client.graph)
 
 
-class AsyncDeasyLabsWithStreamedResponse:
-    def __init__(self, client: AsyncDeasyLabs) -> None:
+class AsyncDeasyWithStreamedResponse:
+    def __init__(self, client: AsyncDeasy) -> None:
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithStreamingResponse(client.prepare_data)
@@ -511,6 +502,6 @@ class AsyncDeasyLabsWithStreamedResponse:
         self.graph = graph.AsyncGraphResourceWithStreamingResponse(client.graph)
 
 
-Client = DeasyLabs
+Client = Deasy
 
-AsyncClient = AsyncDeasyLabs
+AsyncClient = AsyncDeasy

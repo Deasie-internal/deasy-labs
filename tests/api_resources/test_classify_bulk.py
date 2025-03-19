@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import ClassifyBulkClassifyResponse
 from deasy_client._utils import parse_datetime
 
@@ -20,7 +20,7 @@ class TestClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify(self, client: DeasyLabs) -> None:
+    def test_method_classify(self, client: Deasy) -> None:
         classify_bulk = client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
         )
@@ -28,7 +28,7 @@ class TestClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_classify_with_all_params(self, client: Deasy) -> None:
         classify_bulk = client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -70,7 +70,7 @@ class TestClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_classify(self, client: DeasyLabs) -> None:
+    def test_raw_response_classify(self, client: Deasy) -> None:
         response = client.classify_bulk.with_raw_response.classify(
             vdb_profile_name="vdb_profile_name",
         )
@@ -82,7 +82,7 @@ class TestClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_classify(self, client: DeasyLabs) -> None:
+    def test_streaming_response_classify(self, client: Deasy) -> None:
         with client.classify_bulk.with_streaming_response.classify(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -100,7 +100,7 @@ class TestAsyncClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify(self, async_client: AsyncDeasy) -> None:
         classify_bulk = await async_client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
         )
@@ -108,7 +108,7 @@ class TestAsyncClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify_bulk = await async_client.classify_bulk.classify(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -150,7 +150,7 @@ class TestAsyncClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_classify(self, async_client: AsyncDeasy) -> None:
         response = await async_client.classify_bulk.with_raw_response.classify(
             vdb_profile_name="vdb_profile_name",
         )
@@ -162,7 +162,7 @@ class TestAsyncClassifyBulk:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_classify(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_classify(self, async_client: AsyncDeasy) -> None:
         async with async_client.classify_bulk.with_streaming_response.classify(
             vdb_profile_name="vdb_profile_name",
         ) as response:

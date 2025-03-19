@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import (
     MetadataListResponse,
     MetadataDeleteResponse,
@@ -24,7 +24,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         metadata = client.metadata.list(
             vdb_profile_name="vdb_profile_name",
         )
@@ -32,7 +32,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_list_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -51,7 +51,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name",
         )
@@ -63,7 +63,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -77,7 +77,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
         )
@@ -85,7 +85,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -103,7 +103,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.delete(
             vdb_profile_name="vdb_profile_name",
         )
@@ -115,7 +115,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.delete(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -129,7 +129,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_paginated(self, client: DeasyLabs) -> None:
+    def test_method_list_paginated(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
             vdb_profile_name="vdb_profile_name",
         )
@@ -137,7 +137,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_paginated_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_list_paginated_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -158,7 +158,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list_paginated(self, client: DeasyLabs) -> None:
+    def test_raw_response_list_paginated(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list_paginated(
             vdb_profile_name="vdb_profile_name",
         )
@@ -170,7 +170,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list_paginated(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list_paginated(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list_paginated(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -184,7 +184,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_upsert(self, client: DeasyLabs) -> None:
+    def test_method_upsert(self, client: Deasy) -> None:
         metadata = client.metadata.upsert(
             metadata={"foo": {"foo": {}}},
         )
@@ -192,7 +192,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_upsert_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_upsert_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.upsert(
             metadata={
                 "foo": {
@@ -217,7 +217,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_upsert(self, client: DeasyLabs) -> None:
+    def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.upsert(
             metadata={"foo": {"foo": {}}},
         )
@@ -229,7 +229,7 @@ class TestMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_upsert(self, client: DeasyLabs) -> None:
+    def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.upsert(
             metadata={"foo": {"foo": {}}},
         ) as response:
@@ -247,7 +247,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
             vdb_profile_name="vdb_profile_name",
         )
@@ -255,7 +255,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -274,7 +274,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list(
             vdb_profile_name="vdb_profile_name",
         )
@@ -286,7 +286,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -300,7 +300,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
         )
@@ -308,7 +308,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -326,7 +326,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.delete(
             vdb_profile_name="vdb_profile_name",
         )
@@ -338,7 +338,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.delete(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -352,7 +352,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_paginated(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
             vdb_profile_name="vdb_profile_name",
         )
@@ -360,7 +360,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
             vdb_profile_name="vdb_profile_name",
             conditions={
@@ -381,7 +381,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list_paginated(
             vdb_profile_name="vdb_profile_name",
         )
@@ -393,7 +393,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list_paginated(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list_paginated(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -407,7 +407,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_upsert(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.upsert(
             metadata={"foo": {"foo": {}}},
         )
@@ -415,7 +415,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_upsert_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.upsert(
             metadata={
                 "foo": {
@@ -440,7 +440,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.upsert(
             metadata={"foo": {"foo": {}}},
         )
@@ -452,7 +452,7 @@ class TestAsyncMetadata:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.upsert(
             metadata={"foo": {"foo": {}}},
         ) as response:

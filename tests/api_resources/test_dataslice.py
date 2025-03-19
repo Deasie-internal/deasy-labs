@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import (
     DatasliceListResponse,
     DatasliceCreateResponse,
@@ -27,7 +27,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         dataslice = client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -38,7 +38,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_create_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -60,7 +60,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -75,7 +75,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -92,13 +92,13 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         dataslice = client.dataslice.list()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.list()
 
         assert response.is_closed is True
@@ -108,7 +108,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,7 +120,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         dataslice = client.dataslice.delete(
             dataslice_id="dataslice_id",
         )
@@ -128,7 +128,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.delete(
             dataslice_id="dataslice_id",
         )
@@ -140,7 +140,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.delete(
             dataslice_id="dataslice_id",
         ) as response:
@@ -154,7 +154,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_file_count(self, client: DeasyLabs) -> None:
+    def test_method_get_file_count(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
             vector_db_config={},
         )
@@ -162,7 +162,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_file_count_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_file_count_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
             vector_db_config={},
             condition={
@@ -179,7 +179,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_file_count(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_file_count(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_file_count(
             vector_db_config={},
         )
@@ -191,7 +191,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_file_count(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_file_count(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_file_count(
             vector_db_config={},
         ) as response:
@@ -205,7 +205,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_files(self, client: DeasyLabs) -> None:
+    def test_method_get_files(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_files(
             dataslice_id="dataslice_id",
         )
@@ -213,7 +213,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_files(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_files(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_files(
             dataslice_id="dataslice_id",
         )
@@ -225,7 +225,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_files(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_files(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_files(
             dataslice_id="dataslice_id",
         ) as response:
@@ -239,13 +239,13 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_metrics(self, client: DeasyLabs) -> None:
+    def test_method_get_metrics(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_metrics()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_metrics_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_metrics_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_metrics(
             dataslice_id="dataslice_id",
             file_names=["string"],
@@ -257,7 +257,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_metrics(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_metrics(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_metrics()
 
         assert response.is_closed is True
@@ -267,7 +267,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_metrics(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_metrics(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_metrics() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -279,13 +279,13 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_tag_vdb_distribution(self, client: DeasyLabs) -> None:
+    def test_method_get_tag_vdb_distribution(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_tag_vdb_distribution()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_tag_vdb_distribution_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_get_tag_vdb_distribution_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_tag_vdb_distribution(
             dataslice_id="dataslice_id",
             vector_db_config={},
@@ -294,7 +294,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_tag_vdb_distribution(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_tag_vdb_distribution()
 
         assert response.is_closed is True
@@ -304,7 +304,7 @@ class TestDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_tag_vdb_distribution(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -320,7 +320,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -331,7 +331,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -353,7 +353,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -368,7 +368,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
@@ -385,13 +385,13 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.list()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.list()
 
         assert response.is_closed is True
@@ -401,7 +401,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -413,7 +413,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.delete(
             dataslice_id="dataslice_id",
         )
@@ -421,7 +421,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.delete(
             dataslice_id="dataslice_id",
         )
@@ -433,7 +433,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.delete(
             dataslice_id="dataslice_id",
         ) as response:
@@ -447,7 +447,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_file_count(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_file_count(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
             vector_db_config={},
         )
@@ -455,7 +455,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
             vector_db_config={},
             condition={
@@ -472,7 +472,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_file_count(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_file_count(
             vector_db_config={},
         )
@@ -484,7 +484,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_file_count(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_file_count(
             vector_db_config={},
         ) as response:
@@ -498,7 +498,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_files(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_files(
             dataslice_id="dataslice_id",
         )
@@ -506,7 +506,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_files(
             dataslice_id="dataslice_id",
         )
@@ -518,7 +518,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_files(
             dataslice_id="dataslice_id",
         ) as response:
@@ -532,13 +532,13 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_metrics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_metrics(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_metrics()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_metrics_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_metrics_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_metrics(
             dataslice_id="dataslice_id",
             file_names=["string"],
@@ -550,7 +550,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_metrics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_metrics(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_metrics()
 
         assert response.is_closed is True
@@ -560,7 +560,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_metrics(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_metrics(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_metrics() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -572,13 +572,13 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_tag_vdb_distribution(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_tag_vdb_distribution()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_tag_vdb_distribution(
             dataslice_id="dataslice_id",
             vector_db_config={},
@@ -587,7 +587,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_tag_vdb_distribution(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_tag_vdb_distribution()
 
         assert response.is_closed is True
@@ -597,7 +597,7 @@ class TestAsyncDataslice:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_tag_vdb_distribution(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
