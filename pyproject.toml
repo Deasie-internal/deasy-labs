@@ -1,5 +1,5 @@
 [project]
-name = "deasy-python"
+name = "deasy-client"
 version = "0.1.0-alpha.4"
 description = "The official Python library for the Deasy Labs API"
 dynamic = ["readme"]
@@ -75,14 +75,14 @@ format = { chain = [
 "check:ruff" = "ruff check ."
 "fix:ruff" = "ruff check --fix ."
 
-"check:importable" = "python -c 'import deasy_python'"
+"check:importable" = "python -c 'import deasy_client'"
 
 typecheck = { chain = [
   "typecheck:pyright",
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes deasy_python --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes deasy_client --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -95,7 +95,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/deasy_python"]
+packages = ["src/deasy_client"]
 
 [tool.hatch.build.targets.sdist]
 # Basically everything except hidden files/directories (such as .github, .devcontainers, .python-version, etc)
@@ -197,7 +197,7 @@ length-sort = true
 length-sort-straight = true
 combine-as-imports = true
 extra-standard-library = ["typing_extensions"]
-known-first-party = ["deasy_python", "tests"]
+known-first-party = ["deasy_client", "tests"]
 
 [tool.ruff.lint.per-file-ignores]
 "bin/**.py" = ["T201", "T203"]
