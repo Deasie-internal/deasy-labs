@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-03-19)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** update via SDK Studio ([#21](https://github.com/Deasie-internal/deasy-python/issues/21)) ([450b2a1](https://github.com/Deasie-internal/deasy-python/commit/450b2a1a4d1a2e427af038b522d4b54ce47ae786))
+
 ## 0.1.0-alpha.6 (2025-03-19)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
