@@ -199,13 +199,13 @@ class TestMetadata:
                     "foo": {
                         "chunk_level": {
                             "foo": {
-                                "evidence": "evidence",
                                 "values": ["string"],
+                                "evidence": "evidence",
                             }
                         },
                         "file_level": {
-                            "evidence": "evidence",
                             "values": ["string"],
+                            "evidence": "evidence",
                         },
                     }
                 }
@@ -422,13 +422,13 @@ class TestAsyncMetadata:
                     "foo": {
                         "chunk_level": {
                             "foo": {
-                                "evidence": "evidence",
                                 "values": ["string"],
+                                "evidence": "evidence",
                             }
                         },
                         "file_level": {
-                            "evidence": "evidence",
                             "values": ["string"],
+                            "evidence": "evidence",
                         },
                     }
                 }
