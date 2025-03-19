@@ -1,8 +1,8 @@
-# Deasy Python API library
+# Deasy Labs Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/Deasy.svg)](https://pypi.org/project/Deasy/)
+[![PyPI version](https://img.shields.io/pypi/v/deasy-python.svg)](https://pypi.org/project/deasy-python/)
 
-The Deasy Python library provides convenient access to the Deasy REST API from any Python 3.8+
+The Deasy Labs Python library provides convenient access to the Deasy Labs REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -16,7 +16,7 @@ The REST API documentation can be found on [storage.googleapis.com](https://stor
 
 ```sh
 # install from PyPI
-pip install --pre Deasy
+pip install --pre deasy-python
 ```
 
 ## Usage
@@ -24,9 +24,9 @@ pip install --pre Deasy
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
-client = Deasy(
+client = DeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -39,13 +39,13 @@ print(metadata.metadata)
 
 ## Async usage
 
-Simply import `AsyncDeasy` instead of `Deasy` and use `await` with each API call:
+Simply import `AsyncDeasyLabs` instead of `DeasyLabs` and use `await` with each API call:
 
 ```python
 import asyncio
-from Deasy import AsyncDeasy
+from deasy_python import AsyncDeasyLabs
 
-client = AsyncDeasy(
+client = AsyncDeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -77,9 +77,9 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
-client = Deasy(
+client = DeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -100,18 +100,18 @@ print(response.conditions)
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `Deasy.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `deasy_python.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `Deasy.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `deasy_python.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `Deasy.APIError`.
+All errors inherit from `deasy_python.APIError`.
 
 ```python
-import Deasy
-from Deasy import Deasy
+import deasy_python
+from deasy_python import DeasyLabs
 
-client = Deasy(
+client = DeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -120,12 +120,12 @@ try:
     client.metadata.list(
         vdb_profile_name="vdb_profile_name",
     )
-except Deasy.APIConnectionError as e:
+except deasy_python.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except Deasy.RateLimitError as e:
+except deasy_python.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except Deasy.APIStatusError as e:
+except deasy_python.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -153,10 +153,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
 # Configure the default for all requests:
-client = Deasy(
+client = DeasyLabs(
     # default is 2
     max_retries=0,
     x_token="My X Token",
@@ -175,10 +175,10 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
 # Configure the default for all requests:
-client = Deasy(
+client = DeasyLabs(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
     x_token="My X Token",
@@ -186,7 +186,7 @@ client = Deasy(
 )
 
 # More granular control:
-client = Deasy(
+client = DeasyLabs(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     x_token="My X Token",
     x_user="My X User",
@@ -208,10 +208,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `DEASY_LOG` to `info`.
+You can enable logging by setting the environment variable `DEASY_LABS_LOG` to `info`.
 
 ```shell
-$ export DEASY_LOG=info
+$ export DEASY_LABS_LOG=info
 ```
 
 Or to `debug` for more verbose logging.
@@ -233,9 +233,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
-client = Deasy(
+client = DeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -248,9 +248,9 @@ metadata = response.parse()  # get the object that `metadata.list()` would have 
 print(metadata.metadata)
 ```
 
-These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/Deasy/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/deasy_python/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/Deasy/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/Deasie-internal/deasy-python/tree/main/src/deasy_python/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -314,10 +314,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from Deasy import Deasy, DefaultHttpxClient
+from deasy_python import DeasyLabs, DefaultHttpxClient
 
-client = Deasy(
-    # Or use the `DEASY_BASE_URL` env var
+client = DeasyLabs(
+    # Or use the `DEASY_LABS_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
@@ -339,9 +339,9 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from Deasy import Deasy
+from deasy_python import DeasyLabs
 
-with Deasy(
+with DeasyLabs(
     x_token="My X Token",
     x_user="My X User",
 ) as client:
@@ -370,8 +370,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import Deasy
-print(Deasy.__version__)
+import deasy_python
+print(deasy_python.__version__)
 ```
 
 ## Requirements
