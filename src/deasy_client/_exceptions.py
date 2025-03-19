@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class DeasyLabsError(Exception):
+class DeasyError(Exception):
     pass
 
 
-class APIError(DeasyLabsError):
+class APIError(DeasyError):
     message: str
     request: httpx.Request
 

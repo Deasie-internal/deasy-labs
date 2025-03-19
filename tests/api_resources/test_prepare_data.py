@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import PrepareDataCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -19,7 +19,7 @@ class TestPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         prepare_data = client.prepare_data.create(
             vdb_profile_name="vdb_profile_name",
         )
@@ -27,7 +27,7 @@ class TestPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_create_with_all_params(self, client: Deasy) -> None:
         prepare_data = client.prepare_data.create(
             vdb_profile_name="vdb_profile_name",
             llm_profile_name="llm_profile_name",
@@ -37,7 +37,7 @@ class TestPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.prepare_data.with_raw_response.create(
             vdb_profile_name="vdb_profile_name",
         )
@@ -49,7 +49,7 @@ class TestPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.prepare_data.with_streaming_response.create(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -67,7 +67,7 @@ class TestAsyncPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         prepare_data = await async_client.prepare_data.create(
             vdb_profile_name="vdb_profile_name",
         )
@@ -75,7 +75,7 @@ class TestAsyncPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         prepare_data = await async_client.prepare_data.create(
             vdb_profile_name="vdb_profile_name",
             llm_profile_name="llm_profile_name",
@@ -85,7 +85,7 @@ class TestAsyncPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.prepare_data.with_raw_response.create(
             vdb_profile_name="vdb_profile_name",
         )
@@ -97,7 +97,7 @@ class TestAsyncPrepareData:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.prepare_data.with_streaming_response.create(
             vdb_profile_name="vdb_profile_name",
         ) as response:

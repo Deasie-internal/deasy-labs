@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import (
     ListVdbConnector,
     ConnectorResponse,
@@ -23,7 +23,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: DeasyLabs) -> None:
+    def test_method_create(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -40,7 +40,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_create_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -64,7 +64,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: DeasyLabs) -> None:
+    def test_raw_response_create(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -85,7 +85,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: DeasyLabs) -> None:
+    def test_streaming_response_create(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -108,7 +108,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update(self, client: DeasyLabs) -> None:
+    def test_method_update(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -125,7 +125,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_update_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -149,7 +149,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update(self, client: DeasyLabs) -> None:
+    def test_raw_response_update(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -170,7 +170,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update(self, client: DeasyLabs) -> None:
+    def test_streaming_response_update(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -193,13 +193,13 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: DeasyLabs) -> None:
+    def test_method_list(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.list()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: DeasyLabs) -> None:
+    def test_raw_response_list(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.list()
 
         assert response.is_closed is True
@@ -209,7 +209,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: DeasyLabs) -> None:
+    def test_streaming_response_list(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -221,7 +221,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: DeasyLabs) -> None:
+    def test_method_delete(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.delete(
             connector_name="connector_name",
         )
@@ -229,7 +229,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: DeasyLabs) -> None:
+    def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.delete(
             connector_name="connector_name",
         )
@@ -241,7 +241,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
+    def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.delete(
             connector_name="connector_name",
         ) as response:
@@ -255,7 +255,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_method_get_delete_stats(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.get_delete_stats(
             connector_name="connector_name",
         )
@@ -263,7 +263,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.get_delete_stats(
             connector_name="connector_name",
         )
@@ -275,7 +275,7 @@ class TestVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_delete_stats(self, client: DeasyLabs) -> None:
+    def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.get_delete_stats(
             connector_name="connector_name",
         ) as response:
@@ -293,7 +293,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -310,7 +310,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -334,7 +334,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -355,7 +355,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.create(
             connector_body={
                 "collection_name": "collection_name",
@@ -378,7 +378,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -395,7 +395,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -419,7 +419,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -440,7 +440,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.update(
             connector_body={
                 "collection_name": "collection_name",
@@ -463,13 +463,13 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_list(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.list()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.list()
 
         assert response.is_closed is True
@@ -479,7 +479,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -491,7 +491,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.delete(
             connector_name="connector_name",
         )
@@ -499,7 +499,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.delete(
             connector_name="connector_name",
         )
@@ -511,7 +511,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.delete(
             connector_name="connector_name",
         ) as response:
@@ -525,7 +525,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.get_delete_stats(
             connector_name="connector_name",
         )
@@ -533,7 +533,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.get_delete_stats(
             connector_name="connector_name",
         )
@@ -545,7 +545,7 @@ class TestAsyncVdbConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.get_delete_stats(
             connector_name="connector_name",
         ) as response:
