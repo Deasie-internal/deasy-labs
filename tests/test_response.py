@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from Deasy import Deasy, BaseModel, AsyncDeasy
-from Deasy._response import (
+from deasy_python import BaseModel, DeasyLabs, AsyncDeasyLabs
+from deasy_python._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from Deasy._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from Deasy._streaming import Stream
-from Deasy._base_client import FinalRequestOptions
+from deasy_python._streaming import Stream
+from deasy_python._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'Deasy._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'deasy_python._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -56,7 +56,7 @@ def test_extract_response_type_binary_response() -> None:
 class PydanticModel(pydantic.BaseModel): ...
 
 
-def test_response_parse_mismatched_basemodel(client: Deasy) -> None:
+def test_response_parse_mismatched_basemodel(client: DeasyLabs) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -68,13 +68,13 @@ def test_response_parse_mismatched_basemodel(client: Deasy) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from Deasy import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from deasy_python import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncDeasy) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncDeasyLabs) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -86,12 +86,12 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncDeas
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from Deasy import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from deasy_python import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: Deasy) -> None:
+def test_response_parse_custom_stream(client: DeasyLabs) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -106,7 +106,7 @@ def test_response_parse_custom_stream(client: Deasy) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncDeasy) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncDeasyLabs) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -125,7 +125,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: Deasy) -> None:
+def test_response_parse_custom_model(client: DeasyLabs) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -141,7 +141,7 @@ def test_response_parse_custom_model(client: Deasy) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncDeasy) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncDeasyLabs) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -156,7 +156,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncDeasy) -> No
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: Deasy) -> None:
+def test_response_parse_annotated_type(client: DeasyLabs) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -173,7 +173,7 @@ def test_response_parse_annotated_type(client: Deasy) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncDeasy) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncDeasyLabs) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -201,7 +201,7 @@ async def test_async_response_parse_annotated_type(async_client: AsyncDeasy) -> 
         ("FalSe", False),
     ],
 )
-def test_response_parse_bool(client: Deasy, content: str, expected: bool) -> None:
+def test_response_parse_bool(client: DeasyLabs, content: str, expected: bool) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=content),
         client=client,
@@ -226,7 +226,7 @@ def test_response_parse_bool(client: Deasy, content: str, expected: bool) -> Non
         ("FalSe", False),
     ],
 )
-async def test_async_response_parse_bool(client: AsyncDeasy, content: str, expected: bool) -> None:
+async def test_async_response_parse_bool(client: AsyncDeasyLabs, content: str, expected: bool) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=content),
         client=client,
@@ -245,7 +245,7 @@ class OtherModel(BaseModel):
 
 
 @pytest.mark.parametrize("client", [False], indirect=True)  # loose validation
-def test_response_parse_expect_model_union_non_json_content(client: Deasy) -> None:
+def test_response_parse_expect_model_union_non_json_content(client: DeasyLabs) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo", headers={"Content-Type": "application/text"}),
         client=client,
@@ -262,7 +262,7 @@ def test_response_parse_expect_model_union_non_json_content(client: Deasy) -> No
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("async_client", [False], indirect=True)  # loose validation
-async def test_async_response_parse_expect_model_union_non_json_content(async_client: AsyncDeasy) -> None:
+async def test_async_response_parse_expect_model_union_non_json_content(async_client: AsyncDeasyLabs) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo", headers={"Content-Type": "application/text"}),
         client=async_client,

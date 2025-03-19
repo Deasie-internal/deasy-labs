@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from Deasy._utils import PropertyInfo
-from Deasy._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from Deasy._models import BaseModel, construct_type
+from deasy_python._utils import PropertyInfo
+from deasy_python._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from deasy_python._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
