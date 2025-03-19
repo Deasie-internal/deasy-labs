@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from deasy_python import BaseModel, DeasyLabs, AsyncDeasyLabs
-from deasy_python._response import (
+from deasy_client import BaseModel, DeasyLabs, AsyncDeasyLabs
+from deasy_client._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from deasy_python._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from deasy_python._streaming import Stream
-from deasy_python._base_client import FinalRequestOptions
+from deasy_client._streaming import Stream
+from deasy_client._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'deasy_python._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'deasy_client._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -68,7 +68,7 @@ def test_response_parse_mismatched_basemodel(client: DeasyLabs) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from deasy_python import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from deasy_client import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -86,7 +86,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncDeas
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from deasy_python import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from deasy_client import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 

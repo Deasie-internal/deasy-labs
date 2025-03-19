@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from deasy_python import DeasyLabs, AsyncDeasyLabs
-from deasy_python._streaming import Stream, AsyncStream, ServerSentEvent
+from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
