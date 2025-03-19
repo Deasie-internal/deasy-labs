@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-19)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* update SDK settings ([#11](https://github.com/Deasie-internal/deasy-python/issues/11)) ([195c387](https://github.com/Deasie-internal/deasy-python/commit/195c387bd63c355cfa7167011440a78caf756d65))
+
 ## 0.1.0-alpha.3 (2025-03-19)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
