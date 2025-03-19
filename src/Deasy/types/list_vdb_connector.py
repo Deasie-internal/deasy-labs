@@ -11,7 +11,7 @@ from .sharepoint_connector_config import SharepointConnectorConfig
 
 __all__ = ["ListVdbConnector", "Connectors"]
 
-Connectors: TypeAlias = Union[S3ConnectorConfig, PsqlConnectorConfig, QdrantConnectorConfig, SharepointConnectorConfig]
+Connectors: TypeAlias = Union[PsqlConnectorConfig, QdrantConnectorConfig, S3ConnectorConfig, SharepointConnectorConfig]
 
 
 class ListVdbConnector(BaseModel):

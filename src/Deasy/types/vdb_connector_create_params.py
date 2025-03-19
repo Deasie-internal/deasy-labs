@@ -20,5 +20,5 @@ class VdbConnectorCreateParams(TypedDict, total=False):
 
 
 ConnectorBody: TypeAlias = Union[
-    S3ConnectorConfigParam, PsqlConnectorConfigParam, QdrantConnectorConfigParam, SharepointConnectorConfigParam
+    PsqlConnectorConfigParam, QdrantConnectorConfigParam, S3ConnectorConfigParam, SharepointConnectorConfigParam
 ]
