@@ -7,12 +7,12 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy import Deasy, AsyncDeasy
-from Deasy.types import (
+from tests.utils import assert_matches_type
+from deasy_python import DeasyLabs, AsyncDeasyLabs
+from deasy_python.types import (
     ConnectorResponse,
     LlmConnectorListResponse,
 )
-from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: Deasy) -> None:
+    def test_method_create(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.create(
             connector_body={
                 "api_key": "api_key",
@@ -35,7 +35,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: Deasy) -> None:
+    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.create(
             connector_body={
                 "api_key": "api_key",
@@ -52,7 +52,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: Deasy) -> None:
+    def test_raw_response_create(self, client: DeasyLabs) -> None:
         response = client.llm_connector.with_raw_response.create(
             connector_body={
                 "api_key": "api_key",
@@ -69,7 +69,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: Deasy) -> None:
+    def test_streaming_response_create(self, client: DeasyLabs) -> None:
         with client.llm_connector.with_streaming_response.create(
             connector_body={
                 "api_key": "api_key",
@@ -88,7 +88,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update(self, client: Deasy) -> None:
+    def test_method_update(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.update(
             connector_body={
                 "api_key": "api_key",
@@ -101,7 +101,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update_with_all_params(self, client: Deasy) -> None:
+    def test_method_update_with_all_params(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.update(
             connector_body={
                 "api_key": "api_key",
@@ -118,7 +118,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update(self, client: Deasy) -> None:
+    def test_raw_response_update(self, client: DeasyLabs) -> None:
         response = client.llm_connector.with_raw_response.update(
             connector_body={
                 "api_key": "api_key",
@@ -135,7 +135,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update(self, client: Deasy) -> None:
+    def test_streaming_response_update(self, client: DeasyLabs) -> None:
         with client.llm_connector.with_streaming_response.update(
             connector_body={
                 "api_key": "api_key",
@@ -154,13 +154,13 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: Deasy) -> None:
+    def test_method_list(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.list()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: Deasy) -> None:
+    def test_raw_response_list(self, client: DeasyLabs) -> None:
         response = client.llm_connector.with_raw_response.list()
 
         assert response.is_closed is True
@@ -170,7 +170,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: Deasy) -> None:
+    def test_streaming_response_list(self, client: DeasyLabs) -> None:
         with client.llm_connector.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -182,7 +182,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_delete(self, client: Deasy) -> None:
+    def test_method_delete(self, client: DeasyLabs) -> None:
         llm_connector = client.llm_connector.delete(
             connector_name="connector_name",
         )
@@ -190,7 +190,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_delete(self, client: Deasy) -> None:
+    def test_raw_response_delete(self, client: DeasyLabs) -> None:
         response = client.llm_connector.with_raw_response.delete(
             connector_name="connector_name",
         )
@@ -202,7 +202,7 @@ class TestLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_delete(self, client: Deasy) -> None:
+    def test_streaming_response_delete(self, client: DeasyLabs) -> None:
         with client.llm_connector.with_streaming_response.delete(
             connector_name="connector_name",
         ) as response:
@@ -220,7 +220,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasy) -> None:
+    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.create(
             connector_body={
                 "api_key": "api_key",
@@ -233,7 +233,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.create(
             connector_body={
                 "api_key": "api_key",
@@ -250,7 +250,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.llm_connector.with_raw_response.create(
             connector_body={
                 "api_key": "api_key",
@@ -267,7 +267,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.llm_connector.with_streaming_response.create(
             connector_body={
                 "api_key": "api_key",
@@ -286,7 +286,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update(self, async_client: AsyncDeasy) -> None:
+    async def test_method_update(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.update(
             connector_body={
                 "api_key": "api_key",
@@ -299,7 +299,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
+    async def test_method_update_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.update(
             connector_body={
                 "api_key": "api_key",
@@ -316,7 +316,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_update(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.llm_connector.with_raw_response.update(
             connector_body={
                 "api_key": "api_key",
@@ -333,7 +333,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.llm_connector.with_streaming_response.update(
             connector_body={
                 "api_key": "api_key",
@@ -352,13 +352,13 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncDeasy) -> None:
+    async def test_method_list(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.list()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_list(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.llm_connector.with_raw_response.list()
 
         assert response.is_closed is True
@@ -368,7 +368,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.llm_connector.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -380,7 +380,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_delete(self, async_client: AsyncDeasy) -> None:
+    async def test_method_delete(self, async_client: AsyncDeasyLabs) -> None:
         llm_connector = await async_client.llm_connector.delete(
             connector_name="connector_name",
         )
@@ -388,7 +388,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.llm_connector.with_raw_response.delete(
             connector_name="connector_name",
         )
@@ -400,7 +400,7 @@ class TestAsyncLlmConnector:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.llm_connector.with_streaming_response.delete(
             connector_name="connector_name",
         ) as response:

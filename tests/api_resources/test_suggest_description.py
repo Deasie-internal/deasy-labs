@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy import Deasy, AsyncDeasy
-from Deasy.types import SuggestDescriptionCreateResponse
 from tests.utils import assert_matches_type
+from deasy_python import DeasyLabs, AsyncDeasyLabs
+from deasy_python.types import SuggestDescriptionCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create(self, client: Deasy) -> None:
+    def test_method_create(self, client: DeasyLabs) -> None:
         suggest_description = client.suggest_description.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -28,7 +28,7 @@ class TestSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_create_with_all_params(self, client: Deasy) -> None:
+    def test_method_create_with_all_params(self, client: DeasyLabs) -> None:
         suggest_description = client.suggest_description.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -41,7 +41,7 @@ class TestSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_create(self, client: Deasy) -> None:
+    def test_raw_response_create(self, client: DeasyLabs) -> None:
         response = client.suggest_description.with_raw_response.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -54,7 +54,7 @@ class TestSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_create(self, client: Deasy) -> None:
+    def test_streaming_response_create(self, client: DeasyLabs) -> None:
         with client.suggest_description.with_streaming_response.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -73,7 +73,7 @@ class TestAsyncSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create(self, async_client: AsyncDeasy) -> None:
+    async def test_method_create(self, async_client: AsyncDeasyLabs) -> None:
         suggest_description = await async_client.suggest_description.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -82,7 +82,7 @@ class TestAsyncSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
         suggest_description = await async_client.suggest_description.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -95,7 +95,7 @@ class TestAsyncSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_create(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.suggest_description.with_raw_response.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",
@@ -108,7 +108,7 @@ class TestAsyncSuggestDescription:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.suggest_description.with_streaming_response.create(
             tag_name="tag_name",
             vdb_profile_name="vdb_profile_name",

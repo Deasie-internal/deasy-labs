@@ -7,8 +7,8 @@ from typing import Any, cast
 
 import pytest
 
-from Deasy import Deasy, AsyncDeasy
 from tests.utils import assert_matches_type
+from deasy_python import DeasyLabs, AsyncDeasyLabs
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -18,7 +18,7 @@ class TestExport:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_export_metadata(self, client: Deasy) -> None:
+    def test_method_export_metadata(self, client: DeasyLabs) -> None:
         export = client.dataslice.export.export_metadata(
             vdb_profile_name="vdb_profile_name",
         )
@@ -26,7 +26,7 @@ class TestExport:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_export_metadata_with_all_params(self, client: Deasy) -> None:
+    def test_method_export_metadata_with_all_params(self, client: DeasyLabs) -> None:
         export = client.dataslice.export.export_metadata(
             vdb_profile_name="vdb_profile_name",
             dataslice_id="dataslice_id",
@@ -38,7 +38,7 @@ class TestExport:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_export_metadata(self, client: Deasy) -> None:
+    def test_raw_response_export_metadata(self, client: DeasyLabs) -> None:
         response = client.dataslice.export.with_raw_response.export_metadata(
             vdb_profile_name="vdb_profile_name",
         )
@@ -50,7 +50,7 @@ class TestExport:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_export_metadata(self, client: Deasy) -> None:
+    def test_streaming_response_export_metadata(self, client: DeasyLabs) -> None:
         with client.dataslice.export.with_streaming_response.export_metadata(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -68,7 +68,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_export_metadata(self, async_client: AsyncDeasy) -> None:
+    async def test_method_export_metadata(self, async_client: AsyncDeasyLabs) -> None:
         export = await async_client.dataslice.export.export_metadata(
             vdb_profile_name="vdb_profile_name",
         )
@@ -76,7 +76,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_export_metadata_with_all_params(self, async_client: AsyncDeasy) -> None:
+    async def test_method_export_metadata_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
         export = await async_client.dataslice.export.export_metadata(
             vdb_profile_name="vdb_profile_name",
             dataslice_id="dataslice_id",
@@ -88,7 +88,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_export_metadata(self, async_client: AsyncDeasy) -> None:
+    async def test_raw_response_export_metadata(self, async_client: AsyncDeasyLabs) -> None:
         response = await async_client.dataslice.export.with_raw_response.export_metadata(
             vdb_profile_name="vdb_profile_name",
         )
@@ -100,7 +100,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_export_metadata(self, async_client: AsyncDeasy) -> None:
+    async def test_streaming_response_export_metadata(self, async_client: AsyncDeasyLabs) -> None:
         async with async_client.dataslice.export.with_streaming_response.export_metadata(
             vdb_profile_name="vdb_profile_name",
         ) as response:

@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 import pytest
 from pytest_asyncio import is_async_test
 
-from Deasy import Deasy, AsyncDeasy
+from deasy_python import DeasyLabs, AsyncDeasyLabs
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("Deasy").setLevel(logging.DEBUG)
+logging.getLogger("deasy_python").setLevel(logging.DEBUG)
 
 
 # automatically add `pytest.mark.asyncio()` to all of our async tests
@@ -33,22 +33,22 @@ x_user = "My X User"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[Deasy]:
+def client(request: FixtureRequest) -> Iterator[DeasyLabs]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict) as client:
+    with DeasyLabs(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncDeasy]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncDeasyLabs]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncDeasy(
+    async with AsyncDeasyLabs(
         base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict
     ) as client:
         yield client
