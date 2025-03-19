@@ -22,6 +22,18 @@ Methods:
 
 - <code title="post /classify">client.classify.<a href="./src/deasy_client/resources/classify.py">classify_files</a>(\*\*<a href="src/deasy_client/types/classify_classify_files_params.py">params</a>) -> <a href="./src/deasy_client/types/classify_classify_files_response.py">ClassifyClassifyFilesResponse</a></code>
 
+# PrepareData
+
+Types:
+
+```python
+from deasy_client.types import PrepareDataCreateResponse
+```
+
+Methods:
+
+- <code title="post /prepare_data">client.prepare_data.<a href="./src/deasy_client/resources/prepare_data.py">create</a>(\*\*<a href="src/deasy_client/types/prepare_data_create_params.py">params</a>) -> <a href="./src/deasy_client/types/prepare_data_create_response.py">PrepareDataCreateResponse</a></code>
+
 # SuggestHierarchy
 
 Types:

@@ -40,6 +40,14 @@ from .dataslice import (
     DatasliceResourceWithStreamingResponse,
     AsyncDatasliceResourceWithStreamingResponse,
 )
+from .prepare_data import (
+    PrepareDataResource,
+    AsyncPrepareDataResource,
+    PrepareDataResourceWithRawResponse,
+    AsyncPrepareDataResourceWithRawResponse,
+    PrepareDataResourceWithStreamingResponse,
+    AsyncPrepareDataResourceWithStreamingResponse,
+)
 from .classify_bulk import (
     ClassifyBulkResource,
     AsyncClassifyBulkResource,
@@ -94,6 +102,12 @@ __all__ = [
     "AsyncClassifyResourceWithRawResponse",
     "ClassifyResourceWithStreamingResponse",
     "AsyncClassifyResourceWithStreamingResponse",
+    "PrepareDataResource",
+    "AsyncPrepareDataResource",
+    "PrepareDataResourceWithRawResponse",
+    "AsyncPrepareDataResourceWithRawResponse",
+    "PrepareDataResourceWithStreamingResponse",
+    "AsyncPrepareDataResourceWithStreamingResponse",
     "SuggestHierarchyResource",
     "AsyncSuggestHierarchyResource",
     "SuggestHierarchyResourceWithRawResponse",
