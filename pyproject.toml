@@ -1,11 +1,11 @@
 [project]
 name = "deasy-client"
 version = "0.1.0-alpha.6"
-description = "The official Python library for the Deasy Labs API"
+description = "The official Python library for the Deasy API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Deasy Labs", email = "help@deasylabs.com" },
+{ name = "Deasy", email = "help@deasylabs.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

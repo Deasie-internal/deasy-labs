@@ -1,8 +1,8 @@
-# Deasy Labs Python API library
+# Deasy Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/deasy-client.svg)](https://pypi.org/project/deasy-client/)
 
-The Deasy Labs Python library provides convenient access to the Deasy Labs REST API from any Python 3.8+
+The Deasy Python library provides convenient access to the Deasy REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -24,9 +24,9 @@ pip install --pre deasy-client
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
-client = DeasyLabs(
+client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -39,13 +39,13 @@ print(metadata.metadata)
 
 ## Async usage
 
-Simply import `AsyncDeasyLabs` instead of `DeasyLabs` and use `await` with each API call:
+Simply import `AsyncDeasy` instead of `Deasy` and use `await` with each API call:
 
 ```python
 import asyncio
-from deasy_client import AsyncDeasyLabs
+from deasy_client import AsyncDeasy
 
-client = AsyncDeasyLabs(
+client = AsyncDeasy(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -77,9 +77,9 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
-client = DeasyLabs(
+client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -109,9 +109,9 @@ All errors inherit from `deasy_client.APIError`.
 
 ```python
 import deasy_client
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
-client = DeasyLabs(
+client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -153,10 +153,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
 # Configure the default for all requests:
-client = DeasyLabs(
+client = Deasy(
     # default is 2
     max_retries=0,
     x_token="My X Token",
@@ -175,10 +175,10 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
 # Configure the default for all requests:
-client = DeasyLabs(
+client = Deasy(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
     x_token="My X Token",
@@ -186,7 +186,7 @@ client = DeasyLabs(
 )
 
 # More granular control:
-client = DeasyLabs(
+client = Deasy(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     x_token="My X Token",
     x_user="My X User",
@@ -208,10 +208,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `DEASY_LABS_LOG` to `info`.
+You can enable logging by setting the environment variable `DEASY_LOG` to `info`.
 
 ```shell
-$ export DEASY_LABS_LOG=info
+$ export DEASY_LOG=info
 ```
 
 Or to `debug` for more verbose logging.
@@ -233,9 +233,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
-client = DeasyLabs(
+client = Deasy(
     x_token="My X Token",
     x_user="My X User",
 )
@@ -314,10 +314,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from deasy_client import DeasyLabs, DefaultHttpxClient
+from deasy_client import Deasy, DefaultHttpxClient
 
-client = DeasyLabs(
-    # Or use the `DEASY_LABS_BASE_URL` env var
+client = Deasy(
+    # Or use the `DEASY_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
@@ -339,9 +339,9 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from deasy_client import DeasyLabs
+from deasy_client import Deasy
 
-with DeasyLabs(
+with Deasy(
     x_token="My X Token",
     x_user="My X User",
 ) as client:

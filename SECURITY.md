@@ -16,9 +16,9 @@ before making any information public.
 ## Reporting Non-SDK Related Security Issues
 
 If you encounter security issues that are not directly related to SDKs but pertain to the services
-or products provided by Deasy Labs please follow the respective company's security reporting guidelines.
+or products provided by Deasy please follow the respective company's security reporting guidelines.
 
-### Deasy Labs Terms and Policies
+### Deasy Terms and Policies
 
 Please contact help@deasylabs.com for any questions or concerns regarding security of our services.
 

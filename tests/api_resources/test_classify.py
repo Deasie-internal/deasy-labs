@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 from deasy_client.types import ClassifyClassifyFilesResponse
 from deasy_client._utils import parse_datetime
 
@@ -20,7 +20,7 @@ class TestClassify:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify_files(self, client: DeasyLabs) -> None:
+    def test_method_classify_files(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
             vdb_profile_name="vdb_profile_name",
         )
@@ -28,7 +28,7 @@ class TestClassify:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_classify_files_with_all_params(self, client: DeasyLabs) -> None:
+    def test_method_classify_files_with_all_params(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
             vdb_profile_name="vdb_profile_name",
             dataslice_id="dataslice_id",
@@ -63,7 +63,7 @@ class TestClassify:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_classify_files(self, client: DeasyLabs) -> None:
+    def test_raw_response_classify_files(self, client: Deasy) -> None:
         response = client.classify.with_raw_response.classify_files(
             vdb_profile_name="vdb_profile_name",
         )
@@ -75,7 +75,7 @@ class TestClassify:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_classify_files(self, client: DeasyLabs) -> None:
+    def test_streaming_response_classify_files(self, client: Deasy) -> None:
         with client.classify.with_streaming_response.classify_files(
             vdb_profile_name="vdb_profile_name",
         ) as response:
@@ -93,7 +93,7 @@ class TestAsyncClassify:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify_files(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
             vdb_profile_name="vdb_profile_name",
         )
@@ -101,7 +101,7 @@ class TestAsyncClassify:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_classify_files_with_all_params(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_method_classify_files_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
             vdb_profile_name="vdb_profile_name",
             dataslice_id="dataslice_id",
@@ -136,7 +136,7 @@ class TestAsyncClassify:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_classify_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_raw_response_classify_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.classify.with_raw_response.classify_files(
             vdb_profile_name="vdb_profile_name",
         )
@@ -148,7 +148,7 @@ class TestAsyncClassify:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_classify_files(self, async_client: AsyncDeasyLabs) -> None:
+    async def test_streaming_response_classify_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.classify.with_streaming_response.classify_files(
             vdb_profile_name="vdb_profile_name",
         ) as response:
