@@ -20,7 +20,7 @@ or products provided by Deasy please follow the respective company's security re
 
 ### Deasy Terms and Policies
 
-Please contact dev-feedback@Deasy.com for any questions or concerns regarding security of our services.
+Please contact help@deasylabs.com for any questions or concerns regarding security of our services.
 
 ---
 
