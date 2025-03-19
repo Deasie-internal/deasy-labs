@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 import pytest
 from pytest_asyncio import is_async_test
 
-from deasy_client import DeasyLabs, AsyncDeasyLabs
+from deasy_client import Deasy, AsyncDeasy
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
@@ -33,22 +33,22 @@ x_user = "My X User"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[DeasyLabs]:
+def client(request: FixtureRequest) -> Iterator[Deasy]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with DeasyLabs(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict) as client:
+    with Deasy(base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncDeasyLabs]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncDeasy]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncDeasyLabs(
+    async with AsyncDeasy(
         base_url=base_url, x_token=x_token, x_user=x_user, _strict_response_validation=strict
     ) as client:
         yield client
