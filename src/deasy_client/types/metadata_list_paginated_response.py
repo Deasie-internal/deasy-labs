@@ -13,15 +13,15 @@ __all__ = [
 
 
 class MetadataMetadataItemChunkLevel(BaseModel):
-    evidence: str
-
     values: List[str]
+
+    evidence: Optional[str] = None
 
 
 class MetadataMetadataItemFileLevel(BaseModel):
-    evidence: str
-
     values: List[str]
+
+    evidence: Optional[str] = None
 
 
 class MetadataMetadataItem(BaseModel):
