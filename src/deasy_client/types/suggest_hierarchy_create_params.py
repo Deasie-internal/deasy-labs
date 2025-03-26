@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["SuggestHierarchyCreateParams"]
 
@@ -26,6 +26,8 @@ class SuggestHierarchyCreateParams(TypedDict, total=False):
     max_height: Optional[int]
 
     node: Optional[object]
+
+    tag_type: Optional[Literal["any", "string", "binary"]]
 
     use_existing_tags: Optional[bool]
 
