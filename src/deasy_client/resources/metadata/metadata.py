@@ -6,36 +6,48 @@ from typing import Dict, List, Optional
 
 import httpx
 
-from ..types import (
+from ...types import (
     metadata_list_params,
     metadata_delete_params,
     metadata_upsert_params,
     metadata_list_paginated_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.condition_input_param import ConditionInputParam
-from ..types.metadata_list_response import MetadataListResponse
-from ..types.metadata_delete_response import MetadataDeleteResponse
-from ..types.metadata_upsert_response import MetadataUpsertResponse
-from ..types.metadata_list_paginated_response import MetadataListPaginatedResponse
+from .deasy_select import (
+    DeasySelectResource,
+    AsyncDeasySelectResource,
+    DeasySelectResourceWithRawResponse,
+    AsyncDeasySelectResourceWithRawResponse,
+    DeasySelectResourceWithStreamingResponse,
+    AsyncDeasySelectResourceWithStreamingResponse,
+)
+from ..._base_client import make_request_options
+from ...types.condition_input_param import ConditionInputParam
+from ...types.metadata_list_response import MetadataListResponse
+from ...types.metadata_delete_response import MetadataDeleteResponse
+from ...types.metadata_upsert_response import MetadataUpsertResponse
+from ...types.metadata_list_paginated_response import MetadataListPaginatedResponse
 
 __all__ = ["MetadataResource", "AsyncMetadataResource"]
 
 
 class MetadataResource(SyncAPIResource):
+    @cached_property
+    def deasy_select(self) -> DeasySelectResource:
+        return DeasySelectResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> MetadataResourceWithRawResponse:
         """
@@ -125,12 +137,9 @@ class MetadataResource(SyncAPIResource):
         """
         Delete metadata for specified files and tags
 
-        Attributes:
-
-            vector_db_config: The vector database configuration to use.
-            file_names: The files to delete the metadata for.
-            tags: The tags to delete the metadata for.
-            conditions: The conditions to delete the metadata for.
+        Attributes: vector_db_config: The vector database configuration to use.
+        file_names: The files to delete the metadata for. tags: The tags to delete the
+        metadata for. conditions: The conditions to delete the metadata for.
 
         Args:
           extra_headers: Send extra headers
@@ -267,6 +276,10 @@ class MetadataResource(SyncAPIResource):
 
 class AsyncMetadataResource(AsyncAPIResource):
     @cached_property
+    def deasy_select(self) -> AsyncDeasySelectResource:
+        return AsyncDeasySelectResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncMetadataResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -355,12 +368,9 @@ class AsyncMetadataResource(AsyncAPIResource):
         """
         Delete metadata for specified files and tags
 
-        Attributes:
-
-            vector_db_config: The vector database configuration to use.
-            file_names: The files to delete the metadata for.
-            tags: The tags to delete the metadata for.
-            conditions: The conditions to delete the metadata for.
+        Attributes: vector_db_config: The vector database configuration to use.
+        file_names: The files to delete the metadata for. tags: The tags to delete the
+        metadata for. conditions: The conditions to delete the metadata for.
 
         Args:
           extra_headers: Send extra headers
@@ -512,6 +522,10 @@ class MetadataResourceWithRawResponse:
             metadata.upsert,
         )
 
+    @cached_property
+    def deasy_select(self) -> DeasySelectResourceWithRawResponse:
+        return DeasySelectResourceWithRawResponse(self._metadata.deasy_select)
+
 
 class AsyncMetadataResourceWithRawResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
@@ -529,6 +543,10 @@ class AsyncMetadataResourceWithRawResponse:
         self.upsert = async_to_raw_response_wrapper(
             metadata.upsert,
         )
+
+    @cached_property
+    def deasy_select(self) -> AsyncDeasySelectResourceWithRawResponse:
+        return AsyncDeasySelectResourceWithRawResponse(self._metadata.deasy_select)
 
 
 class MetadataResourceWithStreamingResponse:
@@ -548,6 +566,10 @@ class MetadataResourceWithStreamingResponse:
             metadata.upsert,
         )
 
+    @cached_property
+    def deasy_select(self) -> DeasySelectResourceWithStreamingResponse:
+        return DeasySelectResourceWithStreamingResponse(self._metadata.deasy_select)
+
 
 class AsyncMetadataResourceWithStreamingResponse:
     def __init__(self, metadata: AsyncMetadataResource) -> None:
@@ -565,3 +587,7 @@ class AsyncMetadataResourceWithStreamingResponse:
         self.upsert = async_to_streamed_response_wrapper(
             metadata.upsert,
         )
+
+    @cached_property
+    def deasy_select(self) -> AsyncDeasySelectResourceWithStreamingResponse:
+        return AsyncDeasySelectResourceWithStreamingResponse(self._metadata.deasy_select)

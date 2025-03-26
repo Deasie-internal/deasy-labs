@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -59,6 +60,7 @@ class SuggestHierarchyResource(SyncAPIResource):
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         max_height: Optional[int] | NotGiven = NOT_GIVEN,
         node: Optional[object] | NotGiven = NOT_GIVEN,
+        tag_type: Optional[Literal["any", "string", "binary"]] | NotGiven = NOT_GIVEN,
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
@@ -109,6 +111,7 @@ class SuggestHierarchyResource(SyncAPIResource):
                     "llm_profile_name": llm_profile_name,
                     "max_height": max_height,
                     "node": node,
+                    "tag_type": tag_type,
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
@@ -154,6 +157,7 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         max_height: Optional[int] | NotGiven = NOT_GIVEN,
         node: Optional[object] | NotGiven = NOT_GIVEN,
+        tag_type: Optional[Literal["any", "string", "binary"]] | NotGiven = NOT_GIVEN,
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
@@ -204,6 +208,7 @@ class AsyncSuggestHierarchyResource(AsyncAPIResource):
                     "llm_profile_name": llm_profile_name,
                     "max_height": max_height,
                     "node": node,
+                    "tag_type": tag_type,
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
