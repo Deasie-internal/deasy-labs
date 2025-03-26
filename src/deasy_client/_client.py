@@ -28,7 +28,6 @@ from .resources import (
     tags,
     graph,
     classify,
-    metadata,
     prepare_data,
     classify_bulk,
     llm_connector,
@@ -43,6 +42,7 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.metadata import metadata
 from .resources.dataslice import dataslice
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "AsyncDeasy", "Client", "AsyncClient"]
