@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-03-30)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* added deasy select demo ([bc4957a](https://github.com/Deasie-internal/deasy-python/commit/bc4957a686f98ccd986bbd96c42b8aecd3cb6d21))
+* rye linting ([52902e7](https://github.com/Deasie-internal/deasy-python/commit/52902e74be7c8f4cb347cf6f36e2bd54aad7909f))
+
+
+### Chores
+
+* fix typos ([#34](https://github.com/Deasie-internal/deasy-python/issues/34)) ([8a6e1b8](https://github.com/Deasie-internal/deasy-python/commit/8a6e1b848e0202f1f18d038db74cd49cd7b3779f))
+
 ## 0.1.0-alpha.10 (2025-03-26)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
