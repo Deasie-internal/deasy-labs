@@ -37,7 +37,7 @@ class LlmConnectorResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Deasie-internal/deasy-labs#accessing-raw-response-data-eg-headers
         """
         return LlmConnectorResourceWithRawResponse(self)
 
@@ -46,7 +46,7 @@ class LlmConnectorResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-python#with_streaming_response
+        For more information, see https://www.github.com/Deasie-internal/deasy-labs#with_streaming_response
         """
         return LlmConnectorResourceWithStreamingResponse(self)
 
@@ -203,7 +203,7 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/Deasie-internal/deasy-labs#accessing-raw-response-data-eg-headers
         """
         return AsyncLlmConnectorResourceWithRawResponse(self)
 
@@ -212,7 +212,7 @@ class AsyncLlmConnectorResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/Deasie-internal/deasy-python#with_streaming_response
+        For more information, see https://www.github.com/Deasie-internal/deasy-labs#with_streaming_response
         """
         return AsyncLlmConnectorResourceWithStreamingResponse(self)
 
