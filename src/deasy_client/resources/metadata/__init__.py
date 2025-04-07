@@ -8,22 +8,8 @@ from .metadata import (
     MetadataResourceWithStreamingResponse,
     AsyncMetadataResourceWithStreamingResponse,
 )
-from .deasy_select import (
-    DeasySelectResource,
-    AsyncDeasySelectResource,
-    DeasySelectResourceWithRawResponse,
-    AsyncDeasySelectResourceWithRawResponse,
-    DeasySelectResourceWithStreamingResponse,
-    AsyncDeasySelectResourceWithStreamingResponse,
-)
 
 __all__ = [
-    "DeasySelectResource",
-    "AsyncDeasySelectResource",
-    "DeasySelectResourceWithRawResponse",
-    "AsyncDeasySelectResourceWithRawResponse",
-    "DeasySelectResourceWithStreamingResponse",
-    "AsyncDeasySelectResourceWithStreamingResponse",
     "MetadataResource",
     "AsyncMetadataResource",
     "MetadataResourceWithRawResponse",
