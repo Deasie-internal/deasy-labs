@@ -1,4 +1,4 @@
 configured_endpoints: 38
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/deasy-labs%2FDeasy-bdaee09264fdbd7153534159060f8e439b561d69b1a319186e97aa141c3df398.yml
-openapi_spec_hash: 959a5dcbddee6d19a4ec02883edbb7e8
-config_hash: c95242800296aec59e035ca4185031ed
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/deasy-labs%2FDeasy-6f563877ab216839eda227bd764d018ff8bc44bccbbc5cce222326a6ffd707b6.yml
+openapi_spec_hash: fca13daa328a4c778bfa0a53e2521205
+config_hash: ab066c7dbf1ea19461e14936ab05db75
