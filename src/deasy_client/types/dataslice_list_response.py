@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from datetime import datetime
 
 from .._compat import PYDANTIC_V2
@@ -20,7 +20,7 @@ class Dataslice(BaseModel):
 
     status: str
 
-    condition: Optional[List[object]] = None
+    condition: Optional[List[Dict[str, object]]] = None
 
     condition_new: Optional["ConditionOutput"] = None
 
@@ -32,9 +32,9 @@ class Dataslice(BaseModel):
 
     graph_id: Optional[str] = None
 
-    latest_graph: Optional[object] = None
+    latest_graph: Optional[Dict[str, object]] = None
 
-    vector_db_config: Optional[object] = None
+    vector_db_config: Optional[Dict[str, object]] = None
 
 
 class DatasliceListResponse(BaseModel):

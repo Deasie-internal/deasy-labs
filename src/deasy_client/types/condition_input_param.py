@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["ConditionInputParam", "Tag"]
@@ -11,7 +11,9 @@ __all__ = ["ConditionInputParam", "Tag"]
 class Tag(TypedDict, total=False):
     name: Required[str]
 
-    values: Required[List[str]]
+    values: Required[List[Union[str, float]]]
+
+    operator: Optional[str]
 
 
 class ConditionInputParam(TypedDict, total=False):

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal
 
 from .._compat import PYDANTIC_V2
@@ -14,7 +14,9 @@ __all__ = ["ConditionOutput", "Tag"]
 class Tag(BaseModel):
     name: str
 
-    values: List[str]
+    values: List[Union[str, float]]
+
+    operator: Optional[str] = None
 
 
 class ConditionOutput(BaseModel):

@@ -1,11 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from .._models import BaseModel
 from .deasy_tag import DeasyTag
 
-__all__ = ["SuggestHierarchyCreateResponse", "CreatedTag"]
+__all__ = ["SuggestSchemaCreateResponse", "CreatedTag"]
 
 
 class CreatedTag(BaseModel):
@@ -14,8 +14,8 @@ class CreatedTag(BaseModel):
     new_available_values: List[str]
 
 
-class SuggestHierarchyCreateResponse(BaseModel):
-    suggestion: object
+class SuggestSchemaCreateResponse(BaseModel):
+    suggestion: Dict[str, object]
 
     created_tags: Optional[List[CreatedTag]] = None
 
