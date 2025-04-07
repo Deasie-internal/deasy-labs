@@ -17,4 +17,4 @@ class DatasliceGetMetricsParams(TypedDict, total=False):
 
     tags: Optional[List[str]]
 
-    vdb_profile_name: Optional[str]
+    vector_db_config: Optional[object]

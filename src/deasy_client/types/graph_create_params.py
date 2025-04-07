@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["GraphCreateParams"]
@@ -11,6 +11,6 @@ __all__ = ["GraphCreateParams"]
 class GraphCreateParams(TypedDict, total=False):
     graph_name: Required[str]
 
-    graph_data: Optional[Dict[str, object]]
+    graph_data: Optional[object]
 
     graph_description: Optional[str]

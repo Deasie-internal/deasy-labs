@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List
+from typing import List
 from datetime import datetime
 
 from .._models import BaseModel
@@ -11,7 +11,7 @@ __all__ = ["GraphListResponse", "Graph"]
 class Graph(BaseModel):
     created_at: datetime
 
-    graph_data: Dict[str, object]
+    graph_data: object
 
     graph_description: str
 

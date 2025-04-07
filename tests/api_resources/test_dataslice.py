@@ -31,7 +31,7 @@ class TestDataslice:
         dataslice = client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
@@ -42,7 +42,7 @@ class TestDataslice:
         dataslice = client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
             condition={
                 "children": [],
@@ -50,7 +50,6 @@ class TestDataslice:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             data_points=0,
@@ -65,7 +64,7 @@ class TestDataslice:
         response = client.dataslice.with_raw_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         )
 
@@ -80,7 +79,7 @@ class TestDataslice:
         with client.dataslice.with_streaming_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
@@ -157,7 +156,7 @@ class TestDataslice:
     @parametrize
     def test_method_get_file_count(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
@@ -165,14 +164,13 @@ class TestDataslice:
     @parametrize
     def test_method_get_file_count_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
             condition={
                 "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
@@ -183,7 +181,7 @@ class TestDataslice:
     @parametrize
     def test_raw_response_get_file_count(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
 
         assert response.is_closed is True
@@ -195,7 +193,7 @@ class TestDataslice:
     @parametrize
     def test_streaming_response_get_file_count(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -253,7 +251,7 @@ class TestDataslice:
             file_names=["string"],
             node_ids=["string"],
             tags=["string"],
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
@@ -290,7 +288,7 @@ class TestDataslice:
     def test_method_get_tag_vdb_distribution_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_tag_vdb_distribution(
             dataslice_id="dataslice_id",
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
@@ -326,7 +324,7 @@ class TestAsyncDataslice:
         dataslice = await async_client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
@@ -337,7 +335,7 @@ class TestAsyncDataslice:
         dataslice = await async_client.dataslice.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
             condition={
                 "children": [],
@@ -345,7 +343,6 @@ class TestAsyncDataslice:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             data_points=0,
@@ -360,7 +357,7 @@ class TestAsyncDataslice:
         response = await async_client.dataslice.with_raw_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         )
 
@@ -375,7 +372,7 @@ class TestAsyncDataslice:
         async with async_client.dataslice.with_streaming_response.create(
             dataslice_name="dataslice_name",
             graph_id="graph_id",
-            latest_graph={"foo": "bar"},
+            latest_graph={},
             vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
@@ -452,7 +449,7 @@ class TestAsyncDataslice:
     @parametrize
     async def test_method_get_file_count(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
@@ -460,14 +457,13 @@ class TestAsyncDataslice:
     @parametrize
     async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
             condition={
                 "children": [],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
@@ -478,7 +474,7 @@ class TestAsyncDataslice:
     @parametrize
     async def test_raw_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
 
         assert response.is_closed is True
@@ -490,7 +486,7 @@ class TestAsyncDataslice:
     @parametrize
     async def test_streaming_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_file_count(
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -548,7 +544,7 @@ class TestAsyncDataslice:
             file_names=["string"],
             node_ids=["string"],
             tags=["string"],
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
@@ -585,7 +581,7 @@ class TestAsyncDataslice:
     async def test_method_get_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_tag_vdb_distribution(
             dataslice_id="dataslice_id",
-            vdb_profile_name="vdb_profile_name",
+            vector_db_config={},
         )
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 

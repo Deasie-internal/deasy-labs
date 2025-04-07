@@ -27,28 +27,7 @@ class TestTags:
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         tag = client.tags.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagCreateResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_create_with_all_params(self, client: Deasy) -> None:
-        tag = client.tags.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
@@ -56,10 +35,7 @@ class TestTags:
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -71,10 +47,7 @@ class TestTags:
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,28 +61,7 @@ class TestTags:
     @parametrize
     def test_method_update(self, client: Deasy) -> None:
         tag = client.tags.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_update_with_all_params(self, client: Deasy) -> None:
-        tag = client.tags.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -117,10 +69,7 @@ class TestTags:
     @parametrize
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -132,10 +81,7 @@ class TestTags:
     @parametrize
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -245,28 +191,7 @@ class TestTags:
     @parametrize
     def test_method_upsert(self, client: Deasy) -> None:
         tag = client.tags.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagUpsertResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_upsert_with_all_params(self, client: Deasy) -> None:
-        tag = client.tags.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
@@ -274,10 +199,7 @@ class TestTags:
     @parametrize
     def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -289,10 +211,7 @@ class TestTags:
     @parametrize
     def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -310,28 +229,7 @@ class TestAsyncTags:
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagCreateResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
-        tag = await async_client.tags.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
@@ -339,10 +237,7 @@ class TestAsyncTags:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -354,10 +249,7 @@ class TestAsyncTags:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.create(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -371,28 +263,7 @@ class TestAsyncTags:
     @parametrize
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
-        tag = await async_client.tags.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
@@ -400,10 +271,7 @@ class TestAsyncTags:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -415,10 +283,7 @@ class TestAsyncTags:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.update(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -528,28 +393,7 @@ class TestAsyncTags:
     @parametrize
     async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
-        )
-        assert_matches_type(TagUpsertResponse, tag, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
-        tag = await async_client.tags.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-                "available_values": ["string"],
-                "date_format": "date_format",
-                "description": "description",
-                "examples": [{"foo": "bar"}],
-                "max_values": 0,
-                "tag_id": "tag_id",
-                "tuned": 0,
-            },
+            tag_data={},
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
@@ -557,10 +401,7 @@ class TestAsyncTags:
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         )
 
         assert response.is_closed is True
@@ -572,10 +413,7 @@ class TestAsyncTags:
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.upsert(
-            tag_data={
-                "name": "name",
-                "output_type": "output_type",
-            },
+            tag_data={},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

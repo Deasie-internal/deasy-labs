@@ -84,7 +84,7 @@ client = Deasy(
     x_user="My X User",
 )
 
-metadata = client.metadata.list(
+response = client.classify_bulk.classify(
     vdb_profile_name="vdb_profile_name",
     conditions={
         "children": [],
@@ -92,11 +92,10 @@ metadata = client.metadata.list(
         "tag": {
             "name": "name",
             "values": ["string"],
-            "operator": "operator",
         },
     },
 )
-print(metadata.conditions)
+print(response.conditions)
 ```
 
 ## Handling errors

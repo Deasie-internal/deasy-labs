@@ -11,4 +11,4 @@ __all__ = ["DatasliceGetTagVdbDistributionParams"]
 class DatasliceGetTagVdbDistributionParams(TypedDict, total=False):
     dataslice_id: Optional[str]
 
-    vdb_profile_name: Optional[str]
+    vector_db_config: Optional[object]

@@ -9,7 +9,7 @@ __all__ = ["DatasliceGetFileCountParams"]
 
 
 class DatasliceGetFileCountParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    vector_db_config: Required[object]
 
     condition: Optional["ConditionInputParam"]
 

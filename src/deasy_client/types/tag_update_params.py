@@ -2,33 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Required, TypedDict
 
-from .._utils import PropertyInfo
-
-__all__ = ["TagUpdateParams", "TagData"]
+__all__ = ["TagUpdateParams"]
 
 
 class TagUpdateParams(TypedDict, total=False):
-    tag_data: Required[TagData]
-
-
-class TagData(TypedDict, total=False):
-    name: Required[str]
-
-    output_type: Required[str]
-
-    available_values: Optional[List[str]]
-
-    date_format: Optional[str]
-
-    description: Optional[str]
-
-    examples: Optional[List[Union[Dict[str, object], str]]]
-
-    max_values: Annotated[Optional[int], PropertyInfo(alias="maxValues")]
-
-    tag_id: Optional[str]
-
-    tuned: Optional[int]
+    tag_data: Required[object]

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["DatasliceCreateParams"]
@@ -13,7 +13,7 @@ class DatasliceCreateParams(TypedDict, total=False):
 
     graph_id: Required[str]
 
-    latest_graph: Required[Dict[str, object]]
+    latest_graph: Required[object]
 
     vdb_profile_name: Required[str]
 

@@ -33,7 +33,7 @@ class TestGraph:
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         graph = client.graph.create(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
         )
         assert_matches_type(GraphOperationResponse, graph, path=["response"])
@@ -77,7 +77,7 @@ class TestGraph:
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         graph = client.graph.update(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
         )
         assert_matches_type(GraphOperationResponse, graph, path=["response"])
@@ -191,7 +191,7 @@ class TestGraph:
     def test_method_upsert_with_all_params(self, client: Deasy) -> None:
         graph = client.graph.upsert(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
             new_graph_name="new_graph_name",
         )
@@ -240,7 +240,7 @@ class TestAsyncGraph:
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         graph = await async_client.graph.create(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
         )
         assert_matches_type(GraphOperationResponse, graph, path=["response"])
@@ -284,7 +284,7 @@ class TestAsyncGraph:
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         graph = await async_client.graph.update(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
         )
         assert_matches_type(GraphOperationResponse, graph, path=["response"])
@@ -398,7 +398,7 @@ class TestAsyncGraph:
     async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
         graph = await async_client.graph.upsert(
             graph_name="graph_name",
-            graph_data={"foo": "bar"},
+            graph_data={},
             graph_description="graph_description",
             new_graph_name="new_graph_name",
         )

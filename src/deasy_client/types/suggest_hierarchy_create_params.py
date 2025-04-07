@@ -2,36 +2,32 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SuggestSchemaCreateParams"]
+__all__ = ["SuggestHierarchyCreateParams"]
 
 
-class SuggestSchemaCreateParams(TypedDict, total=False):
+class SuggestHierarchyCreateParams(TypedDict, total=False):
     vdb_profile_name: Required[str]
 
     condition: Optional["ConditionInputParam"]
 
     context_level: Optional[str]
 
-    current_tree: Optional[Dict[str, object]]
+    current_tree: Optional[object]
 
     dataslice_id: Optional[str]
 
     file_names: Optional[List[str]]
 
-    graph_tag_type: Optional[Literal["open_ended", "binary", "mixed", "defined_values"]]
-
     llm_profile_name: Optional[str]
 
     max_height: Optional[int]
 
-    max_tags_per_level: Optional[int]
+    node: Optional[object]
 
-    min_tags_per_level: Optional[int]
-
-    node: Optional[Dict[str, object]]
+    tag_type: Optional[Literal["any", "string", "binary"]]
 
     use_existing_tags: Optional[bool]
 

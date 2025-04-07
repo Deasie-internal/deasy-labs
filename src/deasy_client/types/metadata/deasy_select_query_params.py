@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -16,23 +16,15 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     vdb_profile_name: Required[str]
 
-    columns: Optional[List[Literal["id", "filename", "text", "tags", "page_num", "dense", "point_id"]]]
+    columns: Optional[List[Literal["id", "filename", "text", "dense", "tags", "page_num"]]]
 
     data_description: Optional[str]
-
-    filter_type: Optional[Literal["deasy", "sql"]]
-
-    max_search_reduction: Optional[float]
-
-    min_search_reduction: Optional[float]
-
-    return_type: Optional[Literal["results", "condition", "both"]]
-
-    tag_level: Optional[Literal["file", "chunk", "both"]]
 
     tag_names: Optional[List[str]]
 
     tag_schemas: Optional[Iterable[TagSchema]]
+
+    top_k: Optional[int]
 
 
 class TagSchema(TypedDict, total=False):
@@ -48,13 +40,13 @@ class TagSchema(TypedDict, total=False):
 
     date_format: Optional[str]
 
-    examples: Optional[List[Union[str, Dict[str, object]]]]
+    examples: Optional[List[Union[str, object]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
     neg_examples: Optional[List[str]]
 
-    retry_feedback: Optional[Dict[str, object]]
+    retry_feedback: Optional[object]
 
     tag_id: Optional[str]
 

@@ -1714,7 +1714,7 @@ class TestAsyncDeasy:
         import threading
 
         from deasy_client._utils import asyncify
-        from deasy_client._base_client import get_platform
+        from deasy_client._base_client import get_platform 
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()

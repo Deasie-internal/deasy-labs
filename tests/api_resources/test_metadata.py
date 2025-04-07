@@ -41,7 +41,6 @@ class TestMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
@@ -95,7 +94,6 @@ class TestMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             file_names=["string"],
@@ -148,7 +146,6 @@ class TestMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
@@ -267,7 +264,6 @@ class TestAsyncMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
@@ -321,7 +317,6 @@ class TestAsyncMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             file_names=["string"],
@@ -374,7 +369,6 @@ class TestAsyncMetadata:
                 "tag": {
                     "name": "name",
                     "values": ["string"],
-                    "operator": "operator",
                 },
             },
             dataslice_id="dataslice_id",
