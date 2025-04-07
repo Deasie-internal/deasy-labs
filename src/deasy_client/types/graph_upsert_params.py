@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["GraphUpsertParams"]
@@ -11,7 +11,7 @@ __all__ = ["GraphUpsertParams"]
 class GraphUpsertParams(TypedDict, total=False):
     graph_name: Required[str]
 
-    graph_data: Optional[object]
+    graph_data: Optional[Dict[str, object]]
 
     graph_description: Optional[str]
 

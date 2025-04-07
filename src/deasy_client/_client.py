@@ -32,7 +32,6 @@ from .resources import (
     classify_bulk,
     llm_connector,
     vdb_connector,
-    suggest_hierarchy,
     suggest_description,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
@@ -52,7 +51,6 @@ class Deasy(SyncAPIClient):
     classify_bulk: classify_bulk.ClassifyBulkResource
     classify: classify.ClassifyResource
     prepare_data: prepare_data.PrepareDataResource
-    suggest_hierarchy: suggest_hierarchy.SuggestHierarchyResource
     suggest_description: suggest_description.SuggestDescriptionResource
     tags: tags.TagsResource
     metadata: metadata.MetadataResource
@@ -124,7 +122,6 @@ class Deasy(SyncAPIClient):
         self.classify_bulk = classify_bulk.ClassifyBulkResource(self)
         self.classify = classify.ClassifyResource(self)
         self.prepare_data = prepare_data.PrepareDataResource(self)
-        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResource(self)
         self.suggest_description = suggest_description.SuggestDescriptionResource(self)
         self.tags = tags.TagsResource(self)
         self.metadata = metadata.MetadataResource(self)
@@ -242,7 +239,6 @@ class AsyncDeasy(AsyncAPIClient):
     classify_bulk: classify_bulk.AsyncClassifyBulkResource
     classify: classify.AsyncClassifyResource
     prepare_data: prepare_data.AsyncPrepareDataResource
-    suggest_hierarchy: suggest_hierarchy.AsyncSuggestHierarchyResource
     suggest_description: suggest_description.AsyncSuggestDescriptionResource
     tags: tags.AsyncTagsResource
     metadata: metadata.AsyncMetadataResource
@@ -314,7 +310,6 @@ class AsyncDeasy(AsyncAPIClient):
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResource(self)
         self.classify = classify.AsyncClassifyResource(self)
         self.prepare_data = prepare_data.AsyncPrepareDataResource(self)
-        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResource(self)
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResource(self)
         self.tags = tags.AsyncTagsResource(self)
         self.metadata = metadata.AsyncMetadataResource(self)
@@ -433,7 +428,6 @@ class DeasyWithRawResponse:
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithRawResponse(client.prepare_data)
-        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithRawResponse(client.suggest_hierarchy)
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
@@ -450,9 +444,6 @@ class AsyncDeasyWithRawResponse:
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithRawResponse(client.prepare_data)
-        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithRawResponse(
-            client.suggest_hierarchy
-        )
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
@@ -469,9 +460,6 @@ class DeasyWithStreamedResponse:
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithStreamingResponse(client.prepare_data)
-        self.suggest_hierarchy = suggest_hierarchy.SuggestHierarchyResourceWithStreamingResponse(
-            client.suggest_hierarchy
-        )
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )
@@ -488,9 +476,6 @@ class AsyncDeasyWithStreamedResponse:
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithStreamingResponse(client.prepare_data)
-        self.suggest_hierarchy = suggest_hierarchy.AsyncSuggestHierarchyResourceWithStreamingResponse(
-            client.suggest_hierarchy
-        )
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )

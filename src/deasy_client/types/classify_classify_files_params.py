@@ -18,7 +18,7 @@ class ClassifyClassifyFilesParams(TypedDict, total=False):
 
     file_names: Optional[List[str]]
 
-    hierarchy_data: Optional[object]
+    hierarchy_data: Optional[Dict[str, object]]
 
     hierarchy_name: Optional[str]
 
@@ -48,13 +48,13 @@ class TagDatas(TypedDict, total=False):
 
     date_format: Optional[str]
 
-    examples: Optional[List[Union[str, object]]]
+    examples: Optional[List[Union[str, Dict[str, object]]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
     neg_examples: Optional[List[str]]
 
-    retry_feedback: Optional[object]
+    retry_feedback: Optional[Dict[str, object]]
 
     tag_id: Optional[str]
 
