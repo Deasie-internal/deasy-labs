@@ -34,6 +34,18 @@ Methods:
 
 - <code title="post /prepare_data">client.prepare_data.<a href="./src/deasy_client/resources/prepare_data.py">create</a>(\*\*<a href="src/deasy_client/types/prepare_data_create_params.py">params</a>) -> <a href="./src/deasy_client/types/prepare_data_create_response.py">PrepareDataCreateResponse</a></code>
 
+# SuggestSchema
+
+Types:
+
+```python
+from deasy_client.types import SuggestSchemaCreateResponse
+```
+
+Methods:
+
+- <code title="post /suggest_schema">client.suggest_schema.<a href="./src/deasy_client/resources/suggest_schema.py">create</a>(\*\*<a href="src/deasy_client/types/suggest_schema_create_params.py">params</a>) -> <a href="./src/deasy_client/types/suggest_schema_create_response.py">SuggestSchemaCreateResponse</a></code>
+
 # SuggestDescription
 
 Types:
