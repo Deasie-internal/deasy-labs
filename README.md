@@ -92,6 +92,7 @@ metadata = client.metadata.list(
         "tag": {
             "name": "name",
             "values": ["string"],
+            "operator": "operator",
         },
     },
 )

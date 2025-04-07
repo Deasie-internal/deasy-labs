@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 
 from pydantic import Field as FieldInfo
@@ -11,26 +11,26 @@ __all__ = ["DeasyTag"]
 
 
 class DeasyTag(BaseModel):
-    available_values: List[str]
-
     created_at: datetime
 
     description: str
 
-    examples: List[Union[str, object]]
-
     name: str
-
-    output_type: str
 
     tag_id: str
 
-    updated_at: datetime
-
     username: str
+
+    available_values: Optional[List[str]] = None
 
     date_format: Optional[str] = None
 
+    examples: Optional[List[Union[Dict[str, object], str]]] = None
+
     max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
 
+    output_type: Optional[str] = None
+
     tuned: Optional[int] = None
+
+    updated_at: Optional[datetime] = None

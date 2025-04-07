@@ -2,10 +2,33 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Dict, List, Union, Optional
+from typing_extensions import Required, Annotated, TypedDict
 
-__all__ = ["TagUpsertParams"]
+from .._utils import PropertyInfo
+
+__all__ = ["TagUpsertParams", "TagData"]
 
 
 class TagUpsertParams(TypedDict, total=False):
-    tag_data: Required[object]
+    tag_data: Required[TagData]
+
+
+class TagData(TypedDict, total=False):
+    name: Required[str]
+
+    output_type: Required[str]
+
+    available_values: Optional[List[str]]
+
+    date_format: Optional[str]
+
+    description: Optional[str]
+
+    examples: Optional[List[Union[Dict[str, object], str]]]
+
+    max_values: Annotated[Optional[int], PropertyInfo(alias="maxValues")]
+
+    tag_id: Optional[str]
+
+    tuned: Optional[int]

@@ -34,6 +34,11 @@ class TestDeasySelect:
             vdb_profile_name="vdb_profile_name",
             columns=["id"],
             data_description="data_description",
+            filter_type="deasy",
+            max_search_reduction=0,
+            min_search_reduction=0,
+            return_type="results",
+            tag_level="file",
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -46,14 +51,13 @@ class TestDeasySelect:
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
-                    "retry_feedback": {},
+                    "retry_feedback": {"foo": "bar"},
                     "tag_id": "tag_id",
                     "tuned": 0,
                     "updated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "username": "username",
                 }
             ],
-            top_k=0,
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
@@ -106,6 +110,11 @@ class TestAsyncDeasySelect:
             vdb_profile_name="vdb_profile_name",
             columns=["id"],
             data_description="data_description",
+            filter_type="deasy",
+            max_search_reduction=0,
+            min_search_reduction=0,
+            return_type="results",
+            tag_level="file",
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -118,14 +127,13 @@ class TestAsyncDeasySelect:
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
-                    "retry_feedback": {},
+                    "retry_feedback": {"foo": "bar"},
                     "tag_id": "tag_id",
                     "tuned": 0,
                     "updated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "username": "username",
                 }
             ],
-            top_k=0,
         )
         assert_matches_type(object, deasy_select, path=["response"])
 

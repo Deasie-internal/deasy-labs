@@ -34,18 +34,6 @@ Methods:
 
 - <code title="post /prepare_data">client.prepare_data.<a href="./src/deasy_client/resources/prepare_data.py">create</a>(\*\*<a href="src/deasy_client/types/prepare_data_create_params.py">params</a>) -> <a href="./src/deasy_client/types/prepare_data_create_response.py">PrepareDataCreateResponse</a></code>
 
-# SuggestHierarchy
-
-Types:
-
-```python
-from deasy_client.types import SuggestHierarchyCreateResponse
-```
-
-Methods:
-
-- <code title="post /suggest_hierarchy">client.suggest_hierarchy.<a href="./src/deasy_client/resources/suggest_hierarchy.py">create</a>(\*\*<a href="src/deasy_client/types/suggest_hierarchy_create_params.py">params</a>) -> <a href="./src/deasy_client/types/suggest_hierarchy_create_response.py">SuggestHierarchyCreateResponse</a></code>
-
 # SuggestDescription
 
 Types:
