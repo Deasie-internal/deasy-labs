@@ -72,6 +72,14 @@ from .vdb_connector import (
     VdbConnectorResourceWithStreamingResponse,
     AsyncVdbConnectorResourceWithStreamingResponse,
 )
+from .suggest_schema import (
+    SuggestSchemaResource,
+    AsyncSuggestSchemaResource,
+    SuggestSchemaResourceWithRawResponse,
+    AsyncSuggestSchemaResourceWithRawResponse,
+    SuggestSchemaResourceWithStreamingResponse,
+    AsyncSuggestSchemaResourceWithStreamingResponse,
+)
 from .suggest_description import (
     SuggestDescriptionResource,
     AsyncSuggestDescriptionResource,
@@ -100,6 +108,12 @@ __all__ = [
     "AsyncPrepareDataResourceWithRawResponse",
     "PrepareDataResourceWithStreamingResponse",
     "AsyncPrepareDataResourceWithStreamingResponse",
+    "SuggestSchemaResource",
+    "AsyncSuggestSchemaResource",
+    "SuggestSchemaResourceWithRawResponse",
+    "AsyncSuggestSchemaResourceWithRawResponse",
+    "SuggestSchemaResourceWithStreamingResponse",
+    "AsyncSuggestSchemaResourceWithStreamingResponse",
     "SuggestDescriptionResource",
     "AsyncSuggestDescriptionResource",
     "SuggestDescriptionResourceWithRawResponse",
