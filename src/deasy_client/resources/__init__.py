@@ -72,14 +72,6 @@ from .vdb_connector import (
     VdbConnectorResourceWithStreamingResponse,
     AsyncVdbConnectorResourceWithStreamingResponse,
 )
-from .suggest_hierarchy import (
-    SuggestHierarchyResource,
-    AsyncSuggestHierarchyResource,
-    SuggestHierarchyResourceWithRawResponse,
-    AsyncSuggestHierarchyResourceWithRawResponse,
-    SuggestHierarchyResourceWithStreamingResponse,
-    AsyncSuggestHierarchyResourceWithStreamingResponse,
-)
 from .suggest_description import (
     SuggestDescriptionResource,
     AsyncSuggestDescriptionResource,
@@ -108,12 +100,6 @@ __all__ = [
     "AsyncPrepareDataResourceWithRawResponse",
     "PrepareDataResourceWithStreamingResponse",
     "AsyncPrepareDataResourceWithStreamingResponse",
-    "SuggestHierarchyResource",
-    "AsyncSuggestHierarchyResource",
-    "SuggestHierarchyResourceWithRawResponse",
-    "AsyncSuggestHierarchyResourceWithRawResponse",
-    "SuggestHierarchyResourceWithStreamingResponse",
-    "AsyncSuggestHierarchyResourceWithStreamingResponse",
     "SuggestDescriptionResource",
     "AsyncSuggestDescriptionResource",
     "SuggestDescriptionResourceWithRawResponse",

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 import httpx
 
@@ -57,7 +57,7 @@ class GraphResource(SyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -104,7 +104,7 @@ class GraphResource(SyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -226,7 +226,7 @@ class GraphResource(SyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         new_graph_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -297,7 +297,7 @@ class AsyncGraphResource(AsyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -344,7 +344,7 @@ class AsyncGraphResource(AsyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -466,7 +466,7 @@ class AsyncGraphResource(AsyncAPIResource):
         self,
         *,
         graph_name: str,
-        graph_data: Optional[object] | NotGiven = NOT_GIVEN,
+        graph_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         graph_description: Optional[str] | NotGiven = NOT_GIVEN,
         new_graph_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
