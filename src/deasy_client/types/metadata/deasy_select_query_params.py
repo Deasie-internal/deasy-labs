@@ -26,6 +26,8 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     min_search_reduction: Optional[float]
 
+    model_name: Optional[str]
+
     return_type: Optional[Literal["results", "condition", "both"]]
 
     tag_level: Optional[Literal["file", "chunk", "both"]]
