@@ -102,6 +102,18 @@ Methods:
 - <code title="post /metadata/list_paginated">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">list_paginated</a>(\*\*<a href="src/deasy_client/types/metadata_list_paginated_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_paginated_response.py">MetadataListPaginatedResponse</a></code>
 - <code title="post /metadata/upsert">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">upsert</a>(\*\*<a href="src/deasy_client/types/metadata_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_upsert_response.py">MetadataUpsertResponse</a></code>
 
+## DeasySelect
+
+Types:
+
+```python
+from deasy_client.types.metadata import DeasySelectQueryResponse
+```
+
+Methods:
+
+- <code title="post /metadata/deasy_select/query">client.metadata.deasy_select.<a href="./src/deasy_client/resources/metadata/deasy_select.py">query</a>(\*\*<a href="src/deasy_client/types/metadata/deasy_select_query_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata/deasy_select_query_response.py">object</a></code>
+
 # VdbConnector
 
 Types:
