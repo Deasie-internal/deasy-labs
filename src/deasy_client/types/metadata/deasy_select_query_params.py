@@ -8,7 +8,13 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["DeasySelectQueryParams", "TagSchema"]
+__all__ = [
+    "DeasySelectQueryParams",
+    "TagDistributions",
+    "TagDistributionsData",
+    "TagDistributionsDataValues",
+    "TagSchema",
+]
 
 
 class DeasySelectQueryParams(TypedDict, total=False):
@@ -16,25 +22,50 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     vdb_profile_name: Required[str]
 
-    columns: Optional[List[Literal["id", "filename", "text", "tags", "page_num", "dense", "point_id"]]]
+    max_filter_values_to_choose: Optional[int]
 
-    data_description: Optional[str]
-
-    filter_type: Optional[Literal["deasy", "sql"]]
+    max_filters_to_choose: Optional[int]
 
     max_search_reduction: Optional[float]
 
-    min_search_reduction: Optional[float]
+    min_filter_values_to_choose: Optional[int]
 
-    model_name: Optional[str]
+    min_filters_to_choose: Optional[int]
+
+    min_search_reduction: Optional[float]
 
     return_type: Optional[Literal["results", "condition", "both"]]
 
-    tag_level: Optional[Literal["file", "chunk", "both"]]
+    tag_distributions: Optional[TagDistributions]
+    """Complete tag distribution data structure for analyzing filter impacts.
+
+    Maps field names to their value distributions. Used for estimating search
+    reductions without executing filters.
+    """
 
     tag_names: Optional[List[str]]
 
     tag_schemas: Optional[Iterable[TagSchema]]
+
+
+class TagDistributionsDataValues(TypedDict, total=False):
+    file_count: Required[int]
+
+    chunk_count: Optional[int]
+
+    percentage: Optional[float]
+
+
+class TagDistributionsData(TypedDict, total=False):
+    values: Required[Dict[str, TagDistributionsDataValues]]
+
+    coverage_percentage: Optional[float]
+
+    total_count: Optional[int]
+
+
+class TagDistributions(TypedDict, total=False):
+    data: Dict[str, TagDistributionsData]
 
 
 class TagSchema(TypedDict, total=False):
