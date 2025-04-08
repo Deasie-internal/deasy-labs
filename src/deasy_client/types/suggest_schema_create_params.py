@@ -33,6 +33,8 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     node: Optional[Dict[str, object]]
 
+    set_max_values: Optional[bool]
+
     use_existing_tags: Optional[bool]
 
     use_extracted_tags: Optional[bool]
