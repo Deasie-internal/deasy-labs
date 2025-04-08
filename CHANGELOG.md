@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **api:** api update ([#49](https://github.com/Deasie-internal/deasy-labs/issues/49)) ([364d3a0](https://github.com/Deasie-internal/deasy-labs/commit/364d3a0722e48286fa991a1a0db48eaf6b75a8e4))
+* **api:** api update ([#50](https://github.com/Deasie-internal/deasy-labs/issues/50)) ([1ec4356](https://github.com/Deasie-internal/deasy-labs/commit/1ec43563a48914deedf72020025e5175f8fff173))
+* **api:** update via SDK Studio ([#47](https://github.com/Deasie-internal/deasy-labs/issues/47)) ([f3d8662](https://github.com/Deasie-internal/deasy-labs/commit/f3d866254cb4f15e715bb3bcc0708f10876de176))
+* **api:** update via SDK Studio ([#48](https://github.com/Deasie-internal/deasy-labs/issues/48)) ([9ea463b](https://github.com/Deasie-internal/deasy-labs/commit/9ea463bae0f776d21de8c9f8afa0045583f1bda2))
+
+
+### Chores
+
+* go live ([#46](https://github.com/Deasie-internal/deasy-labs/issues/46)) ([39fa9da](https://github.com/Deasie-internal/deasy-labs/commit/39fa9dabfb1fe47fe44b59617fb353361023ad96))
+* sync repo ([fe8e3e6](https://github.com/Deasie-internal/deasy-labs/commit/fe8e3e673d8edf32fc4914154f18ca29b84024aa))
+
 ## 0.1.0-alpha.11 (2025-03-30)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/Deasie-internal/deasy-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
