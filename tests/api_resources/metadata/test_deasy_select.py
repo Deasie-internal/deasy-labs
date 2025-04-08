@@ -32,14 +32,28 @@ class TestDeasySelect:
         deasy_select = client.metadata.deasy_select.query(
             query="query",
             vdb_profile_name="vdb_profile_name",
-            columns=["id"],
-            data_description="data_description",
-            filter_type="deasy",
+            max_filter_values_to_choose=0,
+            max_filters_to_choose=0,
             max_search_reduction=0,
+            min_filter_values_to_choose=0,
+            min_filters_to_choose=0,
             min_search_reduction=0,
-            model_name="model_name",
             return_type="results",
-            tag_level="file",
+            tag_distributions={
+                "data": {
+                    "foo": {
+                        "values": {
+                            "foo": {
+                                "file_count": 0,
+                                "chunk_count": 0,
+                                "percentage": 0,
+                            }
+                        },
+                        "coverage_percentage": 0,
+                        "total_count": 0,
+                    }
+                }
+            },
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -109,14 +123,28 @@ class TestAsyncDeasySelect:
         deasy_select = await async_client.metadata.deasy_select.query(
             query="query",
             vdb_profile_name="vdb_profile_name",
-            columns=["id"],
-            data_description="data_description",
-            filter_type="deasy",
+            max_filter_values_to_choose=0,
+            max_filters_to_choose=0,
             max_search_reduction=0,
+            min_filter_values_to_choose=0,
+            min_filters_to_choose=0,
             min_search_reduction=0,
-            model_name="model_name",
             return_type="results",
-            tag_level="file",
+            tag_distributions={
+                "data": {
+                    "foo": {
+                        "values": {
+                            "foo": {
+                                "file_count": 0,
+                                "chunk_count": 0,
+                                "percentage": 0,
+                            }
+                        },
+                        "coverage_percentage": 0,
+                        "total_count": 0,
+                    }
+                }
+            },
             tag_names=["string"],
             tag_schemas=[
                 {

@@ -51,15 +51,14 @@ class DeasySelectResource(SyncAPIResource):
         *,
         query: str,
         vdb_profile_name: str,
-        columns: Optional[List[Literal["id", "filename", "text", "tags", "page_num", "dense", "point_id"]]]
-        | NotGiven = NOT_GIVEN,
-        data_description: Optional[str] | NotGiven = NOT_GIVEN,
-        filter_type: Optional[Literal["deasy", "sql"]] | NotGiven = NOT_GIVEN,
+        max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
+        max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_search_reduction: Optional[float] | NotGiven = NOT_GIVEN,
+        min_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
+        min_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         min_search_reduction: Optional[float] | NotGiven = NOT_GIVEN,
-        model_name: Optional[str] | NotGiven = NOT_GIVEN,
         return_type: Optional[Literal["results", "condition", "both"]] | NotGiven = NOT_GIVEN,
-        tag_level: Optional[Literal["file", "chunk", "both"]] | NotGiven = NOT_GIVEN,
+        tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,6 +72,11 @@ class DeasySelectResource(SyncAPIResource):
         Deasy Select Query
 
         Args:
+          tag_distributions: Complete tag distribution data structure for analyzing filter impacts.
+
+              Maps field names to their value distributions. Used for estimating search
+              reductions without executing filters.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -87,14 +91,14 @@ class DeasySelectResource(SyncAPIResource):
                 {
                     "query": query,
                     "vdb_profile_name": vdb_profile_name,
-                    "columns": columns,
-                    "data_description": data_description,
-                    "filter_type": filter_type,
+                    "max_filter_values_to_choose": max_filter_values_to_choose,
+                    "max_filters_to_choose": max_filters_to_choose,
                     "max_search_reduction": max_search_reduction,
+                    "min_filter_values_to_choose": min_filter_values_to_choose,
+                    "min_filters_to_choose": min_filters_to_choose,
                     "min_search_reduction": min_search_reduction,
-                    "model_name": model_name,
                     "return_type": return_type,
-                    "tag_level": tag_level,
+                    "tag_distributions": tag_distributions,
                     "tag_names": tag_names,
                     "tag_schemas": tag_schemas,
                 },
@@ -132,15 +136,14 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         *,
         query: str,
         vdb_profile_name: str,
-        columns: Optional[List[Literal["id", "filename", "text", "tags", "page_num", "dense", "point_id"]]]
-        | NotGiven = NOT_GIVEN,
-        data_description: Optional[str] | NotGiven = NOT_GIVEN,
-        filter_type: Optional[Literal["deasy", "sql"]] | NotGiven = NOT_GIVEN,
+        max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
+        max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_search_reduction: Optional[float] | NotGiven = NOT_GIVEN,
+        min_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
+        min_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         min_search_reduction: Optional[float] | NotGiven = NOT_GIVEN,
-        model_name: Optional[str] | NotGiven = NOT_GIVEN,
         return_type: Optional[Literal["results", "condition", "both"]] | NotGiven = NOT_GIVEN,
-        tag_level: Optional[Literal["file", "chunk", "both"]] | NotGiven = NOT_GIVEN,
+        tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -154,6 +157,11 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         Deasy Select Query
 
         Args:
+          tag_distributions: Complete tag distribution data structure for analyzing filter impacts.
+
+              Maps field names to their value distributions. Used for estimating search
+              reductions without executing filters.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -168,14 +176,14 @@ class AsyncDeasySelectResource(AsyncAPIResource):
                 {
                     "query": query,
                     "vdb_profile_name": vdb_profile_name,
-                    "columns": columns,
-                    "data_description": data_description,
-                    "filter_type": filter_type,
+                    "max_filter_values_to_choose": max_filter_values_to_choose,
+                    "max_filters_to_choose": max_filters_to_choose,
                     "max_search_reduction": max_search_reduction,
+                    "min_filter_values_to_choose": min_filter_values_to_choose,
+                    "min_filters_to_choose": min_filters_to_choose,
                     "min_search_reduction": min_search_reduction,
-                    "model_name": model_name,
                     "return_type": return_type,
-                    "tag_level": tag_level,
+                    "tag_distributions": tag_distributions,
                     "tag_names": tag_names,
                     "tag_schemas": tag_schemas,
                 },
