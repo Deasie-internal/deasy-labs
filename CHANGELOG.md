@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-04-10)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Features
+
+* **api:** api update ([f3493a6](https://github.com/Deasie-internal/deasy-labs/commit/f3493a6fb518a89a3bbd72179405f97f6c842dc1))
+
+
+### Chores
+
+* **internal:** expand CI branch coverage ([7f85c7d](https://github.com/Deasie-internal/deasy-labs/commit/7f85c7d0d3aeafd95955605a7203e577828adbf6))
+* **internal:** reduce CI branch coverage ([62701ff](https://github.com/Deasie-internal/deasy-labs/commit/62701ffb96fc56dac7405549772825b3c527fe50))
+* **internal:** slight transform perf improvement ([#58](https://github.com/Deasie-internal/deasy-labs/issues/58)) ([2b45ce3](https://github.com/Deasie-internal/deasy-labs/commit/2b45ce3ef016e1fa9e3c27640dab080e6a461b6c))
+
 ## 0.1.0-alpha.14 (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
