@@ -34,10 +34,13 @@ class TestDeasySelect:
             vdb_profile_name="vdb_profile_name",
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
+            max_results=0,
             max_search_reduction=0,
             min_filter_values_to_choose=0,
             min_filters_to_choose=0,
             min_search_reduction=0,
+            query_type="sql",
+            return_only_query=True,
             return_type="results",
             tag_distributions={
                 "data": {
@@ -125,10 +128,13 @@ class TestAsyncDeasySelect:
             vdb_profile_name="vdb_profile_name",
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
+            max_results=0,
             max_search_reduction=0,
             min_filter_values_to_choose=0,
             min_filters_to_choose=0,
             min_search_reduction=0,
+            query_type="sql",
+            return_only_query=True,
             return_type="results",
             tag_distributions={
                 "data": {
