@@ -1,24 +1,39 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
+
+from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .deasy_tag import DeasyTag
 
-__all__ = ["SuggestSchemaCreateResponse", "CreatedTag"]
+__all__ = ["SuggestSchemaCreateResponse", "SuggestedTags"]
 
 
-class CreatedTag(BaseModel):
-    deasy_tag: DeasyTag
+class SuggestedTags(BaseModel):
+    name: str
 
-    new_available_values: List[str]
+    output_type: str
+
+    available_values: Optional[List[str]] = None
+
+    date_format: Optional[str] = None
+
+    description: Optional[str] = None
+
+    examples: Optional[List[Union[Dict[str, object], str]]] = None
+
+    max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
+
+    tag_id: Optional[str] = None
+
+    tuned: Optional[int] = None
 
 
 class SuggestSchemaCreateResponse(BaseModel):
     suggestion: Dict[str, object]
 
-    created_tags: Optional[List[CreatedTag]] = None
-
     message: Optional[str] = None
 
     status_code: Optional[int] = None
+
+    suggested_tags: Optional[Dict[str, SuggestedTags]] = None
