@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-04-12)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([888062f](https://github.com/Deasie-internal/deasy-labs/commit/888062fcdc753ca85311f4cb52fbc5af86681f32))
+* **perf:** skip traversing types for NotGiven values ([4835a27](https://github.com/Deasie-internal/deasy-labs/commit/4835a27025056497397f3174f780c6f1e0161ed9))
+
 ## 0.1.0-alpha.15 (2025-04-10)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
