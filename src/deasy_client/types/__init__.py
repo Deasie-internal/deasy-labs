@@ -37,6 +37,7 @@ from .metadata_delete_response import MetadataDeleteResponse as MetadataDeleteRe
 from .metadata_upsert_response import MetadataUpsertResponse as MetadataUpsertResponse
 from .dataslice_create_response import DatasliceCreateResponse as DatasliceCreateResponse
 from .dataslice_delete_response import DatasliceDeleteResponse as DatasliceDeleteResponse
+from .deasy_select_query_params import DeasySelectQueryParams as DeasySelectQueryParams
 from .s3_connector_config_param import S3ConnectorConfigParam as S3ConnectorConfigParam
 from .schema_operation_response import SchemaOperationResponse as SchemaOperationResponse
 from .dataslice_get_files_params import DatasliceGetFilesParams as DatasliceGetFilesParams
