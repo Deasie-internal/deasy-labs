@@ -40,6 +40,14 @@ from .dataslice import (
     DatasliceResourceWithStreamingResponse,
     AsyncDatasliceResourceWithStreamingResponse,
 )
+from .deasy_select import (
+    DeasySelectResource,
+    AsyncDeasySelectResource,
+    DeasySelectResourceWithRawResponse,
+    AsyncDeasySelectResourceWithRawResponse,
+    DeasySelectResourceWithStreamingResponse,
+    AsyncDeasySelectResourceWithStreamingResponse,
+)
 from .prepare_data import (
     PrepareDataResource,
     AsyncPrepareDataResource,
@@ -90,6 +98,12 @@ from .suggest_description import (
 )
 
 __all__ = [
+    "DeasySelectResource",
+    "AsyncDeasySelectResource",
+    "DeasySelectResourceWithRawResponse",
+    "AsyncDeasySelectResourceWithRawResponse",
+    "DeasySelectResourceWithStreamingResponse",
+    "AsyncDeasySelectResourceWithStreamingResponse",
     "ClassifyBulkResource",
     "AsyncClassifyBulkResource",
     "ClassifyBulkResourceWithRawResponse",

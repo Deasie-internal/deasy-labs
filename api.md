@@ -1,3 +1,15 @@
+# DeasySelect
+
+Types:
+
+```python
+from deasy_client.types import DeasySelectQueryResponse
+```
+
+Methods:
+
+- <code title="post /deasy_select/query">client.deasy_select.<a href="./src/deasy_client/resources/deasy_select.py">query</a>(\*\*<a href="src/deasy_client/types/deasy_select_query_params.py">params</a>) -> <a href="./src/deasy_client/types/deasy_select_query_response.py">object</a></code>
+
 # ClassifyBulk
 
 Types:
@@ -97,10 +109,10 @@ from deasy_client.types import (
 
 Methods:
 
-- <code title="post /metadata/list">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">list</a>(\*\*<a href="src/deasy_client/types/metadata_list_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_response.py">MetadataListResponse</a></code>
-- <code title="post /metadata/delete">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">delete</a>(\*\*<a href="src/deasy_client/types/metadata_delete_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_delete_response.py">MetadataDeleteResponse</a></code>
-- <code title="post /metadata/list_paginated">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">list_paginated</a>(\*\*<a href="src/deasy_client/types/metadata_list_paginated_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_paginated_response.py">MetadataListPaginatedResponse</a></code>
-- <code title="post /metadata/upsert">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">upsert</a>(\*\*<a href="src/deasy_client/types/metadata_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_upsert_response.py">MetadataUpsertResponse</a></code>
+- <code title="post /metadata/list">client.metadata.<a href="./src/deasy_client/resources/metadata.py">list</a>(\*\*<a href="src/deasy_client/types/metadata_list_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_response.py">MetadataListResponse</a></code>
+- <code title="post /metadata/delete">client.metadata.<a href="./src/deasy_client/resources/metadata.py">delete</a>(\*\*<a href="src/deasy_client/types/metadata_delete_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_delete_response.py">MetadataDeleteResponse</a></code>
+- <code title="post /metadata/list_paginated">client.metadata.<a href="./src/deasy_client/resources/metadata.py">list_paginated</a>(\*\*<a href="src/deasy_client/types/metadata_list_paginated_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_paginated_response.py">MetadataListPaginatedResponse</a></code>
+- <code title="post /metadata/upsert">client.metadata.<a href="./src/deasy_client/resources/metadata.py">upsert</a>(\*\*<a href="src/deasy_client/types/metadata_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_upsert_response.py">MetadataUpsertResponse</a></code>
 
 # VdbConnector
 
