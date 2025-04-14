@@ -3,8 +3,8 @@
 
 from .._models import BaseModel
 
-__all__ = ["GraphOperationResponse"]
+__all__ = ["SchemaOperationResponse"]
 
 
-class GraphOperationResponse(BaseModel):
-    graph_name: str
+class SchemaOperationResponse(BaseModel):
+    schema_name: str
