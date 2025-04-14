@@ -45,7 +45,7 @@ class SchemaNamesToCountDistributionsTagsInSchema(BaseModel):
 
 
 class SchemaNamesToCountDistributions(BaseModel):
-    count_distribution: Dict[str, int]
+    count_distribution: Dict[str, Dict[str, object]]
 
     tags_in_schema: List[SchemaNamesToCountDistributionsTagsInSchema]
 
