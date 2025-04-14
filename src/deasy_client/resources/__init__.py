@@ -8,13 +8,13 @@ from .tags import (
     TagsResourceWithStreamingResponse,
     AsyncTagsResourceWithStreamingResponse,
 )
-from .graph import (
-    GraphResource,
-    AsyncGraphResource,
-    GraphResourceWithRawResponse,
-    AsyncGraphResourceWithRawResponse,
-    GraphResourceWithStreamingResponse,
-    AsyncGraphResourceWithStreamingResponse,
+from .schema import (
+    SchemaResource,
+    AsyncSchemaResource,
+    SchemaResourceWithRawResponse,
+    AsyncSchemaResourceWithRawResponse,
+    SchemaResourceWithStreamingResponse,
+    AsyncSchemaResourceWithStreamingResponse,
 )
 from .classify import (
     ClassifyResource,
@@ -150,10 +150,10 @@ __all__ = [
     "AsyncDatasliceResourceWithRawResponse",
     "DatasliceResourceWithStreamingResponse",
     "AsyncDatasliceResourceWithStreamingResponse",
-    "GraphResource",
-    "AsyncGraphResource",
-    "GraphResourceWithRawResponse",
-    "AsyncGraphResourceWithRawResponse",
-    "GraphResourceWithStreamingResponse",
-    "AsyncGraphResourceWithStreamingResponse",
+    "SchemaResource",
+    "AsyncSchemaResource",
+    "SchemaResourceWithRawResponse",
+    "AsyncSchemaResourceWithRawResponse",
+    "SchemaResourceWithStreamingResponse",
+    "AsyncSchemaResourceWithStreamingResponse",
 ]

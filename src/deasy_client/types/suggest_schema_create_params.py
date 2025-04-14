@@ -41,5 +41,7 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     user_context: Optional[str]
 
+    values_per_tag: Optional[int]
+
 
 from .condition_input_param import ConditionInputParam

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["GraphDeleteParams"]
+__all__ = ["SchemaDeleteParams"]
 
 
-class GraphDeleteParams(TypedDict, total=False):
-    graph_name: Required[str]
+class SchemaDeleteParams(TypedDict, total=False):
+    schema_name: Required[str]
