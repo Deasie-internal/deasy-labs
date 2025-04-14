@@ -53,6 +53,7 @@ class TestSuggestSchema:
             use_existing_tags=True,
             use_extracted_tags=True,
             user_context="user_context",
+            values_per_tag=0,
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
@@ -122,6 +123,7 @@ class TestAsyncSuggestSchema:
             use_existing_tags=True,
             use_extracted_tags=True,
             user_context="user_context",
+            values_per_tag=0,
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 

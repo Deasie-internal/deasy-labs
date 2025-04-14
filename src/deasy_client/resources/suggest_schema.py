@@ -67,6 +67,7 @@ class SuggestSchemaResource(SyncAPIResource):
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
+        values_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -121,6 +122,7 @@ class SuggestSchemaResource(SyncAPIResource):
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
+                    "values_per_tag": values_per_tag,
                 },
                 suggest_schema_create_params.SuggestSchemaCreateParams,
             ),
@@ -170,6 +172,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
+        values_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,6 +227,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
                     "user_context": user_context,
+                    "values_per_tag": values_per_tag,
                 },
                 suggest_schema_create_params.SuggestSchemaCreateParams,
             ),

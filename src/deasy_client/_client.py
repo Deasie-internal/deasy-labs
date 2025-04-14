@@ -26,7 +26,7 @@ from ._utils import (
 from ._version import __version__
 from .resources import (
     tags,
-    graph,
+    schema,
     classify,
     prepare_data,
     classify_bulk,
@@ -59,7 +59,7 @@ class Deasy(SyncAPIClient):
     vdb_connector: vdb_connector.VdbConnectorResource
     llm_connector: llm_connector.LlmConnectorResource
     dataslice: dataslice.DatasliceResource
-    graph: graph.GraphResource
+    schema: schema.SchemaResource
     with_raw_response: DeasyWithRawResponse
     with_streaming_response: DeasyWithStreamedResponse
 
@@ -131,7 +131,7 @@ class Deasy(SyncAPIClient):
         self.vdb_connector = vdb_connector.VdbConnectorResource(self)
         self.llm_connector = llm_connector.LlmConnectorResource(self)
         self.dataslice = dataslice.DatasliceResource(self)
-        self.graph = graph.GraphResource(self)
+        self.schema = schema.SchemaResource(self)
         self.with_raw_response = DeasyWithRawResponse(self)
         self.with_streaming_response = DeasyWithStreamedResponse(self)
 
@@ -249,7 +249,7 @@ class AsyncDeasy(AsyncAPIClient):
     vdb_connector: vdb_connector.AsyncVdbConnectorResource
     llm_connector: llm_connector.AsyncLlmConnectorResource
     dataslice: dataslice.AsyncDatasliceResource
-    graph: graph.AsyncGraphResource
+    schema: schema.AsyncSchemaResource
     with_raw_response: AsyncDeasyWithRawResponse
     with_streaming_response: AsyncDeasyWithStreamedResponse
 
@@ -321,7 +321,7 @@ class AsyncDeasy(AsyncAPIClient):
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResource(self)
         self.llm_connector = llm_connector.AsyncLlmConnectorResource(self)
         self.dataslice = dataslice.AsyncDatasliceResource(self)
-        self.graph = graph.AsyncGraphResource(self)
+        self.schema = schema.AsyncSchemaResource(self)
         self.with_raw_response = AsyncDeasyWithRawResponse(self)
         self.with_streaming_response = AsyncDeasyWithStreamedResponse(self)
 
@@ -442,7 +442,7 @@ class DeasyWithRawResponse:
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithRawResponse(client.vdb_connector)
         self.llm_connector = llm_connector.LlmConnectorResourceWithRawResponse(client.llm_connector)
         self.dataslice = dataslice.DatasliceResourceWithRawResponse(client.dataslice)
-        self.graph = graph.GraphResourceWithRawResponse(client.graph)
+        self.schema = schema.SchemaResourceWithRawResponse(client.schema)
 
 
 class AsyncDeasyWithRawResponse:
@@ -459,7 +459,7 @@ class AsyncDeasyWithRawResponse:
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithRawResponse(client.vdb_connector)
         self.llm_connector = llm_connector.AsyncLlmConnectorResourceWithRawResponse(client.llm_connector)
         self.dataslice = dataslice.AsyncDatasliceResourceWithRawResponse(client.dataslice)
-        self.graph = graph.AsyncGraphResourceWithRawResponse(client.graph)
+        self.schema = schema.AsyncSchemaResourceWithRawResponse(client.schema)
 
 
 class DeasyWithStreamedResponse:
@@ -476,7 +476,7 @@ class DeasyWithStreamedResponse:
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithStreamingResponse(client.vdb_connector)
         self.llm_connector = llm_connector.LlmConnectorResourceWithStreamingResponse(client.llm_connector)
         self.dataslice = dataslice.DatasliceResourceWithStreamingResponse(client.dataslice)
-        self.graph = graph.GraphResourceWithStreamingResponse(client.graph)
+        self.schema = schema.SchemaResourceWithStreamingResponse(client.schema)
 
 
 class AsyncDeasyWithStreamedResponse:
@@ -493,7 +493,7 @@ class AsyncDeasyWithStreamedResponse:
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithStreamingResponse(client.vdb_connector)
         self.llm_connector = llm_connector.AsyncLlmConnectorResourceWithStreamingResponse(client.llm_connector)
         self.dataslice = dataslice.AsyncDatasliceResourceWithStreamingResponse(client.dataslice)
-        self.graph = graph.AsyncGraphResourceWithStreamingResponse(client.graph)
+        self.schema = schema.AsyncSchemaResourceWithStreamingResponse(client.schema)
 
 
 Client = Deasy

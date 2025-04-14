@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import TypedDict
 
-__all__ = ["GraphListParams"]
+__all__ = ["SchemaListParams"]
 
 
-class GraphListParams(TypedDict, total=False):
-    graph_names: Optional[List[str]]
+class SchemaListParams(TypedDict, total=False):
+    schema_ids: Optional[List[str]]

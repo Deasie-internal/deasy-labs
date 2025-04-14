@@ -5,12 +5,12 @@ from __future__ import annotations
 from typing import Dict, Optional
 from typing_extensions import Required, TypedDict
 
-__all__ = ["GraphUpdateParams"]
+__all__ = ["SchemaUpdateParams"]
 
 
-class GraphUpdateParams(TypedDict, total=False):
-    graph_name: Required[str]
+class SchemaUpdateParams(TypedDict, total=False):
+    schema_name: Required[str]
 
-    graph_data: Optional[Dict[str, object]]
+    schema_data: Optional[Dict[str, object]]
 
-    graph_description: Optional[str]
+    schema_description: Optional[str]

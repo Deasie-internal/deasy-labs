@@ -5,24 +5,24 @@ from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = ["GraphListResponse", "Graph"]
+__all__ = ["SchemaListResponse", "Schema"]
 
 
-class Graph(BaseModel):
+class Schema(BaseModel):
     created_at: datetime
 
-    graph_data: Dict[str, object]
+    schema_data: Dict[str, object]
 
-    graph_description: str
+    schema_description: str
 
-    graph_id: str
+    schema_id: str
 
-    graph_name: str
+    schema_name: str
 
     updated_at: datetime
 
     user_id: str
 
 
-class GraphListResponse(BaseModel):
-    graphs: List[Graph]
+class SchemaListResponse(BaseModel):
+    schemas: List[Schema]

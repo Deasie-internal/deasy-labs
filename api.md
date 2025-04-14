@@ -102,18 +102,6 @@ Methods:
 - <code title="post /metadata/list_paginated">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">list_paginated</a>(\*\*<a href="src/deasy_client/types/metadata_list_paginated_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_list_paginated_response.py">MetadataListPaginatedResponse</a></code>
 - <code title="post /metadata/upsert">client.metadata.<a href="./src/deasy_client/resources/metadata/metadata.py">upsert</a>(\*\*<a href="src/deasy_client/types/metadata_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata_upsert_response.py">MetadataUpsertResponse</a></code>
 
-## DeasySelect
-
-Types:
-
-```python
-from deasy_client.types.metadata import DeasySelectQueryResponse
-```
-
-Methods:
-
-- <code title="post /metadata/deasy_select/query">client.metadata.deasy_select.<a href="./src/deasy_client/resources/metadata/deasy_select.py">query</a>(\*\*<a href="src/deasy_client/types/metadata/deasy_select_query_params.py">params</a>) -> <a href="./src/deasy_client/types/metadata/deasy_select_query_response.py">object</a></code>
-
 # VdbConnector
 
 Types:
@@ -193,18 +181,18 @@ Methods:
 
 - <code title="post /dataslice/export/metadata">client.dataslice.export.<a href="./src/deasy_client/resources/dataslice/export.py">export_metadata</a>(\*\*<a href="src/deasy_client/types/dataslice/export_export_metadata_params.py">params</a>) -> <a href="./src/deasy_client/types/dataslice/export_export_metadata_response.py">object</a></code>
 
-# Graph
+# Schema
 
 Types:
 
 ```python
-from deasy_client.types import GraphOperationResponse, GraphListResponse
+from deasy_client.types import SchemaOperationResponse, SchemaListResponse
 ```
 
 Methods:
 
-- <code title="post /graph/create">client.graph.<a href="./src/deasy_client/resources/graph.py">create</a>(\*\*<a href="src/deasy_client/types/graph_create_params.py">params</a>) -> <a href="./src/deasy_client/types/graph_operation_response.py">GraphOperationResponse</a></code>
-- <code title="post /graph/update">client.graph.<a href="./src/deasy_client/resources/graph.py">update</a>(\*\*<a href="src/deasy_client/types/graph_update_params.py">params</a>) -> <a href="./src/deasy_client/types/graph_operation_response.py">GraphOperationResponse</a></code>
-- <code title="post /graph/list">client.graph.<a href="./src/deasy_client/resources/graph.py">list</a>(\*\*<a href="src/deasy_client/types/graph_list_params.py">params</a>) -> <a href="./src/deasy_client/types/graph_list_response.py">GraphListResponse</a></code>
-- <code title="delete /graph/delete">client.graph.<a href="./src/deasy_client/resources/graph.py">delete</a>(\*\*<a href="src/deasy_client/types/graph_delete_params.py">params</a>) -> <a href="./src/deasy_client/types/graph_operation_response.py">GraphOperationResponse</a></code>
-- <code title="post /graph/upsert">client.graph.<a href="./src/deasy_client/resources/graph.py">upsert</a>(\*\*<a href="src/deasy_client/types/graph_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/graph_operation_response.py">GraphOperationResponse</a></code>
+- <code title="post /schema/create">client.schema.<a href="./src/deasy_client/resources/schema.py">create</a>(\*\*<a href="src/deasy_client/types/schema_create_params.py">params</a>) -> <a href="./src/deasy_client/types/schema_operation_response.py">SchemaOperationResponse</a></code>
+- <code title="post /schema/update">client.schema.<a href="./src/deasy_client/resources/schema.py">update</a>(\*\*<a href="src/deasy_client/types/schema_update_params.py">params</a>) -> <a href="./src/deasy_client/types/schema_operation_response.py">SchemaOperationResponse</a></code>
+- <code title="post /schema/list">client.schema.<a href="./src/deasy_client/resources/schema.py">list</a>(\*\*<a href="src/deasy_client/types/schema_list_params.py">params</a>) -> <a href="./src/deasy_client/types/schema_list_response.py">SchemaListResponse</a></code>
+- <code title="delete /schema/delete">client.schema.<a href="./src/deasy_client/resources/schema.py">delete</a>(\*\*<a href="src/deasy_client/types/schema_delete_params.py">params</a>) -> <a href="./src/deasy_client/types/schema_operation_response.py">SchemaOperationResponse</a></code>
+- <code title="post /schema/upsert">client.schema.<a href="./src/deasy_client/resources/schema.py">upsert</a>(\*\*<a href="src/deasy_client/types/schema_upsert_params.py">params</a>) -> <a href="./src/deasy_client/types/schema_operation_response.py">SchemaOperationResponse</a></code>
