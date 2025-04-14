@@ -28,6 +28,8 @@ from .resources import (
     tags,
     schema,
     classify,
+    metadata,
+    deasy_select,
     prepare_data,
     classify_bulk,
     llm_connector,
@@ -42,13 +44,13 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.metadata import metadata
 from .resources.dataslice import dataslice
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Deasy", "AsyncDeasy", "Client", "AsyncClient"]
 
 
 class Deasy(SyncAPIClient):
+    deasy_select: deasy_select.DeasySelectResource
     classify_bulk: classify_bulk.ClassifyBulkResource
     classify: classify.ClassifyResource
     prepare_data: prepare_data.PrepareDataResource
@@ -121,6 +123,7 @@ class Deasy(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.deasy_select = deasy_select.DeasySelectResource(self)
         self.classify_bulk = classify_bulk.ClassifyBulkResource(self)
         self.classify = classify.ClassifyResource(self)
         self.prepare_data = prepare_data.PrepareDataResource(self)
@@ -239,6 +242,7 @@ class Deasy(SyncAPIClient):
 
 
 class AsyncDeasy(AsyncAPIClient):
+    deasy_select: deasy_select.AsyncDeasySelectResource
     classify_bulk: classify_bulk.AsyncClassifyBulkResource
     classify: classify.AsyncClassifyResource
     prepare_data: prepare_data.AsyncPrepareDataResource
@@ -311,6 +315,7 @@ class AsyncDeasy(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.deasy_select = deasy_select.AsyncDeasySelectResource(self)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResource(self)
         self.classify = classify.AsyncClassifyResource(self)
         self.prepare_data = prepare_data.AsyncPrepareDataResource(self)
@@ -430,6 +435,7 @@ class AsyncDeasy(AsyncAPIClient):
 
 class DeasyWithRawResponse:
     def __init__(self, client: Deasy) -> None:
+        self.deasy_select = deasy_select.DeasySelectResourceWithRawResponse(client.deasy_select)
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithRawResponse(client.prepare_data)
@@ -447,6 +453,7 @@ class DeasyWithRawResponse:
 
 class AsyncDeasyWithRawResponse:
     def __init__(self, client: AsyncDeasy) -> None:
+        self.deasy_select = deasy_select.AsyncDeasySelectResourceWithRawResponse(client.deasy_select)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithRawResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithRawResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithRawResponse(client.prepare_data)
@@ -464,6 +471,7 @@ class AsyncDeasyWithRawResponse:
 
 class DeasyWithStreamedResponse:
     def __init__(self, client: Deasy) -> None:
+        self.deasy_select = deasy_select.DeasySelectResourceWithStreamingResponse(client.deasy_select)
         self.classify_bulk = classify_bulk.ClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.ClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.PrepareDataResourceWithStreamingResponse(client.prepare_data)
@@ -481,6 +489,7 @@ class DeasyWithStreamedResponse:
 
 class AsyncDeasyWithStreamedResponse:
     def __init__(self, client: AsyncDeasy) -> None:
+        self.deasy_select = deasy_select.AsyncDeasySelectResourceWithStreamingResponse(client.deasy_select)
         self.classify_bulk = classify_bulk.AsyncClassifyBulkResourceWithStreamingResponse(client.classify_bulk)
         self.classify = classify.AsyncClassifyResourceWithStreamingResponse(client.classify)
         self.prepare_data = prepare_data.AsyncPrepareDataResourceWithStreamingResponse(client.prepare_data)
