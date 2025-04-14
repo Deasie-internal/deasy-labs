@@ -11,6 +11,7 @@ from ..types import (
     metadata_delete_params,
     metadata_upsert_params,
     metadata_list_paginated_params,
+    metadata_get_distributions_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -31,6 +32,7 @@ from ..types.metadata_list_response import MetadataListResponse
 from ..types.metadata_delete_response import MetadataDeleteResponse
 from ..types.metadata_upsert_response import MetadataUpsertResponse
 from ..types.metadata_list_paginated_response import MetadataListPaginatedResponse
+from ..types.metadata_get_distributions_response import MetadataGetDistributionsResponse
 
 __all__ = ["MetadataResource", "AsyncMetadataResource"]
 
@@ -153,6 +155,49 @@ class MetadataResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=MetadataDeleteResponse,
+        )
+
+    def get_distributions(
+        self,
+        *,
+        analysis_level: str,
+        vdb_profile_name: str,
+        schema_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataGetDistributionsResponse:
+        """
+        Get distribution of values for a specific tag, sorted by percentage
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/metadata/get_distributions",
+            body=maybe_transform(
+                {
+                    "analysis_level": analysis_level,
+                    "vdb_profile_name": vdb_profile_name,
+                    "schema_names": schema_names,
+                    "tag_names": tag_names,
+                },
+                metadata_get_distributions_params.MetadataGetDistributionsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataGetDistributionsResponse,
         )
 
     def list_paginated(
@@ -382,6 +427,49 @@ class AsyncMetadataResource(AsyncAPIResource):
             cast_to=MetadataDeleteResponse,
         )
 
+    async def get_distributions(
+        self,
+        *,
+        analysis_level: str,
+        vdb_profile_name: str,
+        schema_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> MetadataGetDistributionsResponse:
+        """
+        Get distribution of values for a specific tag, sorted by percentage
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/metadata/get_distributions",
+            body=await async_maybe_transform(
+                {
+                    "analysis_level": analysis_level,
+                    "vdb_profile_name": vdb_profile_name,
+                    "schema_names": schema_names,
+                    "tag_names": tag_names,
+                },
+                metadata_get_distributions_params.MetadataGetDistributionsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=MetadataGetDistributionsResponse,
+        )
+
     async def list_paginated(
         self,
         *,
@@ -499,6 +587,9 @@ class MetadataResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             metadata.delete,
         )
+        self.get_distributions = to_raw_response_wrapper(
+            metadata.get_distributions,
+        )
         self.list_paginated = to_raw_response_wrapper(
             metadata.list_paginated,
         )
@@ -516,6 +607,9 @@ class AsyncMetadataResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             metadata.delete,
+        )
+        self.get_distributions = async_to_raw_response_wrapper(
+            metadata.get_distributions,
         )
         self.list_paginated = async_to_raw_response_wrapper(
             metadata.list_paginated,
@@ -535,6 +629,9 @@ class MetadataResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             metadata.delete,
         )
+        self.get_distributions = to_streamed_response_wrapper(
+            metadata.get_distributions,
+        )
         self.list_paginated = to_streamed_response_wrapper(
             metadata.list_paginated,
         )
@@ -552,6 +649,9 @@ class AsyncMetadataResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             metadata.delete,
+        )
+        self.get_distributions = async_to_streamed_response_wrapper(
+            metadata.get_distributions,
         )
         self.list_paginated = async_to_streamed_response_wrapper(
             metadata.list_paginated,
