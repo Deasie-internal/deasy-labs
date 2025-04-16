@@ -237,7 +237,7 @@ class SchemaResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SchemaOperationResponse:
         """
-        Upsert a graph in the database.
+        Upsert a schema in the database.
 
         Attributes:
 
@@ -479,7 +479,7 @@ class AsyncSchemaResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SchemaOperationResponse:
         """
-        Upsert a graph in the database.
+        Upsert a schema in the database.
 
         Attributes:
 
