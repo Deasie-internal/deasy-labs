@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-04-16)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Features
+
+* **api:** api update ([6a4b621](https://github.com/Deasie-internal/deasy-labs/commit/6a4b621dd56017b236727c7291c73680d0221efc))
+
+
+### Chores
+
+* **client:** minor internal fixes ([7213650](https://github.com/Deasie-internal/deasy-labs/commit/72136503e50737f6a04994415b3668a75a9be64c))
+* **internal:** update pyright settings ([9572ebb](https://github.com/Deasie-internal/deasy-labs/commit/9572ebb14ca628781bc61d874d033835781a5f77))
+
 ## 0.1.0-alpha.19 (2025-04-14)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
