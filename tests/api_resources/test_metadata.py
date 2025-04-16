@@ -134,7 +134,6 @@ class TestMetadata:
     @parametrize
     def test_method_get_distributions(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
@@ -143,9 +142,9 @@ class TestMetadata:
     @parametrize
     def test_method_get_distributions_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
-            schema_names=["string"],
+            analysis_level="file",
+            schema_name="schema_name",
             tag_names=["string"],
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
@@ -154,7 +153,6 @@ class TestMetadata:
     @parametrize
     def test_raw_response_get_distributions(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         )
 
@@ -167,7 +165,6 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_get_distributions(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
@@ -408,7 +405,6 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_get_distributions(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
@@ -417,9 +413,9 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_get_distributions_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
-            schema_names=["string"],
+            analysis_level="file",
+            schema_name="schema_name",
             tag_names=["string"],
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
@@ -428,7 +424,6 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         )
 
@@ -441,7 +436,6 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_distributions(
-            analysis_level="analysis_level",
             vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed

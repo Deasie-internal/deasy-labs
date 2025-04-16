@@ -33,6 +33,10 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     node: Optional[Dict[str, object]]
 
+    progress_tracking_id: Optional[str]
+
+    schema_name: Optional[str]
+
     set_max_values: Optional[bool]
 
     use_existing_tags: Optional[bool]
