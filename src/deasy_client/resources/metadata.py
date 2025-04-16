@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -160,9 +161,9 @@ class MetadataResource(SyncAPIResource):
     def get_distributions(
         self,
         *,
-        analysis_level: str,
         vdb_profile_name: str,
-        schema_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        analysis_level: Literal["file", "chunk", "both"] | NotGiven = NOT_GIVEN,
+        schema_name: Optional[str] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -187,9 +188,9 @@ class MetadataResource(SyncAPIResource):
             "/metadata/get_distributions",
             body=maybe_transform(
                 {
-                    "analysis_level": analysis_level,
                     "vdb_profile_name": vdb_profile_name,
-                    "schema_names": schema_names,
+                    "analysis_level": analysis_level,
+                    "schema_name": schema_name,
                     "tag_names": tag_names,
                 },
                 metadata_get_distributions_params.MetadataGetDistributionsParams,
@@ -430,9 +431,9 @@ class AsyncMetadataResource(AsyncAPIResource):
     async def get_distributions(
         self,
         *,
-        analysis_level: str,
         vdb_profile_name: str,
-        schema_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        analysis_level: Literal["file", "chunk", "both"] | NotGiven = NOT_GIVEN,
+        schema_name: Optional[str] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -457,9 +458,9 @@ class AsyncMetadataResource(AsyncAPIResource):
             "/metadata/get_distributions",
             body=await async_maybe_transform(
                 {
-                    "analysis_level": analysis_level,
                     "vdb_profile_name": vdb_profile_name,
-                    "schema_names": schema_names,
+                    "analysis_level": analysis_level,
+                    "schema_name": schema_name,
                     "tag_names": tag_names,
                 },
                 metadata_get_distributions_params.MetadataGetDistributionsParams,

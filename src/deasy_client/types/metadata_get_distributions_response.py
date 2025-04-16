@@ -7,14 +7,10 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = [
-    "MetadataGetDistributionsResponse",
-    "SchemaNamesToCountDistributions",
-    "SchemaNamesToCountDistributionsTagsInSchema",
-]
+__all__ = ["MetadataGetDistributionsResponse", "TagsSchema"]
 
 
-class SchemaNamesToCountDistributionsTagsInSchema(BaseModel):
+class TagsSchema(BaseModel):
     description: str
 
     name: str
@@ -44,11 +40,7 @@ class SchemaNamesToCountDistributionsTagsInSchema(BaseModel):
     username: Optional[str] = None
 
 
-class SchemaNamesToCountDistributions(BaseModel):
+class MetadataGetDistributionsResponse(BaseModel):
     count_distribution: Dict[str, Dict[str, object]]
 
-    tags_in_schema: List[SchemaNamesToCountDistributionsTagsInSchema]
-
-
-class MetadataGetDistributionsResponse(BaseModel):
-    schema_names_to_count_distributions: Dict[str, SchemaNamesToCountDistributions]
+    tags_schemas: List[TagsSchema]
