@@ -158,10 +158,10 @@ from deasy_client import Deasy
 
 # Configure the default for all requests:
 client = Deasy(
-    # default is 2
-    max_retries=0,
     x_token="My X Token",
     x_user="My X User",
+    # default is 2
+    max_retries=0,
 )
 
 # Or, configure per-request:
@@ -180,17 +180,17 @@ from deasy_client import Deasy
 
 # Configure the default for all requests:
 client = Deasy(
-    # 20 seconds (default is 1 minute)
-    timeout=20.0,
     x_token="My X Token",
     x_user="My X User",
+    # 20 seconds (default is 1 minute)
+    timeout=20.0,
 )
 
 # More granular control:
 client = Deasy(
-    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     x_token="My X Token",
     x_user="My X User",
+    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
@@ -318,14 +318,14 @@ import httpx
 from deasy_client import Deasy, DefaultHttpxClient
 
 client = Deasy(
+    x_token="My X Token",
+    x_user="My X User",
     # Or use the `DEASY_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    x_token="My X Token",
-    x_user="My X User",
 )
 ```
 

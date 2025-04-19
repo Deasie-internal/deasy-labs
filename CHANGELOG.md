@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-04-19)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Chores
+
+* **internal:** base client updates ([18cec78](https://github.com/Deasie-internal/deasy-labs/commit/18cec78c7bd522b8545cb202de02c31828b8d42b))
+* **internal:** bump pyright version ([bf204fd](https://github.com/Deasie-internal/deasy-labs/commit/bf204fdda8be9452e80ecc3e4fa3d9416afba972))
+* **internal:** codegen related update ([8eefa0b](https://github.com/Deasie-internal/deasy-labs/commit/8eefa0bc9ada16880cca8cc08867303eeabaaaf5))
+* **internal:** update models test ([6801342](https://github.com/Deasie-internal/deasy-labs/commit/6801342d9737bfacac5d92bb88f6cb831b165594))
+
 ## 0.1.0-alpha.21 (2025-04-16)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
