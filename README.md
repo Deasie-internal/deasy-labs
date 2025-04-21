@@ -32,7 +32,7 @@ client = Deasy(
 )
 
 metadata = client.metadata.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
 )
 print(metadata.metadata)
 ```
@@ -53,7 +53,7 @@ client = AsyncDeasy(
 
 async def main() -> None:
     metadata = await client.metadata.list(
-        vdb_profile_name="vdb_profile_name",
+        data_connector_name="data_connector_name",
     )
     print(metadata.metadata)
 
@@ -85,7 +85,7 @@ client = Deasy(
 )
 
 metadata = client.metadata.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
     conditions={
         "children": [],
         "condition": "AND",
@@ -119,7 +119,7 @@ client = Deasy(
 
 try:
     client.metadata.list(
-        vdb_profile_name="vdb_profile_name",
+        data_connector_name="data_connector_name",
     )
 except deasy_client.APIConnectionError as e:
     print("The server could not be reached")
@@ -166,7 +166,7 @@ client = Deasy(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).metadata.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
 )
 ```
 
@@ -195,7 +195,7 @@ client = Deasy(
 
 # Override per-request:
 client.with_options(timeout=5.0).metadata.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
 )
 ```
 
@@ -241,7 +241,7 @@ client = Deasy(
     x_user="My X User",
 )
 response = client.metadata.with_raw_response.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -261,7 +261,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.metadata.with_streaming_response.list(
-    vdb_profile_name="vdb_profile_name",
+    data_connector_name="data_connector_name",
 ) as response:
     print(response.headers.get("X-My-Header"))
 

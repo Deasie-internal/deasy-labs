@@ -49,7 +49,7 @@ class PrepareDataResource(SyncAPIResource):
     def create(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         total_data_sets: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -64,7 +64,7 @@ class PrepareDataResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             total_data_sets: The total number of files that will be prepared.
 
@@ -81,7 +81,7 @@ class PrepareDataResource(SyncAPIResource):
             "/prepare_data",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "llm_profile_name": llm_profile_name,
                     "total_data_sets": total_data_sets,
                 },
@@ -117,7 +117,7 @@ class AsyncPrepareDataResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         total_data_sets: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -132,7 +132,7 @@ class AsyncPrepareDataResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             total_data_sets: The total number of files that will be prepared.
 
@@ -149,7 +149,7 @@ class AsyncPrepareDataResource(AsyncAPIResource):
             "/prepare_data",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "llm_profile_name": llm_profile_name,
                     "total_data_sets": total_data_sets,
                 },

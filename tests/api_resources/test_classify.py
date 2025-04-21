@@ -22,7 +22,7 @@ class TestClassify:
     @parametrize
     def test_method_classify_files(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
@@ -30,7 +30,7 @@ class TestClassify:
     @parametrize
     def test_method_classify_files_with_all_params(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
             file_names=["string"],
             hierarchy_data={"foo": "bar"},
@@ -65,7 +65,7 @@ class TestClassify:
     @parametrize
     def test_raw_response_classify_files(self, client: Deasy) -> None:
         response = client.classify.with_raw_response.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -77,7 +77,7 @@ class TestClassify:
     @parametrize
     def test_streaming_response_classify_files(self, client: Deasy) -> None:
         with client.classify.with_streaming_response.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -95,7 +95,7 @@ class TestAsyncClassify:
     @parametrize
     async def test_method_classify_files(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
@@ -103,7 +103,7 @@ class TestAsyncClassify:
     @parametrize
     async def test_method_classify_files_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
             file_names=["string"],
             hierarchy_data={"foo": "bar"},
@@ -138,7 +138,7 @@ class TestAsyncClassify:
     @parametrize
     async def test_raw_response_classify_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.classify.with_raw_response.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -150,7 +150,7 @@ class TestAsyncClassify:
     @parametrize
     async def test_streaming_response_classify_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.classify.with_streaming_response.classify_files(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -51,7 +51,7 @@ class SuggestSchemaResource(SyncAPIResource):
     def create(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -82,7 +82,7 @@ class SuggestSchemaResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vector database profile to use for accessing file content.
+            data_connector_name: The name of the vector database profile to use for accessing file content.
             llm_profile_name: Optional name of the language model profile to use for generating suggestions. Defaults to DeasyLabs compute
             file_names: Optional list of specific files to analyze for the hierarchy suggestion.
             dataslice_id: Optional ID of a dataslice to pull files from for the hierarchy suggestion.
@@ -108,7 +108,7 @@ class SuggestSchemaResource(SyncAPIResource):
             "/suggest_schema",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "condition": condition,
                     "context_level": context_level,
                     "current_tree": current_tree,
@@ -160,7 +160,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -191,7 +191,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vector database profile to use for accessing file content.
+            data_connector_name: The name of the vector database profile to use for accessing file content.
             llm_profile_name: Optional name of the language model profile to use for generating suggestions. Defaults to DeasyLabs compute
             file_names: Optional list of specific files to analyze for the hierarchy suggestion.
             dataslice_id: Optional ID of a dataslice to pull files from for the hierarchy suggestion.
@@ -217,7 +217,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
             "/suggest_schema",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "condition": condition,
                     "context_level": context_level,
                     "current_tree": current_tree,

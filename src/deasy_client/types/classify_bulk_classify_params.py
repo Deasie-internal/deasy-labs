@@ -12,7 +12,7 @@ __all__ = ["ClassifyBulkClassifyParams", "TagDatas"]
 
 
 class ClassifyBulkClassifyParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     conditions: Optional["ConditionInputParam"]
 

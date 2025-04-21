@@ -21,7 +21,7 @@ class TestPrepareData:
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         prepare_data = client.prepare_data.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(PrepareDataCreateResponse, prepare_data, path=["response"])
 
@@ -29,7 +29,7 @@ class TestPrepareData:
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         prepare_data = client.prepare_data.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             llm_profile_name="llm_profile_name",
             total_data_sets=0,
         )
@@ -39,7 +39,7 @@ class TestPrepareData:
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.prepare_data.with_raw_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -51,7 +51,7 @@ class TestPrepareData:
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.prepare_data.with_streaming_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -69,7 +69,7 @@ class TestAsyncPrepareData:
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         prepare_data = await async_client.prepare_data.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(PrepareDataCreateResponse, prepare_data, path=["response"])
 
@@ -77,7 +77,7 @@ class TestAsyncPrepareData:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         prepare_data = await async_client.prepare_data.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             llm_profile_name="llm_profile_name",
             total_data_sets=0,
         )
@@ -87,7 +87,7 @@ class TestAsyncPrepareData:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.prepare_data.with_raw_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -99,7 +99,7 @@ class TestAsyncPrepareData:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.prepare_data.with_streaming_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

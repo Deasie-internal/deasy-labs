@@ -9,6 +9,8 @@ __all__ = ["DatasliceGetMetricsParams"]
 
 
 class DatasliceGetMetricsParams(TypedDict, total=False):
+    data_connector_name: Optional[str]
+
     dataslice_id: Optional[str]
 
     file_names: Optional[List[str]]
@@ -16,5 +18,3 @@ class DatasliceGetMetricsParams(TypedDict, total=False):
     node_ids: Optional[List[str]]
 
     tags: Optional[List[str]]
-
-    vdb_profile_name: Optional[str]

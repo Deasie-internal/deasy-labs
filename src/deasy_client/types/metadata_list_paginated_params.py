@@ -9,7 +9,7 @@ __all__ = ["MetadataListPaginatedParams"]
 
 
 class MetadataListPaginatedParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     conditions: Optional["ConditionInputParam"]
 

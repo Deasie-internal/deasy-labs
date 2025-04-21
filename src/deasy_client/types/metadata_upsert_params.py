@@ -16,9 +16,9 @@ __all__ = [
 class MetadataUpsertParams(TypedDict, total=False):
     metadata: Required[Dict[str, Dict[str, MetadataMetadataItem]]]
 
-    dataslice_id: Optional[str]
+    data_connector_name: Optional[str]
 
-    vdb_profile_name: Optional[str]
+    dataslice_id: Optional[str]
 
 
 class MetadataMetadataItemChunkLevel(TypedDict, total=False):
