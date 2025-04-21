@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-04-21)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Features
+
+* added in data connector name ([30ead91](https://github.com/Deasie-internal/deasy-labs/commit/30ead914420db497476742bb6c0cf7d2086f4e97))
+* fixed args for get distribution ([5d6cf4a](https://github.com/Deasie-internal/deasy-labs/commit/5d6cf4af290629e04576fd1cfc7f0a5ae40b098a))
+* removed custom strings ([7436dd6](https://github.com/Deasie-internal/deasy-labs/commit/7436dd6db4b920328cf44c92908c324ceab1f867))
+* removed outputs ([c93af75](https://github.com/Deasie-internal/deasy-labs/commit/c93af75044dca480e1987e954af61b9e37374f26))
+
 ## 0.1.0-alpha.23 (2025-04-21)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
