@@ -75,10 +75,10 @@ class DatasliceResource(SyncAPIResource):
     def create(
         self,
         *,
+        data_connector_name: str,
         dataslice_name: str,
         graph_id: str,
         latest_graph: Dict[str, object],
-        vdb_profile_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
@@ -103,7 +103,7 @@ class DatasliceResource(SyncAPIResource):
             data_points: The data points to include in the dataslice.
             latest_graph: The latest graph to include in the dataslice.
             graph_id: The id of the graph to include in the dataslice.
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            data_connector_name: The name of the vdb profile to include in the dataslice.
 
         Args:
           extra_headers: Send extra headers
@@ -118,10 +118,10 @@ class DatasliceResource(SyncAPIResource):
             "/dataslice/create",
             body=maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_name": dataslice_name,
                     "graph_id": graph_id,
                     "latest_graph": latest_graph,
-                    "vdb_profile_name": vdb_profile_name,
                     "condition": condition,
                     "data_points": data_points,
                     "description": description,
@@ -196,7 +196,7 @@ class DatasliceResource(SyncAPIResource):
     def get_file_count(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -222,7 +222,7 @@ class DatasliceResource(SyncAPIResource):
             "/dataslice/file_count",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "condition": condition,
                     "dataslice_id": dataslice_id,
                 },
@@ -269,11 +269,11 @@ class DatasliceResource(SyncAPIResource):
     def get_metrics(
         self,
         *,
+        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -297,11 +297,11 @@ class DatasliceResource(SyncAPIResource):
             "/dataslice/metrics",
             body=maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "file_names": file_names,
                     "node_ids": node_ids,
                     "tags": tags,
-                    "vdb_profile_name": vdb_profile_name,
                 },
                 dataslice_get_metrics_params.DatasliceGetMetricsParams,
             ),
@@ -314,8 +314,8 @@ class DatasliceResource(SyncAPIResource):
     def get_tag_vdb_distribution(
         self,
         *,
+        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -339,8 +339,8 @@ class DatasliceResource(SyncAPIResource):
             "/dataslice/tag_vdb_distribution",
             body=maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
-                    "vdb_profile_name": vdb_profile_name,
                 },
                 dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
             ),
@@ -378,10 +378,10 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        data_connector_name: str,
         dataslice_name: str,
         graph_id: str,
         latest_graph: Dict[str, object],
-        vdb_profile_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
@@ -406,7 +406,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
             data_points: The data points to include in the dataslice.
             latest_graph: The latest graph to include in the dataslice.
             graph_id: The id of the graph to include in the dataslice.
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            data_connector_name: The name of the vdb profile to include in the dataslice.
 
         Args:
           extra_headers: Send extra headers
@@ -421,10 +421,10 @@ class AsyncDatasliceResource(AsyncAPIResource):
             "/dataslice/create",
             body=await async_maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_name": dataslice_name,
                     "graph_id": graph_id,
                     "latest_graph": latest_graph,
-                    "vdb_profile_name": vdb_profile_name,
                     "condition": condition,
                     "data_points": data_points,
                     "description": description,
@@ -501,7 +501,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def get_file_count(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -527,7 +527,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
             "/dataslice/file_count",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "condition": condition,
                     "dataslice_id": dataslice_id,
                 },
@@ -576,11 +576,11 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def get_metrics(
         self,
         *,
+        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -604,11 +604,11 @@ class AsyncDatasliceResource(AsyncAPIResource):
             "/dataslice/metrics",
             body=await async_maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "file_names": file_names,
                     "node_ids": node_ids,
                     "tags": tags,
-                    "vdb_profile_name": vdb_profile_name,
                 },
                 dataslice_get_metrics_params.DatasliceGetMetricsParams,
             ),
@@ -621,8 +621,8 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def get_tag_vdb_distribution(
         self,
         *,
+        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        vdb_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -646,8 +646,8 @@ class AsyncDatasliceResource(AsyncAPIResource):
             "/dataslice/tag_vdb_distribution",
             body=await async_maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
-                    "vdb_profile_name": vdb_profile_name,
                 },
                 dataslice_get_tag_vdb_distribution_params.DatasliceGetTagVdbDistributionParams,
             ),

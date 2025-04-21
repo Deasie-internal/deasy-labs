@@ -49,8 +49,8 @@ class SuggestDescriptionResource(SyncAPIResource):
     def create(
         self,
         *,
+        data_connector_name: str,
         tag_name: str,
-        vdb_profile_name: str,
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
@@ -67,7 +67,7 @@ class SuggestDescriptionResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            data_connector_name: The name of the vdb profile to include in the dataslice.
             llm_profile_name: The name of the llm profile to use for the suggestion.
             tag_name: The name of the tag to suggest a description for.
             context: The context to suggest a description for the tag.
@@ -87,8 +87,8 @@ class SuggestDescriptionResource(SyncAPIResource):
             "/suggest_description",
             body=maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "tag_name": tag_name,
-                    "vdb_profile_name": vdb_profile_name,
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,
@@ -126,8 +126,8 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        data_connector_name: str,
         tag_name: str,
-        vdb_profile_name: str,
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
@@ -144,7 +144,7 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to include in the dataslice.
+            data_connector_name: The name of the vdb profile to include in the dataslice.
             llm_profile_name: The name of the llm profile to use for the suggestion.
             tag_name: The name of the tag to suggest a description for.
             context: The context to suggest a description for the tag.
@@ -164,8 +164,8 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
             "/suggest_description",
             body=await async_maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "tag_name": tag_name,
-                    "vdb_profile_name": vdb_profile_name,
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,

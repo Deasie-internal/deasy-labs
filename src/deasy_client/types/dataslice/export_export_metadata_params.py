@@ -9,7 +9,7 @@ __all__ = ["ExportExportMetadataParams"]
 
 
 class ExportExportMetadataParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     dataslice_id: Optional[str]
 

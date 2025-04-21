@@ -22,7 +22,7 @@ class TestClassifyBulk:
     @parametrize
     def test_method_classify(self, client: Deasy) -> None:
         classify_bulk = client.classify_bulk.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(ClassifyBulkClassifyResponse, classify_bulk, path=["response"])
 
@@ -30,7 +30,7 @@ class TestClassifyBulk:
     @parametrize
     def test_method_classify_with_all_params(self, client: Deasy) -> None:
         classify_bulk = client.classify_bulk.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -73,7 +73,7 @@ class TestClassifyBulk:
     @parametrize
     def test_raw_response_classify(self, client: Deasy) -> None:
         response = client.classify_bulk.with_raw_response.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -85,7 +85,7 @@ class TestClassifyBulk:
     @parametrize
     def test_streaming_response_classify(self, client: Deasy) -> None:
         with client.classify_bulk.with_streaming_response.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -103,7 +103,7 @@ class TestAsyncClassifyBulk:
     @parametrize
     async def test_method_classify(self, async_client: AsyncDeasy) -> None:
         classify_bulk = await async_client.classify_bulk.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(ClassifyBulkClassifyResponse, classify_bulk, path=["response"])
 
@@ -111,7 +111,7 @@ class TestAsyncClassifyBulk:
     @parametrize
     async def test_method_classify_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify_bulk = await async_client.classify_bulk.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -154,7 +154,7 @@ class TestAsyncClassifyBulk:
     @parametrize
     async def test_raw_response_classify(self, async_client: AsyncDeasy) -> None:
         response = await async_client.classify_bulk.with_raw_response.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -166,7 +166,7 @@ class TestAsyncClassifyBulk:
     @parametrize
     async def test_streaming_response_classify(self, async_client: AsyncDeasy) -> None:
         async with async_client.classify_bulk.with_streaming_response.classify(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

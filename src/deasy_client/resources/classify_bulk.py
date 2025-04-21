@@ -50,7 +50,7 @@ class ClassifyBulkResource(SyncAPIResource):
     def classify(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -73,7 +73,7 @@ class ClassifyBulkResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             total_data_sets: The total number of files to classify.
             tag_names: The names of the tags to use for classification if tag datas are not provided.
@@ -97,7 +97,7 @@ class ClassifyBulkResource(SyncAPIResource):
             "/classify_bulk",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "hierarchy_data": hierarchy_data,
@@ -141,7 +141,7 @@ class AsyncClassifyBulkResource(AsyncAPIResource):
     async def classify(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -164,7 +164,7 @@ class AsyncClassifyBulkResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             total_data_sets: The total number of files to classify.
             tag_names: The names of the tags to use for classification if tag datas are not provided.
@@ -188,7 +188,7 @@ class AsyncClassifyBulkResource(AsyncAPIResource):
             "/classify_bulk",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
                     "hierarchy_data": hierarchy_data,

@@ -20,7 +20,7 @@ class TestExport:
     @parametrize
     def test_method_export_metadata(self, client: Deasy) -> None:
         export = client.dataslice.export.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(object, export, path=["response"])
 
@@ -28,7 +28,7 @@ class TestExport:
     @parametrize
     def test_method_export_metadata_with_all_params(self, client: Deasy) -> None:
         export = client.dataslice.export.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
             export_file_level=True,
             export_format="json",
@@ -40,7 +40,7 @@ class TestExport:
     @parametrize
     def test_raw_response_export_metadata(self, client: Deasy) -> None:
         response = client.dataslice.export.with_raw_response.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -52,7 +52,7 @@ class TestExport:
     @parametrize
     def test_streaming_response_export_metadata(self, client: Deasy) -> None:
         with client.dataslice.export.with_streaming_response.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -70,7 +70,7 @@ class TestAsyncExport:
     @parametrize
     async def test_method_export_metadata(self, async_client: AsyncDeasy) -> None:
         export = await async_client.dataslice.export.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(object, export, path=["response"])
 
@@ -78,7 +78,7 @@ class TestAsyncExport:
     @parametrize
     async def test_method_export_metadata_with_all_params(self, async_client: AsyncDeasy) -> None:
         export = await async_client.dataslice.export.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
             export_file_level=True,
             export_format="json",
@@ -90,7 +90,7 @@ class TestAsyncExport:
     @parametrize
     async def test_raw_response_export_metadata(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.export.with_raw_response.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -102,7 +102,7 @@ class TestAsyncExport:
     @parametrize
     async def test_streaming_response_export_metadata(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.export.with_streaming_response.export_metadata(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

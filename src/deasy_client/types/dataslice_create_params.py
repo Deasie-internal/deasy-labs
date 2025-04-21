@@ -9,13 +9,13 @@ __all__ = ["DatasliceCreateParams"]
 
 
 class DatasliceCreateParams(TypedDict, total=False):
+    data_connector_name: Required[str]
+
     dataslice_name: Required[str]
 
     graph_id: Required[str]
 
     latest_graph: Required[Dict[str, object]]
-
-    vdb_profile_name: Required[str]
 
     condition: Optional["ConditionInputParam"]
 

@@ -9,7 +9,7 @@ __all__ = ["PrepareDataCreateParams"]
 
 
 class PrepareDataCreateParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     llm_profile_name: Optional[str]
 

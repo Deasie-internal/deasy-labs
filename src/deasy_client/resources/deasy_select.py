@@ -49,8 +49,8 @@ class DeasySelectResource(SyncAPIResource):
     def query(
         self,
         *,
+        data_connector_name: str,
         query: str,
-        vdb_profile_name: str,
         max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_results: Optional[int] | NotGiven = NOT_GIVEN,
@@ -92,8 +92,8 @@ class DeasySelectResource(SyncAPIResource):
             "/deasy_select/query",
             body=maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "query": query,
-                    "vdb_profile_name": vdb_profile_name,
                     "max_filter_values_to_choose": max_filter_values_to_choose,
                     "max_filters_to_choose": max_filters_to_choose,
                     "max_results": max_results,
@@ -140,8 +140,8 @@ class AsyncDeasySelectResource(AsyncAPIResource):
     async def query(
         self,
         *,
+        data_connector_name: str,
         query: str,
-        vdb_profile_name: str,
         max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_results: Optional[int] | NotGiven = NOT_GIVEN,
@@ -183,8 +183,8 @@ class AsyncDeasySelectResource(AsyncAPIResource):
             "/deasy_select/query",
             body=await async_maybe_transform(
                 {
+                    "data_connector_name": data_connector_name,
                     "query": query,
-                    "vdb_profile_name": vdb_profile_name,
                     "max_filter_values_to_choose": max_filter_values_to_choose,
                     "max_filters_to_choose": max_filters_to_choose,
                     "max_results": max_results,

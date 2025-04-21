@@ -27,7 +27,7 @@ class TestMetadata:
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         metadata = client.metadata.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
@@ -35,7 +35,7 @@ class TestMetadata:
     @parametrize
     def test_method_list_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -55,7 +55,7 @@ class TestMetadata:
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -67,7 +67,7 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -81,7 +81,7 @@ class TestMetadata:
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
@@ -89,7 +89,7 @@ class TestMetadata:
     @parametrize
     def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -108,7 +108,7 @@ class TestMetadata:
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -120,7 +120,7 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -134,7 +134,7 @@ class TestMetadata:
     @parametrize
     def test_method_get_distributions(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
@@ -142,8 +142,8 @@ class TestMetadata:
     @parametrize
     def test_method_get_distributions_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
-            vdb_profile_name="vdb_profile_name",
-            analysis_level="file",
+            data_connector_name="data_connector_name",
+            dataslice_id="dataslice_id",
             schema_name="schema_name",
             tag_names=["string"],
         )
@@ -153,7 +153,7 @@ class TestMetadata:
     @parametrize
     def test_raw_response_get_distributions(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -165,7 +165,7 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_get_distributions(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,7 +179,7 @@ class TestMetadata:
     @parametrize
     def test_method_list_paginated(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
@@ -187,7 +187,7 @@ class TestMetadata:
     @parametrize
     def test_method_list_paginated_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -209,7 +209,7 @@ class TestMetadata:
     @parametrize
     def test_raw_response_list_paginated(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -221,7 +221,7 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_list_paginated(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -259,8 +259,8 @@ class TestMetadata:
                     }
                 }
             },
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
-            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
@@ -298,7 +298,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
@@ -306,7 +306,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -326,7 +326,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -338,7 +338,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -352,7 +352,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
@@ -360,7 +360,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -379,7 +379,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -391,7 +391,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.delete(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -405,7 +405,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_get_distributions(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
@@ -413,8 +413,8 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_get_distributions_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
-            vdb_profile_name="vdb_profile_name",
-            analysis_level="file",
+            data_connector_name="data_connector_name",
+            dataslice_id="dataslice_id",
             schema_name="schema_name",
             tag_names=["string"],
         )
@@ -424,7 +424,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -436,7 +436,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_distributions(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -450,7 +450,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_list_paginated(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
@@ -458,7 +458,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -480,7 +480,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -492,7 +492,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list_paginated(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -530,8 +530,8 @@ class TestAsyncMetadata:
                     }
                 }
             },
+            data_connector_name="data_connector_name",
             dataslice_id="dataslice_id",
-            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 

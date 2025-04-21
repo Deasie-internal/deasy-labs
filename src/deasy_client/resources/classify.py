@@ -49,7 +49,7 @@ class ClassifyResource(SyncAPIResource):
     def classify_files(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -72,7 +72,7 @@ class ClassifyResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             file_names: The names of the files to classify.
             tag_names: The names of the tags to use for classification if tag datas are not provided.
@@ -96,7 +96,7 @@ class ClassifyResource(SyncAPIResource):
             "/classify",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "file_names": file_names,
                     "hierarchy_data": hierarchy_data,
@@ -140,7 +140,7 @@ class AsyncClassifyResource(AsyncAPIResource):
     async def classify_files(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -163,7 +163,7 @@ class AsyncClassifyResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to use for classification.
+            data_connector_name: The name of the vdb profile to use for classification.
             llm_profile_name: The name of the llm profile to use for classification.
             file_names: The names of the files to classify.
             tag_names: The names of the tags to use for classification if tag datas are not provided.
@@ -187,7 +187,7 @@ class AsyncClassifyResource(AsyncAPIResource):
             "/classify",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "file_names": file_names,
                     "hierarchy_data": hierarchy_data,

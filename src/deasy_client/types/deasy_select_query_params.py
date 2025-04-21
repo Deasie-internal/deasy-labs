@@ -18,9 +18,9 @@ __all__ = [
 
 
 class DeasySelectQueryParams(TypedDict, total=False):
-    query: Required[str]
+    data_connector_name: Required[str]
 
-    vdb_profile_name: Required[str]
+    query: Required[str]
 
     max_filter_values_to_choose: Optional[int]
 
