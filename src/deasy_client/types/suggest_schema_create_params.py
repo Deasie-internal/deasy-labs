@@ -9,7 +9,7 @@ __all__ = ["SuggestSchemaCreateParams"]
 
 
 class SuggestSchemaCreateParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     condition: Optional["ConditionInputParam"]
 

@@ -12,7 +12,7 @@ __all__ = ["ClassifyClassifyFilesParams", "TagDatas"]
 
 
 class ClassifyClassifyFilesParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
     dataslice_id: Optional[str]
 

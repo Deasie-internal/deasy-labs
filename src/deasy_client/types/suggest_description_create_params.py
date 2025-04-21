@@ -9,9 +9,9 @@ __all__ = ["SuggestDescriptionCreateParams"]
 
 
 class SuggestDescriptionCreateParams(TypedDict, total=False):
-    tag_name: Required[str]
+    data_connector_name: Required[str]
 
-    vdb_profile_name: Required[str]
+    tag_name: Required[str]
 
     available_values: Optional[List[str]]
 

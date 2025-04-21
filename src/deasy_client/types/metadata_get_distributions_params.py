@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["MetadataGetDistributionsParams"]
 
 
 class MetadataGetDistributionsParams(TypedDict, total=False):
-    vdb_profile_name: Required[str]
+    data_connector_name: Required[str]
 
-    analysis_level: Literal["file", "chunk", "both"]
+    dataslice_id: Optional[str]
 
     schema_name: Optional[str]
 

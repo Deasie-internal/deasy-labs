@@ -21,8 +21,8 @@ class TestDeasySelect:
     @parametrize
     def test_method_query(self, client: Deasy) -> None:
         deasy_select = client.deasy_select.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
@@ -30,8 +30,8 @@ class TestDeasySelect:
     @parametrize
     def test_method_query_with_all_params(self, client: Deasy) -> None:
         deasy_select = client.deasy_select.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
             max_results=0,
@@ -83,8 +83,8 @@ class TestDeasySelect:
     @parametrize
     def test_raw_response_query(self, client: Deasy) -> None:
         response = client.deasy_select.with_raw_response.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         )
 
         assert response.is_closed is True
@@ -96,8 +96,8 @@ class TestDeasySelect:
     @parametrize
     def test_streaming_response_query(self, client: Deasy) -> None:
         with client.deasy_select.with_streaming_response.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -115,8 +115,8 @@ class TestAsyncDeasySelect:
     @parametrize
     async def test_method_query(self, async_client: AsyncDeasy) -> None:
         deasy_select = await async_client.deasy_select.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
@@ -124,8 +124,8 @@ class TestAsyncDeasySelect:
     @parametrize
     async def test_method_query_with_all_params(self, async_client: AsyncDeasy) -> None:
         deasy_select = await async_client.deasy_select.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
             max_results=0,
@@ -177,8 +177,8 @@ class TestAsyncDeasySelect:
     @parametrize
     async def test_raw_response_query(self, async_client: AsyncDeasy) -> None:
         response = await async_client.deasy_select.with_raw_response.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         )
 
         assert response.is_closed is True
@@ -190,8 +190,8 @@ class TestAsyncDeasySelect:
     @parametrize
     async def test_streaming_response_query(self, async_client: AsyncDeasy) -> None:
         async with async_client.deasy_select.with_streaming_response.query(
+            data_connector_name="data_connector_name",
             query="query",
-            vdb_profile_name="vdb_profile_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

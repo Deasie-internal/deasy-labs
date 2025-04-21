@@ -49,7 +49,7 @@ class ExportResource(SyncAPIResource):
     def export_metadata(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         export_file_level: bool | NotGiven = NOT_GIVEN,
         export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
@@ -66,7 +66,7 @@ class ExportResource(SyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to export metadata from.
+            data_connector_name: The name of the vdb profile to export metadata from.
             dataslice_id: The id of the dataslice to export metadata from.
             export_file_level: Whether to export file-level metadata or chunk-level metadata.
             export_format: The format to export the metadata in, JSON or CSV.
@@ -85,7 +85,7 @@ class ExportResource(SyncAPIResource):
             "/dataslice/export/metadata",
             body=maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "export_file_level": export_file_level,
                     "export_format": export_format,
@@ -123,7 +123,7 @@ class AsyncExportResource(AsyncAPIResource):
     async def export_metadata(
         self,
         *,
-        vdb_profile_name: str,
+        data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         export_file_level: bool | NotGiven = NOT_GIVEN,
         export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
@@ -140,7 +140,7 @@ class AsyncExportResource(AsyncAPIResource):
 
         Attributes:
 
-            vdb_profile_name: The name of the vdb profile to export metadata from.
+            data_connector_name: The name of the vdb profile to export metadata from.
             dataslice_id: The id of the dataslice to export metadata from.
             export_file_level: Whether to export file-level metadata or chunk-level metadata.
             export_format: The format to export the metadata in, JSON or CSV.
@@ -159,7 +159,7 @@ class AsyncExportResource(AsyncAPIResource):
             "/dataslice/export/metadata",
             body=await async_maybe_transform(
                 {
-                    "vdb_profile_name": vdb_profile_name,
+                    "data_connector_name": data_connector_name,
                     "dataslice_id": dataslice_id,
                     "export_file_level": export_file_level,
                     "export_format": export_format,

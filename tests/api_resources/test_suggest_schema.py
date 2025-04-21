@@ -21,7 +21,7 @@ class TestSuggestSchema:
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         suggest_schema = client.suggest_schema.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
@@ -29,7 +29,7 @@ class TestSuggestSchema:
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         suggest_schema = client.suggest_schema.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             condition={
                 "children": [],
                 "condition": "AND",
@@ -63,7 +63,7 @@ class TestSuggestSchema:
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.suggest_schema.with_raw_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -75,7 +75,7 @@ class TestSuggestSchema:
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.suggest_schema.with_streaming_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -93,7 +93,7 @@ class TestAsyncSuggestSchema:
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         suggest_schema = await async_client.suggest_schema.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
@@ -101,7 +101,7 @@ class TestAsyncSuggestSchema:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_schema = await async_client.suggest_schema.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
             condition={
                 "children": [],
                 "condition": "AND",
@@ -135,7 +135,7 @@ class TestAsyncSuggestSchema:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.suggest_schema.with_raw_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         )
 
         assert response.is_closed is True
@@ -147,7 +147,7 @@ class TestAsyncSuggestSchema:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.suggest_schema.with_streaming_response.create(
-            vdb_profile_name="vdb_profile_name",
+            data_connector_name="data_connector_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
