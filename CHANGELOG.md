@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-04-24)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Features
+
+* fixed lint ([022e776](https://github.com/Deasie-internal/deasy-labs/commit/022e77628d730e900d015bb7e9177edd0630dcc3))
+* Updated distributions object in example ([a1c2317](https://github.com/Deasie-internal/deasy-labs/commit/a1c2317fe4f7f951d7e96fa8e620f38ff4e732f8))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([957ac54](https://github.com/Deasie-internal/deasy-labs/commit/957ac543210075921c821587d00d5ff7e1f298c3))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([1aadbe4](https://github.com/Deasie-internal/deasy-labs/commit/1aadbe4906b09c13c060acf77926b49643513969))
+* **ci:** add timeout thresholds for CI jobs ([56aa8fa](https://github.com/Deasie-internal/deasy-labs/commit/56aa8fae65774a210990d95e97bd14c6d31dee63))
+* **ci:** only use depot for staging repos ([44f15ea](https://github.com/Deasie-internal/deasy-labs/commit/44f15ead53ad00ab8a7c50625056612bd6641d5a))
+* **internal:** codegen related update ([6656428](https://github.com/Deasie-internal/deasy-labs/commit/6656428032f143ed637b1919b66575bd2a4dd024))
+* **internal:** fix list file params ([af5f321](https://github.com/Deasie-internal/deasy-labs/commit/af5f3219c2e128295f75a876ca3420b730dcaada))
+* **internal:** import reformatting ([d44a159](https://github.com/Deasie-internal/deasy-labs/commit/d44a159ee65c4ae81797b9446c92ebc63d0ae3cb))
+* **internal:** minor formatting changes ([2d9d96e](https://github.com/Deasie-internal/deasy-labs/commit/2d9d96ecc20300cb280cf10e88ae9ae509f03211))
+* **internal:** refactor retries to not use recursion ([974debe](https://github.com/Deasie-internal/deasy-labs/commit/974debe4a4af7dcc57d206ee5143a4a16238182e))
+
 ## 0.1.0-alpha.23 (2025-04-21)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
