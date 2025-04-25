@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -48,6 +48,7 @@ class DeasySelectResource(SyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
+        banned_filters: Optional[Dict[str, List[str]]] | NotGiven = NOT_GIVEN,
         max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_results: Optional[int] | NotGiven = NOT_GIVEN,
@@ -91,6 +92,7 @@ class DeasySelectResource(SyncAPIResource):
                 {
                     "data_connector_name": data_connector_name,
                     "query": query,
+                    "banned_filters": banned_filters,
                     "max_filter_values_to_choose": max_filter_values_to_choose,
                     "max_filters_to_choose": max_filters_to_choose,
                     "max_results": max_results,
@@ -139,6 +141,7 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
+        banned_filters: Optional[Dict[str, List[str]]] | NotGiven = NOT_GIVEN,
         max_filter_values_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_filters_to_choose: Optional[int] | NotGiven = NOT_GIVEN,
         max_results: Optional[int] | NotGiven = NOT_GIVEN,
@@ -182,6 +185,7 @@ class AsyncDeasySelectResource(AsyncAPIResource):
                 {
                     "data_connector_name": data_connector_name,
                     "query": query,
+                    "banned_filters": banned_filters,
                     "max_filter_values_to_choose": max_filter_values_to_choose,
                     "max_filters_to_choose": max_filters_to_choose,
                     "max_results": max_results,

@@ -35,6 +35,7 @@ class TestSuggestDescription:
             available_values=["string"],
             context="context",
             current_description="current_description",
+            dataslice_id="dataslice_id",
             llm_profile_name="llm_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])
@@ -89,6 +90,7 @@ class TestAsyncSuggestDescription:
             available_values=["string"],
             context="context",
             current_description="current_description",
+            dataslice_id="dataslice_id",
             llm_profile_name="llm_profile_name",
         )
         assert_matches_type(SuggestDescriptionCreateResponse, suggest_description, path=["response"])

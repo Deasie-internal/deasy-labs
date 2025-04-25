@@ -55,6 +55,7 @@ class TestDataslice:
             },
             data_points=0,
             description="description",
+            parent_dataslice_id="parent_dataslice_id",
             status="status",
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
@@ -350,6 +351,7 @@ class TestAsyncDataslice:
             },
             data_points=0,
             description="description",
+            parent_dataslice_id="parent_dataslice_id",
             status="status",
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])

@@ -19,4 +19,6 @@ class SuggestDescriptionCreateParams(TypedDict, total=False):
 
     current_description: Optional[str]
 
+    dataslice_id: Optional[str]
+
     llm_profile_name: Optional[str]

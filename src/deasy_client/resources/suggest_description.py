@@ -51,6 +51,7 @@ class SuggestDescriptionResource(SyncAPIResource):
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -89,6 +90,7 @@ class SuggestDescriptionResource(SyncAPIResource):
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,
+                    "dataslice_id": dataslice_id,
                     "llm_profile_name": llm_profile_name,
                 },
                 suggest_description_create_params.SuggestDescriptionCreateParams,
@@ -128,6 +130,7 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
         available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
         context: Optional[str] | NotGiven = NOT_GIVEN,
         current_description: Optional[str] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -166,6 +169,7 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
                     "available_values": available_values,
                     "context": context,
                     "current_description": current_description,
+                    "dataslice_id": dataslice_id,
                     "llm_profile_name": llm_profile_name,
                 },
                 suggest_description_create_params.SuggestDescriptionCreateParams,
