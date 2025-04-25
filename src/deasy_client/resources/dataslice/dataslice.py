@@ -79,6 +79,7 @@ class DatasliceResource(SyncAPIResource):
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        parent_dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -122,6 +123,7 @@ class DatasliceResource(SyncAPIResource):
                     "condition": condition,
                     "data_points": data_points,
                     "description": description,
+                    "parent_dataslice_id": parent_dataslice_id,
                     "status": status,
                 },
                 dataslice_create_params.DatasliceCreateParams,
@@ -382,6 +384,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         data_points: Optional[int] | NotGiven = NOT_GIVEN,
         description: Optional[str] | NotGiven = NOT_GIVEN,
+        parent_dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -425,6 +428,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
                     "condition": condition,
                     "data_points": data_points,
                     "description": description,
+                    "parent_dataslice_id": parent_dataslice_id,
                     "status": status,
                 },
                 dataslice_create_params.DatasliceCreateParams,

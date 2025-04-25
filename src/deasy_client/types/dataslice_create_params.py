@@ -23,6 +23,8 @@ class DatasliceCreateParams(TypedDict, total=False):
 
     description: Optional[str]
 
+    parent_dataslice_id: Optional[str]
+
     status: str
 
 
