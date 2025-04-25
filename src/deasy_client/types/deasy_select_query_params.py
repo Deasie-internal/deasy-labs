@@ -22,6 +22,8 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     query: Required[str]
 
+    banned_filters: Optional[Dict[str, List[str]]]
+
     max_filter_values_to_choose: Optional[int]
 
     max_filters_to_choose: Optional[int]

@@ -32,6 +32,7 @@ class TestDeasySelect:
         deasy_select = client.deasy_select.query(
             data_connector_name="data_connector_name",
             query="query",
+            banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
             max_results=0,
@@ -126,6 +127,7 @@ class TestAsyncDeasySelect:
         deasy_select = await async_client.deasy_select.query(
             data_connector_name="data_connector_name",
             query="query",
+            banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
             max_results=0,
