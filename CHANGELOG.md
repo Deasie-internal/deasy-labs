@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-04-28)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Features
+
+* **api:** api update ([17cebf6](https://github.com/Deasie-internal/deasy-labs/commit/17cebf6e4530f3fddfbbad8c35efdea496851536))
+* **api:** api update ([738adea](https://github.com/Deasie-internal/deasy-labs/commit/738adea9818d45344c5a3c6c91e1aa87fab31206))
+* **api:** api update ([1aed8ed](https://github.com/Deasie-internal/deasy-labs/commit/1aed8edc196f2a060a7643c82c9e4d2a32d2a08f))
+* **api:** api update ([d693aba](https://github.com/Deasie-internal/deasy-labs/commit/d693aba3d8ffbd795169e7fccf61b35a5479e879))
+* **api:** api update ([760aef4](https://github.com/Deasie-internal/deasy-labs/commit/760aef4d4c3ad4b86762bab0f357ead2e71da26f))
+
 ## 0.1.0-alpha.25 (2025-04-25)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
