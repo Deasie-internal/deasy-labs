@@ -35,14 +35,11 @@ class TestDeasySelect:
             banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
-            max_results=0,
             max_search_reduction=0,
             min_filter_values_to_choose=0,
             min_filters_to_choose=0,
             min_search_reduction=0,
-            query_type="sql",
             return_only_query=True,
-            return_type="results",
             tag_distributions={
                 "data": {
                     "foo": {
@@ -58,6 +55,7 @@ class TestDeasySelect:
                     }
                 }
             },
+            tag_level="file",
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -77,6 +75,8 @@ class TestDeasySelect:
                     "username": "username",
                 }
             ],
+            top_k=0,
+            with_text=True,
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
@@ -130,14 +130,11 @@ class TestAsyncDeasySelect:
             banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
             max_filters_to_choose=0,
-            max_results=0,
             max_search_reduction=0,
             min_filter_values_to_choose=0,
             min_filters_to_choose=0,
             min_search_reduction=0,
-            query_type="sql",
             return_only_query=True,
-            return_type="results",
             tag_distributions={
                 "data": {
                     "foo": {
@@ -153,6 +150,7 @@ class TestAsyncDeasySelect:
                     }
                 }
             },
+            tag_level="file",
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -172,6 +170,8 @@ class TestAsyncDeasySelect:
                     "username": "username",
                 }
             ],
+            top_k=0,
+            with_text=True,
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
