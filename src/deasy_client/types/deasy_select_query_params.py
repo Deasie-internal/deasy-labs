@@ -28,8 +28,6 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     max_filters_to_choose: Optional[int]
 
-    max_results: Optional[int]
-
     max_search_reduction: Optional[float]
 
     min_filter_values_to_choose: Optional[int]
@@ -38,11 +36,7 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     min_search_reduction: Optional[float]
 
-    query_type: Optional[Literal["sql", "deasy"]]
-
     return_only_query: Optional[bool]
-
-    return_type: Optional[Literal["results", "condition", "both"]]
 
     tag_distributions: Optional[TagDistributions]
     """Complete tag distribution data structure for analyzing filter impacts.
@@ -51,9 +45,15 @@ class DeasySelectQueryParams(TypedDict, total=False):
     reductions without executing filters.
     """
 
+    tag_level: Optional[Literal["file", "chunk", "both"]]
+
     tag_names: Optional[List[str]]
 
     tag_schemas: Optional[Iterable[TagSchema]]
+
+    top_k: Optional[int]
+
+    with_text: Optional[bool]
 
 
 class TagDistributionsDataValues(TypedDict, total=False):
