@@ -55,7 +55,7 @@ class TestDeasySelect:
                     }
                 }
             },
-            tag_level="file",
+            tag_level="chunk",
             tag_names=["string"],
             tag_schemas=[
                 {
@@ -150,7 +150,7 @@ class TestAsyncDeasySelect:
                     }
                 }
             },
-            tag_level="file",
+            tag_level="chunk",
             tag_names=["string"],
             tag_schemas=[
                 {

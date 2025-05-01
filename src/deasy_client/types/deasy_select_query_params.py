@@ -45,7 +45,7 @@ class DeasySelectQueryParams(TypedDict, total=False):
     reductions without executing filters.
     """
 
-    tag_level: Optional[Literal["file", "chunk", "both"]]
+    tag_level: Optional[Literal["chunk", "both"]]
 
     tag_names: Optional[List[str]]
 
