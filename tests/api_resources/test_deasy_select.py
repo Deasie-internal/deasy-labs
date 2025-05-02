@@ -34,10 +34,7 @@ class TestDeasySelect:
             query="query",
             banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
-            max_filters_to_choose=0,
-            max_search_reduction=0,
             min_filter_values_to_choose=0,
-            min_filters_to_choose=0,
             min_search_reduction=0,
             return_only_query=True,
             tag_distributions={
@@ -129,10 +126,7 @@ class TestAsyncDeasySelect:
             query="query",
             banned_filters={"foo": ["string"]},
             max_filter_values_to_choose=0,
-            max_filters_to_choose=0,
-            max_search_reduction=0,
             min_filter_values_to_choose=0,
-            min_filters_to_choose=0,
             min_search_reduction=0,
             return_only_query=True,
             tag_distributions={
