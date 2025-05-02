@@ -26,13 +26,7 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     max_filter_values_to_choose: Optional[int]
 
-    max_filters_to_choose: Optional[int]
-
-    max_search_reduction: Optional[float]
-
     min_filter_values_to_choose: Optional[int]
-
-    min_filters_to_choose: Optional[int]
 
     min_search_reduction: Optional[float]
 
