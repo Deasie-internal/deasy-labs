@@ -6,7 +6,13 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SuggestSchemaCreateResponse", "SuggestedTags"]
+__all__ = ["SuggestSchemaCreateResponse", "Node", "SuggestedTags"]
+
+
+class Node(BaseModel):
+    label: Optional[str] = None
+
+    path: Optional[List[str]] = None
 
 
 class SuggestedTags(BaseModel):
@@ -33,6 +39,8 @@ class SuggestSchemaCreateResponse(BaseModel):
     suggestion: Dict[str, object]
 
     message: Optional[str] = None
+
+    node: Optional[Node] = None
 
     status_code: Optional[int] = None
 
