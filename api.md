@@ -70,6 +70,18 @@ Methods:
 
 - <code title="post /suggest_description">client.suggest_description.<a href="./src/deasy_client/resources/suggest_description.py">create</a>(\*\*<a href="src/deasy_client/types/suggest_description_create_params.py">params</a>) -> <a href="./src/deasy_client/types/suggest_description_create_response.py">SuggestDescriptionCreateResponse</a></code>
 
+# Ocr
+
+Types:
+
+```python
+from deasy_client.types import OcrIngestResponse
+```
+
+Methods:
+
+- <code title="post /ocr/ingest">client.ocr.<a href="./src/deasy_client/resources/ocr.py">ingest</a>(\*\*<a href="src/deasy_client/types/ocr_ingest_params.py">params</a>) -> <a href="./src/deasy_client/types/ocr_ingest_response.py">object</a></code>
+
 # Tags
 
 Types:

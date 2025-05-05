@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .ocr import (
+    OcrResource,
+    AsyncOcrResource,
+    OcrResourceWithRawResponse,
+    AsyncOcrResourceWithRawResponse,
+    OcrResourceWithStreamingResponse,
+    AsyncOcrResourceWithStreamingResponse,
+)
 from .tags import (
     TagsResource,
     AsyncTagsResource,
@@ -134,6 +142,12 @@ __all__ = [
     "AsyncSuggestDescriptionResourceWithRawResponse",
     "SuggestDescriptionResourceWithStreamingResponse",
     "AsyncSuggestDescriptionResourceWithStreamingResponse",
+    "OcrResource",
+    "AsyncOcrResource",
+    "OcrResourceWithRawResponse",
+    "AsyncOcrResourceWithRawResponse",
+    "OcrResourceWithStreamingResponse",
+    "AsyncOcrResourceWithStreamingResponse",
     "TagsResource",
     "AsyncTagsResource",
     "TagsResourceWithRawResponse",
