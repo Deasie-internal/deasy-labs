@@ -11,9 +11,13 @@ __all__ = ["MetadataListParams"]
 class MetadataListParams(TypedDict, total=False):
     data_connector_name: Required[str]
 
+    chunk_ids: Optional[List[str]]
+
     conditions: Optional["ConditionInputParam"]
 
     dataslice_id: Optional[str]
+
+    file_names: Optional[List[str]]
 
     include_chunk_level: Optional[bool]
 
