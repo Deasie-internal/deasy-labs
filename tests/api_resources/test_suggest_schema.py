@@ -58,6 +58,7 @@ class TestSuggestSchema:
             suggestion_root="root",
             use_existing_tags=True,
             use_extracted_tags=True,
+            use_mix_llm_and_source=True,
             user_context="user_context",
             values_per_tag=0,
         )
@@ -134,6 +135,7 @@ class TestAsyncSuggestSchema:
             suggestion_root="root",
             use_existing_tags=True,
             use_extracted_tags=True,
+            use_mix_llm_and_source=True,
             user_context="user_context",
             values_per_tag=0,
         )

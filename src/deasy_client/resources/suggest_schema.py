@@ -66,6 +66,7 @@ class SuggestSchemaResource(SyncAPIResource):
         suggestion_root: Optional[Literal["root", "document_type"]] | NotGiven = NOT_GIVEN,
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
+        use_mix_llm_and_source: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
         values_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -124,6 +125,7 @@ class SuggestSchemaResource(SyncAPIResource):
                     "suggestion_root": suggestion_root,
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
+                    "use_mix_llm_and_source": use_mix_llm_and_source,
                     "user_context": user_context,
                     "values_per_tag": values_per_tag,
                 },
@@ -177,6 +179,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
         suggestion_root: Optional[Literal["root", "document_type"]] | NotGiven = NOT_GIVEN,
         use_existing_tags: Optional[bool] | NotGiven = NOT_GIVEN,
         use_extracted_tags: Optional[bool] | NotGiven = NOT_GIVEN,
+        use_mix_llm_and_source: Optional[bool] | NotGiven = NOT_GIVEN,
         user_context: Optional[str] | NotGiven = NOT_GIVEN,
         values_per_tag: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -235,6 +238,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
                     "suggestion_root": suggestion_root,
                     "use_existing_tags": use_existing_tags,
                     "use_extracted_tags": use_extracted_tags,
+                    "use_mix_llm_and_source": use_mix_llm_and_source,
                     "user_context": user_context,
                     "values_per_tag": values_per_tag,
                 },

@@ -6,6 +6,7 @@ from .deasy_tag import DeasyTag as DeasyTag
 from .tag_response import TagResponse as TagResponse
 from .openai_config import OpenAIConfig as OpenAIConfig
 from .condition_output import ConditionOutput as ConditionOutput
+from .ocr_ingest_params import OcrIngestParams as OcrIngestParams
 from .tag_create_params import TagCreateParams as TagCreateParams
 from .tag_delete_params import TagDeleteParams as TagDeleteParams
 from .tag_list_response import TagListResponse as TagListResponse
