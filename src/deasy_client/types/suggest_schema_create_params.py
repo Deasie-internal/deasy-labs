@@ -45,6 +45,8 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     use_extracted_tags: Optional[bool]
 
+    use_mix_llm_and_source: Optional[bool]
+
     user_context: Optional[str]
 
     values_per_tag: Optional[int]

@@ -22,6 +22,7 @@ from ._types import (
 from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import (
+    ocr,
     tags,
     schema,
     classify,
@@ -53,6 +54,7 @@ class Deasy(SyncAPIClient):
     prepare_data: prepare_data.PrepareDataResource
     suggest_schema: suggest_schema.SuggestSchemaResource
     suggest_description: suggest_description.SuggestDescriptionResource
+    ocr: ocr.OcrResource
     tags: tags.TagsResource
     metadata: metadata.MetadataResource
     vdb_connector: vdb_connector.VdbConnectorResource
@@ -126,6 +128,7 @@ class Deasy(SyncAPIClient):
         self.prepare_data = prepare_data.PrepareDataResource(self)
         self.suggest_schema = suggest_schema.SuggestSchemaResource(self)
         self.suggest_description = suggest_description.SuggestDescriptionResource(self)
+        self.ocr = ocr.OcrResource(self)
         self.tags = tags.TagsResource(self)
         self.metadata = metadata.MetadataResource(self)
         self.vdb_connector = vdb_connector.VdbConnectorResource(self)
@@ -245,6 +248,7 @@ class AsyncDeasy(AsyncAPIClient):
     prepare_data: prepare_data.AsyncPrepareDataResource
     suggest_schema: suggest_schema.AsyncSuggestSchemaResource
     suggest_description: suggest_description.AsyncSuggestDescriptionResource
+    ocr: ocr.AsyncOcrResource
     tags: tags.AsyncTagsResource
     metadata: metadata.AsyncMetadataResource
     vdb_connector: vdb_connector.AsyncVdbConnectorResource
@@ -318,6 +322,7 @@ class AsyncDeasy(AsyncAPIClient):
         self.prepare_data = prepare_data.AsyncPrepareDataResource(self)
         self.suggest_schema = suggest_schema.AsyncSuggestSchemaResource(self)
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResource(self)
+        self.ocr = ocr.AsyncOcrResource(self)
         self.tags = tags.AsyncTagsResource(self)
         self.metadata = metadata.AsyncMetadataResource(self)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResource(self)
@@ -440,6 +445,7 @@ class DeasyWithRawResponse:
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
+        self.ocr = ocr.OcrResourceWithRawResponse(client.ocr)
         self.tags = tags.TagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithRawResponse(client.vdb_connector)
@@ -458,6 +464,7 @@ class AsyncDeasyWithRawResponse:
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithRawResponse(
             client.suggest_description
         )
+        self.ocr = ocr.AsyncOcrResourceWithRawResponse(client.ocr)
         self.tags = tags.AsyncTagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithRawResponse(client.vdb_connector)
@@ -476,6 +483,7 @@ class DeasyWithStreamedResponse:
         self.suggest_description = suggest_description.SuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )
+        self.ocr = ocr.OcrResourceWithStreamingResponse(client.ocr)
         self.tags = tags.TagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithStreamingResponse(client.vdb_connector)
@@ -494,6 +502,7 @@ class AsyncDeasyWithStreamedResponse:
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResourceWithStreamingResponse(
             client.suggest_description
         )
+        self.ocr = ocr.AsyncOcrResourceWithStreamingResponse(client.ocr)
         self.tags = tags.AsyncTagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithStreamingResponse(client.vdb_connector)
