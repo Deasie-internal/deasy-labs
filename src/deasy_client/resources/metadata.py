@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 
 import httpx
 
@@ -58,8 +58,10 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        chunk_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -79,6 +81,15 @@ class MetadataResource(SyncAPIResource):
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
             include_chunk_level: Whether to include the chunk-level metadata.
+            file_names: The names of the files to include in the metadata.
+            chunk_ids: The ids of the chunks to include in the metadata.
+            group_by: The group by to group the metadata by.
+
+        Returns:
+
+            metadata: The metadata for the files.
+            without chunk_ids -> {filename: {tag_id: {chunk_level: {chunk_id: metadata, ...}, file_level: metadata}}}
+            with chunk_ids -> {chunk_id: {metadata}}
 
         Args:
           extra_headers: Send extra headers
@@ -94,8 +105,10 @@ class MetadataResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "chunk_ids": chunk_ids,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
+                    "file_names": file_names,
                     "include_chunk_level": include_chunk_level,
                     "tag_names": tag_names,
                 },
@@ -259,7 +272,22 @@ class MetadataResource(SyncAPIResource):
     def upsert(
         self,
         *,
-        metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
+        metadata: Union[
+            Dict[
+                str,
+                Dict[
+                    str,
+                    metadata_upsert_params.MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUnionMember0ItemItem,
+                ],
+            ],
+            Dict[
+                str,
+                Dict[
+                    str,
+                    metadata_upsert_params.MetadataUnionMember1MetadataUnionMember1ItemMetadataUnionMember1MetadataUnionMember1ItemItem,
+                ],
+            ],
+        ],
         data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -328,8 +356,10 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        chunk_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -349,6 +379,15 @@ class AsyncMetadataResource(AsyncAPIResource):
             conditions: The conditions to filter the files by.
             tag_names: The names of the tags to include in the metadata.
             include_chunk_level: Whether to include the chunk-level metadata.
+            file_names: The names of the files to include in the metadata.
+            chunk_ids: The ids of the chunks to include in the metadata.
+            group_by: The group by to group the metadata by.
+
+        Returns:
+
+            metadata: The metadata for the files.
+            without chunk_ids -> {filename: {tag_id: {chunk_level: {chunk_id: metadata, ...}, file_level: metadata}}}
+            with chunk_ids -> {chunk_id: {metadata}}
 
         Args:
           extra_headers: Send extra headers
@@ -364,8 +403,10 @@ class AsyncMetadataResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "chunk_ids": chunk_ids,
                     "conditions": conditions,
                     "dataslice_id": dataslice_id,
+                    "file_names": file_names,
                     "include_chunk_level": include_chunk_level,
                     "tag_names": tag_names,
                 },
@@ -529,7 +570,22 @@ class AsyncMetadataResource(AsyncAPIResource):
     async def upsert(
         self,
         *,
-        metadata: Dict[str, Dict[str, metadata_upsert_params.MetadataMetadataItem]],
+        metadata: Union[
+            Dict[
+                str,
+                Dict[
+                    str,
+                    metadata_upsert_params.MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUnionMember0ItemItem,
+                ],
+            ],
+            Dict[
+                str,
+                Dict[
+                    str,
+                    metadata_upsert_params.MetadataUnionMember1MetadataUnionMember1ItemMetadataUnionMember1MetadataUnionMember1ItemItem,
+                ],
+            ],
+        ],
         data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

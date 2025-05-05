@@ -36,6 +36,7 @@ class TestMetadata:
     def test_method_list_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list(
             data_connector_name="data_connector_name",
+            chunk_ids=["string"],
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -46,6 +47,7 @@ class TestMetadata:
                 },
             },
             dataslice_id="dataslice_id",
+            file_names=["string"],
             include_chunk_level=True,
             tag_names=["string"],
         )
@@ -307,6 +309,7 @@ class TestAsyncMetadata:
     async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
             data_connector_name="data_connector_name",
+            chunk_ids=["string"],
             conditions={
                 "children": [],
                 "condition": "AND",
@@ -317,6 +320,7 @@ class TestAsyncMetadata:
                 },
             },
             dataslice_id="dataslice_id",
+            file_names=["string"],
             include_chunk_level=True,
             tag_names=["string"],
         )
