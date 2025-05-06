@@ -82,6 +82,18 @@ Methods:
 
 - <code title="post /ocr/ingest">client.ocr.<a href="./src/deasy_client/resources/ocr.py">ingest</a>(\*\*<a href="src/deasy_client/types/ocr_ingest_params.py">params</a>) -> <a href="./src/deasy_client/types/ocr_ingest_response.py">object</a></code>
 
+# TaskStatus
+
+Types:
+
+```python
+from deasy_client.types import TaskStatusTaskStatusResponse
+```
+
+Methods:
+
+- <code title="post /progress_tracker/task_status">client.task_status.<a href="./src/deasy_client/resources/task_status.py">task_status</a>(\*\*<a href="src/deasy_client/types/task_status_task_status_params.py">params</a>) -> <a href="./src/deasy_client/types/task_status_task_status_response.py">TaskStatusTaskStatusResponse</a></code>
+
 # Tags
 
 Types:
