@@ -48,6 +48,14 @@ from .dataslice import (
     DatasliceResourceWithStreamingResponse,
     AsyncDatasliceResourceWithStreamingResponse,
 )
+from .task_status import (
+    TaskStatusResource,
+    AsyncTaskStatusResource,
+    TaskStatusResourceWithRawResponse,
+    AsyncTaskStatusResourceWithRawResponse,
+    TaskStatusResourceWithStreamingResponse,
+    AsyncTaskStatusResourceWithStreamingResponse,
+)
 from .deasy_select import (
     DeasySelectResource,
     AsyncDeasySelectResource,
@@ -148,6 +156,12 @@ __all__ = [
     "AsyncOcrResourceWithRawResponse",
     "OcrResourceWithStreamingResponse",
     "AsyncOcrResourceWithStreamingResponse",
+    "TaskStatusResource",
+    "AsyncTaskStatusResource",
+    "TaskStatusResourceWithRawResponse",
+    "AsyncTaskStatusResourceWithRawResponse",
+    "TaskStatusResourceWithStreamingResponse",
+    "AsyncTaskStatusResourceWithStreamingResponse",
     "TagsResource",
     "AsyncTagsResource",
     "TagsResourceWithRawResponse",
