@@ -172,7 +172,7 @@ client.with_options(max_retries=5).metadata.list(
 
 ### Timeouts
 
-By default requests time out after 1 minute. You can configure this with a `timeout` option,
+By default requests time out after 10 minutes. You can configure this with a `timeout` option,
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
@@ -182,7 +182,7 @@ from deasy_client import Deasy
 client = Deasy(
     x_token="My X Token",
     x_user="My X User",
-    # 20 seconds (default is 1 minute)
+    # 20 seconds (default is 10 minutes)
     timeout=20.0,
 )
 
