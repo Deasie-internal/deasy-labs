@@ -30,6 +30,7 @@ class TestSuggestSchema:
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         suggest_schema = client.suggest_schema.create(
             data_connector_name="data_connector_name",
+            auto_save=True,
             condition={
                 "children": [],
                 "condition": "AND",
@@ -107,6 +108,7 @@ class TestAsyncSuggestSchema:
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_schema = await async_client.suggest_schema.create(
             data_connector_name="data_connector_name",
+            auto_save=True,
             condition={
                 "children": [],
                 "condition": "AND",
