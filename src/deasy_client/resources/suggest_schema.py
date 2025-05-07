@@ -49,6 +49,7 @@ class SuggestSchemaResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        auto_save: Optional[bool] | NotGiven = NOT_GIVEN,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -108,6 +109,7 @@ class SuggestSchemaResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "auto_save": auto_save,
                     "condition": condition,
                     "context_level": context_level,
                     "current_tree": current_tree,
@@ -162,6 +164,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        auto_save: Optional[bool] | NotGiven = NOT_GIVEN,
         condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
         context_level: Optional[str] | NotGiven = NOT_GIVEN,
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
@@ -221,6 +224,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "auto_save": auto_save,
                     "condition": condition,
                     "context_level": context_level,
                     "current_tree": current_tree,
