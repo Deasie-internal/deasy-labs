@@ -11,6 +11,8 @@ __all__ = ["SuggestSchemaCreateParams", "Node"]
 class SuggestSchemaCreateParams(TypedDict, total=False):
     data_connector_name: Required[str]
 
+    auto_save: Optional[bool]
+
     condition: Optional["ConditionInputParam"]
 
     context_level: Optional[str]
