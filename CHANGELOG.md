@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.33 (2025-05-10)
+
+Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([3ee9e71](https://github.com/Deasie-internal/deasy-labs/commit/3ee9e719acc5c696c711cf9daf9696497d074f44))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([c1830c2](https://github.com/Deasie-internal/deasy-labs/commit/c1830c2d5d2dddc08dd26810429d5788083ef740))
+
 ## 0.1.0-alpha.32 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
