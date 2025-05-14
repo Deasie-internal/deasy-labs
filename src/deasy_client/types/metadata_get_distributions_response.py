@@ -15,8 +15,6 @@ class TagsSchema(BaseModel):
 
     name: str
 
-    output_type: str
-
     available_values: Optional[List[str]] = None
 
     created_at: Optional[datetime] = None
@@ -29,7 +27,11 @@ class TagsSchema(BaseModel):
 
     neg_examples: Optional[List[str]] = None
 
+    output_type: Optional[str] = None
+
     retry_feedback: Optional[Dict[str, object]] = None
+
+    strategy: Optional[str] = None
 
     tag_id: Optional[str] = None
 
