@@ -40,8 +40,6 @@ class TagDatas(TypedDict, total=False):
 
     name: Required[str]
 
-    output_type: Required[str]
-
     available_values: Optional[List[str]]
 
     created_at: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
@@ -54,7 +52,11 @@ class TagDatas(TypedDict, total=False):
 
     neg_examples: Optional[List[str]]
 
+    output_type: Optional[str]
+
     retry_feedback: Optional[Dict[str, object]]
+
+    strategy: Optional[str]
 
     tag_id: Optional[str]
 
