@@ -24,12 +24,6 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     banned_filters: Optional[Dict[str, List[str]]]
 
-    max_filter_values_to_choose: Optional[int]
-
-    min_filter_values_to_choose: Optional[int]
-
-    min_search_reduction: Optional[float]
-
     return_only_query: Optional[bool]
 
     tag_distributions: Optional[TagDistributions]
@@ -75,8 +69,6 @@ class TagSchema(TypedDict, total=False):
 
     name: Required[str]
 
-    output_type: Required[str]
-
     available_values: Optional[List[str]]
 
     created_at: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
@@ -89,7 +81,11 @@ class TagSchema(TypedDict, total=False):
 
     neg_examples: Optional[List[str]]
 
+    output_type: Optional[str]
+
     retry_feedback: Optional[Dict[str, object]]
+
+    strategy: Optional[str]
 
     tag_id: Optional[str]
 

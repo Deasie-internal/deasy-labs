@@ -33,9 +33,6 @@ class TestDeasySelect:
             data_connector_name="data_connector_name",
             query="query",
             banned_filters={"foo": ["string"]},
-            max_filter_values_to_choose=0,
-            min_filter_values_to_choose=0,
-            min_search_reduction=0,
             return_only_query=True,
             tag_distributions={
                 "data": {
@@ -58,14 +55,15 @@ class TestDeasySelect:
                 {
                     "description": "description",
                     "name": "name",
-                    "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
+                    "output_type": "output_type",
                     "retry_feedback": {"foo": "bar"},
+                    "strategy": "strategy",
                     "tag_id": "tag_id",
                     "tuned": 0,
                     "updated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -125,9 +123,6 @@ class TestAsyncDeasySelect:
             data_connector_name="data_connector_name",
             query="query",
             banned_filters={"foo": ["string"]},
-            max_filter_values_to_choose=0,
-            min_filter_values_to_choose=0,
-            min_search_reduction=0,
             return_only_query=True,
             tag_distributions={
                 "data": {
@@ -150,14 +145,15 @@ class TestAsyncDeasySelect:
                 {
                     "description": "description",
                     "name": "name",
-                    "output_type": "output_type",
                     "available_values": ["string"],
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "date_format": "date_format",
                     "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
+                    "output_type": "output_type",
                     "retry_feedback": {"foo": "bar"},
+                    "strategy": "strategy",
                     "tag_id": "tag_id",
                     "tuned": 0,
                     "updated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
