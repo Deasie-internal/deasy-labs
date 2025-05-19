@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.35 (2025-05-19)
+
+Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
+
+### Features
+
+* **api:** api update ([ea4d514](https://github.com/Deasie-internal/deasy-labs/commit/ea4d51471fc4cd0e674e833f9617edbc6870216e))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([7ceff61](https://github.com/Deasie-internal/deasy-labs/commit/7ceff619f77243059e30724fb22b2ef71f8cff95))
+* **ci:** upload sdks to package manager ([65b22cd](https://github.com/Deasie-internal/deasy-labs/commit/65b22cdf032a080f1ef3896c3f6abbf2a87e588d))
+* **internal:** codegen related update ([a0b2f45](https://github.com/Deasie-internal/deasy-labs/commit/a0b2f4576cd82105013b6d3d5a3ecfbe8e65fb7e))
+
 ## 0.1.0-alpha.34 (2025-05-14)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
