@@ -15,7 +15,7 @@ class TagsSchema(BaseModel):
 
     name: str
 
-    available_values: Optional[List[str]] = None
+    available_values: Optional[List[Union[str, float]]] = None
 
     created_at: Optional[datetime] = None
 
@@ -34,6 +34,8 @@ class TagsSchema(BaseModel):
     strategy: Optional[str] = None
 
     tag_id: Optional[str] = None
+
+    truncated_available_values: Optional[bool] = None
 
     tuned: Optional[int] = None
 
