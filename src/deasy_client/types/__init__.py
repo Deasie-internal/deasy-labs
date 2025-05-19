@@ -34,6 +34,7 @@ from .dataslice_create_params import DatasliceCreateParams as DatasliceCreatePar
 from .dataslice_delete_params import DatasliceDeleteParams as DatasliceDeleteParams
 from .dataslice_list_response import DatasliceListResponse as DatasliceListResponse
 from .qdrant_connector_config import QdrantConnectorConfig as QdrantConnectorConfig
+from .document_text_get_params import DocumentTextGetParams as DocumentTextGetParams
 from .metadata_delete_response import MetadataDeleteResponse as MetadataDeleteResponse
 from .metadata_upsert_response import MetadataUpsertResponse as MetadataUpsertResponse
 from .dataslice_create_response import DatasliceCreateResponse as DatasliceCreateResponse
@@ -42,6 +43,7 @@ from .deasy_select_query_params import DeasySelectQueryParams as DeasySelectQuer
 from .s3_connector_config_param import S3ConnectorConfigParam as S3ConnectorConfigParam
 from .schema_operation_response import SchemaOperationResponse as SchemaOperationResponse
 from .dataslice_get_files_params import DatasliceGetFilesParams as DatasliceGetFilesParams
+from .document_text_get_response import DocumentTextGetResponse as DocumentTextGetResponse
 from .prepare_data_create_params import PrepareDataCreateParams as PrepareDataCreateParams
 from .llm_connector_create_params import LlmConnectorCreateParams as LlmConnectorCreateParams
 from .llm_connector_delete_params import LlmConnectorDeleteParams as LlmConnectorDeleteParams

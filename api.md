@@ -94,6 +94,18 @@ Methods:
 
 - <code title="post /progress_tracker/task_status">client.task_status.<a href="./src/deasy_client/resources/task_status.py">task_status</a>(\*\*<a href="src/deasy_client/types/task_status_task_status_params.py">params</a>) -> <a href="./src/deasy_client/types/task_status_task_status_response.py">TaskStatusTaskStatusResponse</a></code>
 
+# DocumentText
+
+Types:
+
+```python
+from deasy_client.types import DocumentTextGetResponse
+```
+
+Methods:
+
+- <code title="post /data/document_text">client.document_text.<a href="./src/deasy_client/resources/document_text.py">get</a>(\*\*<a href="src/deasy_client/types/document_text_get_params.py">params</a>) -> <a href="./src/deasy_client/types/document_text_get_response.py">DocumentTextGetResponse</a></code>
+
 # Tags
 
 Types:
