@@ -69,7 +69,7 @@ class TagSchema(TypedDict, total=False):
 
     name: Required[str]
 
-    available_values: Optional[List[str]]
+    available_values: Optional[List[Union[str, float]]]
 
     created_at: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
 
@@ -88,6 +88,8 @@ class TagSchema(TypedDict, total=False):
     strategy: Optional[str]
 
     tag_id: Optional[str]
+
+    truncated_available_values: Optional[bool]
 
     tuned: Optional[int]
 
