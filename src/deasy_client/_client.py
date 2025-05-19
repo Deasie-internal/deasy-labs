@@ -31,6 +31,7 @@ from .resources import (
     deasy_select,
     prepare_data,
     classify_bulk,
+    document_text,
     llm_connector,
     vdb_connector,
     suggest_schema,
@@ -57,6 +58,7 @@ class Deasy(SyncAPIClient):
     suggest_description: suggest_description.SuggestDescriptionResource
     ocr: ocr.OcrResource
     task_status: task_status.TaskStatusResource
+    document_text: document_text.DocumentTextResource
     tags: tags.TagsResource
     metadata: metadata.MetadataResource
     vdb_connector: vdb_connector.VdbConnectorResource
@@ -132,6 +134,7 @@ class Deasy(SyncAPIClient):
         self.suggest_description = suggest_description.SuggestDescriptionResource(self)
         self.ocr = ocr.OcrResource(self)
         self.task_status = task_status.TaskStatusResource(self)
+        self.document_text = document_text.DocumentTextResource(self)
         self.tags = tags.TagsResource(self)
         self.metadata = metadata.MetadataResource(self)
         self.vdb_connector = vdb_connector.VdbConnectorResource(self)
@@ -253,6 +256,7 @@ class AsyncDeasy(AsyncAPIClient):
     suggest_description: suggest_description.AsyncSuggestDescriptionResource
     ocr: ocr.AsyncOcrResource
     task_status: task_status.AsyncTaskStatusResource
+    document_text: document_text.AsyncDocumentTextResource
     tags: tags.AsyncTagsResource
     metadata: metadata.AsyncMetadataResource
     vdb_connector: vdb_connector.AsyncVdbConnectorResource
@@ -328,6 +332,7 @@ class AsyncDeasy(AsyncAPIClient):
         self.suggest_description = suggest_description.AsyncSuggestDescriptionResource(self)
         self.ocr = ocr.AsyncOcrResource(self)
         self.task_status = task_status.AsyncTaskStatusResource(self)
+        self.document_text = document_text.AsyncDocumentTextResource(self)
         self.tags = tags.AsyncTagsResource(self)
         self.metadata = metadata.AsyncMetadataResource(self)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResource(self)
@@ -452,6 +457,7 @@ class DeasyWithRawResponse:
         )
         self.ocr = ocr.OcrResourceWithRawResponse(client.ocr)
         self.task_status = task_status.TaskStatusResourceWithRawResponse(client.task_status)
+        self.document_text = document_text.DocumentTextResourceWithRawResponse(client.document_text)
         self.tags = tags.TagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithRawResponse(client.vdb_connector)
@@ -472,6 +478,7 @@ class AsyncDeasyWithRawResponse:
         )
         self.ocr = ocr.AsyncOcrResourceWithRawResponse(client.ocr)
         self.task_status = task_status.AsyncTaskStatusResourceWithRawResponse(client.task_status)
+        self.document_text = document_text.AsyncDocumentTextResourceWithRawResponse(client.document_text)
         self.tags = tags.AsyncTagsResourceWithRawResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithRawResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithRawResponse(client.vdb_connector)
@@ -492,6 +499,7 @@ class DeasyWithStreamedResponse:
         )
         self.ocr = ocr.OcrResourceWithStreamingResponse(client.ocr)
         self.task_status = task_status.TaskStatusResourceWithStreamingResponse(client.task_status)
+        self.document_text = document_text.DocumentTextResourceWithStreamingResponse(client.document_text)
         self.tags = tags.TagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.MetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.VdbConnectorResourceWithStreamingResponse(client.vdb_connector)
@@ -512,6 +520,7 @@ class AsyncDeasyWithStreamedResponse:
         )
         self.ocr = ocr.AsyncOcrResourceWithStreamingResponse(client.ocr)
         self.task_status = task_status.AsyncTaskStatusResourceWithStreamingResponse(client.task_status)
+        self.document_text = document_text.AsyncDocumentTextResourceWithStreamingResponse(client.document_text)
         self.tags = tags.AsyncTagsResourceWithStreamingResponse(client.tags)
         self.metadata = metadata.AsyncMetadataResourceWithStreamingResponse(client.metadata)
         self.vdb_connector = vdb_connector.AsyncVdbConnectorResourceWithStreamingResponse(client.vdb_connector)

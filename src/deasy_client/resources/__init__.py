@@ -80,6 +80,14 @@ from .classify_bulk import (
     ClassifyBulkResourceWithStreamingResponse,
     AsyncClassifyBulkResourceWithStreamingResponse,
 )
+from .document_text import (
+    DocumentTextResource,
+    AsyncDocumentTextResource,
+    DocumentTextResourceWithRawResponse,
+    AsyncDocumentTextResourceWithRawResponse,
+    DocumentTextResourceWithStreamingResponse,
+    AsyncDocumentTextResourceWithStreamingResponse,
+)
 from .llm_connector import (
     LlmConnectorResource,
     AsyncLlmConnectorResource,
@@ -162,6 +170,12 @@ __all__ = [
     "AsyncTaskStatusResourceWithRawResponse",
     "TaskStatusResourceWithStreamingResponse",
     "AsyncTaskStatusResourceWithStreamingResponse",
+    "DocumentTextResource",
+    "AsyncDocumentTextResource",
+    "DocumentTextResourceWithRawResponse",
+    "AsyncDocumentTextResourceWithRawResponse",
+    "DocumentTextResourceWithStreamingResponse",
+    "AsyncDocumentTextResourceWithStreamingResponse",
     "TagsResource",
     "AsyncTagsResource",
     "TagsResourceWithRawResponse",
