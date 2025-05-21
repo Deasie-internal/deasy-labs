@@ -28,6 +28,16 @@ class TestDocumentText:
 
     @pytest.mark.skip()
     @parametrize
+    def test_method_get_with_all_params(self, client: Deasy) -> None:
+        document_text = client.document_text.get(
+            data_connector_name="data_connector_name",
+            file_names=["string"],
+            chunk_ids=["string"],
+        )
+        assert_matches_type(DocumentTextGetResponse, document_text, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
     def test_raw_response_get(self, client: Deasy) -> None:
         response = client.document_text.with_raw_response.get(
             data_connector_name="data_connector_name",
@@ -64,6 +74,16 @@ class TestAsyncDocumentText:
         document_text = await async_client.document_text.get(
             data_connector_name="data_connector_name",
             file_names=["string"],
+        )
+        assert_matches_type(DocumentTextGetResponse, document_text, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_get_with_all_params(self, async_client: AsyncDeasy) -> None:
+        document_text = await async_client.document_text.get(
+            data_connector_name="data_connector_name",
+            file_names=["string"],
+            chunk_ids=["string"],
         )
         assert_matches_type(DocumentTextGetResponse, document_text, path=["response"])
 
