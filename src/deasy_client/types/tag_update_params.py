@@ -29,6 +29,8 @@ class TagData(TypedDict, total=False):
 
     max_values: Annotated[Optional[int], PropertyInfo(alias="maxValues")]
 
+    smart_file_consolidation: Optional[bool]
+
     tag_id: Optional[str]
 
     tuned: Optional[int]
