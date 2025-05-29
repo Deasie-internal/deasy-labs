@@ -30,6 +30,8 @@ class SuggestedTags(BaseModel):
 
     max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
 
+    smart_file_consolidation: Optional[bool] = None
+
     tag_id: Optional[str] = None
 
     tuned: Optional[int] = None
