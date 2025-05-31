@@ -47,6 +47,7 @@ class PrepareDataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        job_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         total_data_sets: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -79,6 +80,7 @@ class PrepareDataResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "job_id": job_id,
                     "llm_profile_name": llm_profile_name,
                     "total_data_sets": total_data_sets,
                 },
@@ -115,6 +117,7 @@ class AsyncPrepareDataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
+        job_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         total_data_sets: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -147,6 +150,7 @@ class AsyncPrepareDataResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "data_connector_name": data_connector_name,
+                    "job_id": job_id,
                     "llm_profile_name": llm_profile_name,
                     "total_data_sets": total_data_sets,
                 },

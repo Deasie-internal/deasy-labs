@@ -11,6 +11,8 @@ __all__ = ["PrepareDataCreateParams"]
 class PrepareDataCreateParams(TypedDict, total=False):
     data_connector_name: Required[str]
 
+    job_id: Optional[str]
+
     llm_profile_name: Optional[str]
 
     total_data_sets: Optional[int]

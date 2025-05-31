@@ -1,14 +1,8 @@
 # DeasySelect
 
-Types:
-
-```python
-from deasy_client.types import DeasySelectQueryResponse
-```
-
 Methods:
 
-- <code title="post /deasy_select/query">client.deasy_select.<a href="./src/deasy_client/resources/deasy_select.py">query</a>(\*\*<a href="src/deasy_client/types/deasy_select_query_params.py">params</a>) -> <a href="./src/deasy_client/types/deasy_select_query_response.py">object</a></code>
+- <code title="post /deasy_select/query">client.deasy_select.<a href="./src/deasy_client/resources/deasy_select.py">query</a>(\*\*<a href="src/deasy_client/types/deasy_select_query_params.py">params</a>) -> object</code>
 
 # ClassifyBulk
 
@@ -72,15 +66,9 @@ Methods:
 
 # Ocr
 
-Types:
-
-```python
-from deasy_client.types import OcrIngestResponse
-```
-
 Methods:
 
-- <code title="post /ocr/ingest">client.ocr.<a href="./src/deasy_client/resources/ocr.py">ingest</a>(\*\*<a href="src/deasy_client/types/ocr_ingest_params.py">params</a>) -> <a href="./src/deasy_client/types/ocr_ingest_response.py">object</a></code>
+- <code title="post /ocr/ingest">client.ocr.<a href="./src/deasy_client/resources/ocr.py">ingest</a>(\*\*<a href="src/deasy_client/types/ocr_ingest_params.py">params</a>) -> object</code>
 
 # TaskStatus
 
@@ -221,15 +209,9 @@ Methods:
 
 ## Export
 
-Types:
-
-```python
-from deasy_client.types.dataslice import ExportExportMetadataResponse
-```
-
 Methods:
 
-- <code title="post /dataslice/export/metadata">client.dataslice.export.<a href="./src/deasy_client/resources/dataslice/export.py">export_metadata</a>(\*\*<a href="src/deasy_client/types/dataslice/export_export_metadata_params.py">params</a>) -> <a href="./src/deasy_client/types/dataslice/export_export_metadata_response.py">object</a></code>
+- <code title="post /dataslice/export/metadata">client.dataslice.export.<a href="./src/deasy_client/resources/dataslice/export.py">export_metadata</a>(\*\*<a href="src/deasy_client/types/dataslice/export_export_metadata_params.py">params</a>) -> object</code>
 
 # Schema
 

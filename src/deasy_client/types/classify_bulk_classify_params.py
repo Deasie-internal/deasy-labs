@@ -56,6 +56,8 @@ class TagDatas(TypedDict, total=False):
 
     retry_feedback: Optional[Dict[str, object]]
 
+    smart_file_consolidation: Optional[bool]
+
     strategy: Optional[str]
 
     tag_id: Optional[str]

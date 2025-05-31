@@ -31,6 +31,8 @@ class DeasyTag(BaseModel):
 
     output_type: Optional[str] = None
 
+    smart_file_consolidation: Optional[bool] = None
+
     tuned: Optional[int] = None
 
     updated_at: Optional[datetime] = None

@@ -31,6 +31,8 @@ class TagsSchema(BaseModel):
 
     retry_feedback: Optional[Dict[str, object]] = None
 
+    smart_file_consolidation: Optional[bool] = None
+
     strategy: Optional[str] = None
 
     tag_id: Optional[str] = None

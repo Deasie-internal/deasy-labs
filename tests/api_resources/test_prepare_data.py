@@ -30,6 +30,7 @@ class TestPrepareData:
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         prepare_data = client.prepare_data.create(
             data_connector_name="data_connector_name",
+            job_id="job_id",
             llm_profile_name="llm_profile_name",
             total_data_sets=0,
         )
@@ -78,6 +79,7 @@ class TestAsyncPrepareData:
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         prepare_data = await async_client.prepare_data.create(
             data_connector_name="data_connector_name",
+            job_id="job_id",
             llm_profile_name="llm_profile_name",
             total_data_sets=0,
         )
