@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.38 (2025-06-01)
+
+Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
+
+### Features
+
+* **api:** api update ([40d923d](https://github.com/Deasie-internal/deasy-labs/commit/40d923da8fbf3c9cc92aec56d5cbca986fb7db9b))
+
+
+### Bug Fixes
+
+* **docs/api:** remove references to nonexistent types ([fa523a2](https://github.com/Deasie-internal/deasy-labs/commit/fa523a2d1b43344069c0e48ff8c133f642b8b7c1))
+
 ## 0.1.0-alpha.37 (2025-05-22)
 
 Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
