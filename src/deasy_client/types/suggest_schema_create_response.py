@@ -26,11 +26,11 @@ class SuggestedTags(BaseModel):
 
     description: Optional[str] = None
 
+    enhance_file_metadata: Optional[bool] = None
+
     examples: Optional[List[Union[Dict[str, object], str]]] = None
 
     max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
-
-    smart_file_consolidation: Optional[bool] = None
 
     tag_id: Optional[str] = None
 
@@ -47,3 +47,5 @@ class SuggestSchemaCreateResponse(BaseModel):
     status_code: Optional[int] = None
 
     suggested_tags: Optional[Dict[str, SuggestedTags]] = None
+
+    tag_not_found_rates: Optional[Dict[str, float]] = None

@@ -21,7 +21,9 @@ class TagsSchema(BaseModel):
 
     date_format: Optional[str] = None
 
-    examples: Optional[List[Union[str, Dict[str, object]]]] = None
+    enhance_file_metadata: Optional[bool] = None
+
+    examples: Optional[List[Union[Dict[str, object], str]]] = None
 
     max_values: Union[int, str, List[object], None] = FieldInfo(alias="maxValues", default=None)
 
@@ -30,8 +32,6 @@ class TagsSchema(BaseModel):
     output_type: Optional[str] = None
 
     retry_feedback: Optional[Dict[str, object]] = None
-
-    smart_file_consolidation: Optional[bool] = None
 
     strategy: Optional[str] = None
 
