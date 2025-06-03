@@ -25,13 +25,13 @@ class DeasyTag(BaseModel):
 
     date_format: Optional[str] = None
 
+    enhance_file_metadata: Optional[bool] = None
+
     examples: Optional[List[Union[Dict[str, object], str]]] = None
 
     max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
 
     output_type: Optional[str] = None
-
-    smart_file_consolidation: Optional[bool] = None
 
     tuned: Optional[int] = None
 

@@ -75,7 +75,9 @@ class TagSchema(TypedDict, total=False):
 
     date_format: Optional[str]
 
-    examples: Optional[List[Union[str, Dict[str, object]]]]
+    enhance_file_metadata: Optional[bool]
+
+    examples: Optional[List[Union[Dict[str, object], str]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
@@ -84,8 +86,6 @@ class TagSchema(TypedDict, total=False):
     output_type: Optional[str]
 
     retry_feedback: Optional[Dict[str, object]]
-
-    smart_file_consolidation: Optional[bool]
 
     strategy: Optional[str]
 

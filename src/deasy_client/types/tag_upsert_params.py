@@ -25,11 +25,11 @@ class TagData(TypedDict, total=False):
 
     description: Optional[str]
 
+    enhance_file_metadata: Optional[bool]
+
     examples: Optional[List[Union[Dict[str, object], str]]]
 
     max_values: Annotated[Optional[int], PropertyInfo(alias="maxValues")]
-
-    smart_file_consolidation: Optional[bool]
 
     tag_id: Optional[str]
 
