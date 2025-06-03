@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.39 (2025-06-03)
+
+Full Changelog: [v0.1.0-alpha.38...v0.1.0-alpha.39](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.38...v0.1.0-alpha.39)
+
+### Features
+
+* **api:** api update ([70f5979](https://github.com/Deasie-internal/deasy-labs/commit/70f5979a2452f36841dd9d45a828637971ed89c7))
+* **client:** add follow_redirects request option ([872fd24](https://github.com/Deasie-internal/deasy-labs/commit/872fd24b8ca3d65bb75dbbd128d593080437649b))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([bb06f3f](https://github.com/Deasie-internal/deasy-labs/commit/bb06f3fd03b6859d1a4b376c2354ae086563569a))
+* **docs:** remove unnecessary param examples ([afad3d8](https://github.com/Deasie-internal/deasy-labs/commit/afad3d820dd61332f48bfd55b5ac658737df424c))
+
 ## 0.1.0-alpha.38 (2025-06-01)
 
 Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
