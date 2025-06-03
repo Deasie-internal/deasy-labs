@@ -86,15 +86,7 @@ client = Deasy(
 
 metadata = client.metadata.list(
     data_connector_name="data_connector_name",
-    conditions={
-        "children": [],
-        "condition": "AND",
-        "tag": {
-            "name": "name",
-            "values": ["string"],
-            "operator": "operator",
-        },
-    },
+    conditions={},
 )
 print(metadata.conditions)
 ```
