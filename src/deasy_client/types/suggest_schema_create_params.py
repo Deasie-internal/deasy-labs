@@ -21,11 +21,13 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     dataslice_id: Optional[str]
 
+    deep_suggestion_mode: Optional[bool]
+
     file_names: Optional[List[str]]
 
     first_level_clusters: Optional[int]
 
-    graph_tag_type: Optional[Literal["open_ended", "binary", "mixed", "defined_values"]]
+    graph_tag_type: Optional[Literal["open_ended", "binary", "mixed", "defined_values", "hierarchy"]]
 
     llm_profile_name: Optional[str]
 
@@ -47,7 +49,7 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     set_max_values: Optional[bool]
 
-    suggestion_root: Optional[Literal["root", "document_type"]]
+    third_level_clusters: Optional[int]
 
     use_existing_tags: Optional[bool]
 
