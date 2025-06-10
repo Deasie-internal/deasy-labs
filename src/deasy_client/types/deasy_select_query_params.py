@@ -22,7 +22,7 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     query: Required[str]
 
-    banned_filters: Optional[Dict[str, List[str]]]
+    banned_filters: Optional[Dict[str, List[Union[str, float]]]]
 
     return_only_query: Optional[bool]
 
