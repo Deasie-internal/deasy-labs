@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -48,7 +48,7 @@ class DeasySelectResource(SyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, List[str]]] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
@@ -129,7 +129,7 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, List[str]]] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
