@@ -33,20 +33,22 @@ class TestDeasySelect:
             data_connector_name="data_connector_name",
             query="query",
             banned_filters={"foo": ["string"]},
+            file_hybrid_search_boost=0,
+            metadata_hybrid_search=True,
+            metadata_hybrid_search_boost=0,
+            metadata_reranker=True,
             return_only_query=True,
             tag_distributions={
-                "data": {
-                    "foo": {
-                        "values": {
-                            "foo": {
-                                "file_count": 0,
-                                "chunk_count": 0,
-                                "percentage": 0,
-                            }
-                        },
-                        "coverage_percentage": 0,
-                        "total_count": 0,
-                    }
+                "foo": {
+                    "values": {
+                        "foo": {
+                            "file_count": 0,
+                            "chunk_count": 0,
+                            "percentage": 0,
+                        }
+                    },
+                    "coverage_percentage": 0,
+                    "total_count": 0,
                 }
             },
             tag_level="chunk",
@@ -59,7 +61,7 @@ class TestDeasySelect:
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "date_format": "date_format",
                     "enhance_file_metadata": True,
-                    "examples": [{"foo": "bar"}],
+                    "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
                     "output_type": "output_type",
@@ -125,20 +127,22 @@ class TestAsyncDeasySelect:
             data_connector_name="data_connector_name",
             query="query",
             banned_filters={"foo": ["string"]},
+            file_hybrid_search_boost=0,
+            metadata_hybrid_search=True,
+            metadata_hybrid_search_boost=0,
+            metadata_reranker=True,
             return_only_query=True,
             tag_distributions={
-                "data": {
-                    "foo": {
-                        "values": {
-                            "foo": {
-                                "file_count": 0,
-                                "chunk_count": 0,
-                                "percentage": 0,
-                            }
-                        },
-                        "coverage_percentage": 0,
-                        "total_count": 0,
-                    }
+                "foo": {
+                    "values": {
+                        "foo": {
+                            "file_count": 0,
+                            "chunk_count": 0,
+                            "percentage": 0,
+                        }
+                    },
+                    "coverage_percentage": 0,
+                    "total_count": 0,
                 }
             },
             tag_level="chunk",
@@ -151,7 +155,7 @@ class TestAsyncDeasySelect:
                     "created_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "date_format": "date_format",
                     "enhance_file_metadata": True,
-                    "examples": [{"foo": "bar"}],
+                    "examples": ["string"],
                     "max_values": 0,
                     "neg_examples": ["string"],
                     "output_type": "output_type",

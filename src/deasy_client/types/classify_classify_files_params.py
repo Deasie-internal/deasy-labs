@@ -48,7 +48,7 @@ class TagDatas(TypedDict, total=False):
 
     enhance_file_metadata: Optional[bool]
 
-    examples: Optional[List[Union[Dict[str, object], str]]]
+    examples: Optional[List[Union[str, Dict[str, object]]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
