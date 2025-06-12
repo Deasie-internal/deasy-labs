@@ -49,8 +49,12 @@ class DeasySelectResource(SyncAPIResource):
         data_connector_name: str,
         query: str,
         banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
+        file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
+        metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
+        metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
+        metadata_reranker: Optional[bool] | NotGiven = NOT_GIVEN,
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
+        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
@@ -67,11 +71,6 @@ class DeasySelectResource(SyncAPIResource):
         Deasy Select Query
 
         Args:
-          tag_distributions: Complete tag distribution data structure for analyzing filter impacts.
-
-              Maps field names to their value distributions. Used for estimating search
-              reductions without executing filters.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -87,6 +86,10 @@ class DeasySelectResource(SyncAPIResource):
                     "data_connector_name": data_connector_name,
                     "query": query,
                     "banned_filters": banned_filters,
+                    "file_hybrid_search_boost": file_hybrid_search_boost,
+                    "metadata_hybrid_search": metadata_hybrid_search,
+                    "metadata_hybrid_search_boost": metadata_hybrid_search_boost,
+                    "metadata_reranker": metadata_reranker,
                     "return_only_query": return_only_query,
                     "tag_distributions": tag_distributions,
                     "tag_level": tag_level,
@@ -130,8 +133,12 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         data_connector_name: str,
         query: str,
         banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
+        file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
+        metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
+        metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
+        metadata_reranker: Optional[bool] | NotGiven = NOT_GIVEN,
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_distributions: Optional[deasy_select_query_params.TagDistributions] | NotGiven = NOT_GIVEN,
+        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
         tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
@@ -148,11 +155,6 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         Deasy Select Query
 
         Args:
-          tag_distributions: Complete tag distribution data structure for analyzing filter impacts.
-
-              Maps field names to their value distributions. Used for estimating search
-              reductions without executing filters.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -168,6 +170,10 @@ class AsyncDeasySelectResource(AsyncAPIResource):
                     "data_connector_name": data_connector_name,
                     "query": query,
                     "banned_filters": banned_filters,
+                    "file_hybrid_search_boost": file_hybrid_search_boost,
+                    "metadata_hybrid_search": metadata_hybrid_search,
+                    "metadata_hybrid_search_boost": metadata_hybrid_search_boost,
+                    "metadata_reranker": metadata_reranker,
                     "return_only_query": return_only_query,
                     "tag_distributions": tag_distributions,
                     "tag_level": tag_level,

@@ -28,7 +28,7 @@ class SuggestedTags(BaseModel):
 
     enhance_file_metadata: Optional[bool] = None
 
-    examples: Optional[List[Union[Dict[str, object], str]]] = None
+    examples: Optional[List[Union[str, Dict[str, object]]]] = None
 
     max_values: Optional[int] = FieldInfo(alias="maxValues", default=None)
 

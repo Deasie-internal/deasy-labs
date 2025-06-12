@@ -8,13 +8,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = [
-    "DeasySelectQueryParams",
-    "TagDistributions",
-    "TagDistributionsData",
-    "TagDistributionsDataValues",
-    "TagSchema",
-]
+__all__ = ["DeasySelectQueryParams", "TagDistributions", "TagDistributionsValues", "TagSchema"]
 
 
 class DeasySelectQueryParams(TypedDict, total=False):
@@ -24,14 +18,17 @@ class DeasySelectQueryParams(TypedDict, total=False):
 
     banned_filters: Optional[Dict[str, List[Union[str, float]]]]
 
+    file_hybrid_search_boost: Optional[float]
+
+    metadata_hybrid_search: Optional[bool]
+
+    metadata_hybrid_search_boost: Optional[float]
+
+    metadata_reranker: Optional[bool]
+
     return_only_query: Optional[bool]
 
-    tag_distributions: Optional[TagDistributions]
-    """Complete tag distribution data structure for analyzing filter impacts.
-
-    Maps field names to their value distributions. Used for estimating search
-    reductions without executing filters.
-    """
+    tag_distributions: Optional[Dict[str, TagDistributions]]
 
     tag_level: Optional[Literal["chunk", "both"]]
 
@@ -44,7 +41,7 @@ class DeasySelectQueryParams(TypedDict, total=False):
     with_text: Optional[bool]
 
 
-class TagDistributionsDataValues(TypedDict, total=False):
+class TagDistributionsValues(TypedDict, total=False):
     file_count: Required[int]
 
     chunk_count: Optional[int]
@@ -52,16 +49,12 @@ class TagDistributionsDataValues(TypedDict, total=False):
     percentage: Optional[float]
 
 
-class TagDistributionsData(TypedDict, total=False):
-    values: Required[Dict[str, TagDistributionsDataValues]]
+class TagDistributions(TypedDict, total=False):
+    values: Required[Dict[str, TagDistributionsValues]]
 
     coverage_percentage: Optional[float]
 
     total_count: Optional[int]
-
-
-class TagDistributions(TypedDict, total=False):
-    data: Dict[str, TagDistributionsData]
 
 
 class TagSchema(TypedDict, total=False):
@@ -77,7 +70,7 @@ class TagSchema(TypedDict, total=False):
 
     enhance_file_metadata: Optional[bool]
 
-    examples: Optional[List[Union[Dict[str, object], str]]]
+    examples: Optional[List[Union[str, Dict[str, object]]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
