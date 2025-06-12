@@ -23,7 +23,7 @@ class TagsSchema(BaseModel):
 
     enhance_file_metadata: Optional[bool] = None
 
-    examples: Optional[List[Union[Dict[str, object], str]]] = None
+    examples: Optional[List[Union[str, Dict[str, object]]]] = None
 
     max_values: Union[int, str, List[object], None] = FieldInfo(alias="maxValues", default=None)
 
