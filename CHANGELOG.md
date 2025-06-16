@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.42 (2025-06-16)
+
+Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([f09d645](https://github.com/Deasie-internal/deasy-labs/commit/f09d64528f69eec3a71de7841a7073ee5f3cf1f6))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([8c3dc69](https://github.com/Deasie-internal/deasy-labs/commit/8c3dc69b99c01dfb263696e80697876412aeda0a))
+
 ## 0.1.0-alpha.41 (2025-06-12)
 
 Full Changelog: [v0.1.0-alpha.40...v0.1.0-alpha.41](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.40...v0.1.0-alpha.41)
