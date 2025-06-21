@@ -37,6 +37,8 @@ classifiers = [
 Homepage = "https://github.com/Deasie-internal/deasy-labs"
 Repository = "https://github.com/Deasie-internal/deasy-labs"
 
+[project.optional-dependencies]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
 
 [tool.rye]
 managed = true
