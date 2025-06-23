@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-alpha.43 (2025-06-23)
+
+Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
+
+### Features
+
+* **client:** add support for aiohttp ([27ed0fc](https://github.com/Deasie-internal/deasy-labs/commit/27ed0fcc1d71a25ac03e3d763c992effc7d1e1b8))
+
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([c3b2f3f](https://github.com/Deasie-internal/deasy-labs/commit/c3b2f3f33e60d513c14de8231a49b3ba8ab78e56))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([acadc80](https://github.com/Deasie-internal/deasy-labs/commit/acadc80bd938e4de9a81a30aff83ea0199eefb99))
+* **internal:** update conftest.py ([0123001](https://github.com/Deasie-internal/deasy-labs/commit/0123001be529faccb4a8cb56dca18ac94c27a17c))
+* **readme:** update badges ([67bbcdd](https://github.com/Deasie-internal/deasy-labs/commit/67bbcdda5a90a5fb35369a11e234bcf4ad5f4b37))
+* **tests:** add tests for httpx client instantiation & proxies ([f26b7ed](https://github.com/Deasie-internal/deasy-labs/commit/f26b7ed9a5e18bd75362ff4f3e3d246f34627eb5))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([bfd21a9](https://github.com/Deasie-internal/deasy-labs/commit/bfd21a992628ee55662eda28a47a046aa034c9ee))
+
 ## 0.1.0-alpha.42 (2025-06-16)
 
 Full Changelog: [v0.1.0-alpha.41...v0.1.0-alpha.42](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.41...v0.1.0-alpha.42)
