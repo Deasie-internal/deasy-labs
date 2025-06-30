@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.44 (2025-06-30)
+
+Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([2d3a15e](https://github.com/Deasie-internal/deasy-labs/commit/2d3a15e61400fc7f4bed170bee3645e0f7908848))
+* **ci:** release-doctor — report correct token name ([41325d1](https://github.com/Deasie-internal/deasy-labs/commit/41325d1041b37ac26591c3f2f90a493d67676d77))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([013b5a8](https://github.com/Deasie-internal/deasy-labs/commit/013b5a8966d1872a8a4d2da89e2d5ca4849bff3e))
+* **tests:** skip some failing tests on the latest python versions ([e1faf38](https://github.com/Deasie-internal/deasy-labs/commit/e1faf383c466138a8e70ccb8ff3c8ccc9f0777f5))
+
 ## 0.1.0-alpha.43 (2025-06-23)
 
 Full Changelog: [v0.1.0-alpha.42...v0.1.0-alpha.43](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.42...v0.1.0-alpha.43)
