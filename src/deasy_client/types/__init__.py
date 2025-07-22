@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from . import condition_output, dataslice_list_response
+from .. import _compat
 from .deasy_tag import DeasyTag as DeasyTag
 from .tag_response import TagResponse as TagResponse
 from .openai_config import OpenAIConfig as OpenAIConfig
@@ -88,3 +90,14 @@ from .dataslice_get_tag_vdb_distribution_params import (
 from .dataslice_get_tag_vdb_distribution_response import (
     DatasliceGetTagVdbDistributionResponse as DatasliceGetTagVdbDistributionResponse,
 )
+
+# Rebuild cyclical models only after all modules are imported.
+# This ensures that, when building the deferred (due to cyclical references) model schema,
+# Pydantic can resolve the necessary references.
+# See: https://github.com/pydantic/pydantic/issues/11250 for more context.
+if _compat.PYDANTIC_V2:
+    condition_output.ConditionOutput.model_rebuild(_parent_namespace_depth=0)
+    dataslice_list_response.DatasliceListResponse.model_rebuild(_parent_namespace_depth=0)
+else:
+    condition_output.ConditionOutput.update_forward_refs()  # type: ignore
+    dataslice_list_response.DatasliceListResponse.update_forward_refs()  # type: ignore
