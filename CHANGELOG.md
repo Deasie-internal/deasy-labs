@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-alpha.45 (2025-08-09)
+
+Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)
+
+### Features
+
+* **client:** support file upload requests ([8c9e0d5](https://github.com/Deasie-internal/deasy-labs/commit/8c9e0d5f2894fc5f27e5ed4f1b7257fdb4ccd025))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([47b7659](https://github.com/Deasie-internal/deasy-labs/commit/47b7659391a1a86f39e0a079b20a2ddb5f9e609f))
+* **parsing:** correctly handle nested discriminated unions ([5e3522c](https://github.com/Deasie-internal/deasy-labs/commit/5e3522c9ba95a2d74d26b6d23751b81e162ce302))
+* **parsing:** ignore empty metadata ([113a684](https://github.com/Deasie-internal/deasy-labs/commit/113a68489bf05e4984c694b4c306e03764ba1b1b))
+* **parsing:** parse extra field types ([0ec2336](https://github.com/Deasie-internal/deasy-labs/commit/0ec2336995f854aa98329cd10088e9c7f44c8547))
+
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([521e0f1](https://github.com/Deasie-internal/deasy-labs/commit/521e0f16dcf450eb6dcb5d4bd70796753cd93f27))
+* **internal:** fix ruff target version ([728aed8](https://github.com/Deasie-internal/deasy-labs/commit/728aed83a3cfd7ff9389b4fa8bcd3cb49ca76ba6))
+* **internal:** version bump ([1002943](https://github.com/Deasie-internal/deasy-labs/commit/1002943f3c1cd6b977916be639bc4bb6226b72ef))
+* **package:** mark python 3.13 as supported ([3b6e0d5](https://github.com/Deasie-internal/deasy-labs/commit/3b6e0d51b85d6345773809614f4960c8b95e9db8))
+* **project:** add settings file for vscode ([e41c96d](https://github.com/Deasie-internal/deasy-labs/commit/e41c96ddf96c2b826d910af551e4519658cad678))
+* **readme:** fix version rendering on pypi ([dbe7382](https://github.com/Deasie-internal/deasy-labs/commit/dbe73826a86ff86a6d60017ffee8208f555e2e6a))
+* **types:** rebuild Pydantic models after all types are defined ([f1d207c](https://github.com/Deasie-internal/deasy-labs/commit/f1d207cd0d0c97df5ff8fdbab8bd77689c512ee6))
+* update @stainless-api/prism-cli to v5.15.0 ([9dbf00b](https://github.com/Deasie-internal/deasy-labs/commit/9dbf00bc5fdc338b270cabed498fc48cd37bdeb6))
+
 ## 0.1.0-alpha.44 (2025-07-02)
 
 Full Changelog: [v0.1.0-alpha.43...v0.1.0-alpha.44](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.43...v0.1.0-alpha.44)
