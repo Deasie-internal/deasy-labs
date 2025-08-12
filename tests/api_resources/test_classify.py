@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestClassify:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_classify_files(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
@@ -26,7 +26,7 @@ class TestClassify:
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_classify_files_with_all_params(self, client: Deasy) -> None:
         classify = client.classify.classify_files(
@@ -64,7 +64,7 @@ class TestClassify:
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_classify_files(self, client: Deasy) -> None:
         response = client.classify.with_raw_response.classify_files(
@@ -76,7 +76,7 @@ class TestClassify:
         classify = response.parse()
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_classify_files(self, client: Deasy) -> None:
         with client.classify.with_streaming_response.classify_files(
@@ -96,7 +96,7 @@ class TestAsyncClassify:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_classify_files(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
@@ -104,7 +104,7 @@ class TestAsyncClassify:
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_classify_files_with_all_params(self, async_client: AsyncDeasy) -> None:
         classify = await async_client.classify.classify_files(
@@ -142,7 +142,7 @@ class TestAsyncClassify:
         )
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_classify_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.classify.with_raw_response.classify_files(
@@ -154,7 +154,7 @@ class TestAsyncClassify:
         classify = await response.parse()
         assert_matches_type(ClassifyClassifyFilesResponse, classify, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_classify_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.classify.with_streaming_response.classify_files(

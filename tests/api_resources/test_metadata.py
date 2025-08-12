@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMetadata:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         metadata = client.metadata.list(
@@ -31,7 +31,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list(
@@ -53,7 +53,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list(
@@ -65,7 +65,7 @@ class TestMetadata:
         metadata = response.parse()
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list(
@@ -79,7 +79,7 @@ class TestMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
@@ -87,7 +87,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.delete(
@@ -106,7 +106,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.delete(
@@ -118,7 +118,7 @@ class TestMetadata:
         metadata = response.parse()
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.delete(
@@ -132,7 +132,7 @@ class TestMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_distributions(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
@@ -140,7 +140,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_distributions_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.get_distributions(
@@ -151,7 +151,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_distributions(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.get_distributions(
@@ -163,7 +163,7 @@ class TestMetadata:
         metadata = response.parse()
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_distributions(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.get_distributions(
@@ -177,7 +177,7 @@ class TestMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_paginated(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
@@ -185,7 +185,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_paginated_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.list_paginated(
@@ -207,7 +207,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list_paginated(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.list_paginated(
@@ -219,7 +219,7 @@ class TestMetadata:
         metadata = response.parse()
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list_paginated(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.list_paginated(
@@ -233,7 +233,7 @@ class TestMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert(self, client: Deasy) -> None:
         metadata = client.metadata.upsert(
@@ -241,7 +241,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert_with_all_params(self, client: Deasy) -> None:
         metadata = client.metadata.upsert(
@@ -266,7 +266,7 @@ class TestMetadata:
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.metadata.with_raw_response.upsert(
@@ -278,7 +278,7 @@ class TestMetadata:
         metadata = response.parse()
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.metadata.with_streaming_response.upsert(
@@ -298,7 +298,7 @@ class TestAsyncMetadata:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
@@ -306,7 +306,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list(
@@ -328,7 +328,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list(
@@ -340,7 +340,7 @@ class TestAsyncMetadata:
         metadata = await response.parse()
         assert_matches_type(MetadataListResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list(
@@ -354,7 +354,7 @@ class TestAsyncMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
@@ -362,7 +362,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.delete(
@@ -381,7 +381,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.delete(
@@ -393,7 +393,7 @@ class TestAsyncMetadata:
         metadata = await response.parse()
         assert_matches_type(MetadataDeleteResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.delete(
@@ -407,7 +407,7 @@ class TestAsyncMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_distributions(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
@@ -415,7 +415,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_distributions_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.get_distributions(
@@ -426,7 +426,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.get_distributions(
@@ -438,7 +438,7 @@ class TestAsyncMetadata:
         metadata = await response.parse()
         assert_matches_type(MetadataGetDistributionsResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_distributions(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.get_distributions(
@@ -452,7 +452,7 @@ class TestAsyncMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_paginated(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
@@ -460,7 +460,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_paginated_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.list_paginated(
@@ -482,7 +482,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.list_paginated(
@@ -494,7 +494,7 @@ class TestAsyncMetadata:
         metadata = await response.parse()
         assert_matches_type(MetadataListPaginatedResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list_paginated(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.list_paginated(
@@ -508,7 +508,7 @@ class TestAsyncMetadata:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.upsert(
@@ -516,7 +516,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
         metadata = await async_client.metadata.upsert(
@@ -541,7 +541,7 @@ class TestAsyncMetadata:
         )
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.metadata.with_raw_response.upsert(
@@ -553,7 +553,7 @@ class TestAsyncMetadata:
         metadata = await response.parse()
         assert_matches_type(MetadataUpsertResponse, metadata, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.metadata.with_streaming_response.upsert(
