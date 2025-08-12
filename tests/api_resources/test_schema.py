@@ -20,7 +20,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSchema:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         schema = client.schema.create(
@@ -28,7 +28,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         schema = client.schema.create(
@@ -38,7 +38,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.schema.with_raw_response.create(
@@ -50,7 +50,7 @@ class TestSchema:
         schema = response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.schema.with_streaming_response.create(
@@ -64,7 +64,7 @@ class TestSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Deasy) -> None:
         schema = client.schema.update(
@@ -72,7 +72,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         schema = client.schema.update(
@@ -82,7 +82,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.schema.with_raw_response.update(
@@ -94,7 +94,7 @@ class TestSchema:
         schema = response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.schema.with_streaming_response.update(
@@ -108,13 +108,13 @@ class TestSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         schema = client.schema.list()
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Deasy) -> None:
         schema = client.schema.list(
@@ -122,7 +122,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.schema.with_raw_response.list()
@@ -132,7 +132,7 @@ class TestSchema:
         schema = response.parse()
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.schema.with_streaming_response.list() as response:
@@ -144,7 +144,7 @@ class TestSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         schema = client.schema.delete(
@@ -152,7 +152,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.schema.with_raw_response.delete(
@@ -164,7 +164,7 @@ class TestSchema:
         schema = response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.schema.with_streaming_response.delete(
@@ -178,7 +178,7 @@ class TestSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert(self, client: Deasy) -> None:
         schema = client.schema.upsert(
@@ -186,7 +186,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert_with_all_params(self, client: Deasy) -> None:
         schema = client.schema.upsert(
@@ -197,7 +197,7 @@ class TestSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.schema.with_raw_response.upsert(
@@ -209,7 +209,7 @@ class TestSchema:
         schema = response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.schema.with_streaming_response.upsert(
@@ -229,7 +229,7 @@ class TestAsyncSchema:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.create(
@@ -237,7 +237,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.create(
@@ -247,7 +247,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.schema.with_raw_response.create(
@@ -259,7 +259,7 @@ class TestAsyncSchema:
         schema = await response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.schema.with_streaming_response.create(
@@ -273,7 +273,7 @@ class TestAsyncSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.update(
@@ -281,7 +281,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.update(
@@ -291,7 +291,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.schema.with_raw_response.update(
@@ -303,7 +303,7 @@ class TestAsyncSchema:
         schema = await response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.schema.with_streaming_response.update(
@@ -317,13 +317,13 @@ class TestAsyncSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.list()
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.list(
@@ -331,7 +331,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.schema.with_raw_response.list()
@@ -341,7 +341,7 @@ class TestAsyncSchema:
         schema = await response.parse()
         assert_matches_type(SchemaListResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.schema.with_streaming_response.list() as response:
@@ -353,7 +353,7 @@ class TestAsyncSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.delete(
@@ -361,7 +361,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.schema.with_raw_response.delete(
@@ -373,7 +373,7 @@ class TestAsyncSchema:
         schema = await response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.schema.with_streaming_response.delete(
@@ -387,7 +387,7 @@ class TestAsyncSchema:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.upsert(
@@ -395,7 +395,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
         schema = await async_client.schema.upsert(
@@ -406,7 +406,7 @@ class TestAsyncSchema:
         )
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.schema.with_raw_response.upsert(
@@ -418,7 +418,7 @@ class TestAsyncSchema:
         schema = await response.parse()
         assert_matches_type(SchemaOperationResponse, schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.schema.with_streaming_response.upsert(

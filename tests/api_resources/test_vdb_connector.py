@@ -21,7 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestVdbConnector:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
@@ -38,7 +38,7 @@ class TestVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.create(
@@ -62,7 +62,7 @@ class TestVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.create(
@@ -83,7 +83,7 @@ class TestVdbConnector:
         vdb_connector = response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.create(
@@ -106,7 +106,7 @@ class TestVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
@@ -123,7 +123,7 @@ class TestVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.update(
@@ -147,7 +147,7 @@ class TestVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.update(
@@ -168,7 +168,7 @@ class TestVdbConnector:
         vdb_connector = response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.update(
@@ -191,13 +191,13 @@ class TestVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.list()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.list()
@@ -207,7 +207,7 @@ class TestVdbConnector:
         vdb_connector = response.parse()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.list() as response:
@@ -219,7 +219,7 @@ class TestVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.delete(
@@ -227,7 +227,7 @@ class TestVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.delete(
@@ -239,7 +239,7 @@ class TestVdbConnector:
         vdb_connector = response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.delete(
@@ -253,7 +253,7 @@ class TestVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_delete_stats(self, client: Deasy) -> None:
         vdb_connector = client.vdb_connector.get_delete_stats(
@@ -261,7 +261,7 @@ class TestVdbConnector:
         )
         assert_matches_type(VdbConnectorGetDeleteStatsResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.vdb_connector.with_raw_response.get_delete_stats(
@@ -273,7 +273,7 @@ class TestVdbConnector:
         vdb_connector = response.parse()
         assert_matches_type(VdbConnectorGetDeleteStatsResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.vdb_connector.with_streaming_response.get_delete_stats(
@@ -293,7 +293,7 @@ class TestAsyncVdbConnector:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
@@ -310,7 +310,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.create(
@@ -334,7 +334,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.create(
@@ -355,7 +355,7 @@ class TestAsyncVdbConnector:
         vdb_connector = await response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.create(
@@ -378,7 +378,7 @@ class TestAsyncVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
@@ -395,7 +395,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.update(
@@ -419,7 +419,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.update(
@@ -440,7 +440,7 @@ class TestAsyncVdbConnector:
         vdb_connector = await response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.update(
@@ -463,13 +463,13 @@ class TestAsyncVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.list()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.list()
@@ -479,7 +479,7 @@ class TestAsyncVdbConnector:
         vdb_connector = await response.parse()
         assert_matches_type(ListVdbConnector, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.list() as response:
@@ -491,7 +491,7 @@ class TestAsyncVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.delete(
@@ -499,7 +499,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.delete(
@@ -511,7 +511,7 @@ class TestAsyncVdbConnector:
         vdb_connector = await response.parse()
         assert_matches_type(ConnectorResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.delete(
@@ -525,7 +525,7 @@ class TestAsyncVdbConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         vdb_connector = await async_client.vdb_connector.get_delete_stats(
@@ -533,7 +533,7 @@ class TestAsyncVdbConnector:
         )
         assert_matches_type(VdbConnectorGetDeleteStatsResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.vdb_connector.with_raw_response.get_delete_stats(
@@ -545,7 +545,7 @@ class TestAsyncVdbConnector:
         vdb_connector = await response.parse()
         assert_matches_type(VdbConnectorGetDeleteStatsResponse, vdb_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.vdb_connector.with_streaming_response.get_delete_stats(

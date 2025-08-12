@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTags:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         tag = client.tags.create(
@@ -34,7 +34,7 @@ class TestTags:
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         tag = client.tags.create(
@@ -53,7 +53,7 @@ class TestTags:
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.create(
@@ -68,7 +68,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.create(
@@ -85,7 +85,7 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Deasy) -> None:
         tag = client.tags.update(
@@ -96,7 +96,7 @@ class TestTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         tag = client.tags.update(
@@ -115,7 +115,7 @@ class TestTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.update(
@@ -130,7 +130,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.update(
@@ -147,13 +147,13 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         tag = client.tags.list()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.list()
@@ -163,7 +163,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.list() as response:
@@ -175,7 +175,7 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         tag = client.tags.delete(
@@ -183,7 +183,7 @@ class TestTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.delete(
@@ -195,7 +195,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.delete(
@@ -209,7 +209,7 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_delete_stats(self, client: Deasy) -> None:
         tag = client.tags.get_delete_stats(
@@ -217,7 +217,7 @@ class TestTags:
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_delete_stats(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.get_delete_stats(
@@ -229,7 +229,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_delete_stats(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.get_delete_stats(
@@ -243,7 +243,7 @@ class TestTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert(self, client: Deasy) -> None:
         tag = client.tags.upsert(
@@ -254,7 +254,7 @@ class TestTags:
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_upsert_with_all_params(self, client: Deasy) -> None:
         tag = client.tags.upsert(
@@ -273,7 +273,7 @@ class TestTags:
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_upsert(self, client: Deasy) -> None:
         response = client.tags.with_raw_response.upsert(
@@ -288,7 +288,7 @@ class TestTags:
         tag = response.parse()
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_upsert(self, client: Deasy) -> None:
         with client.tags.with_streaming_response.upsert(
@@ -311,7 +311,7 @@ class TestAsyncTags:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.create(
@@ -322,7 +322,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.create(
@@ -341,7 +341,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.create(
@@ -356,7 +356,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagCreateResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.create(
@@ -373,7 +373,7 @@ class TestAsyncTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.update(
@@ -384,7 +384,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.update(
@@ -403,7 +403,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.update(
@@ -418,7 +418,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.update(
@@ -435,13 +435,13 @@ class TestAsyncTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.list()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.list()
@@ -451,7 +451,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagListResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.list() as response:
@@ -463,7 +463,7 @@ class TestAsyncTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.delete(
@@ -471,7 +471,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.delete(
@@ -483,7 +483,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.delete(
@@ -497,7 +497,7 @@ class TestAsyncTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.get_delete_stats(
@@ -505,7 +505,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.get_delete_stats(
@@ -517,7 +517,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagGetDeleteStatsResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_delete_stats(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.get_delete_stats(
@@ -531,7 +531,7 @@ class TestAsyncTags:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.upsert(
@@ -542,7 +542,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_upsert_with_all_params(self, async_client: AsyncDeasy) -> None:
         tag = await async_client.tags.upsert(
@@ -561,7 +561,7 @@ class TestAsyncTags:
         )
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_upsert(self, async_client: AsyncDeasy) -> None:
         response = await async_client.tags.with_raw_response.upsert(
@@ -576,7 +576,7 @@ class TestAsyncTags:
         tag = await response.parse()
         assert_matches_type(TagUpsertResponse, tag, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_upsert(self, async_client: AsyncDeasy) -> None:
         async with async_client.tags.with_streaming_response.upsert(

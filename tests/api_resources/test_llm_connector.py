@@ -20,7 +20,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestLlmConnector:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.create(
@@ -33,7 +33,7 @@ class TestLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.create(
@@ -50,7 +50,7 @@ class TestLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.llm_connector.with_raw_response.create(
@@ -67,7 +67,7 @@ class TestLlmConnector:
         llm_connector = response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.llm_connector.with_streaming_response.create(
@@ -86,7 +86,7 @@ class TestLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.update(
@@ -99,7 +99,7 @@ class TestLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.update(
@@ -116,7 +116,7 @@ class TestLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Deasy) -> None:
         response = client.llm_connector.with_raw_response.update(
@@ -133,7 +133,7 @@ class TestLlmConnector:
         llm_connector = response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Deasy) -> None:
         with client.llm_connector.with_streaming_response.update(
@@ -152,13 +152,13 @@ class TestLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.list()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.llm_connector.with_raw_response.list()
@@ -168,7 +168,7 @@ class TestLlmConnector:
         llm_connector = response.parse()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.llm_connector.with_streaming_response.list() as response:
@@ -180,7 +180,7 @@ class TestLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         llm_connector = client.llm_connector.delete(
@@ -188,7 +188,7 @@ class TestLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.llm_connector.with_raw_response.delete(
@@ -200,7 +200,7 @@ class TestLlmConnector:
         llm_connector = response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.llm_connector.with_streaming_response.delete(
@@ -220,7 +220,7 @@ class TestAsyncLlmConnector:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.create(
@@ -233,7 +233,7 @@ class TestAsyncLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.create(
@@ -250,7 +250,7 @@ class TestAsyncLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.llm_connector.with_raw_response.create(
@@ -267,7 +267,7 @@ class TestAsyncLlmConnector:
         llm_connector = await response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.llm_connector.with_streaming_response.create(
@@ -286,7 +286,7 @@ class TestAsyncLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.update(
@@ -299,7 +299,7 @@ class TestAsyncLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.update(
@@ -316,7 +316,7 @@ class TestAsyncLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncDeasy) -> None:
         response = await async_client.llm_connector.with_raw_response.update(
@@ -333,7 +333,7 @@ class TestAsyncLlmConnector:
         llm_connector = await response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncDeasy) -> None:
         async with async_client.llm_connector.with_streaming_response.update(
@@ -352,13 +352,13 @@ class TestAsyncLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.list()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.llm_connector.with_raw_response.list()
@@ -368,7 +368,7 @@ class TestAsyncLlmConnector:
         llm_connector = await response.parse()
         assert_matches_type(LlmConnectorListResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.llm_connector.with_streaming_response.list() as response:
@@ -380,7 +380,7 @@ class TestAsyncLlmConnector:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         llm_connector = await async_client.llm_connector.delete(
@@ -388,7 +388,7 @@ class TestAsyncLlmConnector:
         )
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.llm_connector.with_raw_response.delete(
@@ -400,7 +400,7 @@ class TestAsyncLlmConnector:
         llm_connector = await response.parse()
         assert_matches_type(ConnectorResponse, llm_connector, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.llm_connector.with_streaming_response.delete(

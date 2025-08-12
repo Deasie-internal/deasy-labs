@@ -16,7 +16,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestOcr:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_ingest(self, client: Deasy) -> None:
         ocr = client.ocr.ingest(
@@ -24,7 +24,7 @@ class TestOcr:
         )
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_ingest_with_all_params(self, client: Deasy) -> None:
         ocr = client.ocr.ingest(
@@ -38,7 +38,7 @@ class TestOcr:
         )
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_ingest(self, client: Deasy) -> None:
         response = client.ocr.with_raw_response.ingest(
@@ -50,7 +50,7 @@ class TestOcr:
         ocr = response.parse()
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_ingest(self, client: Deasy) -> None:
         with client.ocr.with_streaming_response.ingest(
@@ -70,7 +70,7 @@ class TestAsyncOcr:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_ingest(self, async_client: AsyncDeasy) -> None:
         ocr = await async_client.ocr.ingest(
@@ -78,7 +78,7 @@ class TestAsyncOcr:
         )
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_ingest_with_all_params(self, async_client: AsyncDeasy) -> None:
         ocr = await async_client.ocr.ingest(
@@ -92,7 +92,7 @@ class TestAsyncOcr:
         )
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_ingest(self, async_client: AsyncDeasy) -> None:
         response = await async_client.ocr.with_raw_response.ingest(
@@ -104,7 +104,7 @@ class TestAsyncOcr:
         ocr = await response.parse()
         assert_matches_type(object, ocr, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_ingest(self, async_client: AsyncDeasy) -> None:
         async with async_client.ocr.with_streaming_response.ingest(
