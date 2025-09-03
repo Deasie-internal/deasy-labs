@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import httpx
 
@@ -22,7 +22,7 @@ from ...types import (
     dataslice_get_file_count_params,
     dataslice_get_tag_vdb_distribution_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -270,9 +270,9 @@ class DatasliceResource(SyncAPIResource):
         *,
         data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        node_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -579,9 +579,9 @@ class AsyncDatasliceResource(AsyncAPIResource):
         *,
         data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        node_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

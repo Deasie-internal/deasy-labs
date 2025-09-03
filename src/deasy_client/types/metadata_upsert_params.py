@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = [
     "MetadataUpsertParams",
@@ -36,7 +38,7 @@ class MetadataUpsertParams(TypedDict, total=False):
 class MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUnionMember0ItemItemChunkLevel(
     TypedDict, total=False
 ):
-    values: Required[List[Union[str, float]]]
+    values: Required[SequenceNotStr[Union[str, float]]]
 
     evidence: Optional[str]
 
@@ -44,7 +46,7 @@ class MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUn
 class MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUnionMember0ItemItemFileLevel(
     TypedDict, total=False
 ):
-    values: Required[List[Union[str, float]]]
+    values: Required[SequenceNotStr[Union[str, float]]]
 
     evidence: Optional[str]
 
@@ -69,6 +71,6 @@ class MetadataUnionMember0MetadataUnionMember0ItemMetadataUnionMember0MetadataUn
 class MetadataUnionMember1MetadataUnionMember1ItemMetadataUnionMember1MetadataUnionMember1ItemItem(
     TypedDict, total=False
 ):
-    values: Required[List[Union[str, float]]]
+    values: Required[SequenceNotStr[Union[str, float]]]
 
     evidence: Optional[str]

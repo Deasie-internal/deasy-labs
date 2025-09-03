@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["PsqlConnectorConfigParam", "IndexInfo"]
 
 
 class IndexInfo(TypedDict, total=False):
-    found_indexes: Required[List[str]]
+    found_indexes: Required[SequenceNotStr[str]]
 
     total_indexes_found: Required[int]
 

@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["MetadataGetDistributionsParams"]
 
@@ -15,4 +17,4 @@ class MetadataGetDistributionsParams(TypedDict, total=False):
 
     schema_name: Optional[str]
 
-    tag_names: Optional[List[str]]
+    tag_names: Optional[SequenceNotStr[str]]

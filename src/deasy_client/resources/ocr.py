@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 
 import httpx
 
 from ..types import ocr_ingest_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,7 +48,7 @@ class OcrResource(SyncAPIResource):
         data_connector_name: str,
         clean_up_out_of_sync: bool | NotGiven = NOT_GIVEN,
         file_count_to_run: Optional[int] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         job_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         use_llm: bool | NotGiven = NOT_GIVEN,
@@ -118,7 +118,7 @@ class AsyncOcrResource(AsyncAPIResource):
         data_connector_name: str,
         clean_up_out_of_sync: bool | NotGiven = NOT_GIVEN,
         file_count_to_run: Optional[int] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         job_id: Optional[str] | NotGiven = NOT_GIVEN,
         llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
         use_llm: bool | NotGiven = NOT_GIVEN,

@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ExportExportMetadataParams"]
 
@@ -17,4 +19,4 @@ class ExportExportMetadataParams(TypedDict, total=False):
 
     export_format: Optional[Literal["json", "csv"]]
 
-    selected_metadata_fields: Optional[List[str]]
+    selected_metadata_fields: Optional[SequenceNotStr[str]]

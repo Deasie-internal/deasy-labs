@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["OcrIngestParams"]
 
@@ -15,7 +17,7 @@ class OcrIngestParams(TypedDict, total=False):
 
     file_count_to_run: Optional[int]
 
-    file_names: Optional[List[str]]
+    file_names: Optional[SequenceNotStr[str]]
 
     job_id: Optional[str]
 

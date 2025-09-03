@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import suggest_schema_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -55,7 +55,7 @@ class SuggestSchemaResource(SyncAPIResource):
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         deep_suggestion_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         first_level_clusters: Optional[int] | NotGiven = NOT_GIVEN,
         graph_tag_type: Optional[Literal["open_ended", "binary", "mixed", "defined_values", "hierarchy"]]
         | NotGiven = NOT_GIVEN,
@@ -185,7 +185,7 @@ class AsyncSuggestSchemaResource(AsyncAPIResource):
         current_tree: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
         deep_suggestion_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         first_level_clusters: Optional[int] | NotGiven = NOT_GIVEN,
         graph_tag_type: Optional[Literal["open_ended", "binary", "mixed", "defined_values", "hierarchy"]]
         | NotGiven = NOT_GIVEN,

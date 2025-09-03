@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import deasy_select_query_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,7 +48,7 @@ class DeasySelectResource(SyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | NotGiven = NOT_GIVEN,
         file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
         metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
         metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
@@ -56,7 +56,7 @@ class DeasySelectResource(SyncAPIResource):
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
         top_k: Optional[int] | NotGiven = NOT_GIVEN,
         with_text: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -132,7 +132,7 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, List[Union[str, float]]]] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | NotGiven = NOT_GIVEN,
         file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
         metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
         metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
@@ -140,7 +140,7 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
         tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
         tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
         top_k: Optional[int] | NotGiven = NOT_GIVEN,
         with_text: Optional[bool] | NotGiven = NOT_GIVEN,
