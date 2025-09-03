@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["MetadataListPaginatedParams"]
 
@@ -21,7 +23,7 @@ class MetadataListPaginatedParams(TypedDict, total=False):
 
     offset: Optional[int]
 
-    tag_names: Optional[List[str]]
+    tag_names: Optional[SequenceNotStr[str]]
 
 
 from .condition_input_param import ConditionInputParam

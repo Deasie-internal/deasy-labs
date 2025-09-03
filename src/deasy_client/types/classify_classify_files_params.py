@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ClassifyClassifyFilesParams", "TagDatas"]
@@ -16,7 +17,7 @@ class ClassifyClassifyFilesParams(TypedDict, total=False):
 
     dataslice_id: Optional[str]
 
-    file_names: Optional[List[str]]
+    file_names: Optional[SequenceNotStr[str]]
 
     hierarchy_data: Optional[Dict[str, object]]
 
@@ -32,7 +33,7 @@ class ClassifyClassifyFilesParams(TypedDict, total=False):
 
     tag_datas: Optional[Dict[str, TagDatas]]
 
-    tag_names: Optional[List[str]]
+    tag_names: Optional[SequenceNotStr[str]]
 
 
 class TagDatas(TypedDict, total=False):
@@ -40,7 +41,7 @@ class TagDatas(TypedDict, total=False):
 
     name: Required[str]
 
-    available_values: Optional[List[Union[str, float]]]
+    available_values: Optional[SequenceNotStr[Union[str, float]]]
 
     created_at: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
 
@@ -48,11 +49,11 @@ class TagDatas(TypedDict, total=False):
 
     enhance_file_metadata: Optional[bool]
 
-    examples: Optional[List[Union[str, Dict[str, object]]]]
+    examples: Optional[SequenceNotStr[Union[str, Dict[str, object]]]]
 
     max_values: Annotated[Union[int, str, Iterable[object], None], PropertyInfo(alias="maxValues")]
 
-    neg_examples: Optional[List[str]]
+    neg_examples: Optional[SequenceNotStr[str]]
 
     output_type: Optional[str]
 

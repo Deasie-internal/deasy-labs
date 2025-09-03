@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["DocumentTextGetParams"]
 
@@ -11,6 +13,6 @@ __all__ = ["DocumentTextGetParams"]
 class DocumentTextGetParams(TypedDict, total=False):
     data_connector_name: Required[str]
 
-    file_names: Required[List[str]]
+    file_names: Required[SequenceNotStr[str]]
 
-    chunk_ids: Optional[List[str]]
+    chunk_ids: Optional[SequenceNotStr[str]]

@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import httpx
 
 from ..types import classify_classify_files_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,7 +48,7 @@ class ClassifyResource(SyncAPIResource):
         *,
         data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
         job_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -56,7 +56,7 @@ class ClassifyResource(SyncAPIResource):
         overwrite: bool | NotGiven = NOT_GIVEN,
         soft_run: bool | NotGiven = NOT_GIVEN,
         tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +139,7 @@ class AsyncClassifyResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
         hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
         job_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -147,7 +147,7 @@ class AsyncClassifyResource(AsyncAPIResource):
         overwrite: bool | NotGiven = NOT_GIVEN,
         soft_run: bool | NotGiven = NOT_GIVEN,
         tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

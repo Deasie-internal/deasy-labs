@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["TagUpsertParams", "TagData"]
@@ -19,7 +20,7 @@ class TagData(TypedDict, total=False):
 
     output_type: Required[str]
 
-    available_values: Optional[List[str]]
+    available_values: Optional[SequenceNotStr[str]]
 
     date_format: Optional[str]
 
@@ -27,7 +28,7 @@ class TagData(TypedDict, total=False):
 
     enhance_file_metadata: Optional[bool]
 
-    examples: Optional[List[Union[str, Dict[str, object]]]]
+    examples: Optional[SequenceNotStr[Union[str, Dict[str, object]]]]
 
     max_values: Annotated[Optional[int], PropertyInfo(alias="maxValues")]
 
