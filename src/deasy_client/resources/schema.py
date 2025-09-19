@@ -13,7 +13,7 @@ from ..types import (
     schema_update_params,
     schema_upsert_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,14 +54,14 @@ class SchemaResource(SyncAPIResource):
         self,
         *,
         schema_name: str,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Create a new graph.
@@ -101,14 +101,14 @@ class SchemaResource(SyncAPIResource):
         self,
         *,
         schema_name: str,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Update a graph in the database.
@@ -147,13 +147,13 @@ class SchemaResource(SyncAPIResource):
     def list(
         self,
         *,
-        schema_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        schema_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaListResponse:
         """
         List all schemas for the authenticated user.
@@ -189,7 +189,7 @@ class SchemaResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Delete a schema by name.
@@ -223,15 +223,15 @@ class SchemaResource(SyncAPIResource):
         self,
         *,
         schema_name: str,
-        new_schema_name: Optional[str] | NotGiven = NOT_GIVEN,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        new_schema_name: Optional[str] | Omit = omit,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Upsert a schema in the database.
@@ -294,14 +294,14 @@ class AsyncSchemaResource(AsyncAPIResource):
         self,
         *,
         schema_name: str,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Create a new graph.
@@ -341,14 +341,14 @@ class AsyncSchemaResource(AsyncAPIResource):
         self,
         *,
         schema_name: str,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Update a graph in the database.
@@ -387,13 +387,13 @@ class AsyncSchemaResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        schema_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        schema_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaListResponse:
         """
         List all schemas for the authenticated user.
@@ -429,7 +429,7 @@ class AsyncSchemaResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Delete a schema by name.
@@ -465,15 +465,15 @@ class AsyncSchemaResource(AsyncAPIResource):
         self,
         *,
         schema_name: str,
-        new_schema_name: Optional[str] | NotGiven = NOT_GIVEN,
-        schema_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        schema_description: Optional[str] | NotGiven = NOT_GIVEN,
+        new_schema_name: Optional[str] | Omit = omit,
+        schema_data: Optional[Dict[str, object]] | Omit = omit,
+        schema_description: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SchemaOperationResponse:
         """
         Upsert a schema in the database.

@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import deasy_select_query_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,24 +48,24 @@ class DeasySelectResource(SyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | NotGiven = NOT_GIVEN,
-        file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
-        metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
-        metadata_reranker: Optional[bool] | NotGiven = NOT_GIVEN,
-        return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
-        tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
-        top_k: Optional[int] | NotGiven = NOT_GIVEN,
-        with_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | Omit = omit,
+        file_hybrid_search_boost: Optional[float] | Omit = omit,
+        metadata_hybrid_search: Optional[bool] | Omit = omit,
+        metadata_hybrid_search_boost: Optional[float] | Omit = omit,
+        metadata_reranker: Optional[bool] | Omit = omit,
+        return_only_query: Optional[bool] | Omit = omit,
+        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | Omit = omit,
+        tag_level: Optional[Literal["chunk", "both"]] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | Omit = omit,
+        top_k: Optional[int] | Omit = omit,
+        with_text: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Deasy Select Query
@@ -132,24 +132,24 @@ class AsyncDeasySelectResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         query: str,
-        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | NotGiven = NOT_GIVEN,
-        file_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
-        metadata_hybrid_search: Optional[bool] | NotGiven = NOT_GIVEN,
-        metadata_hybrid_search_boost: Optional[float] | NotGiven = NOT_GIVEN,
-        metadata_reranker: Optional[bool] | NotGiven = NOT_GIVEN,
-        return_only_query: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | NotGiven = NOT_GIVEN,
-        tag_level: Optional[Literal["chunk", "both"]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | NotGiven = NOT_GIVEN,
-        top_k: Optional[int] | NotGiven = NOT_GIVEN,
-        with_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        banned_filters: Optional[Dict[str, SequenceNotStr[Union[str, float]]]] | Omit = omit,
+        file_hybrid_search_boost: Optional[float] | Omit = omit,
+        metadata_hybrid_search: Optional[bool] | Omit = omit,
+        metadata_hybrid_search_boost: Optional[float] | Omit = omit,
+        metadata_reranker: Optional[bool] | Omit = omit,
+        return_only_query: Optional[bool] | Omit = omit,
+        tag_distributions: Optional[Dict[str, deasy_select_query_params.TagDistributions]] | Omit = omit,
+        tag_level: Optional[Literal["chunk", "both"]] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        tag_schemas: Optional[Iterable[deasy_select_query_params.TagSchema]] | Omit = omit,
+        top_k: Optional[int] | Omit = omit,
+        with_text: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Deasy Select Query

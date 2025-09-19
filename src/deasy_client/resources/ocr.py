@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from ..types import ocr_ingest_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -46,18 +46,18 @@ class OcrResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        clean_up_out_of_sync: bool | NotGiven = NOT_GIVEN,
-        file_count_to_run: Optional[int] | NotGiven = NOT_GIVEN,
-        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        job_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
-        use_llm: bool | NotGiven = NOT_GIVEN,
+        clean_up_out_of_sync: bool | Omit = omit,
+        file_count_to_run: Optional[int] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        job_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
+        use_llm: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Ingest OCR data into the vector database.
@@ -116,18 +116,18 @@ class AsyncOcrResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        clean_up_out_of_sync: bool | NotGiven = NOT_GIVEN,
-        file_count_to_run: Optional[int] | NotGiven = NOT_GIVEN,
-        file_names: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        job_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
-        use_llm: bool | NotGiven = NOT_GIVEN,
+        clean_up_out_of_sync: bool | Omit = omit,
+        file_count_to_run: Optional[int] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        job_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
+        use_llm: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Ingest OCR data into the vector database.
