@@ -32,7 +32,16 @@ class TestSuggestSchema:
             data_connector_name="data_connector_name",
             auto_save=True,
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -119,7 +128,16 @@ class TestAsyncSuggestSchema:
             data_connector_name="data_connector_name",
             auto_save=True,
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",

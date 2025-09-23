@@ -32,7 +32,16 @@ class TestClassifyBulk:
         classify_bulk = client.classify_bulk.classify(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -118,7 +127,16 @@ class TestAsyncClassifyBulk:
         classify_bulk = await async_client.classify_bulk.classify(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
