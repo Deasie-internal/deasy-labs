@@ -45,7 +45,16 @@ class TestDataslice:
             graph_id="graph_id",
             latest_graph={"foo": "bar"},
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -168,7 +177,16 @@ class TestDataslice:
         dataslice = client.dataslice.get_file_count(
             data_connector_name="data_connector_name",
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -343,7 +361,16 @@ class TestAsyncDataslice:
             graph_id="graph_id",
             latest_graph={"foo": "bar"},
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -466,7 +493,16 @@ class TestAsyncDataslice:
         dataslice = await async_client.dataslice.get_file_count(
             data_connector_name="data_connector_name",
             condition={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",

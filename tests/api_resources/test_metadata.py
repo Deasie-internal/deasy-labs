@@ -38,7 +38,16 @@ class TestMetadata:
             data_connector_name="data_connector_name",
             chunk_ids=["string"],
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -93,7 +102,16 @@ class TestMetadata:
         metadata = client.metadata.delete(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -191,7 +209,16 @@ class TestMetadata:
         metadata = client.metadata.list_paginated(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -313,7 +340,16 @@ class TestAsyncMetadata:
             data_connector_name="data_connector_name",
             chunk_ids=["string"],
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -368,7 +404,16 @@ class TestAsyncMetadata:
         metadata = await async_client.metadata.delete(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
@@ -466,7 +511,16 @@ class TestAsyncMetadata:
         metadata = await async_client.metadata.list_paginated(
             data_connector_name="data_connector_name",
             conditions={
-                "children": [],
+                "children": [
+                    {
+                        "condition": "AND",
+                        "tag": {
+                            "name": "name",
+                            "values": ["string"],
+                            "operator": "operator",
+                        },
+                    }
+                ],
                 "condition": "AND",
                 "tag": {
                     "name": "name",
