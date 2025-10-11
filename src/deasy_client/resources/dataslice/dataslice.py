@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import httpx
 
@@ -22,7 +22,7 @@ from ...types import (
     dataslice_get_file_count_params,
     dataslice_get_tag_vdb_distribution_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,17 +76,17 @@ class DatasliceResource(SyncAPIResource):
         dataslice_name: str,
         graph_id: str,
         latest_graph: Dict[str, object],
-        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        data_points: Optional[int] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        parent_dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | Omit = omit,
+        data_points: Optional[int] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        parent_dataslice_id: Optional[str] | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceCreateResponse:
         """
         Create a new use case based on given conditions
@@ -142,7 +142,7 @@ class DatasliceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceListResponse:
         """List all dataslices"""
         return self._get(
@@ -162,7 +162,7 @@ class DatasliceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceDeleteResponse:
         """
         Delete a use case
@@ -196,14 +196,14 @@ class DatasliceResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetFileCountResponse:
         """
         Get count of files matching dataslice conditions or provided conditions
@@ -242,7 +242,7 @@ class DatasliceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetFilesResponse:
         """
         Get all files associated with a dataslice
@@ -268,17 +268,17 @@ class DatasliceResource(SyncAPIResource):
     def get_metrics(
         self,
         *,
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        node_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetMetricsResponse:
         """
         Retrieve use case metrics
@@ -313,14 +313,14 @@ class DatasliceResource(SyncAPIResource):
     def get_tag_vdb_distribution(
         self,
         *,
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice
@@ -381,17 +381,17 @@ class AsyncDatasliceResource(AsyncAPIResource):
         dataslice_name: str,
         graph_id: str,
         latest_graph: Dict[str, object],
-        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        data_points: Optional[int] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        parent_dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | Omit = omit,
+        data_points: Optional[int] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        parent_dataslice_id: Optional[str] | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceCreateResponse:
         """
         Create a new use case based on given conditions
@@ -447,7 +447,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceListResponse:
         """List all dataslices"""
         return await self._get(
@@ -467,7 +467,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceDeleteResponse:
         """
         Delete a use case
@@ -503,14 +503,14 @@ class AsyncDatasliceResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        condition: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        condition: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetFileCountResponse:
         """
         Get count of files matching dataslice conditions or provided conditions
@@ -549,7 +549,7 @@ class AsyncDatasliceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetFilesResponse:
         """
         Get all files associated with a dataslice
@@ -577,17 +577,17 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def get_metrics(
         self,
         *,
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        node_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        node_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetMetricsResponse:
         """
         Retrieve use case metrics
@@ -622,14 +622,14 @@ class AsyncDatasliceResource(AsyncAPIResource):
     async def get_tag_vdb_distribution(
         self,
         *,
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DatasliceGetTagVdbDistributionResponse:
         """
         Get the distribution of tags in a dataslice

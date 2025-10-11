@@ -95,9 +95,9 @@ from .dataslice_get_tag_vdb_distribution_response import (
 # This ensures that, when building the deferred (due to cyclical references) model schema,
 # Pydantic can resolve the necessary references.
 # See: https://github.com/pydantic/pydantic/issues/11250 for more context.
-if _compat.PYDANTIC_V2:
-    condition_output.ConditionOutput.model_rebuild(_parent_namespace_depth=0)
-    dataslice_list_response.DatasliceListResponse.model_rebuild(_parent_namespace_depth=0)
-else:
+if _compat.PYDANTIC_V1:
     condition_output.ConditionOutput.update_forward_refs()  # type: ignore
     dataslice_list_response.DatasliceListResponse.update_forward_refs()  # type: ignore
+else:
+    condition_output.ConditionOutput.model_rebuild(_parent_namespace_depth=0)
+    dataslice_list_response.DatasliceListResponse.model_rebuild(_parent_namespace_depth=0)

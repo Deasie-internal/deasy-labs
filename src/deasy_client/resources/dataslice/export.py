@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -47,16 +47,16 @@ class ExportResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        export_file_level: bool | NotGiven = NOT_GIVEN,
-        export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
-        selected_metadata_fields: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        export_file_level: bool | Omit = omit,
+        export_format: Optional[Literal["json", "csv"]] | Omit = omit,
+        selected_metadata_fields: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Export file-level/chunk-level metadata for a use case
@@ -121,16 +121,16 @@ class AsyncExportResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        export_file_level: bool | NotGiven = NOT_GIVEN,
-        export_format: Optional[Literal["json", "csv"]] | NotGiven = NOT_GIVEN,
-        selected_metadata_fields: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        export_file_level: bool | Omit = omit,
+        export_format: Optional[Literal["json", "csv"]] | Omit = omit,
+        selected_metadata_fields: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Export file-level/chunk-level metadata for a use case

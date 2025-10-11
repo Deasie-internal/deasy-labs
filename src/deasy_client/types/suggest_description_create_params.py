@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["SuggestDescriptionCreateParams"]
 
@@ -13,7 +15,7 @@ class SuggestDescriptionCreateParams(TypedDict, total=False):
 
     tag_name: Required[str]
 
-    available_values: Optional[List[str]]
+    available_values: Optional[SequenceNotStr[str]]
 
     context: Optional[str]
 

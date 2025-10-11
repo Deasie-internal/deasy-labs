@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 
 import httpx
 
@@ -13,7 +13,7 @@ from ..types import (
     metadata_list_paginated_params,
     metadata_get_distributions_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -58,18 +58,18 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        chunk_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        chunk_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        include_chunk_level: Optional[bool] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataListResponse:
         """
         Get paginated filtered metadata based on conditions
@@ -124,15 +124,15 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataDeleteResponse:
         """
         Delete metadata for specified files and tags
@@ -171,15 +171,15 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        schema_name: Optional[str] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        schema_name: Optional[str] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataGetDistributionsResponse:
         """
         Get distribution of values for a specific tag, sorted by percentage
@@ -214,18 +214,18 @@ class MetadataResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
-        offset: Optional[int] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        include_chunk_level: Optional[bool] | Omit = omit,
+        limit: Optional[int] | Omit = omit,
+        offset: Optional[int] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataListPaginatedResponse:
         """
         Get paginated filtered metadata based on conditions
@@ -288,14 +288,14 @@ class MetadataResource(SyncAPIResource):
                 ],
             ],
         ],
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataUpsertResponse:
         """
         Upsert metadata for files and tags
@@ -356,18 +356,18 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        chunk_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        chunk_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        include_chunk_level: Optional[bool] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataListResponse:
         """
         Get paginated filtered metadata based on conditions
@@ -422,15 +422,15 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataDeleteResponse:
         """
         Delete metadata for specified files and tags
@@ -469,15 +469,15 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        schema_name: Optional[str] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        schema_name: Optional[str] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataGetDistributionsResponse:
         """
         Get distribution of values for a specific tag, sorted by percentage
@@ -512,18 +512,18 @@ class AsyncMetadataResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        conditions: Optional[ConditionInputParam] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        include_chunk_level: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[int] | NotGiven = NOT_GIVEN,
-        offset: Optional[int] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        conditions: Optional[ConditionInputParam] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        include_chunk_level: Optional[bool] | Omit = omit,
+        limit: Optional[int] | Omit = omit,
+        offset: Optional[int] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataListPaginatedResponse:
         """
         Get paginated filtered metadata based on conditions
@@ -586,14 +586,14 @@ class AsyncMetadataResource(AsyncAPIResource):
                 ],
             ],
         ],
-        data_connector_name: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        data_connector_name: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MetadataUpsertResponse:
         """
         Upsert metadata for files and tags

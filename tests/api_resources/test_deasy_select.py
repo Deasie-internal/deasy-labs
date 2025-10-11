@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestDeasySelect:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_query(self, client: Deasy) -> None:
         deasy_select = client.deasy_select.query(
@@ -26,7 +26,7 @@ class TestDeasySelect:
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_query_with_all_params(self, client: Deasy) -> None:
         deasy_select = client.deasy_select.query(
@@ -79,7 +79,7 @@ class TestDeasySelect:
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_query(self, client: Deasy) -> None:
         response = client.deasy_select.with_raw_response.query(
@@ -92,7 +92,7 @@ class TestDeasySelect:
         deasy_select = response.parse()
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_query(self, client: Deasy) -> None:
         with client.deasy_select.with_streaming_response.query(
@@ -113,7 +113,7 @@ class TestAsyncDeasySelect:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_query(self, async_client: AsyncDeasy) -> None:
         deasy_select = await async_client.deasy_select.query(
@@ -122,7 +122,7 @@ class TestAsyncDeasySelect:
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_query_with_all_params(self, async_client: AsyncDeasy) -> None:
         deasy_select = await async_client.deasy_select.query(
@@ -175,7 +175,7 @@ class TestAsyncDeasySelect:
         )
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_query(self, async_client: AsyncDeasy) -> None:
         response = await async_client.deasy_select.with_raw_response.query(
@@ -188,7 +188,7 @@ class TestAsyncDeasySelect:
         deasy_select = await response.parse()
         assert_matches_type(object, deasy_select, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_query(self, async_client: AsyncDeasy) -> None:
         async with async_client.deasy_select.with_streaming_response.query(

@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 import httpx
 
 from ..types import classify_classify_files_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -47,22 +47,22 @@ class ClassifyResource(SyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
-        job_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        soft_run: bool | NotGiven = NOT_GIVEN,
-        tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        hierarchy_data: Optional[Dict[str, object]] | Omit = omit,
+        hierarchy_name: Optional[str] | Omit = omit,
+        job_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
+        overwrite: bool | Omit = omit,
+        soft_run: bool | Omit = omit,
+        tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ClassifyClassifyFilesResponse:
         """
         Classify files specified in the request with the provided tags
@@ -138,22 +138,22 @@ class AsyncClassifyResource(AsyncAPIResource):
         self,
         *,
         data_connector_name: str,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        file_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        hierarchy_data: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        hierarchy_name: Optional[str] | NotGiven = NOT_GIVEN,
-        job_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        soft_run: bool | NotGiven = NOT_GIVEN,
-        tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | NotGiven = NOT_GIVEN,
-        tag_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        dataslice_id: Optional[str] | Omit = omit,
+        file_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        hierarchy_data: Optional[Dict[str, object]] | Omit = omit,
+        hierarchy_name: Optional[str] | Omit = omit,
+        job_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
+        overwrite: bool | Omit = omit,
+        soft_run: bool | Omit = omit,
+        tag_datas: Optional[Dict[str, classify_classify_files_params.TagDatas]] | Omit = omit,
+        tag_names: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ClassifyClassifyFilesResponse:
         """
         Classify files specified in the request with the provided tags

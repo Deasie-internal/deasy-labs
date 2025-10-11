@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTaskStatus:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_task_status(self, client: Deasy) -> None:
         task_status = client.task_status.task_status(
@@ -25,7 +25,7 @@ class TestTaskStatus:
         )
         assert_matches_type(TaskStatusTaskStatusResponse, task_status, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_task_status(self, client: Deasy) -> None:
         response = client.task_status.with_raw_response.task_status(
@@ -37,7 +37,7 @@ class TestTaskStatus:
         task_status = response.parse()
         assert_matches_type(TaskStatusTaskStatusResponse, task_status, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_task_status(self, client: Deasy) -> None:
         with client.task_status.with_streaming_response.task_status(
@@ -57,7 +57,7 @@ class TestAsyncTaskStatus:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_task_status(self, async_client: AsyncDeasy) -> None:
         task_status = await async_client.task_status.task_status(
@@ -65,7 +65,7 @@ class TestAsyncTaskStatus:
         )
         assert_matches_type(TaskStatusTaskStatusResponse, task_status, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_task_status(self, async_client: AsyncDeasy) -> None:
         response = await async_client.task_status.with_raw_response.task_status(
@@ -77,7 +77,7 @@ class TestAsyncTaskStatus:
         task_status = await response.parse()
         assert_matches_type(TaskStatusTaskStatusResponse, task_status, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_task_status(self, async_client: AsyncDeasy) -> None:
         async with async_client.task_status.with_streaming_response.task_status(

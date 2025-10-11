@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.46 (2025-10-11)
+
+Full Changelog: [v0.1.0-alpha.45...v0.1.0-alpha.46](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.45...v0.1.0-alpha.46)
+
+### Features
+
+* improve future compat with pydantic v3 ([26c41d9](https://github.com/Deasie-internal/deasy-labs/commit/26c41d9bc930a385833b91478b87aa67ac46bb54))
+* **types:** replace List[str] with SequenceNotStr in params ([fccb83a](https://github.com/Deasie-internal/deasy-labs/commit/fccb83a1900f6441ce4cd2bfa19a23e0f03d8ef5))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([7683abf](https://github.com/Deasie-internal/deasy-labs/commit/7683abf0d3b3c1f0ad218013e4b3fdbb9b121ce4))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([3335bf8](https://github.com/Deasie-internal/deasy-labs/commit/3335bf8efc225a0961f322db9813e1362db52609))
+* **internal:** add Sequence related utils ([8545b45](https://github.com/Deasie-internal/deasy-labs/commit/8545b45cd54509ff78df6633636056a6b7582fd3))
+* **internal:** change ci workflow machines ([a9ca98e](https://github.com/Deasie-internal/deasy-labs/commit/a9ca98e634798cb5fa3556152aadca4a98ed4479))
+* **internal:** codegen related update ([80a7c8a](https://github.com/Deasie-internal/deasy-labs/commit/80a7c8a0b7592f2811af25b85d74de2f68ebc617))
+* **internal:** detect missing future annotations with ruff ([9ca6ca9](https://github.com/Deasie-internal/deasy-labs/commit/9ca6ca96ccfbd2b95f6f25aa5d2e8994cc2fb74d))
+* **internal:** improve examples ([21881a5](https://github.com/Deasie-internal/deasy-labs/commit/21881a5471bdfee18bdac8cc2b39c9b4fce3bfdf))
+* **internal:** move mypy configurations to `pyproject.toml` file ([d4d7a82](https://github.com/Deasie-internal/deasy-labs/commit/d4d7a82a45ffa5026d8f5fd3efdf3e5657150911))
+* **internal:** update comment in script ([5a21a95](https://github.com/Deasie-internal/deasy-labs/commit/5a21a95854089944c8b3371247c1044dab5e4b75))
+* **internal:** update pydantic dependency ([94088e5](https://github.com/Deasie-internal/deasy-labs/commit/94088e5855916d40fb1e5b65776a91aab49390d7))
+* **internal:** update pyright exclude list ([9a32356](https://github.com/Deasie-internal/deasy-labs/commit/9a323569e587b1c7b0863ddbe459040c9fced57b))
+* **internal:** use some smaller example values ([c6b7178](https://github.com/Deasie-internal/deasy-labs/commit/c6b717831b87f19c82724397de0031a930e4cdf9))
+* **tests:** simplify `get_platform` test ([15585c9](https://github.com/Deasie-internal/deasy-labs/commit/15585c9ff6ed7eae2c57442fb36281fffe7cbde3))
+* **types:** change optional parameter type from NotGiven to Omit ([2b11e3b](https://github.com/Deasie-internal/deasy-labs/commit/2b11e3b4cb10fad3ae007e2c88cdefbf7af20bba))
+* update github action ([c8d0612](https://github.com/Deasie-internal/deasy-labs/commit/c8d06123b3059b40132a8b7817a6f018b3e55478))
+
 ## 0.1.0-alpha.45 (2025-08-09)
 
 Full Changelog: [v0.1.0-alpha.44...v0.1.0-alpha.45](https://github.com/Deasie-internal/deasy-labs/compare/v0.1.0-alpha.44...v0.1.0-alpha.45)

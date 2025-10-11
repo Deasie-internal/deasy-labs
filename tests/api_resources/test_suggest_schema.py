@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSuggestSchema:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         suggest_schema = client.suggest_schema.create(
@@ -25,7 +25,7 @@ class TestSuggestSchema:
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         suggest_schema = client.suggest_schema.create(
@@ -72,7 +72,7 @@ class TestSuggestSchema:
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.suggest_schema.with_raw_response.create(
@@ -84,7 +84,7 @@ class TestSuggestSchema:
         suggest_schema = response.parse()
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.suggest_schema.with_streaming_response.create(
@@ -104,7 +104,7 @@ class TestAsyncSuggestSchema:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         suggest_schema = await async_client.suggest_schema.create(
@@ -112,7 +112,7 @@ class TestAsyncSuggestSchema:
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         suggest_schema = await async_client.suggest_schema.create(
@@ -159,7 +159,7 @@ class TestAsyncSuggestSchema:
         )
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.suggest_schema.with_raw_response.create(
@@ -171,7 +171,7 @@ class TestAsyncSuggestSchema:
         suggest_schema = await response.parse()
         assert_matches_type(SuggestSchemaCreateResponse, suggest_schema, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.suggest_schema.with_streaming_response.create(

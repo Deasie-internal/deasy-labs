@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 
 import httpx
 
 from ..types import suggest_description_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,17 +48,17 @@ class SuggestDescriptionResource(SyncAPIResource):
         *,
         data_connector_name: str,
         tag_name: str,
-        available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        context: Optional[str] | NotGiven = NOT_GIVEN,
-        current_description: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
+        available_values: Optional[SequenceNotStr[str]] | Omit = omit,
+        context: Optional[str] | Omit = omit,
+        current_description: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SuggestDescriptionCreateResponse:
         """
         Suggest a description for a tag based on context and vector DB content
@@ -127,17 +127,17 @@ class AsyncSuggestDescriptionResource(AsyncAPIResource):
         *,
         data_connector_name: str,
         tag_name: str,
-        available_values: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        context: Optional[str] | NotGiven = NOT_GIVEN,
-        current_description: Optional[str] | NotGiven = NOT_GIVEN,
-        dataslice_id: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_profile_name: Optional[str] | NotGiven = NOT_GIVEN,
+        available_values: Optional[SequenceNotStr[str]] | Omit = omit,
+        context: Optional[str] | Omit = omit,
+        current_description: Optional[str] | Omit = omit,
+        dataslice_id: Optional[str] | Omit = omit,
+        llm_profile_name: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SuggestDescriptionCreateResponse:
         """
         Suggest a description for a tag based on context and vector DB content

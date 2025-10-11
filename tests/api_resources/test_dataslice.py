@@ -25,7 +25,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestDataslice:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Deasy) -> None:
         dataslice = client.dataslice.create(
@@ -36,7 +36,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.create(
@@ -60,7 +60,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.create(
@@ -75,7 +75,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.create(
@@ -92,13 +92,13 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Deasy) -> None:
         dataslice = client.dataslice.list()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.list()
@@ -108,7 +108,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.list() as response:
@@ -120,7 +120,7 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Deasy) -> None:
         dataslice = client.dataslice.delete(
@@ -128,7 +128,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.delete(
@@ -140,7 +140,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.delete(
@@ -154,7 +154,7 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_file_count(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
@@ -162,7 +162,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_file_count_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_file_count(
@@ -180,7 +180,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_file_count(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_file_count(
@@ -192,7 +192,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_file_count(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_file_count(
@@ -206,7 +206,7 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_files(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_files(
@@ -214,7 +214,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_files(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_files(
@@ -226,7 +226,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_files(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_files(
@@ -240,13 +240,13 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_metrics(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_metrics()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_metrics_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_metrics(
@@ -258,7 +258,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_metrics(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_metrics()
@@ -268,7 +268,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_metrics(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_metrics() as response:
@@ -280,13 +280,13 @@ class TestDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_tag_vdb_distribution(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_tag_vdb_distribution()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_tag_vdb_distribution_with_all_params(self, client: Deasy) -> None:
         dataslice = client.dataslice.get_tag_vdb_distribution(
@@ -295,7 +295,7 @@ class TestDataslice:
         )
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
         response = client.dataslice.with_raw_response.get_tag_vdb_distribution()
@@ -305,7 +305,7 @@ class TestDataslice:
         dataslice = response.parse()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_tag_vdb_distribution(self, client: Deasy) -> None:
         with client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:
@@ -323,7 +323,7 @@ class TestAsyncDataslice:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.create(
@@ -334,7 +334,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.create(
@@ -358,7 +358,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.create(
@@ -373,7 +373,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceCreateResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.create(
@@ -390,13 +390,13 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.list()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.list()
@@ -406,7 +406,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceListResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.list() as response:
@@ -418,7 +418,7 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.delete(
@@ -426,7 +426,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.delete(
@@ -438,7 +438,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceDeleteResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.delete(
@@ -452,7 +452,7 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_file_count(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
@@ -460,7 +460,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_file_count_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_file_count(
@@ -478,7 +478,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_file_count(
@@ -490,7 +490,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceGetFileCountResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_file_count(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_file_count(
@@ -504,7 +504,7 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_files(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_files(
@@ -512,7 +512,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_files(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_files(
@@ -524,7 +524,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceGetFilesResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_files(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_files(
@@ -538,13 +538,13 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_metrics(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_metrics()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_metrics_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_metrics(
@@ -556,7 +556,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_metrics(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_metrics()
@@ -566,7 +566,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceGetMetricsResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_metrics(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_metrics() as response:
@@ -578,13 +578,13 @@ class TestAsyncDataslice:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_tag_vdb_distribution()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_tag_vdb_distribution_with_all_params(self, async_client: AsyncDeasy) -> None:
         dataslice = await async_client.dataslice.get_tag_vdb_distribution(
@@ -593,7 +593,7 @@ class TestAsyncDataslice:
         )
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         response = await async_client.dataslice.with_raw_response.get_tag_vdb_distribution()
@@ -603,7 +603,7 @@ class TestAsyncDataslice:
         dataslice = await response.parse()
         assert_matches_type(DatasliceGetTagVdbDistributionResponse, dataslice, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_tag_vdb_distribution(self, async_client: AsyncDeasy) -> None:
         async with async_client.dataslice.with_streaming_response.get_tag_vdb_distribution() as response:

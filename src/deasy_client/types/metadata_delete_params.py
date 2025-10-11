@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["MetadataDeleteParams"]
 
@@ -13,9 +15,9 @@ class MetadataDeleteParams(TypedDict, total=False):
 
     conditions: Optional["ConditionInputParam"]
 
-    file_names: Optional[List[str]]
+    file_names: Optional[SequenceNotStr[str]]
 
-    tags: Optional[List[str]]
+    tags: Optional[SequenceNotStr[str]]
 
 
 from .condition_input_param import ConditionInputParam

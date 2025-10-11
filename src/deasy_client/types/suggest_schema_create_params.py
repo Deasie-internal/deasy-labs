@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["SuggestSchemaCreateParams", "Node"]
 
@@ -23,7 +25,7 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 
     deep_suggestion_mode: Optional[bool]
 
-    file_names: Optional[List[str]]
+    file_names: Optional[SequenceNotStr[str]]
 
     first_level_clusters: Optional[int]
 
@@ -71,7 +73,7 @@ class SuggestSchemaCreateParams(TypedDict, total=False):
 class Node(TypedDict, total=False):
     label: Optional[str]
 
-    path: Optional[List[str]]
+    path: Optional[SequenceNotStr[str]]
 
 
 from .condition_input_param import ConditionInputParam
